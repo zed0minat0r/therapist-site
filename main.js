@@ -74,7 +74,8 @@
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.25) + 'px))';
+          /* Use top offset so the CSS sway on the SVG child is not clobbered */
+          botanical.style.top = 'calc(50% + ' + (y * 0.22) + 'px)';
           ticking = false;
         });
         ticking = true;
@@ -86,22 +87,35 @@
   function initSpecStagger() {
     var specs = document.querySelectorAll('.spec');
     if (!specs.length) return;
-    if (reducedMotion) return;
+
+    if (reducedMotion) {
+      specs.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var specsArr = Array.from(specs);
+    var triggered = false;
 
     var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var idx = Array.from(specs).indexOf(el);
+      /* Fire once when the cloud enters the viewport */
+      if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
+        triggered = true;
+        specsArr.forEach(function (el, idx) {
           setTimeout(function () {
             el.classList.add('is-visible');
-          }, idx * 45);
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.1 });
+          }, idx * 50);
+        });
+        observer.disconnect();
+      }
+    }, { threshold: 0.05 });
 
-    specs.forEach(function (el) { observer.observe(el); });
+    /* Observe the parent cloud container */
+    var cloud = document.querySelector('.specialties__cloud');
+    if (cloud) {
+      observer.observe(cloud);
+    } else {
+      specs.forEach(function (el) { observer.observe(el); });
+    }
   }
 
   /* ---- Form success ---- */

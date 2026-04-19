@@ -132,9 +132,16 @@ h2 em, h1 em, h3 em {
   font-weight: 600;
   text-decoration: none;
   letter-spacing: 0.04em;
-  color: var(--forest);
+  color: var(--white);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  transition: color 0.3s;
 }
-.nav__brand-amp { color: var(--terra); margin: 0 1px; }
+.nav.is-scrolled .nav__brand {
+  color: var(--forest);
+  text-shadow: none;
+}
+.nav__brand-amp { color: var(--terra-lt); margin: 0 1px; transition: color 0.3s; }
+.nav.is-scrolled .nav__brand-amp { color: var(--terra); }
 .nav__links {
   display: flex;
   align-items: center;
@@ -144,13 +151,19 @@ h2 em, h1 em, h3 em {
 .nav__links a {
   font-size: 14px;
   font-weight: 400;
-  color: var(--ink-mid);
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   transition: color 0.2s;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
 }
-.nav__links a:hover { color: var(--forest); }
+.nav__links a:hover { color: var(--white); }
+.nav.is-scrolled .nav__links a {
+  color: var(--ink-mid);
+  text-shadow: none;
+}
+.nav.is-scrolled .nav__links a:hover { color: var(--forest); }
 .nav__cta {
-  background: var(--forest);
+  background: rgba(255,255,255,0.15) !important;
   color: var(--white) !important;
   padding: 9px 22px;
   border-radius: 4px;
@@ -159,8 +172,20 @@ h2 em, h1 em, h3 em {
   min-height: 38px;
   display: inline-flex !important;
   align-items: center;
+  border: 1px solid rgba(255,255,255,0.35) !important;
+  backdrop-filter: blur(6px);
+  transition: background 0.25s, border-color 0.25s !important;
+  text-shadow: none !important;
 }
-.nav__cta:hover { background: var(--forest-mid) !important; }
+.nav__cta:hover {
+  background: rgba(255,255,255,0.28) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+}
+.nav.is-scrolled .nav__cta {
+  background: var(--forest) !important;
+  border-color: transparent !important;
+}
+.nav.is-scrolled .nav__cta:hover { background: var(--forest-mid) !important; }
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -231,13 +256,19 @@ h2 em, h1 em, h3 em {
   top: 50%;
   transform: translateY(-48%);
   width: clamp(140px, 18vw, 280px);
-  color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.13);
   pointer-events: none;
-  animation: botanical-sway 8s ease-in-out infinite alternate;
+  /* sway only — parallax applied via JS transform override */
+}
+/* sway handled independently from parallax to avoid conflict */
+.hero__botanical svg {
+  animation: botanical-sway 9s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+  display: block;
 }
 @keyframes botanical-sway {
-  from { transform: translateY(-48%) rotate(-1deg); }
-  to   { transform: translateY(-48%) rotate(1.5deg); }
+  from { transform: rotate(-1.2deg); }
+  to   { transform: rotate(1.8deg); }
 }
 
 /* Hero content — left-heavy, not centered */
@@ -258,6 +289,11 @@ h2 em, h1 em, h3 em {
   text-transform: uppercase;
   color: rgba(255,255,255,0.45);
   margin-bottom: 28px;
+  animation: hero-fade-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero__headline {
@@ -268,6 +304,7 @@ h2 em, h1 em, h3 em {
   color: var(--white);
   max-width: 680px;
   margin-bottom: 32px;
+  animation: hero-fade-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
 .hero__hl-top {
   display: block;
@@ -292,6 +329,7 @@ h2 em, h1 em, h3 em {
   margin-bottom: 40px;
   line-height: 1.7;
   font-weight: 300;
+  animation: hero-fade-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
 }
 
 .hero__actions {
@@ -299,6 +337,7 @@ h2 em, h1 em, h3 em {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
+  animation: hero-fade-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both;
 }
 .hero__phone {
   font-size: 15px;
@@ -326,6 +365,7 @@ h2 em, h1 em, h3 em {
   margin: 0 auto;
   width: 100%;
   gap: 0;
+  animation: hero-fade-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) 1s both;
 }
 .hero__stat {
   display: flex;
@@ -357,7 +397,7 @@ h2 em, h1 em, h3 em {
 
 .hero__scroll-cue {
   position: absolute;
-  bottom: 80px;
+  bottom: 108px;
   right: 36px;
   z-index: 2;
 }
@@ -395,7 +435,7 @@ h2 em, h1 em, h3 em {
 
 .approach__headline {
   font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-  max-width: 580px;
+  max-width: 600px;
   margin-bottom: 72px;
   color: var(--ink);
   font-weight: 300;
@@ -621,26 +661,31 @@ h2 em, h1 em, h3 em {
   background: var(--white);
   border-radius: 3px;
   cursor: default;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  opacity: 0;
+  transform: translateY(10px);
 }
+.spec.is-visible {
+  opacity: 1;
+  transform: translateY(0) rotate(var(--spec-rot, 0deg));
+}
+/* Restore per-item rotations on visible state */
+.spec:nth-child(3n+1) { --spec-rot: -0.4deg; }
+.spec:nth-child(3n+2) { --spec-rot: 0.5deg; }
+.spec:nth-child(3n)   { --spec-rot: -0.2deg; }
 .spec--sm  { font-size: 16px; font-weight: 400; padding: 10px 16px; }
 .spec--md  { font-size: 20px; font-weight: 400; padding: 10px 20px; }
 .spec--lg  { font-size: 26px; font-weight: 400; padding: 10px 24px; }
-
-/* Alternating rotation — break the grid monotony */
-.spec:nth-child(3n+1) { transform: rotate(-0.4deg); }
-.spec:nth-child(3n+2) { transform: rotate(0.5deg); }
-.spec:nth-child(3n)   { transform: rotate(-0.2deg); }
 
 .spec:hover {
   background: var(--forest);
   color: var(--white);
   border-color: var(--forest);
-  transform: rotate(0deg) scale(1.04);
+  transform: rotate(0deg) scale(1.04) !important;
   box-shadow: var(--glow-forest);
 }
 
@@ -755,6 +800,68 @@ h2 em, h1 em, h3 em {
 }
 
 /* ===================================================
+   TRUST STRIP — testimonials, editorial style
+   =================================================== */
+.trust-strip {
+  background: var(--parchment);
+  padding: 80px 32px;
+  border-top: 1px solid var(--parchment-dk);
+}
+.trust-strip__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  gap: 0 48px;
+  align-items: start;
+}
+.trust-q {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.trust-q__text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 300;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+.trust-q__cite {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.trust-q__divider {
+  width: 1px;
+  background: var(--parchment-dk);
+  align-self: stretch;
+  min-height: 80px;
+}
+
+@media (max-width: 860px) {
+  .trust-strip__inner {
+    grid-template-columns: 1fr;
+    gap: 36px 0;
+  }
+  .trust-q__divider {
+    width: 40px;
+    height: 1px;
+    min-height: unset;
+    background: var(--parchment-dk);
+    align-self: auto;
+  }
+}
+@media (max-width: 600px) {
+  .trust-strip { padding: 56px 20px; }
+}
+
+/* ===================================================
    CTA SECTION — dramatic moment
    =================================================== */
 .cta-section {
@@ -783,7 +890,7 @@ h2 em, h1 em, h3 em {
   width: 100%;
   height: 80px;
   display: block;
-  fill: var(--parchment-dk);
+  fill: var(--parchment);
 }
 
 .cta-section__inner {
@@ -1117,9 +1224,11 @@ h2 em, h1 em, h3 em {
 @media (max-width: 600px) {
   .hero__content { padding: 120px 20px 32px; }
   .hero__headline { font-size: clamp(2.8rem, 12vw, 4rem); }
-  .hero__stats { padding: 16px 20px; gap: 0; flex-wrap: wrap; }
-  .hero__stat { padding: 8px 16px; }
+  .hero__stats { padding: 14px 20px; gap: 0; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .hero__stat { padding: 6px 14px; flex-shrink: 0; }
   .hero__stat:first-child { padding-left: 0; }
+  .hero__stat-n { font-size: 18px; }
+  .hero__stat-l { font-size: 10px; }
 
   .approach { padding: 80px 20px 60px; }
   .approach__headline { font-size: 2.2rem; }
@@ -1162,5 +1271,14 @@ h2 em, h1 em, h3 em {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .hero__location,
+  .hero__headline,
+  .hero__sub,
+  .hero__actions,
+  .hero__stats {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
   html { scroll-behavior: auto; }
 }
