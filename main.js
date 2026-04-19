@@ -58,7 +58,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
     els.forEach(function (el) { observer.observe(el); });
   }
@@ -74,8 +74,7 @@
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          /* Use top offset so the CSS sway on the SVG child is not clobbered */
-          botanical.style.top = 'calc(50% + ' + (y * 0.22) + 'px)';
+          botanical.style.top = 'calc(50% + ' + (y * 0.2) + 'px)';
           ticking = false;
         });
         ticking = true;
@@ -83,39 +82,33 @@
     }, { passive: true });
   }
 
-  /* ---- Specialty word stagger ---- */
+  /* ---- Specialty field stagger — editorial row animation ---- */
   function initSpecStagger() {
-    var specs = document.querySelectorAll('.spec');
-    if (!specs.length) return;
+    var field = document.querySelector('.specialties__field');
+    if (!field) return;
+
+    var allItems = Array.from(field.querySelectorAll('.spec, .spec-sep'));
+    if (!allItems.length) return;
 
     if (reducedMotion) {
-      specs.forEach(function (el) { el.classList.add('is-visible'); });
+      allItems.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
 
-    var specsArr = Array.from(specs);
     var triggered = false;
-
     var observer = new IntersectionObserver(function (entries) {
-      /* Fire once when the cloud enters the viewport */
       if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
         triggered = true;
-        specsArr.forEach(function (el, idx) {
+        allItems.forEach(function (el, idx) {
           setTimeout(function () {
             el.classList.add('is-visible');
-          }, idx * 50);
+          }, idx * 40);
         });
         observer.disconnect();
       }
     }, { threshold: 0.05 });
 
-    /* Observe the parent cloud container */
-    var cloud = document.querySelector('.specialties__cloud');
-    if (cloud) {
-      observer.observe(cloud);
-    } else {
-      specs.forEach(function (el) { observer.observe(el); });
-    }
+    observer.observe(field);
   }
 
   /* ---- Form success ---- */
@@ -132,20 +125,19 @@
     }
   }
 
-  /* ---- Subtle hover parallax on service rows ---- */
+  /* ---- Service row hover ---- */
   function initSvcHover() {
     if (reducedMotion) return;
     document.querySelectorAll('.svc').forEach(function (svc) {
       svc.addEventListener('mouseenter', function () {
-        svc.querySelector('.svc__num').style.transform = 'translateX(4px)';
+        svc.querySelector('.svc__num').style.transform = 'translateX(6px)';
       });
       svc.addEventListener('mouseleave', function () {
         svc.querySelector('.svc__num').style.transform = '';
       });
     });
-    // Also add transition style for the num
     var style = document.createElement('style');
-    style.textContent = '.svc__num { transition: transform 0.3s ease; }';
+    style.textContent = '.svc__num { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), color 0.3s; }';
     document.head.appendChild(style);
   }
 
