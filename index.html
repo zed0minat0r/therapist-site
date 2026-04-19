@@ -7,7 +7,7 @@
   <meta name="description" content="Experienced psychotherapy practice in Media, PA serving individuals, families, and couples. Ages 7 through adults. Call 610-585-1373." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 
   <script type="application/ld+json">
@@ -30,180 +30,262 @@
   </script>
 </head>
 <body>
+
   <!-- Nav -->
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
-      <a href="#home" class="nav__brand">AF<span class="nav__brand-dot">&</span>A</a>
+      <a href="#home" class="nav__brand">
+        <span class="nav__brand-af">AF</span><span class="nav__brand-amp">&</span><span class="nav__brand-a">A</span>
+      </a>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span><span></span>
       </button>
       <ul class="nav__links">
         <li><a href="#approach">Approach</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#specialties">Specialties</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact" class="btn btn--nav">Get Started</a></li>
+        <li><a href="#contact" class="nav__cta">Get Started</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="hero" id="home">
+    <!-- Organic background shapes -->
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero__gradient"></div>
-      <div class="hero__grain"></div>
+      <svg class="hero__blob hero__blob--1" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg"><path d="M300,50 C420,50 530,130 550,250 C570,370 490,480 380,510 C270,540 150,490 90,390 C30,290 60,150 160,90 C210,60 250,50 300,50Z" /></svg>
+      <svg class="hero__blob hero__blob--2" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><path d="M250,30 C360,20 450,100 460,220 C470,340 390,440 270,450 C150,460 50,380 40,260 C30,140 120,40 250,30Z" /></svg>
+      <div class="hero__grain" aria-hidden="true"></div>
     </div>
+
+    <!-- Botanical line art -->
+    <div class="hero__botanical" aria-hidden="true">
+      <svg viewBox="0 0 280 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M140 500 Q140 380 140 260" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M140 380 Q100 340 60 310 Q90 350 140 380" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M140 320 Q180 280 220 255 Q185 290 140 320" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M140 420 Q95 400 55 370 Q88 395 140 420" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M140 460 Q175 445 205 430 Q176 442 140 460" stroke="currentColor" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <ellipse cx="140" cy="255" rx="18" ry="26" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        <path d="M140 260 Q155 245 168 235" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        <path d="M140 260 Q125 248 114 238" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        <ellipse cx="56" cy="305" rx="12" ry="18" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(-25 56 305)"/>
+        <ellipse cx="224" cy="250" rx="12" ry="18" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(20 224 250)"/>
+        <ellipse cx="52" cy="366" rx="10" ry="15" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(-30 52 366)"/>
+        <ellipse cx="208" cy="427" rx="10" ry="15" stroke="currentColor" stroke-width="1" fill="none" transform="rotate(15 208 427)"/>
+        <!-- small seeds/dots -->
+        <circle cx="140" cy="230" r="3" fill="currentColor" opacity="0.6"/>
+        <circle cx="30" cy="300" r="2" fill="currentColor" opacity="0.4"/>
+        <circle cx="250" cy="240" r="2" fill="currentColor" opacity="0.4"/>
+      </svg>
+    </div>
+
     <div class="hero__content">
-      <p class="hero__eyebrow">Psychotherapy in Media, PA</p>
-      <h1 class="hero__headline">A safe space<br />to <em>grow</em></h1>
-      <p class="hero__sub">Respectful, collaborative therapy for individuals, families, and couples &mdash; ages 7 through adults.</p>
+      <p class="hero__location">Media, PA — since 2007</p>
+      <h1 class="hero__headline">
+        <span class="hero__hl-top">You don't have</span>
+        <em class="hero__hl-mid">to figure it</em>
+        <span class="hero__hl-bot">out alone.</span>
+      </h1>
+      <p class="hero__sub">Collaborative psychotherapy for individuals, families, and couples &mdash; ages 7 through adults.</p>
       <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary btn--lg">Schedule a Consultation</a>
-        <a href="tel:6105851373" class="btn btn--ghost">Call 610-585-1373</a>
+        <a href="#contact" class="btn btn--primary">Schedule a Consultation</a>
+        <a href="tel:6105851373" class="hero__phone">610-585-1373</a>
       </div>
     </div>
+
+    <div class="hero__stats" aria-hidden="true">
+      <div class="hero__stat">
+        <span class="hero__stat-n">17<sup>+</sup></span>
+        <span class="hero__stat-l">years</span>
+      </div>
+      <div class="hero__stat-div"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-n">7&ndash;Adult</span>
+        <span class="hero__stat-l">ages served</span>
+      </div>
+      <div class="hero__stat-div"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-n">Mon&ndash;Fri</span>
+        <span class="hero__stat-l">7 am &ndash; 8 pm</span>
+      </div>
+    </div>
+
     <div class="hero__scroll-cue" aria-hidden="true">
       <div class="hero__scroll-line"></div>
     </div>
   </section>
 
-  <!-- Trust Strip -->
-  <div class="trust-strip">
-    <div class="trust-strip__inner">
-      <div class="trust-strip__item">
-        <span class="trust-strip__num">17+</span>
-        <span class="trust-strip__label">Years Experience</span>
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__num">7&ndash;Adult</span>
-        <span class="trust-strip__label">Ages Served</span>
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__num">M&ndash;F</span>
-        <span class="trust-strip__label">7 AM &ndash; 8 PM</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Approach -->
+  <!-- Approach — offset editorial layout -->
   <section class="approach" id="approach">
-    <div class="approach__inner">
-      <p class="section-eyebrow reveal">Our Philosophy</p>
-      <h2 class="approach__headline reveal">Therapy should feel like<br /><em>a conversation, not a diagnosis</em></h2>
-      <div class="approach__cards">
-        <div class="approach__card reveal">
-          <div class="approach__card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
+    <div class="approach__label reveal">
+      <span>Our Philosophy</span>
+    </div>
+    <div class="approach__headline-wrap">
+      <h2 class="approach__headline reveal">
+        Therapy should feel<br />like <em>a conversation,</em><br />not a diagnosis.
+      </h2>
+    </div>
+
+    <div class="approach__pillars">
+      <div class="approach__pillar reveal" data-delay="0">
+        <div class="approach__pillar-num">01</div>
+        <div class="approach__pillar-body">
           <h3>Collaborative</h3>
-          <p>We work with you, not on you. Your goals drive the process.</p>
+          <p>We work with you, not on you. Your goals shape every session. You're always in the driver's seat.</p>
         </div>
-        <div class="approach__card reveal">
-          <div class="approach__card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          </div>
+      </div>
+      <div class="approach__pillar reveal" data-delay="1">
+        <div class="approach__pillar-num">02</div>
+        <div class="approach__pillar-body">
           <h3>Individualized</h3>
-          <p>No cookie-cutter plans. Every person and family gets a tailored approach.</p>
+          <p>No templates, no cookie-cutter plans. Every person brings a different story and deserves a tailored approach.</p>
         </div>
-        <div class="approach__card reveal">
-          <div class="approach__card-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Safe</h3>
-          <p>A judgment-free space where vulnerability is met with respect.</p>
+      </div>
+      <div class="approach__pillar reveal" data-delay="2">
+        <div class="approach__pillar-num">03</div>
+        <div class="approach__pillar-body">
+          <h3>Judgment-Free</h3>
+          <p>A genuine safe space where vulnerability is met with care, not clinical detachment.</p>
         </div>
       </div>
     </div>
+
+    <div class="approach__aside reveal">
+      <blockquote class="approach__quote">
+        &ldquo;The curious paradox is that when I accept myself just as I am, then I can change.&rdquo;
+        <cite>&mdash; Carl Rogers</cite>
+      </blockquote>
+    </div>
   </section>
 
-  <!-- Services -->
+  <!-- Services — staggered alternating layout -->
   <section class="services" id="services">
-    <div class="services__inner">
+    <div class="services__header">
       <p class="section-eyebrow reveal">What We Offer</p>
-      <h2 class="services__headline reveal">Therapy for every chapter</h2>
-      <div class="services__grid">
-        <div class="service-card reveal">
-          <div class="service-card__accent"></div>
-          <h3 class="service-card__title">Individual Therapy</h3>
-          <p class="service-card__desc">One-on-one sessions focused on your unique challenges &mdash; anxiety, depression, life transitions, trauma, and more.</p>
-          <span class="service-card__tag">Ages 7+</span>
+      <h2 class="services__headline reveal">Therapy for every<br /><em>chapter of life</em></h2>
+    </div>
+
+    <div class="services__list">
+      <article class="svc reveal">
+        <div class="svc__num">I.</div>
+        <div class="svc__body">
+          <h3 class="svc__title">Individual Therapy</h3>
+          <p class="svc__desc">One-on-one sessions built around your unique challenges &mdash; anxiety, depression, life transitions, trauma, and more. For ages 7 and up.</p>
+          <span class="svc__tag">Ages 7+</span>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__accent"></div>
-          <h3 class="service-card__title">Family Therapy</h3>
-          <p class="service-card__desc">Strengthen communication, resolve conflicts, and rebuild trust within your family system.</p>
-          <span class="service-card__tag">All ages</span>
+        <div class="svc__accent"></div>
+      </article>
+      <article class="svc reveal" data-delay="1">
+        <div class="svc__num">II.</div>
+        <div class="svc__body">
+          <h3 class="svc__title">Family Therapy</h3>
+          <p class="svc__desc">Strengthen communication, resolve conflicts, and rebuild trust within your family system. We meet each family where they are.</p>
+          <span class="svc__tag">All ages</span>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__accent"></div>
-          <h3 class="service-card__title">Couples Therapy</h3>
-          <p class="service-card__desc">Navigate relationship challenges together with a therapist who helps both partners feel heard.</p>
-          <span class="service-card__tag">Adults</span>
+        <div class="svc__accent"></div>
+      </article>
+      <article class="svc reveal" data-delay="2">
+        <div class="svc__num">III.</div>
+        <div class="svc__body">
+          <h3 class="svc__title">Couples Therapy</h3>
+          <p class="svc__desc">Navigate relationship challenges together with a therapist who helps both partners feel genuinely heard.</p>
+          <span class="svc__tag">Adults</span>
         </div>
-        <div class="service-card reveal">
-          <div class="service-card__accent"></div>
-          <h3 class="service-card__title">Group Therapy</h3>
-          <p class="service-card__desc">Weekly groups for ages 14&ndash;40. Connect with others navigating similar experiences in a supportive setting.</p>
-          <span class="service-card__tag">Ages 14&ndash;40</span>
+        <div class="svc__accent"></div>
+      </article>
+      <article class="svc reveal" data-delay="3">
+        <div class="svc__num">IV.</div>
+        <div class="svc__body">
+          <h3 class="svc__title">Group Therapy</h3>
+          <p class="svc__desc">Weekly groups for ages 14&ndash;40. Connect with others navigating similar experiences in a supportive, structured setting.</p>
+          <span class="svc__tag">Ages 14&ndash;40</span>
         </div>
-      </div>
+        <div class="svc__accent"></div>
+      </article>
     </div>
   </section>
 
-  <!-- Specialties — horizontal scroll -->
+  <!-- Specialties — organic scattered layout -->
   <section class="specialties" id="specialties">
+    <div class="specialties__bg-shape" aria-hidden="true">
+      <svg viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 Q200,0 400,60 Q600,120 800,40 Q1000,-20 1200,50 L1200,500 L0,500Z"/>
+      </svg>
+    </div>
     <div class="specialties__inner">
-      <p class="section-eyebrow reveal">Areas of Focus</p>
-      <h2 class="specialties__headline reveal">We specialize in what<br /><em>keeps you up at night</em></h2>
-      <div class="specialties__track">
-        <div class="specialty-pill">Anxiety</div>
-        <div class="specialty-pill">Depression</div>
-        <div class="specialty-pill">ADHD</div>
-        <div class="specialty-pill">Trauma</div>
-        <div class="specialty-pill">Family Conflict</div>
-        <div class="specialty-pill">Grief</div>
-        <div class="specialty-pill">Social Anxiety</div>
-        <div class="specialty-pill">Neurodiversity</div>
-        <div class="specialty-pill">School Anxiety</div>
-        <div class="specialty-pill">Life Transitions</div>
-        <div class="specialty-pill">Self-Esteem</div>
-        <div class="specialty-pill">Mood Disorders</div>
-        <div class="specialty-pill">Stress</div>
-        <div class="specialty-pill">Behavioral Challenges</div>
-        <div class="specialty-pill">Academic Struggles</div>
-        <div class="specialty-pill">Emerging Adults</div>
+      <div class="specialties__header">
+        <p class="section-eyebrow reveal">Areas of Focus</p>
+        <h2 class="specialties__headline reveal">
+          We specialize<br />in what <em>keeps</em><br />you up at night.
+        </h2>
+      </div>
+      <div class="specialties__cloud">
+        <span class="spec spec--lg reveal">Anxiety</span>
+        <span class="spec spec--sm reveal">ADHD</span>
+        <span class="spec spec--md reveal">Depression</span>
+        <span class="spec spec--sm reveal">Trauma</span>
+        <span class="spec spec--lg reveal">Family Conflict</span>
+        <span class="spec spec--sm reveal">Grief</span>
+        <span class="spec spec--md reveal">Social Anxiety</span>
+        <span class="spec spec--sm reveal">Neurodiversity</span>
+        <span class="spec spec--md reveal">School Anxiety</span>
+        <span class="spec spec--sm reveal">Life Transitions</span>
+        <span class="spec spec--md reveal">Self-Esteem</span>
+        <span class="spec spec--sm reveal">Mood Disorders</span>
+        <span class="spec spec--sm reveal">Stress</span>
+        <span class="spec spec--lg reveal">Behavioral Challenges</span>
+        <span class="spec spec--sm reveal">Academic Struggles</span>
+        <span class="spec spec--md reveal">Emerging Adults</span>
       </div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About — full-width editorial moment -->
   <section class="about" id="about">
-    <div class="about__inner">
-      <div class="about__text">
-        <p class="section-eyebrow reveal">About the Practice</p>
-        <h2 class="about__headline reveal">A team that<br /><em>gets it</em></h2>
-        <p class="about__body reveal">Amy Fantalis &amp; Associates is a small, local psychotherapy practice in downtown Media, PA. Our team of experienced therapists shares strong ethical and clinical values &mdash; and a deep commitment to meeting every client where they are.</p>
-        <p class="about__body reveal">With backgrounds spanning outpatient counseling, community mental health, and education, we bring real-world clinical experience to every session. We work closely with psychiatrists, primary care doctors, school psychologists, and guidance counselors to ensure integrated, whole-person care.</p>
-      </div>
-      <div class="about__visual reveal">
-        <div class="about__card">
-          <div class="about__card-inner">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <p class="about__card-label">Downtown Media</p>
-            <p class="about__card-detail">205 N. Monroe St.</p>
-          </div>
+    <div class="about__left">
+      <p class="section-eyebrow reveal">About the Practice</p>
+      <h2 class="about__headline reveal">
+        A small team.<br /><em>Real experience.</em><br />Deep care.
+      </h2>
+      <p class="about__body reveal">Amy Fantalis &amp; Associates is a close-knit psychotherapy practice in downtown Media, PA. Our therapists share strong ethical and clinical values &mdash; and a genuine commitment to meeting every client exactly where they are.</p>
+      <p class="about__body reveal">With backgrounds spanning outpatient counseling, community mental health, and education, we bring real-world clinical experience to every session. We work in close collaboration with psychiatrists, primary care physicians, school psychologists, and guidance counselors to deliver integrated, whole-person care.</p>
+    </div>
+    <div class="about__right">
+      <div class="about__card reveal">
+        <div class="about__card-top">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Downtown Media</span>
         </div>
+        <p class="about__card-addr">205 N. Monroe St.<br />Media, PA 19063</p>
+        <hr class="about__card-rule" />
+        <p class="about__card-note">Free street parking nearby. Accessible via public transit.</p>
+      </div>
+      <div class="about__botanical-sm" aria-hidden="true">
+        <svg viewBox="0 0 180 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M90 290 Q90 200 90 120" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M90 220 Q60 200 35 185 Q62 198 90 220" stroke="currentColor" stroke-width="0.9" fill="none"/>
+          <path d="M90 170 Q118 152 140 140 Q116 155 90 170" stroke="currentColor" stroke-width="0.9" fill="none"/>
+          <ellipse cx="90" cy="118" rx="14" ry="20" stroke="currentColor" stroke-width="1" fill="none"/>
+          <circle cx="90" cy="98" r="2.5" fill="currentColor" opacity="0.5"/>
+        </svg>
       </div>
     </div>
   </section>
 
-  <!-- CTA Strip -->
-  <section class="cta-strip">
-    <div class="cta-strip__inner reveal">
-      <h2 class="cta-strip__headline">Taking the first step is the hardest part.<br /><em>We make it easy.</em></h2>
-      <a href="#contact" class="btn btn--primary btn--lg">Start Your Journey</a>
+  <!-- CTA — dramatic full-width moment -->
+  <section class="cta-section">
+    <div class="cta-section__bg" aria-hidden="true">
+      <svg class="cta-section__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 Q360,0 720,40 Q1080,80 1440,40 L1440,80 L0,80Z"/>
+      </svg>
+    </div>
+    <div class="cta-section__inner reveal">
+      <p class="cta-section__pre">Ready to begin?</p>
+      <h2 class="cta-section__headline">Taking the first step<br />is the <em>hardest part.</em></h2>
+      <p class="cta-section__body">We make it easy. Reach out today and we'll find the right fit for you.</p>
+      <a href="#contact" class="btn btn--primary">Start Your Journey</a>
     </div>
   </section>
 
@@ -212,41 +294,42 @@
     <div class="contact__inner">
       <div class="contact__info">
         <p class="section-eyebrow reveal">Get in Touch</p>
-        <h2 class="contact__headline reveal">Ready when you are</h2>
+        <h2 class="contact__headline reveal">Ready when<br /><em>you are.</em></h2>
         <div class="contact__details reveal">
           <div class="contact__detail">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div>
               <p class="contact__detail-label">Office</p>
               <p>205 N. Monroe St.<br />Media, PA 19063</p>
             </div>
           </div>
           <div class="contact__detail">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <div>
               <p class="contact__detail-label">Phone</p>
               <a href="tel:6105851373" class="contact__link">610-585-1373</a>
             </div>
           </div>
           <div class="contact__detail">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polyline points="22,3 12,13 2,3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polyline points="22,3 12,13 2,3"/></svg>
             <div>
               <p class="contact__detail-label">Email</p>
               <a href="mailto:afantalis@gmail.com" class="contact__link">afantalis@gmail.com</a>
             </div>
           </div>
           <div class="contact__detail">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <div>
               <p class="contact__detail-label">Hours</p>
-              <p>Mon &ndash; Fri: 7 AM &ndash; 8 PM<br />Sat &ndash; Sun: Closed</p>
+              <p>Mon&ndash;Fri: 7 AM&ndash;8 PM<br />Sat&ndash;Sun: Closed</p>
             </div>
           </div>
         </div>
         <div class="contact__parking reveal">
-          <p><strong>Parking:</strong> Metered parking on Monroe St. &amp; free side-street parking available. Accessible via public transit.</p>
+          <strong>Parking:</strong> Metered parking on Monroe St. Free side-street parking available. Accessible via public transit.
         </div>
       </div>
+
       <div class="contact__form-wrap reveal">
         <form class="contact__form" action="https://formspree.io/f/placeholder" method="POST">
           <input type="hidden" name="_next" value="https://zed0minat0r.github.io/therapist-site/?submitted=1" />
@@ -274,14 +357,14 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="message">Tell us a little about what brings you here <span class="form-optional">(optional)</span></label>
+            <label for="message">What brings you here <span class="form-optional">(optional)</span></label>
             <textarea id="message" name="message" rows="4"></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--lg btn--full">Send Message</button>
+          <button type="submit" class="btn btn--primary btn--full">Send Message</button>
           <p class="contact__form-note">We typically respond within 24 hours.</p>
         </form>
         <div class="contact__success" id="formSuccess">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <h3>Message sent</h3>
           <p>Thank you for reaching out. We'll be in touch within 24 hours.</p>
         </div>
@@ -292,16 +375,18 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="site-footer__inner">
-      <div class="site-footer__brand">
-        <p class="site-footer__name">Amy Fantalis &amp; Associates</p>
-        <p class="site-footer__tagline">Psychotherapy in Media, PA</p>
-      </div>
-      <div class="site-footer__nav">
-        <a href="#approach">Approach</a>
-        <a href="#services">Services</a>
-        <a href="#specialties">Specialties</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <p class="site-footer__name">Amy Fantalis &amp; Associates</p>
+          <p class="site-footer__tagline">Psychotherapy in Media, PA</p>
+        </div>
+        <nav class="site-footer__nav" aria-label="Footer navigation">
+          <a href="#approach">Approach</a>
+          <a href="#services">Services</a>
+          <a href="#specialties">Specialties</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
       <div class="site-footer__bottom">
         <p>&copy; 2026 Amy Fantalis &amp; Associates. All rights reserved.</p>
