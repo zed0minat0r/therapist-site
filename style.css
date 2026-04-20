@@ -1473,6 +1473,130 @@ h2 em, h1 em, h3 em {
 
   /* Nav */
   .nav__inner { padding: 0 20px; }
+
+  /* ---- MOBILE CENTER ALIGNMENT (375px) ---- */
+
+  /* Hero */
+  .hero__content { text-align: center; }
+  .hero__location { text-align: center; }
+  .hero__headline { text-align: center; max-width: 100%; }
+  .hero__hl-mid { padding-left: 0; }
+  .hero__sub { text-align: center; margin-left: auto; margin-right: auto; }
+  .hero__actions {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .hero__stats {
+    justify-content: center;
+  }
+
+  /* Approach */
+  .approach__label { text-align: center; }
+  .approach__headline { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
+  .approach__pillar { text-align: center; }
+  .approach__pillar-num { text-align: center; }
+  .approach__pillar h3 { text-align: center; }
+  .approach__pillar p { text-align: center; }
+  .approach__aside {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-left: none;
+    border-top: 2px solid var(--terra);
+    padding-left: 0;
+    padding-top: 28px;
+  }
+  .approach__quote { text-align: center; }
+  .approach__quote cite { text-align: center; }
+
+  /* Services */
+  .services__header { text-align: center; }
+  .services__headline { text-align: center; }
+  .services__header-note { text-align: center; }
+  .svc { grid-template-columns: 1fr; gap: 8px 0; text-align: center; }
+  .svc__num { font-size: 2.2rem; text-align: center; }
+  .svc__body { align-items: center; }
+  .svc__title { text-align: center; }
+  .svc__desc { text-align: center; max-width: 100%; }
+  .svc__tag { text-align: center; margin-left: auto; margin-right: auto; }
+  .services__cta {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .services__cta-note { text-align: center; }
+  .services__cta-link { text-align: center; }
+
+  /* Specialties */
+  .specialties__header { text-align: center; }
+  .specialties__headline { text-align: center; }
+  .specialties__subhead { text-align: center; }
+  .specialties__field { align-items: center; }
+  .spec-row { justify-content: center; }
+
+  /* About */
+  .about__left { text-align: center; }
+  .about__headline { text-align: center; }
+  .about__body { text-align: center; }
+  .about__right { align-items: center; }
+  .about__bio { text-align: center; }
+  .about__bio-name { text-align: center; }
+  .about__bio-cred { text-align: center; }
+  .about__bio-text { text-align: center; }
+  .about__bio-tags { justify-content: center; }
+  .about__card { text-align: center; border-left: none; border-top: 3px solid var(--gold); width: 100%; }
+  .about__card-top { justify-content: center; }
+  .about__card-addr { text-align: center; }
+  .about__card-note { text-align: center; }
+
+  /* Testimonials */
+  .trust-strip__label { text-align: center; }
+  .trust-q { text-align: center; }
+  .trust-q__text { text-align: center; }
+  .trust-q__cite { text-align: center; }
+
+  /* CTA section */
+  .cta-section { text-align: center; }
+  .cta-section__inner { text-align: center; }
+  .cta-section__left { text-align: center; }
+  .cta-section__pre { text-align: center; }
+  .cta-section__headline { text-align: center; }
+  .cta-section__right {
+    align-items: center;
+    text-align: center;
+  }
+  .cta-section__body { text-align: center; }
+
+  /* Contact */
+  .contact__info { text-align: center; }
+  .contact__headline { text-align: center; }
+  .contact__details { align-items: center; }
+  .contact__detail { flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .contact__detail svg { margin-top: 0; }
+  .contact__detail p { text-align: center; }
+  .contact__detail-label { text-align: center; }
+  .contact__parking { text-align: center; }
+  .contact__form-wrap { width: 100%; }
+  .contact__form { align-items: stretch; }
+
+  /* Footer */
+  .site-footer__top { align-items: center; text-align: center; }
+  .site-footer__brand { text-align: center; }
+  .site-footer__name { text-align: center; }
+  .site-footer__tagline { text-align: center; }
+  .site-footer__nav {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .site-footer__bottom {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+  .site-footer__bottom p { text-align: center; }
 }
 
 /* ===================================================
