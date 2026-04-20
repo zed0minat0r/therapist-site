@@ -283,13 +283,28 @@
         <div class="about__bio reveal">
           <p class="about__bio-name">Amy Fantalis, LCSW</p>
           <p class="about__bio-cred">Licensed Clinical Social Worker &mdash; 17+ years in practice</p>
-          <p class="about__bio-text">Amy founded this practice with a simple belief: everyone deserves to be heard. Trained in CBT, DBT, and trauma-informed care, she works with individuals, families, and couples across the full arc of life &mdash; from childhood through adulthood. Before opening her Media practice in 2007, Amy worked in community mental health and outpatient counseling, where she developed a deep commitment to accessible, whole-person therapy. She holds a Master of Social Work from the University of Pennsylvania.</p>
+          <p class="about__bio-text">I started this practice in 2007 because I believed &mdash; and still believe &mdash; that every person deserves a space where they can say anything without judgment, and actually feel heard. After years working in community mental health and outpatient counseling, I wanted to build something different: a small, close-knit practice where relationships matter more than caseloads.</p>
+          <p class="about__bio-text">Trained in CBT, DBT, and trauma-informed care, I work with individuals, families, and couples across the full arc of life &mdash; from childhood through adulthood. I hold a Master of Social Work from the University of Pennsylvania.</p>
           <ul class="about__bio-tags">
             <li>CBT</li>
             <li>DBT</li>
             <li>Trauma-Informed</li>
             <li>Family Systems</li>
           </ul>
+          <dl class="about__faq">
+            <div class="about__faq-item">
+              <dt>Do you accept insurance?</dt>
+              <dd>We are out-of-network with most insurers. Many clients are reimbursed through out-of-network benefits or HSA/FSA accounts. We&rsquo;re happy to provide a superbill. Sliding scale available &mdash; please ask.</dd>
+            </div>
+            <div class="about__faq-item">
+              <dt>Is telehealth available?</dt>
+              <dd>Yes. We offer secure video sessions for clients across Pennsylvania. Many clients alternate between in-person and telehealth depending on their week.</dd>
+            </div>
+            <div class="about__faq-item">
+              <dt>How long are sessions?</dt>
+              <dd>Standard sessions are 50 minutes. Extended 80-minute sessions are available for couples and family work, or when a client needs more time to process.</dd>
+            </div>
+          </dl>
         </div>
         <div class="about__card reveal">
           <div class="about__card-top">
@@ -397,15 +412,15 @@
             <input type="tel" id="phone" name="phone" autocomplete="tel" />
           </div>
           <div class="form-group">
-            <label for="service">I'm interested in</label>
-            <select id="service" name="service">
-              <option value="">Select a service</option>
-              <option value="individual">Individual Therapy</option>
-              <option value="family">Family Therapy</option>
-              <option value="couples">Couples Therapy</option>
-              <option value="group">Group Therapy</option>
-              <option value="not-sure">Not sure yet</option>
-            </select>
+            <label>I&rsquo;m interested in</label>
+            <input type="hidden" id="service" name="service" value="" />
+            <div class="service-cards" role="group" aria-label="Select a service">
+              <button type="button" class="service-card" data-value="individual">Individual</button>
+              <button type="button" class="service-card" data-value="family">Family</button>
+              <button type="button" class="service-card" data-value="couples">Couples</button>
+              <button type="button" class="service-card" data-value="group">Group</button>
+              <button type="button" class="service-card" data-value="not-sure">Not sure yet</button>
+            </div>
           </div>
           <div class="form-group">
             <label for="message">What brings you here <span class="form-optional">(optional)</span></label>
@@ -413,6 +428,7 @@
           </div>
           <button type="submit" class="btn btn--primary btn--full">Send Message</button>
           <p class="contact__form-note">We typically respond within 24 hours.</p>
+          <p class="contact__privacy-note">Your information is kept strictly confidential.</p>
         </form>
         <div class="contact__success" id="formSuccess">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>

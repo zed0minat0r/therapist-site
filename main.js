@@ -197,6 +197,20 @@
     }
   }
 
+  /* ---- Service selection cards ---- */
+  function initServiceCards() {
+    var cards = document.querySelectorAll('.service-card');
+    var hidden = document.getElementById('service');
+    if (!cards.length || !hidden) return;
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        cards.forEach(function (c) { c.classList.remove('is-selected'); });
+        card.classList.add('is-selected');
+        hidden.value = card.getAttribute('data-value');
+      });
+    });
+  }
+
   /* ---- Service row hover ---- */
   function initSvcHover() {
     if (reducedMotion) return;
@@ -243,6 +257,7 @@
     initFormValidation();
     initSvcHover();
     initReadingProgress();
+    initServiceCards();
   }
 
   if (document.readyState === 'loading') {
