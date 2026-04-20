@@ -473,7 +473,8 @@ h2 em, h1 em, h3 em {
 .approach {
   padding: 100px 40px 88px;
   position: relative;
-  background: var(--parchment);
+  background: var(--forest);
+  color: var(--parchment);
 }
 /* Large background numeral for depth */
 .approach::before {
@@ -506,7 +507,7 @@ h2 em, h1 em, h3 em {
   font-size: clamp(2.8rem, 5.5vw, 5rem);
   max-width: 620px;
   margin-bottom: 80px;
-  color: var(--ink);
+  color: var(--parchment);
   font-weight: 300;
   letter-spacing: -0.01em;
 }
@@ -520,13 +521,13 @@ h2 em, h1 em, h3 em {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  border-top: 1px solid var(--parchment-xdk);
+  border-top: 1px solid rgba(255,255,255,0.15);
   margin-bottom: 80px;
 }
 
 .approach__pillar {
   padding: 44px 48px 44px 0;
-  border-right: 1px solid var(--parchment-xdk);
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
 .approach__pillar:last-child { border-right: none; padding-right: 0; }
 .approach__pillar:not(:first-child) { padding-left: 48px; }
@@ -535,20 +536,20 @@ h2 em, h1 em, h3 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
-  color: var(--parchment-dk);
+  color: rgba(255,255,255,0.25);
   line-height: 1;
   margin-bottom: 20px;
   letter-spacing: -0.03em;
   transition: color 0.3s ease;
 }
 .approach__pillar-num.is-counting {
-  color: var(--terra);
+  color: var(--terra-lt);
 }
 .approach__pillar h3 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 14px;
-  color: var(--ink);
+  color: var(--parchment);
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.01em;
 }
@@ -557,7 +558,7 @@ h2 em, h1 em, h3 em {
 }
 .approach__pillar p {
   font-size: 14px;
-  color: var(--ink-mid);
+  color: rgba(255,255,255,0.7);
   line-height: 1.8;
   font-weight: 300;
 }
@@ -574,7 +575,7 @@ h2 em, h1 em, h3 em {
   font-style: italic;
   font-size: clamp(1.3rem, 2.4vw, 1.65rem);
   font-weight: 300;
-  color: var(--ink-mid);
+  color: rgba(255,255,255,0.75);
   line-height: 1.5;
 }
 .approach__quote cite {
@@ -1580,13 +1581,13 @@ h2 em, h1 em, h3 em {
   }
   .approach__pillar {
     border-right: none;
-    border-bottom: 1px solid var(--parchment-xdk);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
     padding: 36px 0;
   }
-  .approach__pillar:last-child { border-bottom: 1px solid var(--parchment-xdk); }
+  .approach__pillar:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
   .approach__pillar:not(:first-child) { padding-left: 0; }
   .approach__pillar-num { font-size: 3rem; }
-  .approach__aside { margin-left: 0; margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--parchment-xdk); }
+  .approach__aside { margin-left: 0; margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.15); }
 
   .contact__inner {
     grid-template-columns: 1fr;
