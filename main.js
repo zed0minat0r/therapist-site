@@ -213,6 +213,25 @@
     document.head.appendChild(style);
   }
 
+  /* ---- Reading progress bar ---- */
+  function initReadingProgress() {
+    var bar = document.getElementById('readingBar');
+    if (!bar) return;
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          var scrollTop = window.scrollY || document.documentElement.scrollTop;
+          var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+          bar.style.width = pct + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   /* ---- Init ---- */
   function init() {
     initNav();
@@ -223,6 +242,7 @@
     initFormSuccess();
     initFormValidation();
     initSvcHover();
+    initReadingProgress();
   }
 
   if (document.readyState === 'loading') {

@@ -38,6 +38,25 @@ body {
   overflow-x: hidden;
 }
 
+/* ---- Reading progress bar ---- */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 2000;
+  background: transparent;
+  pointer-events: none;
+}
+.reading-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--terra);
+  transition: width 0.08s linear;
+  box-shadow: 0 0 8px rgba(184,101,74,0.5);
+}
+
 /* ---- Type system ---- */
 h1, h2, h3 {
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -323,7 +342,7 @@ h2 em, h1 em, h3 em {
 
 .hero__sub {
   font-size: 15px;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.72);
   max-width: 380px;
   margin-bottom: 44px;
   line-height: 1.75;
@@ -376,7 +395,7 @@ h2 em, h1 em, h3 em {
 .hero__stat-n {
   font-family: 'Cormorant Garamond', serif;
   font-size: 20px;
-  color: var(--white);
+  color: var(--gold-lt);
   font-weight: 400;
   line-height: 1;
 }
@@ -480,7 +499,7 @@ h2 em, h1 em, h3 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
-  color: var(--parchment-xdk);
+  color: var(--parchment-dk);
   line-height: 1;
   margin-bottom: 20px;
   letter-spacing: -0.03em;
@@ -628,12 +647,52 @@ h2 em, h1 em, h3 em {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: var(--terra);
-  letter-spacing: 0.1em;
+  color: var(--gold);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(184,101,74,0.3);
-  padding-bottom: 2px;
+  position: relative;
+  padding-bottom: 3px;
   width: fit-content;
+}
+.svc__tag::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+.svc:hover .svc__tag::after { width: 100%; }
+
+/* Services in-section CTA */
+.services__cta {
+  padding: 56px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.services__cta-note {
+  font-size: 14px;
+  color: var(--ink-muted);
+  font-weight: 300;
+}
+.services__cta-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--forest);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--forest-pale);
+  padding-bottom: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.services__cta-link:hover {
+  color: var(--forest-mid);
+  border-color: var(--forest);
 }
 
 /* ===================================================
@@ -855,7 +914,7 @@ h2 em, h1 em, h3 em {
 .about__card {
   background: var(--parchment-dk);
   border: none;
-  border-left: 3px solid var(--terra);
+  border-left: 3px solid var(--gold);
   padding: 36px 32px;
   color: var(--ink);
   position: relative;
@@ -941,7 +1000,7 @@ h2 em, h1 em, h3 em {
   font-style: italic;
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255,255,255,0.88);
   line-height: 1.5;
   grid-column: 1;
 }
@@ -1108,6 +1167,7 @@ h2 em, h1 em, h3 em {
   background: var(--white);
   border: 1px solid var(--parchment-dk);
   padding: 44px 40px;
+  box-shadow: 0 4px 32px rgba(30,50,28,0.06);
 }
 .contact__form {
   display: flex;
@@ -1282,7 +1342,7 @@ h2 em, h1 em, h3 em {
     border-bottom: 1px solid var(--parchment-xdk);
     padding: 36px 0;
   }
-  .approach__pillar:last-child { border-bottom: none; }
+  .approach__pillar:last-child { border-bottom: 1px solid var(--parchment-xdk); }
   .approach__pillar:not(:first-child) { padding-left: 0; }
   .approach__pillar-num { font-size: 3rem; }
   .approach__aside { margin-left: 0; margin-top: 48px; }
@@ -1305,7 +1365,7 @@ h2 em, h1 em, h3 em {
   }
   .nav__links.is-open { display: flex; }
   .nav__links a {
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Cormorant Garamond', serif;
     color: var(--ink) !important;
     text-shadow: none !important;
@@ -1313,7 +1373,7 @@ h2 em, h1 em, h3 em {
     letter-spacing: 0.01em;
   }
   .nav__cta {
-    font-size: 20px !important;
+    font-size: 18px !important;
     font-family: 'Cormorant Garamond', serif !important;
     letter-spacing: 0.02em !important;
     background: transparent !important;
@@ -1374,6 +1434,9 @@ h2 em, h1 em, h3 em {
   .svc { grid-template-columns: 56px 1fr; gap: 0 20px; padding: 32px 0; }
   .svc__num { font-size: 2.2rem; }
   .svc__title { font-size: 1.6rem; }
+
+  /* Services CTA */
+  .services__cta { padding: 40px 0 0; gap: 12px; flex-direction: column; align-items: flex-start; }
 
   /* Specialties */
   .specialties { padding: 72px 20px 72px; }
