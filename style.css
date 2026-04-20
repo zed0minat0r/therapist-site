@@ -1398,7 +1398,6 @@ h2 em, h1 em, h3 em {
   letter-spacing: 0;
 }
 .form-group input,
-.form-group select,
 .form-group textarea {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
@@ -1412,7 +1411,6 @@ h2 em, h1 em, h3 em {
   min-height: 50px;
 }
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--forest);
@@ -1420,13 +1418,6 @@ h2 em, h1 em, h3 em {
   background: var(--white);
 }
 .form-group textarea { resize: vertical; min-height: 110px; }
-.form-group select {
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath fill='%234a4a4a' d='M5 7L0 0h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 38px;
-}
 .contact__form-note {
   font-size: 12px;
   color: var(--ink-muted);
@@ -1575,7 +1566,6 @@ h2 em, h1 em, h3 em {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .cta-section { text-align: left; }
 
   .trust-q {
     grid-template-columns: 1fr;
