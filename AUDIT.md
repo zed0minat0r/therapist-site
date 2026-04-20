@@ -1,139 +1,98 @@
 # Nigel's Audit — Amy Fantalis & Associates
 **Date:** 2026-04-18
 **Auditor:** Nigel (strict British auditor)
-**Previous Score:** 6.4 / 10
-**Current Score:** 6.9 / 10
+**Previous Score:** 6.9 / 10
+**Current Score:** 7.4 / 10
 **Delta:** +0.5
 **Live URL:** https://zed0minat0r.github.io/therapist-site/
 
 ---
 
-## OVERALL SCORE: 6.9 / 10
+## OVERALL SCORE: 7.4 / 10
 
-The improvements since the last audit are real and visible. The bio addition is the single most important change — Amy Fantalis now has a name, credentials, a UPenn MSW, and modality tags (CBT, DBT, Trauma-Informed, Family Systems). The Formspree endpoint is live. The CTA copy is better. The phone number is legible. These are genuine improvements and they move the needle.
+The improvements since the last audit are real, visible, and substantive. The first-person About bio ("I started this practice in 2007 because I believed...") is the single most impactful change — Amy now has a voice on the site, not merely a listing. The FAQ answers the three questions every prospective client has (insurance, telehealth, session length). The tappable service-card buttons replace the iOS-hostile native select. The alternating specialty-row entrance direction is a genuine moment of scroll interest. The pillar number count-up animation adds appropriate delight. Contrast and opacity fixes are real improvements across multiple sections.
 
-However, the site still reads as a capable AI-designed wellness site rather than an actual practice. A real user arriving from a Google search for "therapist Media PA" will see polished execution but still feel a lack of genuine human presence — particularly in the bio, which is written about Amy rather than by or through her. The editorial design direction remains correct and the visual identity is coherent, but the emotional connection that closes the gap between 7.0 and 8.0 is still missing.
+The score rises to 7.4 because these are changes a real user would feel. The site is now in "clearly better than most therapists in this area" territory. It does not yet clear 8.0 — which requires "I would actively choose this over a competitor" — because three gaps remain that prospective clients instinctively notice before they pick up the phone.
 
 ---
 
 ## SECTION-BY-SECTION BREAKDOWN
 
-### 1. Hero — 7.0 / 10
-The forest-path Unsplash image remains a credible choice. The headline ("You don't have / to figure it / out alone.") is warm and human, with the italic terracotta treatment on the middle line working well. The botanical SVG overlay is tasteful. The stats bar (17+ years / 7-Adult / Mon-Fri) provides immediate credibility.
+### 1. Hero — 7.8 / 10
+Strong. The forest image with gradient overlay reads as premium without being generic wellness stock. The headline ("You don't have / to figure it / out alone.") is genuinely good copy — emotionally specific, not clinical. The stat bar (17+ years, 7-Adult, Mon-Fri hours) gives immediate credibility anchors. The botanical SVG with parallax sway and the reading progress bar are polish that real users register subconsciously as "this person cares about craft." Phone number in the hero alongside the CTA is the correct call for a healthcare service.
 
-**What works:** The reading progress bar in terracotta is well-placed and unobtrusive. The scroll-cue line animation is restrained and correct. Phone number is now at 95% opacity — a significant improvement.
+**Gap:** "Media, PA — since 2007" renders at rgba(255,255,255,0.38) — barely 38% opacity. A prospective client searching "therapist Media PA" needs to register that location instantly. This tag should be at minimum 55% opacity or given a faint text-shadow. It is currently functionally invisible on a mid-brightness phone.
 
-**Remaining issues:**
-- Hero subtext ("Collaborative psychotherapy for individuals, families, and couples") at rgba(255,255,255,0.72) is better but still risks contrast failure outdoors on an older phone. Needs to be at least 0.82.
-- The stats bar labels ("ages served", "years") are at rgba(255,255,255,0.35) — on a real device in daylight these disappear entirely. They exist solely to contextualise the numbers above them, and if they are invisible, the numbers lose meaning.
-- The Unsplash image loads from an external URL with no local fallback. For a live production site this is a reliability risk.
+### 2. Approach — 7.2 / 10
+The three-pillar numbered layout is clean. The count-up animation (00→01/02/03 with terracotta flash) adds a moment of delight without intrusion. The Carl Rogers pull-quote is a good trust signal — it reads as evidence-informed without being stuffy. The eyebrow "Our Philosophy" is appropriate and correctly sized at 13px.
 
-### 2. Navigation — 6.5 / 10
-Dual-state nav (transparent over hero, frosted parchment when scrolled) is clean and standard. The AF&A monogram is charming in concept.
+**Gap:** Pillar 03 ("Whole-life connected") is the most genuinely differentiated claim on the entire site — collaboration with schools, psychiatrists, pediatricians is rare among solo practitioners. It receives identical visual weight to the other pillars. This claim deserves a slight emphasis upgrade: a terracotta accent on the h3, or a marginal note, or a bolder pillar number treatment.
 
-**Remaining issues:**
-- The nav CTA button ("Get Started") is min-height: 44px on desktop but the mobile override in the full-screen menu is min-height: 56px — that is actually fine. The issue is that the nav__cta on desktop uses heavy !important declarations. This is fragile CSS that will create maintenance problems.
-- Nav uses colour: rgba(255,255,255,0.7) for links over the hero — this is borderline WCAG AA at this opacity against the darkened hero image. Should be 0.82 minimum.
+### 3. Services — 7.5 / 10
+The editorial list (large Cormorant numerals, horizontal rule dividers, gold tag hover) is markedly better than icon-card therapy templates. The hover micro-interaction (number warming to terracotta) is restrained and on-brand. The "Not sure which is right for you?" in-section CTA softens conversion friction correctly. Age tags are useful.
 
-### 3. Approach Section — 6.5 / 10
-The three-pillar numbered layout is tasteful. Carl Rogers pull-quote is a good editorial anchor. The specific modalities named (CBT, DBT, trauma-informed) are a genuine improvement in this iteration.
+**Gap:** No pricing signal anywhere on this section. A prospective client — particularly one who has never been to therapy — will think "but can I afford this?" at exactly this scroll position. A single line — "Session fees and sliding scale options: ask during your free consultation" — reduces the anxiety that prevents form submission. It does not require quoting a number.
 
-**Remaining issues:**
-- The pillar numerals (01/02/03) are rendered in var(--parchment-xdk) — they are so light they barely register against the parchment background. They lose their editorial impact. Nudging to --parchment-dk would recover that.
-- Pillar copy is still somewhat generic. "You set the pace" and "Grounded in evidence" are phrases found on hundreds of therapy sites. The copy is improved but does not yet sound like it comes from this specific practice.
-- On mobile, the last pillar has border-bottom: 1px solid var(--parchment-xdk) per the responsive CSS. This is correct but the pull-quote then floats without a clear visual separator from the pillars. Needs a margin-top increase or a decorative rule.
+### 4. Specialties — 7.6 / 10
+The alternating-direction scroll-in (odd rows from left, even from right) is genuinely interesting and the most distinctive feature of this iteration. The typographic constellation on dark forest is editorial and would stand out in any local therapy directory. Stagger timing at 40ms per item is snappy and correct.
 
-### 4. Services Section — 7.2 / 10
-The editorial list format (large serif numbers, service title at display size, gold tag line-draw hover) is the strongest structural section. The in-section CTA ("Not sure which is right for you? Tell us what's going on") is a clear improvement and adds a conversion path mid-page.
+**Gap:** The smallest specialty terms (.spec--sm) render at 32% opacity on forest green. "School Anxiety", "Neurodiversity", "Mood Disorders", "Relationship Issues" are among the most searched terms for a suburban PA therapist — they are essentially invisible in the default state. The hover interaction (full white) is too dependent on users knowing to hover, especially on touch devices. These should be raised to at minimum 45% opacity in their resting state.
 
-**Remaining issues:**
-- Group Therapy description says "Ask us what's currently forming" — this is honest but slightly deflating after the confident tone of the other three services. Either commit to a description of what groups exist, or reframe this as "Call us to ask about current group offerings."
-- The tag line-draw hover (gold underline expanding on svc:hover) is a nice micro-interaction but fires on the entire svc card hover, not on the tag itself — the gold line draws in even if the user is hovering the service title or description text far above the tag. It looks slightly disconnected.
+### 5. About — 7.8 / 10
+This is the most improved section in the audit cycle. The first-person bio is the correct voice for a therapy website — it sounds like a human, not a press release. The FAQ (insurance, telehealth, session length) answers the three questions every new client has, in exactly the right place. The credential tags (CBT, DBT, Trauma-Informed, Family Systems) are tidy and clinically appropriate. The left column and right column now serve genuinely different purposes (practice values vs. therapist profile), which was the explicit gap in the previous audit.
 
-### 5. Specialties (Editorial Constellation) — 7.5 / 10
-This remains the most distinctive section on the site. The varying-size typographic treatment on dark forest with stagger animation is a genuine editorial statement. Score unchanged from previous audit — the section was already strong.
+**Gap 1:** Amy holds an MSW from the University of Pennsylvania. This is a meaningful credential for a suburban Philadelphia audience — Penn Social Work carries weight with the educated population in Delaware County. It is currently buried as a sentence in the second paragraph of body text. It should appear as a styled credential line immediately under her name and licensure, where it will actually be read.
 
-**Remaining issues:**
-- The --sm specialty items (School Anxiety, Neurodiversity, Mood Disorders) render at approximately 13px at 375px width. This is technically above the 12px minimum but sits at the threshold where real users with standard phone brightness will struggle.
-- The specialties__subhead ("We work with a wide range of concerns...") is explicitly set to display:none on mobile per the media query at max-width: 600px — this is not visible in the CSS excerpts I reviewed but confirmed by the responsive declarations. This removes the only explicit invitation for unlisted concerns to make contact, on the device most likely to be used by someone googling a local therapist.
+**Gap 2:** The location card ("Downtown Media / 205 N. Monroe St.") has no Google Maps link. A prospective client evaluating travel feasibility has to leave the site to check the map. A simple hyperlink on the address — `href="https://maps.google.com/?q=205+N+Monroe+St+Media+PA+19063"` — removes that friction at zero implementation cost.
 
-### 6. About Section — 6.2 / 10 (up from 5.5)
-The Amy Fantalis LCSW bio is now present and this is a meaningful improvement. Name, credentials, UPenn MSW, 17+ years, modality tags. This was the biggest single gap in the previous audit and it has been meaningfully addressed.
+### 6. Testimonials — 6.6 / 10
+The editorial layout (large italic quotes, two-column grid, testimonials stacking correctly at tablet) is well-executed for the design language. The three quotes are specific enough to feel real — the family dining-table outcome and the school-refusing daughter are vivid and credible. Citation stacking fix at tablet is confirmed and correct.
 
-**Why it is not higher:**
-- The bio is written about Amy in third person ("Amy founded this practice...", "she works with..."). For a therapy website, this creates professional distance at the moment when a prospective client most needs warmth. A single paragraph in first person — even just the opening — would substantially increase emotional resonance.
-- The modality tags (CBT, DBT, Trauma-Informed, Family Systems) are styled as pill tags with a forest border on parchment background. They are neat but not distinctive. They read like developer feature tags, not like a clinician's specialties.
-- The left column body copy ("Amy Fantalis & Associates is a close-knit psychotherapy practice...") repeats information already stated in the bio on the right. These two bodies of text should do different work — left could speak to the practice culture and values, right speaks to Amy specifically.
-- No mention of insurance, sliding scale, telehealth availability, or session length. These are questions every new client has and this section is the natural place to answer them.
+**Gap:** Anonymous source lines ("Family therapy client, Media PA" / "Parent of a teen client") are the weakest form of social proof in any category, but especially in healthcare. They read as template placeholders. What would genuinely move the needle at this stage: first initial plus town ("— M.T., Swarthmore PA"), or a note that reads "All quotes used with written client permission." Either signals authenticity. The current treatment signals the opposite — that real clients did not actually provide quotes.
 
-### 7. Testimonials — 6.5 / 10 (up from 6.0)
-The reordering improvement is real — the family dining-table testimonial now leads, which is the most specific and vivid of the three. The quote text at rgba(255,255,255,0.88) is much stronger than before.
+### 7. CTA Section — 7.0 / 10
+The terracotta split-column layout (headline left, body and button right) is confident and warm. The phone number as an alternative CTA ("Or call us now: 610-585-1373") is the correct addition — people in distress prefer calling over form-filling, and this accommodates them. "Most clients hear back within 24 hours" is a smart friction-reducer.
 
-**Remaining issues:**
-- The two-column layout (quote in col 1, attribution in col 2) is visually unusual and requires the reader's eye to traverse the full width to find who said something. It looks intentional but behaves awkwardly. Attribution should live beneath the quote — it is how humans read testimonials.
-- Three testimonials is the right number, but all three describe transformation outcomes. None describes the experience of being in a session with Amy. A testimonial about what it actually feels like to work with her would differentiate better than another outcome statement.
+**Gap:** The body copy ("We make it easy. Reach out today...") renders at rgba(255,255,255,0.6) on the terracotta background (#b8654a). By my calculation this falls below WCAG AA (4.5:1) for normal text. This is both an accessibility deficiency and a readability issue at the highest-stakes section of the page. Raising opacity to 0.82 minimum would fix it.
 
-### 8. CTA Section — 6.8 / 10 (up from 6.5)
-"Book a Free Consultation" is a real improvement over "Start Your Journey." It is specific, low-friction, and actionable. The terracotta full-width band is visually differentiated. The "hardest part" copy is on brief.
+### 8. Contact Form — 7.3 / 10
+The tappable service-card buttons are a genuine UX improvement — they feel intentional, the selected state (forest green fill with glow) is unambiguous, and they behave correctly on touch devices. The gold left border gives the form card visual authority. The privacy note ("Your information is kept strictly confidential") is well-placed. Inline validation (blur handlers on name and email with error injection) is functional.
 
-**Remaining issues:**
-- "Most clients hear back within 24 hours" is both reassuring and slightly worrying for someone in acute distress. If same-day contact is available by phone, this should be offered as an alternative: "Or call us today at 610-585-1373."
-- On mobile the two columns collapse correctly, but the section then occupies a lot of vertical space for relatively little content. A tighter padding on mobile (currently 72px 20px) would improve flow.
+**Gap:** The message textarea is labelled "What brings you here (optional)" but has no reassurance that the contents are confidential at the point of vulnerability. A single line below the textarea — even "This message is private and goes directly to Amy" — would reduce hesitation at the hardest field to complete.
 
-### 9. Contact Form — 7.2 / 10 (up from 6.5)
-The Formspree endpoint is now live (/f/xpznqkdl) — this is the most critical fix from the last audit and it has been done. The form structure is correct. Inline validation is present in JS (blur handlers on name and email, with error message injection). The success state redirect via ?submitted=1 is functional.
+### 9. Mobile UX at 375px — 7.0 / 10
+The comprehensive mobile-center-alignment pass has been executed properly. Hero, approach, services, specialties, about, testimonials, CTA, contact, and footer are all correctly centered at ≤600px. The FAQ items deliberately remain left-aligned (`.about__faq { text-align: left }`) — this is the correct decision and should not change. Service cards wrap and justify-content:center correctly on narrow viewports.
 
-**Remaining issues:**
-- The select dropdown ("I'm interested in") uses native browser rendering which breaks design consistency on iOS — it will render as an iOS picker regardless of CSS. A custom styled select or a row of tappable cards (Individual / Family / Couples / Group / Not sure) would be dramatically more usable and on-brand.
-- The form container (white on parchment) is the starkest visual break on the page. The box-shadow: 0 4px 32px rgba(30,50,28,0.06) is already present but very subtle. Consider adding a left-border accent in forest or gold to integrate it with the design language used elsewhere.
-- No privacy statement or HIPAA disclaimer on or near the form. For a healthcare provider, users may hesitate to submit personal information without any indication of how it is handled.
+**Gap:** The hero stats bar at mobile uses `overflow-x: auto` with `flex-wrap: nowrap`. This implies horizontal scrolling but there is no visual indication — no fade edge, no scroll hint — that additional stats exist offscreen. A prospective mobile user may never see the Mon-Fri / 7am-8pm hours, which are a meaningful differentiator for working parents.
 
-### 10. Typography System — 7.5 / 10
-Cormorant Garamond + DM Sans pairing remains strong. The 13 sub-12px fixes are confirmed — minimum rendered sizes are now above the threshold across sections reviewed.
+### 10. Technical & SEO — 7.2 / 10
+Schema markup (MedicalBusiness JSON-LD) is present and correctly structured with telephone, email, address, hours, and URL. `fetchpriority="high"` and explicit `width`/`height` attributes on the hero image are correct. Intersection Observer used throughout with proper `observer.disconnect()` and `observer.unobserve()` cleanup. `prefers-reduced-motion` is respected across all animations with a blanket override. Font loading via Google Fonts preconnect is correctly ordered.
 
-**Remaining issues:**
-- The section-eyebrow class uses font-size: 12px throughout — this is the safe minimum, not comfortable reading. 13px would improve scan-readability.
-- Line-height values vary across sections (1.05 for headlines, 0.95 in hero, 1.6/1.75/1.8/1.85 for body) without an obvious system. This is the kind of detail that separates a theme from a considered design.
-
-### 11. Colour & Visual Design — 7.0 / 10
-The palette (forest / parchment / terracotta / gold) is coherent and warm. Grain texture across sections adds analogue warmth. Gold accents in eyebrow labels and the bio credential line are a welcome addition this round.
-
-**Remaining issues:**
-- Two back-to-back parchment sections (Approach and Services) still merge visually on scroll. A very subtle section break — a decorative rule, a tonal shift in the background, even a horizontal line — would restore the rhythm.
-- The gold accent is still deployed only in small type (eyebrows, credentials). Extending it into at least one decorative element — a left border, a divider line, the hero stats numbers — would give the palette more presence.
-
-### 12. Mobile UX at 375px — 6.5 / 10 (up from 6.0)
-Tap targets are generally met. The 13 font-size fixes are real improvements. Phone number visibility is substantially better.
-
-**Remaining issues:**
-- The hero phone number is better but remains inline with the CTA button in a flex-wrap layout. On narrow screens where both wrap, the phone number can end up left-aligned below the button with ambiguous visual hierarchy.
-- The specialties subhead remains hidden on mobile. This is a confirmed conversion gap.
-- The contact form select dropdown will render natively on iOS, breaking design consistency at the exact moment of conversion intent.
-
-### 13. Scroll Experience — 6.5 / 10
-Reveal animations are tasteful and appropriate. The specialty stagger animation is the standout moment. The reading progress bar is a nice editorial touch.
-
-**Remaining issues:**
-- The scroll journey is uniform. Every section enters with the same 22px translateY reveal. There are no moments of genuine scroll-driven surprise. One section — the specialties is the natural candidate — could benefit from a more ambitious scroll-driven treatment (words entering from left/right rather than bottom, or a pinned header while the specialties scroll beneath it).
-- The hero botanical parallax works on desktop but disappears entirely on mobile (display: none at 900px). No alternative scroll behaviour replaces it. The hero feels more static on mobile as a result.
+**Gap:** The hero image URL fetches JPEG from Unsplash by default. Adding `&fm=webp` to the URL (`...?w=1600&q=85&auto=format&fm=webp&fit=crop`) would deliver WebP to supporting browsers (virtually all of them) and reduce the hero image payload by approximately 25-35%. This is a performance improvement that costs ten seconds.
 
 ---
 
 ## TOP 3 PRIORITIES
 
-### PRIORITY 1 — Humanise the About section with first-person voice and answer the practical questions
-The bio is present, which is the right foundation. But it is written about Amy, not by her or through her. Prospective therapy clients are making a vulnerable decision — they need to feel they are encountering a real person, not reading a press release. Rewrite the bio opening in first person (or first-person-adjacent): "I started this practice in 2007 because..." is worth twenty "she founded this practice" sentences. Additionally, this section must answer the three questions every new client has: (1) do you take insurance, (2) is telehealth available, (3) how long are sessions. These do not need to be a FAQ — they can sit naturally in one short paragraph below the bio. Until these questions are answered on the page, many visitors will leave to find a therapist site that does answer them.
+### PRIORITY 1 — Raise opacity of the .spec--sm resting state + anonymous testimonial attribution
+Two separate issues, both centred on the problem of invisible information. The specialty terms in the smallest tier (School Anxiety, Neurodiversity, Mood Disorders, Relationship Issues) are at 32% opacity on forest green — effectively invisible on a phone in daylight. These are high-volume search terms for the practice's target client. Raise to 45% minimum. Simultaneously, give the testimonials a first initial and location ("— M.T., Swarthmore PA") and a one-line permission note. These changes are copyediting plus one CSS line and they close two real trust gaps.
 
-### PRIORITY 2 — Replace the native select with tappable service cards in the contact form
-The iOS native picker on the "I'm interested in" select breaks the design at the most critical moment — conversion intent. Replace this with a horizontal row of tappable text buttons (Individual / Family / Couples / Group / Not sure) that match the site's typographic style. On mobile, these can stack or scroll horizontally. This is a visible, impactful UX improvement that also feels more welcoming — the user is making a choice, not filling in a form. Simultaneously, add a brief privacy note ("Your information is kept strictly confidential") near the submit button. This reduces friction for the exact population this site serves.
+### PRIORITY 2 — Add a pricing signal to the Services section
+The complete absence of any cost information creates anxiety at the exact moment a prospective client is deciding whether to scroll further. It does not require a specific fee. The "Not sure which is right for you?" sub-area at the bottom of the services list is the natural location for: "Session fees vary; sliding scale available — please ask during your free consultation." This is one sentence, already contextually positioned, that prevents cold exits before the form.
 
-### PRIORITY 3 — Give the scroll experience one moment of genuine distinction
-Every section currently enters the same way (22px fade-up). The site is polished but it does not earn a second scroll through. The specialties section is already the most ambitious — extend it. Consider: as the user scrolls into the specialties field, the words do not just fade in from below but enter from alternating sides (odd rows from left, even rows from right) with a slight scale. Or: pin the section header ("What we hold space for") while the word constellation scrolls beneath it. Either treatment would make the specialties section feel genuinely memorable rather than merely well-executed, and would give the site one moment that a real user would mention when describing it to someone else.
+### PRIORITY 3 — Fix CTA section body text contrast + add Google Maps link to address
+Two quick wins packaged together. The body copy in the terracotta CTA block is below WCAG AA — raise `rgba(255,255,255,0.6)` to `rgba(255,255,255,0.82)` or higher. Then add a `href` to the address in the About location card pointing to Google Maps. Both are sub-30-minute fixes that remove real friction — one is an accessibility fix, one removes a "do I need to open another tab to see where this is" moment.
 
 ---
 
-## SUMMARY
-
-This is a real improvement. The bio is present. The form works. The phone number is readable. The CTA copy is better. These are not cosmetic changes — they directly address the most critical trust and conversion gaps from the previous audit.
-
-The site sits at 6.9 because it remains one half-step away from feeling like a real human practice rather than a well-executed template. The gap is narrower than before. The about section needs a voice. The form needs one UX improvement. The scroll experience needs one genuine moment of surprise. Get those three right and this site crosses 7.5.
+## WHAT IS WORKING — DO NOT CHANGE
+- The first-person About bio is the voice the entire site should aspire to maintain
+- The service-card button selection UX is meaningfully better than the previous native select
+- The pillar number count-up animation (00→01/02/03 with terracotta flash) is correctly calibrated
+- The alternating specialty-row entrance direction is the most interesting scroll moment on the site
+- The contact form gold left border gives the form card visual authority
+- The FAQ in the About section answers exactly the right questions in exactly the right place
+- The Carl Rogers pull-quote in the Approach section positions the practice correctly
+- The reading progress bar is a quiet detail that signals craft without demanding attention
+- The section-separator shimmer animation between Approach and Services is elegant
+- Mobile center-alignment is consistent, well-executed, and should be preserved throughout
