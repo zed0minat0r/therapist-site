@@ -243,12 +243,15 @@ h2 em, h1 em, h3 em {
    =================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100svh;
+  height: 100vh; /* fallback */
   background: var(--forest);
   display: grid;
   grid-template-rows: 1fr auto;
   overflow: hidden;
+}
+@supports (height: 100svh) {
+  .hero { height: 100svh; }
 }
 
 .hero__bg { position: absolute; inset: 0; pointer-events: none; }

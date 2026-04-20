@@ -63,18 +63,22 @@
     els.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---- Parallax on hero botanical ---- */
+  /* ---- Parallax on hero botanical — subtle, hero-only ---- */
   function initParallax() {
     if (reducedMotion) return;
     var botanical = document.querySelector('.hero__botanical');
     if (!botanical) return;
 
+    var heroH = window.innerHeight;
     var ticking = false;
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.2) + 'px))';
+          if (y < heroH) {
+            botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.08) + 'px))';
+            botanical.style.opacity = String(1 - (y / heroH) * 0.6);
+          }
           ticking = false;
         });
         ticking = true;
