@@ -69,7 +69,7 @@ h2 em, h1 em, h3 em {
 }
 .section-eyebrow {
   font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -174,7 +174,7 @@ h2 em, h1 em, h3 em {
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.85);
   text-decoration: none;
   transition: color 0.2s;
   text-shadow: 0 1px 6px rgba(0,0,0,0.3);
@@ -402,7 +402,7 @@ h2 em, h1 em, h3 em {
 .hero__stat-n sup { font-size: 11px; vertical-align: super; }
 .hero__stat-l {
   font-size: 12px;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 4px;
@@ -499,10 +499,14 @@ h2 em, h1 em, h3 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
-  color: var(--parchment-xdk);
+  color: var(--parchment-dk);
   line-height: 1;
   margin-bottom: 20px;
   letter-spacing: -0.03em;
+  transition: color 0.3s ease;
+}
+.approach__pillar-num.is-counting {
+  color: var(--terra);
 }
 .approach__pillar h3 {
   font-size: 20px;
@@ -544,6 +548,28 @@ h2 em, h1 em, h3 em {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 18px;
+}
+
+/* Section separator: approach -> services */
+.section-sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--terra) 70%, transparent 100%);
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+.section-sep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+  animation: sep-shine 4s ease-in-out infinite;
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+}
+@keyframes sep-shine {
+  0% { background-position: -80% 0; }
+  100% { background-position: 180% 0; }
 }
 
 /* ===================================================
@@ -743,7 +769,7 @@ h2 em, h1 em, h3 em {
 
 .specialties__subhead {
   font-size: 14px;
-  color: rgba(255,255,255,0.62);
+  color: rgba(255,255,255,0.75);
   line-height: 1.75;
   font-weight: 300;
   align-self: end;
@@ -1126,6 +1152,23 @@ h2 em, h1 em, h3 em {
   0%, 100% { box-shadow: 0 4px 30px rgba(0,0,0,0.15); }
   50% { box-shadow: 0 6px 40px rgba(0,0,0,0.22); }
 }
+.cta-section__phone-alt {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  margin-top: -8px;
+}
+.cta-section__phone-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.cta-section__phone-link:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.7);
+}
 
 /* ===================================================
    CONTACT
@@ -1202,6 +1245,7 @@ h2 em, h1 em, h3 em {
 .contact__form-wrap {
   background: var(--white);
   border: 1px solid var(--parchment-dk);
+  border-left: 3px solid var(--gold);
   padding: 44px 40px;
   box-shadow: 0 4px 32px rgba(30,50,28,0.06);
 }
@@ -1404,9 +1448,9 @@ h2 em, h1 em, h3 em {
 
   .trust-q {
     grid-template-columns: 1fr;
-    gap: 20px 0;
+    gap: 0;
   }
-  .trust-q__cite { grid-column: 1; }
+  .trust-q__cite { grid-column: 1; margin-top: 20px; }
 }
 
 @media (max-width: 900px) {
@@ -1421,7 +1465,7 @@ h2 em, h1 em, h3 em {
   .approach__pillar:last-child { border-bottom: 1px solid var(--parchment-xdk); }
   .approach__pillar:not(:first-child) { padding-left: 0; }
   .approach__pillar-num { font-size: 3rem; }
-  .approach__aside { margin-left: 0; margin-top: 48px; }
+  .approach__aside { margin-left: 0; margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--parchment-xdk); }
 
   .contact__inner {
     grid-template-columns: 1fr;
@@ -1539,7 +1583,7 @@ h2 em, h1 em, h3 em {
 
   /* Contact */
   .contact { padding: 72px 20px; }
-  .contact__form-wrap { padding: 28px 20px; }
+  .contact__form-wrap { padding: 28px 20px; border-left: 3px solid var(--gold); }
 
   /* Footer */
   .site-footer { padding: 40px 20px 24px; }
@@ -1646,6 +1690,7 @@ h2 em, h1 em, h3 em {
     text-align: center;
   }
   .cta-section__body { text-align: center; }
+  .cta-section__phone-alt { text-align: center; }
 
   /* Contact */
   .contact__info { text-align: center; }

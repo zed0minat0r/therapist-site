@@ -211,6 +211,46 @@
     });
   }
 
+  /* ---- Pillar number draw-in (on reveal) ---- */
+  function initPillarNums() {
+    if (reducedMotion) return;
+    var nums = document.querySelectorAll('.approach__pillar-num');
+    if (!nums.length) return;
+    var targets = ['01','02','03'];
+    nums.forEach(function (el, idx) {
+      el.setAttribute('data-target', targets[idx]);
+      el.textContent = '00';
+    });
+    var triggered = false;
+    var observer = new IntersectionObserver(function (entries) {
+      if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
+        triggered = true;
+        nums.forEach(function (el, idx) {
+          setTimeout(function () {
+            var final = parseInt(targets[idx], 10);
+            var current = 0;
+            var duration = 600;
+            var steps = 12;
+            var step = duration / steps;
+            el.classList.add('is-counting');
+            var interval = setInterval(function () {
+              current++;
+              el.textContent = (current < 10 ? '0' : '') + current;
+              if (current >= final) {
+                el.textContent = targets[idx];
+                el.classList.remove('is-counting');
+                clearInterval(interval);
+              }
+            }, step);
+          }, idx * 120);
+        });
+        observer.disconnect();
+      }
+    }, { threshold: 0.2 });
+    var pillars = document.querySelector('.approach__pillars');
+    if (pillars) observer.observe(pillars);
+  }
+
   /* ---- Service row hover ---- */
   function initSvcHover() {
     if (reducedMotion) return;
@@ -258,6 +298,7 @@
     initSvcHover();
     initReadingProgress();
     initServiceCards();
+    initPillarNums();
   }
 
   if (document.readyState === 'loading') {
