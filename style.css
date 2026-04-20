@@ -477,8 +477,7 @@ h2 em, h1 em, h3 em {
 .approach {
   padding: 100px 40px 88px;
   position: relative;
-  background: var(--forest);
-  color: var(--parchment);
+  background: var(--parchment);
 }
 /* Large background numeral for depth */
 .approach::before {
@@ -511,7 +510,7 @@ h2 em, h1 em, h3 em {
   font-size: clamp(2.8rem, 5.5vw, 5rem);
   max-width: 620px;
   margin-bottom: 80px;
-  color: var(--parchment);
+  color: var(--ink);
   font-weight: 300;
   letter-spacing: -0.01em;
 }
@@ -520,18 +519,18 @@ h2 em, h1 em, h3 em {
   font-style: italic;
 }
 
-/* Three pillars — horizontal rule at top, no alternating dark */
+/* Three pillars — horizontal rule at top */
 .approach__pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid var(--parchment-xdk);
   margin-bottom: 80px;
 }
 
 .approach__pillar {
   padding: 44px 48px 44px 0;
-  border-right: 1px solid rgba(255,255,255,0.15);
+  border-right: 1px solid var(--parchment-xdk);
 }
 .approach__pillar:last-child { border-right: none; padding-right: 0; }
 .approach__pillar:not(:first-child) { padding-left: 48px; }
@@ -540,20 +539,20 @@ h2 em, h1 em, h3 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.25);
+  color: var(--parchment-xdk);
   line-height: 1;
   margin-bottom: 20px;
   letter-spacing: -0.03em;
   transition: color 0.3s ease;
 }
 .approach__pillar-num.is-counting {
-  color: var(--terra-lt);
+  color: var(--terra);
 }
 .approach__pillar h3 {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 14px;
-  color: var(--parchment);
+  color: var(--ink);
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: 0.01em;
 }
@@ -562,7 +561,7 @@ h2 em, h1 em, h3 em {
 }
 .approach__pillar p {
   font-size: 14px;
-  color: rgba(255,255,255,0.7);
+  color: var(--ink-mid);
   line-height: 1.8;
   font-weight: 300;
 }
@@ -579,7 +578,7 @@ h2 em, h1 em, h3 em {
   font-style: italic;
   font-size: clamp(1.3rem, 2.4vw, 1.65rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.75);
+  color: var(--ink-mid);
   line-height: 1.5;
 }
 .approach__quote cite {
@@ -621,7 +620,7 @@ h2 em, h1 em, h3 em {
    Ditching forest dark completely — unified warm tone
    =================================================== */
 .services {
-  background: var(--parchment-dk);
+  background: var(--forest-pale);
   padding: 88px 40px 100px;
   position: relative;
 }
@@ -781,7 +780,7 @@ h2 em, h1 em, h3 em {
    =================================================== */
 .specialties {
   padding: 96px 40px 96px;
-  background: var(--forest);
+  background: var(--parchment-dk);
   position: relative;
   overflow: hidden;
 }
@@ -816,15 +815,15 @@ h2 em, h1 em, h3 em {
   font-size: clamp(2.4rem, 5vw, 4.2rem);
   font-weight: 300;
   margin-top: 14px;
-  color: var(--white);
+  color: var(--ink);
   letter-spacing: -0.01em;
   line-height: 1.05;
 }
-.specialties__headline em { color: var(--terra-lt); font-style: italic; }
+.specialties__headline em { color: var(--terra); font-style: italic; }
 
 .specialties__subhead {
   font-size: 14px;
-  color: rgba(255,255,255,0.75);
+  color: var(--ink-mid);
   line-height: 1.75;
   font-weight: 300;
   align-self: end;
@@ -843,15 +842,15 @@ h2 em, h1 em, h3 em {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid var(--parchment-xdk);
   padding: 18px 0;
 }
-.spec-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.spec-row:last-child { border-bottom: 1px solid var(--parchment-xdk); }
 
 .spec {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  color: rgba(255,255,255,0.55);
+  color: var(--ink-muted);
   cursor: default;
   transition: color 0.3s ease, opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
   opacity: 0;
@@ -871,21 +870,21 @@ h2 em, h1 em, h3 em {
   opacity: 1;
   transform: translateX(0) !important;
 }
-.spec:hover { color: var(--terra-lt); }
+.spec:hover { color: var(--terra); }
 
 /* Primary (lg) — the anchor words */
 .spec--lg {
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-  color: rgba(255,255,255,0.88);
+  color: var(--ink);
   letter-spacing: -0.01em;
   margin-right: 40px;
 }
-.spec--lg:hover { color: var(--white); }
+.spec--lg:hover { color: var(--forest); }
 
 /* Secondary (md) */
 .spec--md {
   font-size: clamp(1.3rem, 2.8vw, 2rem);
-  color: rgba(255,255,255,0.58);
+  color: var(--ink-mid);
   margin-right: 28px;
   font-style: italic;
 }
@@ -893,15 +892,15 @@ h2 em, h1 em, h3 em {
 /* Supporting (sm) */
 .spec--sm {
   font-size: clamp(0.95rem, 1.8vw, 1.3rem);
-  color: rgba(255,255,255,0.47);
+  color: var(--ink-muted);
   margin-right: 20px;
   letter-spacing: 0.02em;
 }
-.spec--sm:hover { color: rgba(255,255,255,0.65); }
+.spec--sm:hover { color: var(--ink-mid); }
 
 /* Separator between items on the same row */
 .spec-sep {
-  color: rgba(255,255,255,0.1);
+  color: var(--parchment-xdk);
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   font-weight: 300;
@@ -1128,7 +1127,7 @@ h2 em, h1 em, h3 em {
    TRUST STRIP — testimonials, editorial style
    =================================================== */
 .trust-strip {
-  background: var(--forest);
+  background: var(--terra-pale);
   padding: 88px 40px;
   position: relative;
   overflow: hidden;
@@ -1155,7 +1154,7 @@ h2 em, h1 em, h3 em {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: var(--terra);
   margin-bottom: 56px;
 }
 
@@ -1165,17 +1164,17 @@ h2 em, h1 em, h3 em {
   grid-template-columns: 1fr 1fr;
   gap: 0 80px;
   padding: 48px 0;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid rgba(184,101,74,0.15);
   align-items: start;
 }
-.trust-q:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+.trust-q:last-child { border-bottom: 1px solid rgba(184,101,74,0.15); }
 
 .trust-q__text {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.88);
+  color: var(--ink);
   line-height: 1.5;
   grid-column: 1;
 }
@@ -1186,14 +1185,14 @@ h2 em, h1 em, h3 em {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--terra-lt);
+  color: var(--terra);
   grid-column: 2;
   align-self: center;
 }
 .trust-strip__permission {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  color: rgba(255,255,255,0.38);
+  color: var(--ink-muted);
   font-weight: 400;
   letter-spacing: 0.08em;
   text-align: center;
@@ -1585,13 +1584,13 @@ h2 em, h1 em, h3 em {
   }
   .approach__pillar {
     border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid var(--parchment-xdk);
     padding: 36px 0;
   }
-  .approach__pillar:last-child { border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .approach__pillar:last-child { border-bottom: 1px solid var(--parchment-xdk); }
   .approach__pillar:not(:first-child) { padding-left: 0; }
   .approach__pillar-num { font-size: 3rem; }
-  .approach__aside { margin-left: 0; margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.15); }
+  .approach__aside { margin-left: 0; margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--parchment-xdk); }
 
   .contact__inner {
     grid-template-columns: 1fr;
