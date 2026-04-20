@@ -74,7 +74,7 @@
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          botanical.style.top = 'calc(50% + ' + (y * 0.2) + 'px)';
+          botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.2) + 'px))';
           ticking = false;
         });
         ticking = true;
@@ -125,6 +125,78 @@
     }
   }
 
+  /* ---- Inline form validation ---- */
+  function initFormValidation() {
+    var form = document.querySelector('.contact__form');
+    if (!form) return;
+
+    var style = document.createElement('style');
+    style.textContent = [
+      '.form-group input.is-invalid, .form-group select.is-invalid, .form-group textarea.is-invalid {',
+      '  border-color: #b84a3a;',
+      '  box-shadow: 0 0 0 3px rgba(184,74,58,0.1);',
+      '}',
+      '.form-error {',
+      '  font-size: 12px;',
+      '  color: #b84a3a;',
+      '  font-weight: 400;',
+      '  margin-top: 4px;',
+      '  display: none;',
+      '}',
+      '.form-error.is-visible { display: block; }'
+    ].join('\n');
+    document.head.appendChild(style);
+
+    function showError(field, msg) {
+      field.classList.add('is-invalid');
+      var err = field.parentNode.querySelector('.form-error');
+      if (!err) {
+        err = document.createElement('span');
+        err.className = 'form-error';
+        field.parentNode.appendChild(err);
+      }
+      err.textContent = msg;
+      err.classList.add('is-visible');
+    }
+
+    function clearError(field) {
+      field.classList.remove('is-invalid');
+      var err = field.parentNode.querySelector('.form-error');
+      if (err) err.classList.remove('is-visible');
+    }
+
+    var nameField = form.querySelector('#name');
+    var emailField = form.querySelector('#email');
+
+    if (nameField) {
+      nameField.addEventListener('blur', function () {
+        if (!nameField.value.trim()) {
+          showError(nameField, 'Please enter your name.');
+        } else {
+          clearError(nameField);
+        }
+      });
+      nameField.addEventListener('input', function () { if (nameField.value.trim()) clearError(nameField); });
+    }
+
+    if (emailField) {
+      emailField.addEventListener('blur', function () {
+        var val = emailField.value.trim();
+        if (!val) {
+          showError(emailField, 'Please enter your email address.');
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+          showError(emailField, 'Please enter a valid email address.');
+        } else {
+          clearError(emailField);
+        }
+      });
+      emailField.addEventListener('input', function () {
+        var val = emailField.value.trim();
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) clearError(emailField);
+      });
+    }
+  }
+
   /* ---- Service row hover ---- */
   function initSvcHover() {
     if (reducedMotion) return;
@@ -149,6 +221,7 @@
     initParallax();
     initSpecStagger();
     initFormSuccess();
+    initFormValidation();
     initSvcHover();
   }
 
