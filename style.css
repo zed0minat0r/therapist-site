@@ -782,8 +782,6 @@ h2 em, h1 em, h3 em {
   align-items: start;
 }
 
-.about__left {}
-
 .about__headline {
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   font-weight: 300;
@@ -892,8 +890,6 @@ h2 em, h1 em, h3 em {
   line-height: 1.65;
   font-weight: 300;
 }
-.about__botanical-sm { display: none; }
-
 /* ===================================================
    TRUST STRIP — testimonials, editorial style
    =================================================== */
@@ -960,8 +956,6 @@ h2 em, h1 em, h3 em {
   grid-column: 2;
   align-self: center;
 }
-.trust-q__divider { display: none; }
-
 /* ===================================================
    CTA SECTION — terra color, no wavy dividers
    =================================================== */
@@ -980,8 +974,6 @@ h2 em, h1 em, h3 em {
   background-size: 200px;
   pointer-events: none;
 }
-.cta-section__bg { display: none; } /* Kill the wavy SVG */
-
 .cta-section__inner {
   position: relative;
   z-index: 1;
@@ -993,7 +985,6 @@ h2 em, h1 em, h3 em {
   align-items: center;
 }
 
-.cta-section__left {}
 .cta-section__pre {
   font-size: 12px;
   font-weight: 500;
