@@ -401,10 +401,12 @@ h2 em, h1 em, h3 em {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  gap: 7px;
   border-bottom: 1px solid rgba(255,255,255,0.5);
   padding-bottom: 2px;
 }
 .hero__phone:hover { color: var(--white); border-color: rgba(255,255,255,0.85); }
+.hero__phone-icon { flex-shrink: 0; opacity: 0.8; }
 
 /* Stats bar — bottom of hero, horizontal rule instead of top border */
 .hero__stats {
@@ -905,6 +907,26 @@ h2 em, h1 em, h3 em {
   transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
 }
 .spec-sep.is-visible { opacity: 1; transform: translateX(0) !important; }
+
+/* Exit note below the constellation */
+.specialties__exit-note {
+  margin-top: 52px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+.specialties__exit-link {
+  color: var(--terra-lt);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(204,128,96,0.4);
+  transition: color 0.2s, border-color 0.2s;
+}
+.specialties__exit-link:hover {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+}
 
 /* ===================================================
    ABOUT — full-width, parchment, no harsh dark block
@@ -1749,6 +1771,7 @@ h2 em, h1 em, h3 em {
   .specialties__subhead { text-align: center; }
   .specialties__field { align-items: center; }
   .spec-row { justify-content: center; }
+  .specialties__exit-note { text-align: center; font-size: 13px; }
 
   /* About */
   .about__left { text-align: center; }
