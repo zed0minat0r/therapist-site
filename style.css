@@ -1548,11 +1548,13 @@ h2 em, h1 em {
   .nav__toggle.is-open span:last-child { transform: rotate(-45deg) translate(5px, -5px); }
 
   /* Hero */
-  .hero__content { padding: 120px 20px 36px; }
-  .hero__stats { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
-  .hero__stat { padding: 0 16px; }
-  .hero__stat:first-child { padding-left: 0; }
-  .hero__sub { max-width: 100%; }
+  .hero__content { padding: 120px 20px 36px; text-align: center; align-items: center; display: flex; flex-direction: column; }
+  .hero__stats { padding: 18px 20px; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .hero__stat { padding: 0 16px; text-align: center; align-items: center; }
+  .hero__stat:first-child { padding-left: 16px; }
+  .hero__sub { max-width: 100%; text-align: center; }
+  .hero__headline { text-align: center; max-width: 100%; }
+  .hero__actions { justify-content: center; align-items: center; }
   .hero__botanical { display: none; }
   .hero__scroll-cue { right: 20px; bottom: 80px; }
 
@@ -1619,11 +1621,307 @@ h2 em, h1 em {
 }
 
 @media (max-width: 480px) {
-  .hero__actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .hero__actions { flex-direction: column; align-items: center !important; gap: 16px; }
   .hero__phone { border-bottom: none; font-size: 15px; }
-  .hero__headline { font-size: clamp(3.2rem, 12vw, 4rem); }
+  .hero__headline { font-size: clamp(3.2rem, 12vw, 4rem); text-align: center !important; }
   .hero__stat-div { display: none; }
   .hero__stat { padding: 0 10px; }
+}
+
+/* ===================================================
+   MOBILE CENTERING — comprehensive force-center pass
+   Covers every section at mobile breakpoint.
+   =================================================== */
+@media (max-width: 900px) {
+
+  /* ---- Hero ---- */
+  .hero__content {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero__location,
+  .hero__accepting {
+    text-align: center !important;
+  }
+  .hero__headline {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  .hero__sub {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  .hero__actions {
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .hero__phone {
+    justify-content: center !important;
+  }
+  .hero__stats {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .hero__stat {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* ---- Approach ---- */
+  .approach__header {
+    text-align: center !important;
+  }
+  .approach__eyebrow {
+    text-align: center !important;
+  }
+  .approach__headline {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  .approach__pillar-content {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .approach__pillar h3,
+  .approach__pillar p,
+  .approach__pillar-num {
+    text-align: center !important;
+  }
+  .approach__quote-wrap {
+    text-align: center !important;
+    border-left: none !important;
+    border-top: 2px solid var(--terra) !important;
+    padding-left: 0 !important;
+    padding-top: 32px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  .approach__quote {
+    text-align: center !important;
+  }
+  .approach__quote cite {
+    text-align: center !important;
+  }
+
+  /* ---- Services ---- */
+  .services__intro {
+    text-align: center !important;
+  }
+  .section-eyebrow {
+    text-align: center !important;
+    display: block !important;
+  }
+  .services__headline {
+    text-align: center !important;
+  }
+  .svc-row__body {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .svc-row__num,
+  .svc-row__title,
+  .svc-row__desc {
+    text-align: center !important;
+  }
+  .svc-row__tag {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: fit-content !important;
+    text-align: center !important;
+  }
+  .svc-row__cta {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+  }
+
+  /* ---- Specialties ---- */
+  .specialties__header {
+    text-align: center !important;
+  }
+  .specialties__header > div {
+    text-align: center !important;
+  }
+  .specialties__headline {
+    text-align: center !important;
+  }
+  .specialties__subhead {
+    text-align: center !important;
+  }
+  .specialties__field {
+    align-items: center !important;
+  }
+  .spec-row {
+    justify-content: center !important;
+    text-align: center !important;
+    flex-wrap: wrap !important;
+  }
+  .specialties__exit-note {
+    text-align: center !important;
+  }
+
+  /* ---- About bio ---- */
+  .about__bio-col {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .about__headline,
+  .about__bio-name,
+  .about__bio-cred,
+  .about__body {
+    text-align: center !important;
+  }
+  .about__tags {
+    justify-content: center !important;
+  }
+
+  /* ---- FAQ ---- */
+  .about__faq-eyebrow {
+    text-align: center !important;
+  }
+  .about__faq-q {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  .about__faq-q span:first-child {
+    flex: unset !important;
+    text-align: center !important;
+  }
+  .about__faq-a {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  /* ---- Testimonials ---- */
+  .trust-strip__inner {
+    text-align: center !important;
+  }
+  .trust-strip__label {
+    text-align: center !important;
+  }
+  .trust-q {
+    text-align: center !important;
+    justify-items: center !important;
+  }
+  .trust-q__text,
+  .trust-q__cite {
+    text-align: center !important;
+  }
+  .trust-strip__permission {
+    text-align: center !important;
+  }
+
+  /* ---- CTA ---- */
+  .cta-section__text {
+    text-align: center !important;
+  }
+  .cta-section__pre,
+  .cta-section__headline {
+    text-align: center !important;
+  }
+  .cta-section__action {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .cta-section__body,
+  .cta-section__phone-alt {
+    text-align: center !important;
+  }
+  .cta-section .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* ---- Contact ---- */
+  .contact__info {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .contact__eyebrow,
+  .contact__headline {
+    text-align: center !important;
+  }
+  .contact__details {
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .contact__detail-item {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .contact__detail-label,
+  .contact__detail-val {
+    text-align: center !important;
+  }
+  .contact__link {
+    justify-content: center !important;
+    text-align: center !important;
+    display: flex !important;
+  }
+  .contact__parking {
+    text-align: center !important;
+  }
+  .service-cards {
+    justify-content: center !important;
+  }
+  .contact__form-note,
+  .contact__privacy-note,
+  .form-private-note {
+    text-align: center !important;
+  }
+
+  /* ---- Footer ---- */
+  .site-footer__brand {
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .site-footer__name,
+  .site-footer__tagline {
+    text-align: center !important;
+  }
+  .site-footer__nav {
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .site-footer__bottom {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .site-footer__bottom p,
+  .site-footer__bottom a {
+    text-align: center !important;
+  }
+
+  /* ---- Generic catch-all for any labels / eyebrows ---- */
+  .section-eyebrow,
+  .about__faq-eyebrow,
+  .trust-strip__label,
+  .cta-section__pre {
+    text-align: center !important;
+    display: block !important;
+  }
+
+  /* ---- Buttons always centered on mobile ---- */
+  .btn {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .btn--full {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
 }
 
 /* ===================================================
