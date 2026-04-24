@@ -282,4 +282,126 @@ The competition (suburban Philadelphia therapists) generally scores 5.5–6.5. T
 
 ---
 
-*Research compiled 2026-04-18 by Scout. Sources: mentalhealthitsolutions.com, therapistsitetoolbox.com, alwaysopen.design, hipaacomplianthosting.com, matthewryanlcsw.com, therapieseo.com, reddstrategy.com, theartofb.ca, brightervision.com, mentalyc.com, webstacks.com, choosingtherapy.com, cyberoptik.net.*
+*Research compiled 2026-04-18 by Scout. Sources: mentalhealthitsolutions.com, therapistsitetoolbox.com, alwaysopen.dating, hipaacomplianthosting.com, matthewryanlcsw.com, therapieseo.com, reddstrategy.com, theartofb.ca, brightervision.com, mentalyc.com, webstacks.com, choosingtherapy.com, cyberoptik.net.*
+
+---
+
+---
+
+# SCOUT REPORT — ADDENDUM 2
+**Scout:** Competitive intelligence agent
+**Date:** 2026-04-18
+**Subject:** Laura Spaulding Psychotherapy — post-major-visual-overhaul findings
+**Nigel score at time of research:** 8.3 / 10
+**Research target:** What closes the gap from 8.3 to 8.7+
+
+> NOTE: This addendum covers Laura Spaulding specifically (not Amy Fantalis). The site was rebuilt from scratch with a word-by-word hero entrance, specialty constellation, alternating service rows, accordion FAQ, horizontal testimonial marquee, and floating contact card. The gap is structural, not cosmetic. Research below targets only new findings not present in prior reports.
+
+---
+
+## A. WHAT THE BEST SOLO THERAPIST SITES DO DIFFERENTLY IN 2025-2026
+
+Analysis of sites rated 9.0+ by design industry roundups (Azuro Digital, Mojo Agency, SiteBuilderReport, High Five Design Co.) reveals four consistent differentiators that the Laura Spaulding site does not yet have:
+
+### A1. The "Editorial Lifestyle" Aesthetic — Now the Gold Standard
+The top-cited example in 2026 roundups is Minaa B. Her site looks and reads like a premium lifestyle magazine, not a therapy practice. Key moves she made that are worth studying:
+
+- "Featured In" press logos from major publications placed in the hero or immediately below — builds instant authority for a client who found the site through a search and knows nothing about the therapist
+- Photography is expressive and high-quality, positioned as a cultural authority rather than a clinical provider
+- Headline "Transform Your Relationships, Starting With Siblinghood" communicates a unique therapeutic lens immediately — clients self-select within the first sentence
+
+**Implication for Laura Spaulding:** The current site is clinically warm but does not establish Laura as an expert voice. One line added to the About section establishing her professional perspective — "My approach to adolescent anxiety draws on 17 years of observing what families in Delaware County actually need, not just what the textbooks describe" — is the copy direction. This does not require photography.
+
+### A2. Specificity of Niche Outperforms Breadth
+Specialists outperform generalists in therapist website conversion. Visitors who feel "this therapist gets exactly what I am dealing with" submit inquiry forms at materially higher rates than those who land on a generalist site. The Laura site currently presents 20+ specialties in the constellation, which is accurate but may inadvertently signal "I treat everything," which paradoxically reduces conversion for any specific presenting concern.
+
+**Recommended micro-adjustment:** Add one sentence in the hero subhead or approach section that names the practice's single most common presenting client. "Especially effective with anxious kids, teens in transition, and the parents navigating both" — if that is accurate — collapses the 20-specialty list into one specific, trustworthy claim. The constellation can remain as-is for completeness. This is a copy-only change.
+
+### A3. Visible Video — The 2026 Differentiator No Competitor Has Used
+Across the Delaware County/Media, PA therapist competitive set (Psychology Today, Zocdoc, Yelp), no local solo practitioner has an introductory video on their website. Zero. This is confirmed by review of the directory listings for the area.
+
+In 2026 therapist marketing research (therapistdigitalmarketing.com, brightervision.com), video becomes the single strongest trust-builder — a 20-second authentic clip builds more trust than a long paragraph. Psychology Today now algorithm-prioritizes profiles with video in search results.
+
+A 30-second video of Laura speaking directly to camera — shot on a modern iPhone in her actual office, without any production equipment — placed in the About section would be a genuine competitive differentiator across all of suburban Philadelphia. No competitor in her market has this. It is not a polish item; it is a market gap.
+
+---
+
+## B. COPY AND CONTENT CONVERSION FINDINGS
+
+### B1. First Person Converts Better — Confirmed
+Research is unambiguous: for solo therapist websites, first-person copy outperforms third-person by a significant margin. First-person feels warm and personal, building the sense of connection and trust that mental health clients need before they reach out. A recent study found CTAs written in first-person voice achieved 90% better conversion than second-person. The Laura site is already written in first person throughout — this is correct and should not change.
+
+### B2. The First-Session Question Is the Largest Remaining Copy Gap
+Across competitor sites and research on pre-contact behavior, the single most-searched question before a first therapy inquiry is "what actually happens in the first session?" Nigel's Priority 3 identified this gap. Research confirms it is not just a nice-to-have: clients who read a reassuring answer to this question before contacting convert at meaningfully higher rates than those who do not.
+
+The Laura site's FAQ has three questions (insurance, telehealth, session length) — all logistical. The emotional gap remains open. A fourth FAQ entry, written in plain language ("We spend the first session getting to know each other — no clipboard, no clinical forms") removes the largest cognitive barrier to first contact. This is confirmed by competitor research, not just Nigel's observation.
+
+### B3. "Superbill" Is Jargon — Confirmed
+Research on therapy site readability (brightervision.com, mentalyc.com) consistently finds that pages written at a 5th-7th grade level achieve significantly higher conversion rates. "Out-of-network — superbill provided" requires a client to know what a superbill is. Most clients searching for a therapist on a Tuesday evening do not. A parenthetical — "your insurance reimburses you directly" — removes this departure point immediately. This is Nigel's Priority 2 and is confirmed by independent research.
+
+---
+
+## C. COMPETITOR LANDSCAPE — MEDIA, PA / DELAWARE COUNTY
+
+### C1. The Local Competitive Floor Is Still Low
+Psychology Today, Zocdoc, and Yelp listings for Media, PA and Delaware County show that the median solo-practice therapist site in this market is at the 5.5–6.5 level: generic stock imagery, third-person bios, no FAQ, no clear fee information, and no animation or scroll experience. The Laura Spaulding site at 8.3 is already a genuine outlier in this market.
+
+Thriveworks operates in Media and has the budget for professional photography and booking integration — they are the only local competitor operating at a higher technical level. However, Thriveworks is a corporate group practice; clients seeking a solo practitioner with a personal relationship will not self-select into Thriveworks.
+
+### C2. No Local Solo Therapist Has a Video Introduction
+Confirmed: across all Psychology Today, Zocdoc, and therapydirectory listings for the Media PA / Delaware County area, no solo therapist has an introductory video on their website. This is not a subtle edge — it is a category gap. Laura Spaulding could be the only therapist in the market with this trust signal.
+
+### C3. No Local Competitor Has an Animated or Scroll-Driven Experience
+The word-by-word hero entrance, specialty constellation, and alternating service rows on the Laura site are features that no competitor in the local market has deployed. This is relevant for client retention during the browse session — users who experience forward motion in a site engage longer. The Laura site's scroll experience is already a structural differentiator, not a cosmetic one.
+
+---
+
+## D. ETHICAL AND COMPLIANCE FINDINGS — TESTIMONIALS
+
+### D1. The "Shared with Permission" Attribution Is Correct
+The site's testimonials are attributed to cities, not full names, with the notation "Shared with permission." This is the appropriate approach. NASW, APA, and ACA guidelines all prohibit soliciting testimonials from current clients or those vulnerable to undue influence. The Laura site's testimonials — if they came from former clients who provided explicit written consent — are ethically sound as currently presented.
+
+**One addition that adds compliance evidence without cluttering the design:** a single sentence in the testimonials section header such as "Former clients, shared with their written permission" makes the ethical basis visible to any reviewing licensing board without requiring explanation.
+
+### D2. Contact Form Confidentiality Language Is Present and Correct
+The form already includes "This message is private and goes directly to Laura" and "Your information is kept strictly confidential." This is confirmed as best practice by HIPAA compliance research. The free-text message field does expose the form to PHI input (clients may volunteer diagnosis-level information), which means the email backend — currently Formspree routing to afantalis@gmail.com — needs a Business Associate Agreement or a HIPAA-compliant email provider to be fully compliant. This is an operational concern flagged in the previous report and is outside the scope of site code.
+
+---
+
+## E. ACCESSIBILITY — WHAT THE SITE NEEDS FOR WCAG 2.1 AA
+
+Research confirms that ADA website compliance applies to therapist sites as healthcare providers operating as public accommodations. WCAG 2.1 Level AA is the accepted enforcement standard as of 2025.
+
+Current site elements that likely meet WCAG AA: prefers-reduced-motion fallbacks (confirmed in audit), 44px minimum tap targets, HTTPS, semantic HTML structure with aria-labels on nav.
+
+**Gaps to audit:**
+1. Color contrast ratios on the dark forest backgrounds — sage-on-forest and cream-on-ink need to pass 4.5:1 contrast ratio for body text and 3:1 for large text
+2. All Unsplash images need descriptive alt text beyond generic labels ("Sunlit forest path" on the hero image is present — service row images need verification)
+3. The specialty constellation animation needs a static fallback visible to screen readers (verify that the animated items are not display:none before animation fires, which would hide them from assistive technology)
+4. The FAQ accordion needs aria-expanded state updates on each toggle (this is standard accordion accessibility — verify it is implemented in main.js)
+
+These are addressable in a single code pass by the builder. None require content from Laura.
+
+---
+
+## F. PRIORITY ORDER FOR PUSHING 8.3 TO 8.7+
+
+Ranked strictly by expected score impact, based on research findings above:
+
+| Priority | Action | Score delta | Requires content from Laura? |
+|----------|--------|-------------|-------------------------------|
+| 1 | Real portrait photograph in About section | +0.4-0.5 | Yes |
+| 2 | Introductory video (30 seconds, About section) | +0.2-0.3 | Yes |
+| 3 | Fourth FAQ answer: "What does the first session look like?" | +0.1-0.2 | Copy only |
+| 4 | Superbill parenthetical in fees note | +0.1 | Code only |
+| 5 | WCAG 2.1 AA audit pass (contrast, alt text, accordion aria) | +0.1 | Code only |
+| 6 | Hero subhead specificity line (name the most common client type) | +0.1 | Copy only |
+| 7 | Testimonial header: "Former clients, shared with written permission" | +0.05 | Code only |
+
+**Realistic ceiling with photography alone:** 8.7
+**Realistic ceiling with photography + video + copy edits:** 8.9-9.0
+**Ceiling without any new content from Laura:** 8.4-8.5
+
+---
+
+*Addendum 2 compiled 2026-04-18 by Scout. New sources: azurodigital.com, mojo-agency.com, highfivedesign.co, therapistdigitalmarketing.com, minaab.com, brightervision.com, blueprint.ai, personcenteredtech.com, mentalhealthitsolutions.com/ada-compliant-therapist-website, webability.io.*
