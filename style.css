@@ -1745,6 +1745,9 @@ h2 em, h1 em {
     text-align: center !important;
     max-width: 100% !important;
   }
+  .hero__word--italic {
+    padding-left: 0 !important;
+  }
   .hero__sub {
     text-align: center !important;
     max-width: 100% !important;
@@ -2156,6 +2159,19 @@ h2 em, h1 em {
 }
 
 /* ===================================================
+   KEYBOARD FOCUS STYLES
+   =================================================== */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+select:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--terra);
+  outline-offset: 3px;
+}
+
+/* ===================================================
    REDUCED MOTION
    =================================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -2166,4 +2182,5 @@ h2 em, h1 em {
   .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
+  .trust-strip__track { animation-play-state: paused !important; }
 }
