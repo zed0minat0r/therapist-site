@@ -1952,7 +1952,7 @@ h2 em, h1 em {
   .hero__location, .hero__accepting, .hero__sub, .hero__actions, .hero__stats { animation: none; opacity: 1; transform: none; }
   .hero__bg-img { transform: none !important; }
   .hero__botanical svg { animation: none; }
-  .botanical-sway, .dot-pulse, .cta-breathe, .cta-breathe-white, .scroll-hint { animation: none; }
+  .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
 }
