@@ -758,7 +758,7 @@ h2 em, h1 em {
    =================================================== */
 .specialties {
   padding: 100px 40px 100px;
-  background: var(--ink);
+  background: var(--forest);
   position: relative;
   overflow: hidden;
 }
@@ -2035,14 +2035,14 @@ h2 em, h1 em {
   background: linear-gradient(to bottom, #e8ede5, #f7f2ea);
 }
 
-/* 3. Services fee-note band (parchment-dk #ece5d7) → Specialties (ink #1a1a18) */
+/* 3. Services fee-note band (parchment-dk #ece5d7) → Specialties (forest #2e4a2a) */
 .gb-services-specialties {
-  background: linear-gradient(to bottom, #ece5d7, #1a1a18);
+  background: linear-gradient(to bottom, #ece5d7, #2e4a2a);
 }
 
-/* 4. Specialties (ink #1a1a18) → About (parchment #f7f2ea) */
+/* 4. Specialties (forest #2e4a2a) → About (parchment #f7f2ea) */
 .gb-specialties-about {
-  background: linear-gradient(to bottom, #1a1a18, #f7f2ea);
+  background: linear-gradient(to bottom, #2e4a2a, #f7f2ea);
 }
 
 /* 5. About FAQ band (forest-deep #1a2e17) → Testimonials (terra-pale #f2e6df) */
