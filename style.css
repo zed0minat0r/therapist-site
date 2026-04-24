@@ -1123,13 +1123,33 @@ h2 em, h1 em {
   margin: 0 auto;
 }
 
-.trust-strip__label {
+.trust-strip__eyebrow {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.trust-strip__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 48px;
+  text-shadow: 0 0 40px rgba(184, 101, 74, 0.15);
+  animation: title-glow 4s ease-in-out infinite;
+}
+.trust-strip__title em {
+  font-style: italic;
   color: var(--terra);
+  text-shadow: 0 0 30px rgba(184, 101, 74, 0.25), 0 0 60px rgba(184, 101, 74, 0.1);
+}
+@keyframes title-glow {
+  0%, 100% { text-shadow: 0 0 40px rgba(184, 101, 74, 0.15); }
+  50% { text-shadow: 0 0 50px rgba(184, 101, 74, 0.3), 0 0 80px rgba(184, 101, 74, 0.1); }
 }
 
 .trust-strip__hint {
@@ -1876,7 +1896,8 @@ h2 em, h1 em {
   .trust-strip__header {
     text-align: left !important;
   }
-  .trust-strip__label {
+  .trust-strip__eyebrow,
+  .trust-strip__title {
     text-align: left !important;
   }
   .trust-q__text,
@@ -1979,7 +2000,8 @@ h2 em, h1 em {
   /* ---- Generic catch-all for any labels / eyebrows ---- */
   .section-eyebrow,
   .about__faq-eyebrow,
-  .trust-strip__label,
+  .trust-strip__eyebrow,
+  .trust-strip__title,
   .cta-section__pre {
     text-align: center !important;
     display: block !important;
