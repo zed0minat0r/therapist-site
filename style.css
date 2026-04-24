@@ -1626,7 +1626,7 @@ h2 em, h1 em {
   /* Approach — absorbs 80px bleed from hero */
   .approach { padding: 152px 20px 72px; }
   .approach__pillars { grid-template-columns: 1fr; }
-  .approach__pillar { padding: 36px 0; border-right: none; border-top: 1px solid rgba(0,0,0,0.08); }
+  .approach__pillar { padding: 36px 0; border-right: none; border-left: none !important; border-top: 1px solid rgba(0,0,0,0.08); }
   .approach__pillar:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
   .approach__quote-wrap { margin-left: 0; max-width: 100%; border-left-width: 2px; padding-left: 20px; }
 
