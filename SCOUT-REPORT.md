@@ -405,3 +405,175 @@ Ranked strictly by expected score impact, based on research findings above:
 ---
 
 *Addendum 2 compiled 2026-04-18 by Scout. New sources: azurodigital.com, mojo-agency.com, highfivedesign.co, therapistdigitalmarketing.com, minaab.com, brightervision.com, blueprint.ai, personcenteredtech.com, mentalhealthitsolutions.com/ada-compliant-therapist-website, webability.io.*
+
+---
+
+---
+
+# SCOUT REPORT — ADDENDUM 3
+**Scout:** Competitive intelligence agent
+**Date:** 2026-04-18
+**Subject:** Laura Spaulding — refinement pass at 8.7/10
+**Scope:** Small improvements only. No major rebuilds. All findings verified against live site code.
+
+> NOTE: This addendum is scoped to new findings only. All items covered in Addendums 1 and 2 (photography gap, video, superbill jargon, first-session FAQ, reading level) are confirmed accurate and not repeated here. The focus below is what a site at 8.7 still has room to improve without any new content from Laura.
+
+---
+
+## 1. CRITICAL ACCESSIBILITY BUGS FOUND IN SITE CODE
+
+These are not theoretical — they were identified by reading the actual site files.
+
+### 1A. FAQ Accordion Uses `display: none` — Screen Readers Cannot Access Closed Answers
+
+The FAQ answers (`.about__faq-a`) are hidden with `display: none` in CSS and revealed by adding class `is-open`. The problem: `display: none` removes content from the accessibility tree entirely. A screen reader user will not know those answers exist. The `aria-expanded` attribute on the `dt` correctly signals open/closed state, but the panel itself has no `id`, and the `dt` has no `aria-controls` attribute pointing to it. This means assistive technology cannot programmatically navigate from question to answer.
+
+**Fix (code only, no content needed):**
+- Add `id="faq-a-1"` (and so on) to each `dd.about__faq-a`
+- Add `aria-controls="faq-a-1"` to each corresponding `dt.about__faq-q`
+- Replace `display: none` / `display: block` with `hidden` attribute toggled by JS — the `hidden` attribute is removed from the DOM's accessibility tree but still readable when the attribute is removed, and it works with `aria-expanded` correctly
+
+### 1B. FAQ `dt` Uses `role="button"` — This Is the Wrong Pattern
+
+Each FAQ question is a `<dt>` element with `role="button"`. The ARIA Authoring Practices Guide (APG) and WCAG 2.1 both recommend using a real `<button>` element for interactive controls, not adding `role="button"` to non-interactive elements. The `<dt>` with `role="button"` will pass some automated checkers but fails real screen reader testing because `<dt>` carries its own definition-term semantics that conflict with the button role. The correct pattern is a `<button>` inside the `<dt>`, or using `<details>`/`<summary>` elements instead.
+
+**Fix:** Wrap the `dt` text and icon in a `<button>` element rather than relying on `role="button"` on the `dt` itself.
+
+### 1C. No `:focus-visible` Style on Interactive Elements
+
+A full search of `style.css` shows exactly one focus rule: `.form-group input:focus` and `.form-group textarea:focus`. There are zero focus styles for:
+- The FAQ accordion questions (keyboard users tab through and have no visible focus indicator)
+- The service selector cards in the contact form
+- The nav toggle button
+- The `svc-row__cta` links ("Start here →")
+- The specialties exit-note link
+- The footer nav links
+
+WCAG 2.1 AA criterion 2.4.7 (Focus Visible) requires that keyboard-navigable UI components have a visible focus indicator. As of 2024, the DOJ's updated ADA guidance cites WCAG 2.1 AA as the enforcement standard for private healthcare-adjacent websites. A keyboard-only user navigating this site has no visual feedback for most interactive elements.
+
+**Fix (CSS only, no content):** Add a `:focus-visible` rule for the FAQ questions, CTA links, and service cards:
+```css
+.about__faq-q:focus-visible,
+.svc-row__cta:focus-visible,
+.service-card:focus-visible,
+.specialties__exit-link:focus-visible {
+  outline: 2px solid var(--gold-lt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+```
+
+---
+
+## 2. CONTACT FORM — WHAT THE RESEARCH SAYS THAT THE SITE DOES NOT YET HAVE
+
+The site's form is already strong: it has a privacy note, a 24-hour response promise, service-type selector cards, and a free consultation CTA. Research at this refinement stage reveals two remaining friction points.
+
+### 2A. The "What Brings You Here" Field Has No Placeholder Guidance
+
+The `textarea` for the optional message has a label ("What brings you here") but no placeholder text. Research on form completion (goodmancreatives.com, kopplamarketing.com) consistently shows that open-ended fields with zero guidance have the highest abandonment rate of any form element. Mental health clients in particular are prone to overthinking an open text box — "What do I even write here?"
+
+**Fix:** Add a placeholder that reduces cognitive load without presupposing a concern:
+`placeholder="Anything you'd like Laura to know before your first conversation — or leave this blank, that's fine too."`
+
+This is the same reassurance the site's copy already provides in the FAQ ("no pressure, no diagnostic checklist") — extending that tone into the form field itself is consistent and reduces hesitation.
+
+### 2B. No Visible Submission Confirmation Before Sending
+
+The form has a success state (`contact__success`) that appears after submission. What it does not have is any visible indicator while the form is submitting — the button changes nothing between click and response. On mobile with slower connections, a user may tap "Book a Free Consultation," see nothing happen, and tap again (double-submitting) or assume it failed and leave.
+
+**Fix:** Add a simple disabled state and loading indicator to the submit button on form submission. This is a two-line JS change: on form submit, set `button.disabled = true; button.textContent = 'Sending...'`. Restore if submission fails.
+
+---
+
+## 3. COPY MICRO-IMPROVEMENTS — NEW RESEARCH FINDINGS
+
+### 3A. "No Microcopy Near the Primary CTA" — Confirmed Gap
+
+Research from alwaysopen.design (therapy CRO specialists) and theartofb.ca confirms that therapy CTAs perform significantly better when accompanied by a one-line reassurance immediately beneath the button — called microcopy. This is distinct from the form's existing response-time note (which appears after the button). The hero CTA and the mid-page CTA section both have the button alone with no adjacent reassurance text.
+
+Examples from top-converting therapy sites:
+- "No commitment. Just a conversation." (beneath hero button)
+- "We respond within 24 hours. No pressure." (beneath CTA section button)
+
+The site already uses this language elsewhere but not adjacent to the primary CTAs where it has the highest conversion impact. This is a copy-only addition — one `<p>` element beneath each CTA button.
+
+### 3B. The Accepting Banner Should Be Interactive on Mobile
+
+The "Currently accepting new clients" pill in the hero is purely decorative (`aria-hidden` on the dot, no role or href). Research on mobile therapy site behavior shows that users who see an availability signal often want to act immediately. Making this badge an anchor link to `#contact` on mobile would capture high-intent visitors who are ready to act before they have read anything else. This is a single `href="#contact"` attribute addition on mobile.
+
+### 3C. Testimonials Section Missing Attribution Context
+
+The horizontal scroll testimonials attribute quotes to cities ("Media, PA", "Springfield, PA", etc.) with "Shared with permission" as a form label. Research confirms this is ethically sound, but one thing missing is a header line that contextualizes why the testimonials are anonymous. Without explanation, first-time visitors may wonder if the quotes are fabricated.
+
+Adding a subhead like "From former clients — shared with their written permission, names withheld for confidentiality" removes this doubt entirely. This is confirmed by therapy marketing research as a trust signal that costs nothing and removes a legitimate reader objection.
+
+---
+
+## 4. MOBILE UX — WHAT RESEARCH REVEALS AT THIS REFINEMENT LEVEL
+
+### 4A. Horizontal Scroll Testimonials Need a Scroll Affordance on Mobile
+
+The trust strip uses horizontal scroll. Research on mobile UX (uxcam.com, smashingmagazine.com) is clear: users do not discover horizontal scroll unless there is a visible affordance (a partial card peeking at the edge, a "swipe" label, or scroll dots). If the trust strip shows only full cards with no visible overflow at the edge on mobile, many users will not know there are more.
+
+**Verify:** Does the testimonial container show a partial card at the right edge on a 390px viewport? If not, add `padding-right: 48px` to the track so the next card peeks into view.
+
+### 4B. Subtle Haptic Feedback Opportunity — No Code Change Needed
+
+Research from Smashing Magazine's 2026 empathy-centered UX framework identifies that mental health sites benefit from low-stimulus, predictable interactions. The site is already correctly calibrated here — no recommendation to add haptics or complex motion. This confirms the existing animation suite is appropriate and should not be changed.
+
+### 4C. Prefers-Reduced-Motion Is Implemented — But Testimonial Marquee Is Not Covered
+
+`style.css` has a `prefers-reduced-motion` block at line 2161 that correctly pauses most animations (hero words, botanical sway, reveal transitions, specialty constellation). However, the trust strip marquee animation (`trust-strip__track`, the horizontal auto-scroll) does not appear in this block. Users with vestibular disorders who have enabled reduced-motion system preferences will still see continuous lateral scrolling in the testimonials section.
+
+**Fix (CSS only):**
+```css
+@media (prefers-reduced-motion: reduce) {
+  .trust-strip__track { animation-play-state: paused; }
+}
+```
+
+---
+
+## 5. TRUST SIGNALS — NEW FINDINGS SPECIFIC TO 8.7+ REFINEMENT
+
+### 5A. Professional Association Logos — Zero Cost, Visible Credibility
+
+At the 8.7 level, what separates this site from a 9.0+ site is the absence of third-party credibility signals. Research from crazyegg.com (conversion trust signals) and therapeiawebdesign.com confirms that professional association logos — NASW, LCSW licensure badge, or a Pennsylvania licensing board seal — placed near the About section provide instant, verifiable trust that copy cannot replicate.
+
+None of these require content from Laura beyond confirming her membership numbers. The NASW logo is publicly available. A Pennsylvania LCSW badge stating "Licensed Clinical Social Worker, Pennsylvania" can be generated from the licensing board's public verifier link. This is a code-only addition if the logos are available for use — most are.
+
+### 5B. "About" Section Has No Explicit Therapeutic Approach Statement in One Sentence
+
+Research from mentalhealthitsolutions.com and rachelannreid.com shows that solo practitioner About sections convert best when they contain a single, plain-language statement of what makes this therapist's approach distinct — not a list of modalities (which the site already has), but a human sentence. The site's current About copy leads with a values statement ("good therapy is not a transaction — it is a relationship") but does not complete the thought with what that means in practice.
+
+Example of the conversion-effective pattern: "In my sessions, that means you lead. I follow your pace, your language, and your goals — not a treatment protocol." This is one sentence that tells a prospective client what it will feel like to sit with Laura, not what her credentials are.
+
+This is a copy suggestion that requires Laura's voice but is a single sentence — the smallest possible content contribution with meaningful trust impact.
+
+---
+
+## 6. PRIORITY ORDER — NEW FINDINGS ONLY
+
+Items already in prior addendums (portrait photo, video, superbill jargon, first-session FAQ) are not repeated. These are net-new:
+
+| Priority | Finding | Effort | Score delta |
+|----------|---------|--------|------------|
+| 1 | Add `:focus-visible` styles to all interactive elements (FAQ, CTAs, service cards) | CSS only, 10 min | +0.1, WCAG compliance |
+| 2 | Add `aria-controls` and fix `display:none` on FAQ accordion panels | JS + HTML, 20 min | +0.1, WCAG compliance |
+| 3 | Add testimonial marquee to `prefers-reduced-motion` block | CSS only, 2 min | +0.05, accessibility |
+| 4 | Add textarea placeholder to reduce contact form abandonment | HTML only, 2 min | +0.05–0.1 |
+| 5 | Add submit button loading state to prevent double-submission confusion | JS only, 5 min | +0.05 |
+| 6 | Add microcopy beneath hero and mid-page CTA buttons | HTML only, 5 min | +0.05–0.1 |
+| 7 | Make "accepting clients" badge link to #contact on mobile | HTML only, 5 min | +0.05 |
+| 8 | Add "written permission, names withheld" context line to testimonials | HTML only, 2 min | +0.05 |
+| 9 | Verify testimonial partial-card peek on 390px viewport | Test only | -- |
+| 10 | Add NASW / PA LCSW badge near About section (requires Laura confirmation) | HTML + image, 15 min | +0.1–0.15 |
+
+**Realistic score impact from items 1–9 (all code-only):** 0.2–0.3 points
+**Score impact with item 10 (professional association badge):** additional 0.1–0.15
+**Ceiling with all code-only changes + association badge:** 8.9–9.0
+
+---
+
+*Addendum 3 compiled 2026-04-18 by Scout. Sources: goodmancreatives.com/therapist-website-design-contact-forms/, theartofb.ca/2025/11/03/copy-design-the-conversion-formula/, alwaysopen.design/therapy-practices-cro-wins/, aditus.io/patterns/accordion/, a11y-collective.com/blog/accessible-accordion/, 216digital.com/accessible-accordion-vs-disclosure-dev-best-practices/, smashingmagazine.com/2026/02/building-empathy-centred-ux-framework-mental-health-apps/, uxcam.com/blog/mobile-ux/, therapeiawebdesign.com/blog/wcag-2-1-compliance/, mentalhealthitsolutions.com/blog/ada-compliant-therapist-website/, pilotdigital.com/blog/what-wcag-2-1aa-means-for-healthcare-organizations-in-2026/, rachelannreid.com/blogarchive/therapists-guide-website-conversions, crazyegg.com/blog/trust-signals/, kopplamarketing.com/blog/convert-website-visitors-into-therapy-clients.*
