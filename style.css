@@ -1158,6 +1158,12 @@ h2 em, h1 em {
   color: rgba(184,101,74,0.55);
   letter-spacing: 0.08em;
 }
+/* Mobile-only hint above track — hidden on desktop */
+.trust-strip__hint--mobile {
+  display: none;
+  padding: 0 20px 12px;
+  margin: 0;
+}
 
 /* Track wrapper — clips the scroll area and holds edge fades */
 .trust-strip__track-wrap {
@@ -1686,7 +1692,10 @@ h2 em, h1 em {
 
   /* Testimonials — absorbs 80px bleed from about */
   .trust-strip { padding: 136px 0 48px; }
-  .trust-strip__header { padding: 0 20px 36px; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .trust-strip__header { padding: 0 20px 24px; flex-direction: column; gap: 6px; align-items: flex-start; }
+  /* Hide header hint on mobile — shown adjacent to track instead */
+  .trust-strip__header .trust-strip__hint { display: none; }
+  .trust-strip__hint--mobile { display: block; }
   .trust-strip__track { padding: 4px 20px 24px; }
   .trust-q {
     flex: 0 0 88vw;
