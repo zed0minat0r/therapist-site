@@ -269,6 +269,37 @@
     }, { passive: true });
   }
 
+  /* ---- Testimonial horizontal drag-scroll ---- */
+  function initTestimonialScroll() {
+    var track = document.getElementById('trustTrack');
+    if (!track) return;
+
+    var isDown = false;
+    var startX, scrollLeft;
+
+    track.addEventListener('mousedown', function (e) {
+      isDown = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+      track.style.cursor = 'grabbing';
+    });
+    track.addEventListener('mouseleave', function () {
+      isDown = false;
+      track.style.cursor = 'grab';
+    });
+    track.addEventListener('mouseup', function () {
+      isDown = false;
+      track.style.cursor = 'grab';
+    });
+    track.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - track.offsetLeft;
+      var walk = (x - startX) * 1.2;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  }
+
   /* ---- Service row hover: image scale is handled by CSS — no JS needed ---- */
 
   /* ---- Init ---- */
@@ -283,6 +314,7 @@
     initFormSuccess();
     initFormValidation();
     initReadingProgress();
+    initTestimonialScroll();
   }
 
   if (document.readyState === 'loading') {
