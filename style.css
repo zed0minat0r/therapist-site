@@ -2035,9 +2035,9 @@ h2 em, h1 em {
   background: linear-gradient(to bottom, #e8ede5, #f7f2ea);
 }
 
-/* 3. Services (parchment #f7f2ea) → Specialties (ink #1a1a18) */
+/* 3. Services fee-note band (parchment-dk #ece5d7) → Specialties (ink #1a1a18) */
 .gb-services-specialties {
-  background: linear-gradient(to bottom, #f7f2ea, #1a1a18);
+  background: linear-gradient(to bottom, #ece5d7, #1a1a18);
 }
 
 /* 4. Specialties (ink #1a1a18) → About (parchment #f7f2ea) */
