@@ -1881,15 +1881,15 @@ h2 em, h1 em {
     text-align: center !important;
   }
   .about__faq-q {
-    text-align: center !important;
-    justify-content: center !important;
+    text-align: left !important;
+    justify-content: space-between !important;
   }
   .about__faq-q span:first-child {
-    flex: unset !important;
-    text-align: center !important;
+    flex: 1 !important;
+    text-align: left !important;
   }
   .about__faq-a {
-    text-align: center !important;
+    text-align: left !important;
     max-width: 100% !important;
   }
 
@@ -1999,10 +1999,10 @@ h2 em, h1 em {
   }
 
   /* ---- Generic catch-all for any labels / eyebrows ---- */
+  /* Note: trust-strip__eyebrow and trust-strip__title are intentionally left-aligned on mobile
+     to match the left-aligned card text and "Swipe to read" hint — excluded from this block. */
   .section-eyebrow,
   .about__faq-eyebrow,
-  .trust-strip__eyebrow,
-  .trust-strip__title,
   .cta-section__pre {
     text-align: center !important;
     display: block !important;
