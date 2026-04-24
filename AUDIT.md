@@ -1,18 +1,22 @@
 # Nigel's Audit — Laura Spaulding Psychotherapy
 **Date:** 2026-04-18
 **Auditor:** Nigel (strict British auditor)
-**Previous Score:** 7.8 / 10 (pre-overhaul baseline)
-**Current Score:** 8.3 / 10
-**Delta:** +0.5 (earned through genuine structural improvements)
+**Previous Score:** 8.3 / 10
+**Current Score:** 8.5 / 10
+**Delta:** +0.2
 **Live URL:** https://zed0minat0r.github.io/therapist-site/
 
 ---
 
-## OVERALL SCORE: 8.3 / 10
+## OVERALL SCORE: 8.5 / 10
 
-This is the first audit conducted against the fully rebuilt version of the site. The overhaul is real and consequential. I am scoring what a prospective therapy client in suburban Philadelphia — searching on a Tuesday evening, stressed, not particularly design-literate — would experience landing on this page for the first time. I am not scoring ambition or effort.
+Scored from the perspective of a prospective therapy client in suburban Philadelphia — searching on a weekday evening, possibly stressed, not design-literate, making a decision about whom to trust with something private. I am not scoring craft for its own sake.
 
-The score moves from 7.8 to 8.3. That is a meaningful lift and it is earned. The site has crossed the threshold from "looks like a quality local practice website" into "I would choose this over most competitors." That is 8.0+ territory on this scale. The remaining gap to 8.5+ is structural, not cosmetic.
+The score moves from 8.3 to 8.5. A modest but honest lift. Every item from the previous Priority list that could be addressed in code has been addressed. The three priorities from the last audit were: real portrait photograph, superbill jargon clarification, and a first-session FAQ. Two of the three were code-addressable and have now been executed. The portrait remains absent — that is the only remaining gap of consequence.
+
+The improvements this round are real and cumulative. None are theatrical. Colored border accents on approach pillars, the testimonial carousel conversion, the superbill parenthetical, the first-session FAQ — individually each is a minor point of polish; collectively they tighten a site that was already performing well. That is the right kind of work at this stage.
+
+This site is now comfortably in "I would choose this over most other therapy practice websites in this region" territory. The remaining gap to 8.7+ is content-dependent, not code-dependent.
 
 ---
 
@@ -20,116 +24,122 @@ The score moves from 7.8 to 8.3. That is a meaningful lift and it is earned. The
 
 ### 1. Hero — 8.5 / 10
 
-Excellent. The word-by-word staggered entrance is exactly the right level of animation for this context — it draws attention without being ostentatious. The forest parallax photograph establishes emotional register immediately. The "Currently accepting new clients" pulsing green dot is the single best trust signal on the site; a first-time visitor clocks that in the first two seconds and exhales. Stats bar (17+ years, ages 7-adult, Mon-Fri hours) provides the key qualifying information without requiring any scroll. Phone number is tappable and prominently positioned alongside the primary CTA.
+Unchanged from previous audit and correctly so. The word-by-word staggered entrance, the parallax forest photograph, the pulsing green "Currently accepting new clients" dot, and the stats bar all remain. No regressions. The location anchor ("Media, PA — since 2007") and the tappable phone number alongside the primary CTA are both correctly positioned. The botanical SVG is appropriately subtle.
 
-Minor deduction: The botanical SVG illustration is elegant but faint enough at 9% opacity that many users will not consciously register it. It adds texture without distraction, which is correct, but it is doing less work than intended. Not a problem. The "Media, PA — since 2007" location line is exactly right.
+No change in score from 8.5. This section does not need further work.
 
-### 2. Approach — 7.8 / 10
+### 2. Approach — 8.0 / 10
 
-The three-pillar structure reads clearly. The ghost numbers at 4% opacity are a strong editorial choice — they add architectural depth without competing with the text. "Therapy should feel like a conversation, not a diagnosis" is the best headline copy on the site. The Carl Rogers quote at the end is intellectually appropriate for the practice's positioning, though it may not land with a stressed parent searching for a child's therapist who has never heard of Carl Rogers. It is a defensible choice.
+Up from 7.8. The colored left-border accents on the three pillars (terracotta for pillar 01, gold for 02, forest green for 03) are a meaningful improvement. They give the three-column grid a visual anchor that it previously lacked — on dark parchment-pale background, the pillars were previously distinguished only by their ghost numbers and content. The border accent communicates hierarchy and individuality without adding visual noise.
 
-The sage/forest-pale background distinguishes this section cleanly from the parchment hero. No readability concerns. The three pillars (client-paced, evidence-based, collaborative) are the correct three things to say at this stage of a first visit.
+The 3px border width is well-chosen — thin enough to read as an accent, substantial enough to be a structural signal on mobile single-column layout. The border-left transitions to a border-top override on mobile, which is correct and consistent with the section's logic.
 
-### 3. Services — 8.2 / 10
+The ghost background numbers at 4% opacity remain. Correct decision to keep them. The Carl Rogers quote with terracotta left border is unchanged — still appropriate, still slightly inaccessible to the distressed parent who has never read Rogers, but defensible given the practice's intellectual positioning.
 
-The alternating split-screen rows are a significant improvement over any card-grid alternative. Each service gets real photographic weight and enough copy to communicate distinctiveness. The age tags (Ages 7+, All ages, Adults, Ages 14+) are exactly the right signal for a practice that spans children through adults — they help a prospective client self-select quickly. The "Start here" CTA on each row maintains motion toward the form without feeling pushy.
+### 3. Services — 8.3 / 10
 
-The fee note at the bottom — out-of-network, superbill provided, sliding scale, in-person plus telehealth — puts the two most common departure reasons (cost and logistics) in front of the client at the moment of highest interest. This is strategically correct placement. Previous audits flagged this as a gap; it is now resolved.
+Up from 8.2, marginally. The enlarged service row numbers (now clamp(3.5rem, 6vw, 5.5rem)) have more editorial presence than before. They read as decorative numerals rather than functional labels, which is the correct visual register for this section — the actual service name carries the informational load. The numbers are now large enough to communicate the editorial ambition without competing with the title.
 
-Deduction: The Unsplash images are generic. The individual therapy photo (blurred office) is acceptable. The couple therapy image (man's portrait) risks reading as off-brand for a practice that emphasises collaborative, person-centred care. Real photography would move this section from 8.2 to 8.8.
+The superbill parenthetical "(your insurer reimburses you directly)" in the fee note at the bottom of the section was Priority 2 from the last audit. It is now executed. This is a single-sentence edit that removes a genuine cognitive barrier for cost-anxious clients who do not know what a superbill is. The sentence now reads clearly without requiring prior knowledge of insurance terminology. This is the correct way to address jargon in a client-facing context — explain inline, do not link out.
+
+The Unsplash images remain generic. The couples therapy image (close portrait of a man) still risks reading as off-brand for this practice's positioning. Real photography would move this section another 0.4 points. Not a code problem.
 
 ### 4. Specialties — 8.4 / 10
 
-The type constellation on dark ink background is the most distinctive scroll moment on the site. The staggered entrance animation (items sliding in from alternating sides) is executed at exactly the right speed and creates genuine delight on scroll — not performance, actual delight. The size hierarchy (lg/md/sm) communicates implied importance without a list or grid.
+Unchanged and correctly so. The type constellation with staggered entrance is still the most visually distinctive scroll moment on the site. No regressions. The exit-note copy ("Don't see your concern listed? Reach out") remains in place. No change in score from 8.4.
 
-The word groupings are clinically credible and comprehensive without being overwhelming. "School Anxiety" is correctly present; it is the presenting concern for a significant portion of the local client base. "Emerging Adults" is a smart addition — it signals to 18-22-year-olds and their parents that the practice can hold that transitional age.
+### 5. About — 7.4 / 10
 
-The "Don't see your concern listed? Reach out" exit note is the right move — it removes the implicit exclusion that any finite list creates.
+Up from 7.2, marginally. The First-session FAQ question is now present and it is the best-written answer on the entire page: "The first session is really just a conversation. We'll talk about what brought you here, what you're hoping for, and whether we feel like a good fit. There's no pressure, no diagnostic checklist — just two people getting to know each other. Most clients tell me they felt relieved it was easier than they expected."
 
-Minimal deductions: "Neurodiversity" as a specialty term is contemporary and correct but not universally understood. Some parents searching for ADHD support may not connect the term. No structural fix needed — ADHD appears in the same row which resolves it.
+This was Priority 3 from the last audit. It is now done, and done well. The answer is direct, warm, and specific. It names the emotional concern (pressure, diagnostic checklist) explicitly and then dismisses it. The closing social proof sentence ("Most clients tell me they felt relieved") is exactly the right note — it normalises the anxiety about the first session without being saccharine.
 
-### 5. About — 7.2 / 10
+The section now has four FAQ answers, all strong. The accordion UX remains correct.
 
-The split photo/bio with sticky positioning is a structural improvement. The photo used (Unsplash interior, warm light) communicates office environment but does not humanise the therapist. A client in distress making a decision about who to trust with their child's mental health needs to see a face. The absence of a real portrait photograph remains the largest single gap on this site. The prose is strong and authentic — "I keep my practice small by design because caseload size affects care quality" is a genuine differentiator that competitors cannot credibly copy.
+The score remains below 8.0 because the stock interior photograph is still doing partial work only. A stressed parent or individual deciding whether to reach out to a therapist needs to see a face. The bio copy is excellent — "I keep my practice small by design because caseload size affects care quality" is a genuine, defensible differentiator. The copy is carrying weight that a portrait photograph would share. This is the one remaining gap that no amount of code work resolves.
 
-The FAQ accordion in the dark forest band is well-executed. The three questions (insurance, telehealth, session length) are precisely the three questions a first-time visitor has. All three answers are direct and honest. The accordion interaction works correctly.
+### 6. Testimonials — 8.2 / 10
 
-Deduction of 1.3 points from what this section could be: the stock interior photograph is doing partial work but not full work. A client who has been burned by impersonal, transactional therapy before is looking for evidence of a specific human being, not a nicely lit room.
+Up from 8.0. The conversion from auto-scrolling marquee to user-controlled horizontal scroll carousel with snap-to-card is a meaningful improvement, not a cosmetic one. Auto-scroll on testimonials is a pattern that conveys distrust: it suggests the site does not want you to stop and actually read the quotes. Snap-to-card scroll hands control to the user and implicitly communicates confidence in the content.
 
-### 6. Testimonials — 8.0 / 10
+The edge fades (terracotta-to-transparent gradient on each side) correctly communicate that the track is scrollable without explicit instructional text. The "Swipe to read" hint in the header is present as backup signalling. The grab cursor on desktop is a nice affordance. The 88vw card width on mobile gives appropriate peek of the next card.
 
-Four testimonials, each covering a distinct use case: family therapy outcome, child therapy outcome, individual listener quality, first-session experience. The geographic attributions (Swarthmore, Media, Wayne, Bryn Mawr) are smart local signals — a prospective client from Havertown sees people from their county, not clients from an anonymous metropolitan area. The stacked-quote format reads better than a marquee for this emotional register. The "Shared with permission" note is correctly placed.
+The four quotes remain well-differentiated: family outcome, child outcome, individual therapy experience, first-session anxiety. The geographic attributions (Swarthmore, Media, Wayne, Bryn Mawr) are correctly local. The "Former clients, shared with their written permission" note is correctly placed below the track.
 
-No regressions. No improvements needed here.
+The testimonial attribution format (initials + town, e.g., "M.T., Swarthmore PA") was strengthened this round. The previous format was less specific. Initials-plus-location is the correct balance for a therapy practice — it signals real people without violating confidentiality norms.
 
-### 7. CTA Section — 8.0 / 10
+Minor note: four testimonials is the correct number for a snap carousel. Five would require awkward partial-card reveal on the last snap. No change needed.
 
-"Taking the first step is the hardest part" is direct, empathetic, and accurate. The "begin" watermark in the background is a subtle, effective detail. The split layout (large type left, action copy and button right) gives the section visual weight proportional to its importance. The white button on dark forest background with 3.5s breathe animation is the correct choice here — visible without being aggressive. "Most clients hear back within 24 hours" manages the anxiety of the waiting period correctly.
+### 7. CTA Section — 7.9 / 10
 
-The secondary phone option below the primary CTA is correctly scaled and appropriately subdued.
+Down from 8.0 — not a regression in the code, but a reassessment. The ghost "begin" watermark that was previously noted as a "subtle, effective detail" has now been removed (noted in the changeset as "looks AI-generated"). The removal is correct — the user's instinct was right. Ghost watermark words as decorative background elements have become a pattern strongly associated with AI-generated design templates. Removing it was the right call. However, the section has marginally less visual depth without it, which is why I am trimming 0.1. The large editorial type and white button on dark forest background remain strong. This is not a concern — the section still converts.
+
+The "Most clients hear back within 24 hours" response-time promise and the secondary phone option below the CTA are both correctly retained.
 
 ### 8. Contact Form — 8.1 / 10
 
-The floating cream card on dark ink background with gold top border is the best contact section I have seen on a solo-practice therapy site at this price point. The service-selection cards (Individual, Family, Couples, Group, Not sure yet) reduce form friction while giving the therapist useful intake signal. The inline validation is present and non-intrusive. "This message is private and goes directly to Laura" and "Your information is kept strictly confidential" are placed correctly for a client who is anxious about privacy.
+Unchanged. The floating cream card on dark ink background with gold top border remains the best contact section execution I have seen on a solo-practice therapy site. Service selection cards, inline validation, privacy note, and success state are all present. Formspree integration functional. Gmail address in HTML source remains a spam-harvesting risk but is not a UX concern.
 
-Deduction: The form action routes through Formspree with a redirect to ?submitted=1 for success state. This is functional but not ideal — the redirect creates a page load event that could lose mobile users on slow connections. The success state display logic is present in JavaScript. Not a showstopper; it is a known trade-off with static site hosting.
+### 9. Mobile UX at 375px — 8.1 / 10
 
-The email address visible in the HTML (afantalis@gmail.com) will be harvested by spambots. This is a practical operational concern, not a UX concern.
+Up from 8.0. The mobile centering pass remains intact and correct throughout. The approach pillar border accent converts cleanly to border-top on mobile single-column layout. Testimonial carousel is 88vw card width with center snap-align on mobile — this is exactly right for a single-column swipe context. The stat dividers hide at 480px. All 44px tap targets confirmed.
 
-### 9. Mobile UX at 375px — 8.0 / 10
+The WCAG contrast fixes across seven dark-section elements are welcome and correct. The previous contrast levels in dark sections were marginal in some cases. No specific elements need calling out — the systematic pass is the right approach.
 
-The comprehensive mobile centering pass is evident and correct throughout. Hero content centres cleanly. Service rows stack with photo above body. Specialties header collapses to single column. About photo column is correctly hidden on mobile (the stock interior adds nothing to a small screen — the bio reads better without it). Contact form card padding reduces appropriately. All tap targets are confirmed at 44px minimum.
+### 10. Technical and SEO — 8.0 / 10
 
-The 480px breakpoint handles the hero headline resize and stacked CTA buttons cleanly. The stat dividers hide below 480px to prevent cramped wrapping. This is all correct.
+Up from 7.8. The reduced-motion selectors have been corrected — previously targeting animation names as class selectors (ineffective), now targeting the actual element selectors. This is a genuine accessibility fix, not a cosmetic one. Users who have prefers-reduced-motion set will now correctly see all animations disabled.
 
-### 10. Technical and SEO — 7.8 / 10
+Schema markup, meta description, WebP with explicit dimensions, fetchpriority on hero image, preconnect for Google Fonts — all correctly in place. Reading progress bar retained. Intersection Observer cleanup pattern (unobserve after trigger) correct throughout.
 
-Schema markup (MedicalBusiness type) is present and correctly structured. Meta description includes location and phone. WebP images with explicit dimensions prevent layout shift. `fetchpriority="high"` on the hero image is correct. Prefers-reduced-motion fallbacks across all animations are correctly implemented. Intersection Observer cleanup (observer.unobserve after trigger) is present throughout.
-
-Reading progress bar in terracotta is a nice navigational affordance for a long-scroll single-page site. The botanical SVG sway animation is CSS-only.
-
-No console errors expected. Formspree integration is standard.
+Alt text corrections noted. The previous alt text on service row images was generic. The current alt text ("Warm, naturally lit therapy office interior", "Family in a warm setting", "Person in a calm, reflective moment", "Group of young adults in a circle") is still stock-image-describing rather than practice-specific, but it is functionally correct for accessibility purposes.
 
 ---
 
 ## TOP 3 PRIORITIES
 
 ### PRIORITY 1 — Real portrait photograph of Laura Spaulding
-This is the single highest-leverage content addition available. The site's prose, structure, and visual language are all working. The only gap that would move a prospective client from "this looks credible" to "I am going to reach out" is seeing the face of the person they are about to trust with their most private concerns. A single professional headshot placed in the About section — replacing the stock interior — would move the site from 8.3 to approximately 8.7-8.9. This requires content from Laura, not from the development team. No code change is needed; the image slot is already there and correctly styled.
+This remains the single highest-leverage improvement available to this site. Every other gap is now noise by comparison. The prose, structure, animation, colour palette, and FAQ answers are all working. The only thing a prospective client cannot get from this site is a sense of the specific human being they are about to call. A professional headshot in the About section — replacing the stock interior — would close the remaining gap between this site and an 8.8+ score. This is a content request, not a code request. The image slot, dimensions, and styling are all already present. One JPEG is the only outstanding deliverable.
 
-### PRIORITY 2 — Fees transparency before the scroll
-The fee structure is correctly stated in the services fee note and the About FAQ. But "out-of-network provider — superbill provided for reimbursement" is the kind of sentence that requires a client to already know what a superbill is. A brief parenthetical — "(your insurer reimburses you directly)" — reduces the cognitive barrier for clients unfamiliar with out-of-network billing. This is a two-word copy edit that removes a departure point for cost-anxious clients. Currently the fee note reads as jargon-forward rather than client-forward.
+### PRIORITY 2 — Session fee / pricing visibility
+The site correctly discloses out-of-network status, superbill provision, and sliding scale in the services fee note. What is still missing is any indication of the session fee itself. Therapy clients — particularly those exploring out-of-network for the first time — want a ballpark number before they commit to a phone call. "Sessions from $X" or a range ("$150-$190 per session, sliding scale available") prevents the awkwardness of the intake call being derailed by sticker shock. This does not need to be precise; it needs to exist. Placement: services fee note, or as a new line in the FAQ.
 
-### PRIORITY 3 — A fourth FAQ question addressing the first session
-The three existing FAQ questions (insurance, telehealth, session length) are all logistical. None of them address the emotional barrier: what actually happens in the first session? A client who has never been to therapy before, or who had a bad experience elsewhere, does not know what to expect. A brief answer to "What does the first session look like?" — something on the order of "We spend the first session getting to know each other. There is no intake form to fill out in the waiting room, no clinical assessment to complete before we talk. You tell me what brought you here and we figure out together whether this feels like the right fit." — removes the single largest emotional deterrent to initial contact. This is copy-only; no structural change required.
+### PRIORITY 3 — Map or embedded location signal in the contact section
+The contact section lists the address correctly ("205 N. Monroe St., Media, PA 19063") and mentions free street parking. What it does not have is any visual location anchor. For a client considering whether to drive from Havertown or Wayne, a small embedded map (Google Maps iframe, or a static image linking to Google Maps) would remove a friction point. Media, PA is a walkable small borough and the address is genuinely easy to find — but a visual map makes "I can actually get there" concrete rather than abstract. This is a low-complexity addition with real practical value for new clients.
 
 ---
 
 ## CEILING ASSESSMENT
 
-**Current ceiling: 8.6-8.8** with real photography and the minor copy edits above.
+**Current ceiling: 8.7** with a real portrait photograph.
+**Current ceiling without photography: 8.5-8.6** — already achieved.
 
-The site has earned its score. It is executing at a level clearly above the suburban Philadelphia therapy practice median. The typography is editorial without being cold. The colour palette (forest, parchment, terra, gold) is cohesive and distinctive. The scroll experience — from word-by-word hero entrance through specialty constellation to floating contact card — creates forward motion without gimmickry. The practice information (location, phone, hours, ages served, modalities, insurance position) is all present and correctly placed.
+The site is executing at a level clearly above the regional median for solo-practice therapy websites. The scroll experience is distinctive without being precious. The typography is editorial without being cold. The practice information is complete, honestly presented, and correctly placed relative to the client decision journey.
 
-The gap to 8.6+ is structural and content-dependent. No further CSS work, animation refinement, or section reordering will move the needle. The site needs a real face and two honest paragraphs of first-session copy.
+No further animation, layout, or colour work is necessary. The remaining gap is a photograph.
 
 ---
 
 ## CONFIRMED INTACT — DO NOT CHANGE
 - "Currently accepting new clients" green dot pulse animation
 - Word-by-word hero headline entrance animation
-- Hero stats bar (years, ages, hours)
+- Hero stats bar (17+ years, ages, Mon-Fri hours)
 - Forest parallax on hero background image
 - Three-pillar approach section with ghost numbers
+- Colored left-border accents on approach pillars (terracotta / gold / forest)
 - Service row alternating layout with hover image scale
+- Enlarged editorial service row numbers
 - Specialty word constellation with staggered entrance and hover glow
-- FAQ accordion in dark forest band
-- "Shared with permission" testimonial attribution
-- "Begin" watermark in CTA section
+- FAQ accordion in dark forest band (now four questions)
+- First-session FAQ answer — keep verbatim, it is the best copy on the site
+- Testimonial horizontal snap carousel with edge fades
+- Testimonial geographic attributions (Swarthmore, Media, Wayne, Bryn Mawr)
+- "Former clients, shared with their written permission" attribution
 - Gold border top on contact form card
 - Reading progress bar in terracotta
 - Service selection cards in contact form
 - Inline form validation
-- prefers-reduced-motion fallbacks across all animations
+- Superbill parenthetical in fee note
+- prefers-reduced-motion fallbacks (now correctly targeting element selectors)
 - 44px tap targets throughout
 - Mobile centering — confirmed consistent throughout
