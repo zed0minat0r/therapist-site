@@ -38,7 +38,7 @@
   <nav class="nav" id="nav" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="#home" class="nav__brand">
-        <span class="nav__brand-af">Laura</span> <span class="nav__brand-a">Spaulding</span>
+        <span class="nav__brand-first">Laura</span> <span class="nav__brand-last">Spaulding</span>
       </a>
       <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
@@ -53,10 +53,12 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ====================================================
+       HERO — parallax photo, dramatic word-by-word entrance
+       ==================================================== -->
   <section class="hero" id="home">
     <div class="hero__bg" aria-hidden="true">
-      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=85&auto=format&fm=webp&fit=crop" alt="Sunlit forest path" class="hero__bg-img" fetchpriority="high" width="1600" height="1066" />
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=85&auto=format&fm=webp&fit=crop" alt="Sunlit forest path" class="hero__bg-img" id="heroBgImg" fetchpriority="high" width="1600" height="1066" />
       <div class="hero__bg-overlay"></div>
       <div class="hero__grain" aria-hidden="true"></div>
     </div>
@@ -85,14 +87,22 @@
       <p class="hero__location">Media, PA &mdash; since 2007</p>
       <p class="hero__accepting"><span class="hero__accepting-dot" aria-hidden="true"></span>Currently accepting new clients</p>
       <h1 class="hero__headline">
-        <span class="hero__hl-top">You don't have</span>
-        <em class="hero__hl-mid">to figure it</em>
-        <span class="hero__hl-bot">out alone.</span>
+        <span class="hero__word" style="--wi:0">You</span>
+        <span class="hero__word" style="--wi:1">don&rsquo;t</span>
+        <span class="hero__word" style="--wi:2">have</span>
+        <br aria-hidden="true" />
+        <em class="hero__word hero__word--italic" style="--wi:3">to&nbsp;figure&nbsp;it</em>
+        <br aria-hidden="true" />
+        <span class="hero__word" style="--wi:4">out</span>
+        <span class="hero__word" style="--wi:5">alone.</span>
       </h1>
       <p class="hero__sub">Collaborative psychotherapy for individuals, families, and couples &mdash; ages 7 through adults.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Book a Free Consultation</a>
-        <a href="tel:6105851373" class="hero__phone"><svg class="hero__phone-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>610-585-1373</a>
+        <a href="tel:6105851373" class="hero__phone">
+          <svg class="hero__phone-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          610-585-1373
+        </a>
       </div>
     </div>
 
@@ -118,41 +128,46 @@
     </div>
   </section>
 
-  <!-- Approach -->
+  <!-- ====================================================
+       APPROACH — dark forest, editorial giant numbers
+       ==================================================== -->
   <section class="approach" id="approach">
     <div class="approach__inner">
-      <div class="approach__label reveal">
-        <span>Our Philosophy</span>
+      <div class="approach__header">
+        <p class="approach__eyebrow reveal">Our Philosophy</p>
+        <h2 class="approach__headline reveal">
+          Therapy should feel<br />like <em>a conversation,</em><br />not a diagnosis.
+        </h2>
       </div>
-      <h2 class="approach__headline reveal">
-        Therapy should feel<br />like <em>a conversation,</em><br />not a diagnosis.
-      </h2>
 
       <div class="approach__pillars">
         <div class="approach__pillar reveal" data-delay="0">
-          <div class="approach__pillar-num">01</div>
-          <div class="approach__pillar-body">
+          <div class="approach__pillar-bg-num" aria-hidden="true">01</div>
+          <div class="approach__pillar-content">
+            <div class="approach__pillar-num">01</div>
             <h3>You set the pace</h3>
             <p>Sessions are structured around what matters to you right now &mdash; not a predetermined protocol. If the plan isn&rsquo;t working, we change the plan.</p>
           </div>
         </div>
         <div class="approach__pillar reveal" data-delay="1">
-          <div class="approach__pillar-num">02</div>
-          <div class="approach__pillar-body">
+          <div class="approach__pillar-bg-num" aria-hidden="true">02</div>
+          <div class="approach__pillar-content">
+            <div class="approach__pillar-num">02</div>
             <h3>Grounded in evidence</h3>
             <p>Laura draws on CBT, DBT, and trauma-informed frameworks &mdash; research-backed approaches adapted to the person sitting across from her, not the textbook version.</p>
           </div>
         </div>
         <div class="approach__pillar reveal" data-delay="2">
-          <div class="approach__pillar-num">03</div>
-          <div class="approach__pillar-body">
-            <h3 class="approach__pillar-h3--accent">Whole-life connected</h3>
+          <div class="approach__pillar-bg-num" aria-hidden="true">03</div>
+          <div class="approach__pillar-content">
+            <div class="approach__pillar-num">03</div>
+            <h3>Whole-life connected</h3>
             <p>We collaborate with your child&rsquo;s school counselor, your primary care doctor, your psychiatrist &mdash; because the best care doesn&rsquo;t happen in a silo.</p>
           </div>
         </div>
       </div>
 
-      <div class="approach__aside reveal">
+      <div class="approach__quote-wrap reveal">
         <blockquote class="approach__quote">
           &ldquo;The curious paradox is that when I accept myself just as I am, then I can change.&rdquo;
           <cite>&mdash; Carl Rogers</cite>
@@ -161,61 +176,76 @@
     </div>
   </section>
 
-  <!-- Section separator -->
-  <div class="section-sep" aria-hidden="true"></div>
-
-  <!-- Services -->
+  <!-- ====================================================
+       SERVICES — alternating split-screen rows
+       ==================================================== -->
   <section class="services" id="services">
-    <div class="services__inner">
-      <div class="services__header">
-        <p class="section-eyebrow reveal">What We Offer</p>
-        <h2 class="services__headline reveal">Therapy for every<br /><em>chapter of life</em></h2>
-        <p class="services__header-note reveal">One-on-one, family, couples, and group sessions &mdash; each shaped around the people in the room.</p>
-      </div>
+    <div class="services__intro">
+      <p class="section-eyebrow reveal">What We Offer</p>
+      <h2 class="services__headline reveal">Therapy for every<br /><em>chapter of life</em></h2>
+    </div>
 
-      <div class="services__list">
-        <article class="svc reveal">
-          <div class="svc__num">01</div>
-          <div class="svc__body">
-            <h3 class="svc__title">Individual Therapy</h3>
-            <p class="svc__desc">One-on-one sessions built around your unique challenges &mdash; anxiety, depression, life transitions, trauma, and more. For ages 7 and up.</p>
-            <span class="svc__tag">Ages 7+</span>
-          </div>
-        </article>
-        <article class="svc reveal" data-delay="1">
-          <div class="svc__num">02</div>
-          <div class="svc__body">
-            <h3 class="svc__title">Family Therapy</h3>
-            <p class="svc__desc">Strengthen communication, resolve conflicts, and rebuild trust within your family system. We meet each family where they are.</p>
-            <span class="svc__tag">All ages</span>
-          </div>
-        </article>
-        <article class="svc reveal" data-delay="2">
-          <div class="svc__num">03</div>
-          <div class="svc__body">
-            <h3 class="svc__title">Couples Therapy</h3>
-            <p class="svc__desc">Navigate relationship challenges together with a therapist who helps both partners feel genuinely heard.</p>
-            <span class="svc__tag">Adults</span>
-          </div>
-        </article>
-        <article class="svc reveal" data-delay="3">
-          <div class="svc__num">04</div>
-          <div class="svc__body">
-            <h3 class="svc__title">Group Therapy</h3>
-            <p class="svc__desc">Structured groups for teens and young adults navigating anxiety, social challenges, and life transitions. Groups typically run 8&ndash;10 weeks &mdash; inquire for current schedules and openings.</p>
-            <span class="svc__tag">Ages 14+</span>
-          </div>
-        </article>
+    <!-- Service rows: alternating photo left / photo right -->
+    <article class="svc-row svc-row--img-left reveal-left">
+      <div class="svc-row__photo">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=85&auto=format&fm=webp&fit=crop" alt="Person in individual therapy session" loading="lazy" width="900" height="600" />
       </div>
-      <div class="services__cta reveal">
-        <p class="services__cta-note">Not sure which is right for you?</p>
-        <a href="#contact" class="services__cta-link">Tell us what&rsquo;s going on &rarr;</a>
-        <p class="services__cta-fees">Session fees vary; sliding scale available &mdash; ask during your free consultation.</p>
+      <div class="svc-row__body">
+        <span class="svc-row__num">01</span>
+        <h3 class="svc-row__title">Individual Therapy</h3>
+        <p class="svc-row__desc">One-on-one sessions built around your unique challenges &mdash; anxiety, depression, life transitions, trauma, and more. For ages 7 and up.</p>
+        <span class="svc-row__tag">Ages 7+</span>
+        <a href="#contact" class="svc-row__cta">Start here &rarr;</a>
       </div>
+    </article>
+
+    <article class="svc-row svc-row--img-right reveal-right">
+      <div class="svc-row__body">
+        <span class="svc-row__num">02</span>
+        <h3 class="svc-row__title">Family Therapy</h3>
+        <p class="svc-row__desc">Strengthen communication, resolve conflicts, and rebuild trust within your family system. We meet each family where they are.</p>
+        <span class="svc-row__tag">All ages</span>
+        <a href="#contact" class="svc-row__cta">Start here &rarr;</a>
+      </div>
+      <div class="svc-row__photo">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=85&auto=format&fm=webp&fit=crop" alt="Family in a warm setting" loading="lazy" width="900" height="600" />
+      </div>
+    </article>
+
+    <article class="svc-row svc-row--img-left reveal-left">
+      <div class="svc-row__photo">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&auto=format&fm=webp&fit=crop" alt="Couple in a calm, connected moment" loading="lazy" width="900" height="600" />
+      </div>
+      <div class="svc-row__body">
+        <span class="svc-row__num">03</span>
+        <h3 class="svc-row__title">Couples Therapy</h3>
+        <p class="svc-row__desc">Navigate relationship challenges together with a therapist who helps both partners feel genuinely heard.</p>
+        <span class="svc-row__tag">Adults</span>
+        <a href="#contact" class="svc-row__cta">Start here &rarr;</a>
+      </div>
+    </article>
+
+    <article class="svc-row svc-row--img-right reveal-right">
+      <div class="svc-row__body">
+        <span class="svc-row__num">04</span>
+        <h3 class="svc-row__title">Group Therapy</h3>
+        <p class="svc-row__desc">Structured groups for teens and young adults navigating anxiety, social challenges, and life transitions. Groups typically run 8&ndash;10 weeks &mdash; inquire for current schedules.</p>
+        <span class="svc-row__tag">Ages 14+</span>
+        <a href="#contact" class="svc-row__cta">Start here &rarr;</a>
+      </div>
+      <div class="svc-row__photo">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=900&q=85&auto=format&fm=webp&fit=crop" alt="Group of young adults in a circle" loading="lazy" width="900" height="600" />
+      </div>
+    </article>
+
+    <div class="services__fee-note reveal">
+      Session fees vary; sliding scale available &mdash; ask during your free consultation.
     </div>
   </section>
 
-  <!-- Specialties — editorial type constellation -->
+  <!-- ====================================================
+       SPECIALTIES — deep ink background, lit words
+       ==================================================== -->
   <section class="specialties" id="specialties">
     <div class="specialties__inner">
       <div class="specialties__header">
@@ -225,7 +255,7 @@
             What we hold<br /><em>space for.</em>
           </h2>
         </div>
-        <p class="specialties__subhead reveal">We work with a wide range of concerns. If you don't see yours, reach out &mdash; chances are we can help.</p>
+        <p class="specialties__subhead reveal">We work with a wide range of concerns. If you don&rsquo;t see yours, reach out &mdash; chances are we can help.</p>
       </div>
 
       <div class="specialties__field">
@@ -274,61 +304,71 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- ====================================================
+       ABOUT — dramatic split: photo + bio, accordion FAQ
+       ==================================================== -->
   <section class="about" id="about">
-    <div class="about__inner">
-      <div class="about__left">
+    <div class="about__split">
+      <!-- Photo side -->
+      <div class="about__photo-col">
+        <div class="about__photo-wrap reveal-left">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=85&auto=format&fm=webp&fit=crop" alt="Warm, light-filled therapy office" class="about__photo-img" width="900" height="1200" loading="lazy" />
+          <div class="about__photo-caption">205 N. Monroe St., Media PA</div>
+        </div>
+      </div>
+      <!-- Bio side -->
+      <div class="about__bio-col">
         <p class="section-eyebrow reveal">About the Practice</p>
         <h2 class="about__headline reveal">
           One therapist.<br /><em>Real experience.</em><br />Deep care.
         </h2>
-        <p class="about__body reveal">I built my practice on a simple belief: that good therapy is not a transaction. It is a relationship. The people who walk through my door &mdash; children, teens, adults, couples, whole families &mdash; deserve a space that feels honest, unhurried, and genuinely safe.</p>
-        <p class="about__body reveal">I keep my practice small by design because caseload size affects care quality. I collaborate closely with your other providers &mdash; psychiatrists, pediatricians, school counselors &mdash; because the best outcomes happen when everyone is aligned around the same person.</p>
-        <div class="about__photo reveal">
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80&auto=format&fm=webp&fit=crop" alt="Warm, light-filled therapy office with comfortable seating and natural light" class="about__photo-img" width="800" height="534" loading="lazy" />
-        </div>
+        <p class="about__bio-name reveal">Laura Spaulding, LCSW</p>
+        <p class="about__bio-cred reveal">Licensed Clinical Social Worker</p>
+        <p class="about__body reveal">I built my practice on a simple belief: that good therapy is not a transaction &mdash; it is a relationship. The people who walk through my door deserve a space that feels honest, unhurried, and genuinely safe.</p>
+        <p class="about__body reveal">I keep my practice small by design because caseload size affects care quality. I collaborate closely with your other providers &mdash; psychiatrists, pediatricians, school counselors &mdash; because the best outcomes happen when everyone is aligned.</p>
+        <ul class="about__tags reveal">
+          <li>CBT</li>
+          <li>DBT</li>
+          <li>Trauma-Informed</li>
+          <li>Family Systems</li>
+        </ul>
       </div>
-      <div class="about__right">
-        <div class="about__bio reveal">
-          <p class="about__bio-name">Laura Spaulding, LCSW</p>
-          <p class="about__bio-cred">Licensed Clinical Social Worker</p>
-          <p class="about__bio-text">I started my practice because I believed &mdash; and still believe &mdash; that every person deserves a space where they can say anything without judgment, and actually feel heard. After years working in community mental health and outpatient counseling, I wanted to build something different: a small practice where relationships matter more than caseloads.</p>
-          <p class="about__bio-text">Trained in CBT, DBT, and trauma-informed care, I work with individuals, families, and couples across the full arc of life &mdash; from childhood through adulthood.</p>
-          <ul class="about__bio-tags">
-            <li>CBT</li>
-            <li>DBT</li>
-            <li>Trauma-Informed</li>
-            <li>Family Systems</li>
-          </ul>
-          <dl class="about__faq">
-            <div class="about__faq-item">
-              <dt>Do you accept insurance?</dt>
-              <dd>We are out-of-network with most insurers. Many clients are reimbursed through out-of-network benefits or HSA/FSA accounts. We&rsquo;re happy to provide a superbill. Sliding scale available &mdash; please ask.</dd>
-            </div>
-            <div class="about__faq-item">
-              <dt>Is telehealth available?</dt>
-              <dd>Yes. We offer secure video sessions for clients across Pennsylvania. Many clients alternate between in-person and telehealth depending on their week.</dd>
-            </div>
-            <div class="about__faq-item">
-              <dt>How long are sessions?</dt>
-              <dd>Standard sessions are 50 minutes. Extended 80-minute sessions are available for couples and family work, or when a client needs more time to process.</dd>
-            </div>
-          </dl>
-        </div>
-        <div class="about__card reveal">
-          <div class="about__card-top">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>Downtown Media</span>
+    </div>
+
+    <!-- FAQ accordion — distinct band below the split -->
+    <div class="about__faq-band">
+      <div class="about__faq-inner">
+        <p class="about__faq-eyebrow">Common questions</p>
+        <dl class="about__faq">
+          <div class="about__faq-item" data-faq>
+            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span>Do you accept insurance?</span>
+              <span class="about__faq-icon" aria-hidden="true"></span>
+            </dt>
+            <dd class="about__faq-a">We are out-of-network with most insurers. Many clients are reimbursed through out-of-network benefits or HSA/FSA accounts. We&rsquo;re happy to provide a superbill. Sliding scale available &mdash; please ask.</dd>
           </div>
-          <p class="about__card-addr"><a href="https://maps.google.com/?q=205+N+Monroe+St+Media+PA+19063" target="_blank" rel="noopener noreferrer" class="about__card-addr-link">205 N. Monroe St.<br />Media, PA 19063</a></p>
-          <hr class="about__card-rule" />
-          <p class="about__card-note">Free street parking nearby. Accessible via public transit.</p>
-        </div>
+          <div class="about__faq-item" data-faq>
+            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span>Is telehealth available?</span>
+              <span class="about__faq-icon" aria-hidden="true"></span>
+            </dt>
+            <dd class="about__faq-a">Yes. We offer secure video sessions for clients across Pennsylvania. Many clients alternate between in-person and telehealth depending on their week.</dd>
+          </div>
+          <div class="about__faq-item" data-faq>
+            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
+              <span>How long are sessions?</span>
+              <span class="about__faq-icon" aria-hidden="true"></span>
+            </dt>
+            <dd class="about__faq-a">Standard sessions are 50 minutes. Extended 80-minute sessions are available for couples and family work, or when a client needs more time to process.</dd>
+          </div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- ====================================================
+       TESTIMONIALS — terra-pale, large stacked quotes
+       ==================================================== -->
   <section class="trust-strip" aria-label="Client voices">
     <div class="trust-strip__inner">
       <p class="trust-strip__label">Client voices</p>
@@ -356,63 +396,56 @@
     </div>
   </section>
 
-  <!-- CTA — split layout, no wavy divider -->
+  <!-- ====================================================
+       CTA — full-bleed dark, editorial large type
+       ==================================================== -->
   <section class="cta-section">
-    <div class="cta-section__inner reveal">
-      <div class="cta-section__left">
+    <div class="cta-section__inner">
+      <div class="cta-section__text reveal">
         <p class="cta-section__pre">Ready to begin?</p>
-        <h2 class="cta-section__headline">Taking the first step<br />is the <em>hardest part.</em></h2>
+        <h2 class="cta-section__headline">Taking the<br /><em>first step</em><br />is the hardest part.</h2>
       </div>
-      <div class="cta-section__right">
-        <p class="cta-section__body">We make it easy. Reach out today and we'll find the right fit for you. Most clients hear back within 24 hours.</p>
+      <div class="cta-section__action reveal" data-delay="1">
+        <p class="cta-section__body">We make it easy. Reach out today and we&rsquo;ll find the right fit for you. Most clients hear back within 24 hours.</p>
         <a href="#contact" class="btn btn--primary">Book a Free Consultation</a>
-        <p class="cta-section__phone-alt">Or call us now: <a href="tel:6105851373" class="cta-section__phone-link">610-585-1373</a></p>
+        <p class="cta-section__phone-alt">Or call now: <a href="tel:6105851373" class="cta-section__phone-link">610-585-1373</a></p>
       </div>
     </div>
+    <div class="cta-section__bg-word" aria-hidden="true">begin</div>
   </section>
 
-  <!-- Contact -->
+  <!-- ====================================================
+       CONTACT — dark background, floating cream card
+       ==================================================== -->
   <section class="contact" id="contact">
     <div class="contact__inner">
       <div class="contact__info">
-        <p class="section-eyebrow reveal">Get in Touch</p>
+        <p class="section-eyebrow contact__eyebrow reveal">Get in Touch</p>
         <h2 class="contact__headline reveal">Ready when<br /><em>you are.</em></h2>
+
         <div class="contact__details reveal">
-          <div class="contact__detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p class="contact__detail-label">Office</p>
-              <p>205 N. Monroe St.<br />Media, PA 19063</p>
-            </div>
+          <div class="contact__detail-item">
+            <p class="contact__detail-label">Office</p>
+            <p class="contact__detail-val">205 N. Monroe St.<br />Media, PA 19063</p>
           </div>
-          <div class="contact__detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <div>
-              <p class="contact__detail-label">Phone</p>
-              <a href="tel:6105851373" class="contact__link">610-585-1373</a>
-            </div>
+          <div class="contact__detail-item">
+            <p class="contact__detail-label">Phone</p>
+            <a href="tel:6105851373" class="contact__link">610-585-1373</a>
           </div>
-          <div class="contact__detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><polyline points="22,3 12,13 2,3"/></svg>
-            <div>
-              <p class="contact__detail-label">Email</p>
-              <a href="mailto:afantalis@gmail.com" class="contact__link">afantalis@gmail.com</a>
-            </div>
+          <div class="contact__detail-item">
+            <p class="contact__detail-label">Email</p>
+            <a href="mailto:afantalis@gmail.com" class="contact__link">afantalis@gmail.com</a>
           </div>
-          <div class="contact__detail">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <div>
-              <p class="contact__detail-label">Hours</p>
-              <p>Mon&ndash;Fri: 7 AM&ndash;8 PM<br />Sat&ndash;Sun: Closed</p>
-            </div>
+          <div class="contact__detail-item">
+            <p class="contact__detail-label">Hours</p>
+            <p class="contact__detail-val">Mon&ndash;Fri: 7 AM&ndash;8 PM<br />Sat&ndash;Sun: Closed</p>
           </div>
         </div>
-        <div class="contact__parking reveal">
-          <strong>Parking:</strong> Metered parking on Monroe St. Free side-street parking available. Accessible via public transit.
-        </div>
+
+        <p class="contact__parking reveal">Free street parking on Monroe St. and nearby side streets. Accessible via public transit.</p>
       </div>
 
-      <div class="contact__form-wrap reveal">
+      <div class="contact__form-card reveal">
         <form class="contact__form" action="https://formspree.io/f/xpznqkdl" method="POST">
           <input type="hidden" name="_next" value="https://zed0minat0r.github.io/therapist-site/?submitted=1" />
           <div class="form-group">
@@ -450,7 +483,7 @@
         <div class="contact__success" id="formSuccess">
           <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <h3>Message sent</h3>
-          <p>Thank you for reaching out. We'll be in touch within 24 hours.</p>
+          <p>Thank you for reaching out. We&rsquo;ll be in touch within 24 hours.</p>
         </div>
       </div>
     </div>

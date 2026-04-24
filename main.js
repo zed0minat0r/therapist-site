@@ -1,4 +1,4 @@
-/* Amy Fantalis & Associates — main.js */
+/* Laura Spaulding Psychotherapy — main.js */
 (function () {
   'use strict';
 
@@ -41,9 +41,9 @@
     });
   }
 
-  /* ---- Scroll reveals ---- */
+  /* ---- Scroll reveals — handles reveal, reveal-left, reveal-right ---- */
   function initReveals() {
-    var els = document.querySelectorAll('.reveal');
+    var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     if (!els.length) return;
 
     if (reducedMotion) {
@@ -58,26 +58,32 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
 
     els.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ---- Parallax on hero botanical — subtle, hero-only ---- */
+  /* ---- Hero image parallax ---- */
   function initParallax() {
     if (reducedMotion) return;
+    var img = document.getElementById('heroBgImg');
     var botanical = document.querySelector('.hero__botanical');
-    if (!botanical) return;
+    if (!img) return;
 
     var heroH = window.innerHeight;
     var ticking = false;
+
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          if (y < heroH) {
-            botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.08) + 'px))';
-            botanical.style.opacity = String(1 - (y / heroH) * 0.6);
+          if (y < heroH * 1.2) {
+            /* Photo moves at slower rate than scroll = parallax */
+            img.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+            if (botanical) {
+              botanical.style.transform = 'translateY(calc(-48% + ' + (y * 0.08) + 'px))';
+              botanical.style.opacity = String(1 - (y / heroH) * 0.7);
+            }
           }
           ticking = false;
         });
@@ -86,7 +92,7 @@
     }, { passive: true });
   }
 
-  /* ---- Specialty field stagger — editorial row animation ---- */
+  /* ---- Specialty field stagger ---- */
   function initSpecStagger() {
     var field = document.querySelector('.specialties__field');
     if (!field) return;
@@ -106,13 +112,63 @@
         allItems.forEach(function (el, idx) {
           setTimeout(function () {
             el.classList.add('is-visible');
-          }, idx * 40);
+          }, idx * 38);
         });
         observer.disconnect();
       }
     }, { threshold: 0.05 });
 
     observer.observe(field);
+  }
+
+  /* ---- FAQ accordion ---- */
+  function initFaq() {
+    var items = document.querySelectorAll('[data-faq]');
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      var dt = item.querySelector('.about__faq-q');
+      var dd = item.querySelector('.about__faq-a');
+      if (!dt || !dd) return;
+
+      function toggle() {
+        var open = dt.getAttribute('aria-expanded') === 'true';
+        /* Close all */
+        items.forEach(function (other) {
+          var otherDt = other.querySelector('.about__faq-q');
+          var otherDd = other.querySelector('.about__faq-a');
+          if (otherDt) otherDt.setAttribute('aria-expanded', 'false');
+          if (otherDd) otherDd.classList.remove('is-open');
+        });
+        /* Open this if was closed */
+        if (!open) {
+          dt.setAttribute('aria-expanded', 'true');
+          dd.classList.add('is-open');
+        }
+      }
+
+      dt.addEventListener('click', toggle);
+      dt.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle();
+        }
+      });
+    });
+  }
+
+  /* ---- Service selection cards ---- */
+  function initServiceCards() {
+    var cards = document.querySelectorAll('.service-card');
+    var hidden = document.getElementById('service');
+    if (!cards.length || !hidden) return;
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        cards.forEach(function (c) { c.classList.remove('is-selected'); });
+        card.classList.add('is-selected');
+        hidden.value = card.getAttribute('data-value');
+      });
+    });
   }
 
   /* ---- Form success ---- */
@@ -136,7 +192,7 @@
 
     var style = document.createElement('style');
     style.textContent = [
-      '.form-group input.is-invalid, .form-group select.is-invalid, .form-group textarea.is-invalid {',
+      '.form-group input.is-invalid, .form-group textarea.is-invalid {',
       '  border-color: #b84a3a;',
       '  box-shadow: 0 0 0 3px rgba(184,74,58,0.1);',
       '}',
@@ -174,11 +230,8 @@
 
     if (nameField) {
       nameField.addEventListener('blur', function () {
-        if (!nameField.value.trim()) {
-          showError(nameField, 'Please enter your name.');
-        } else {
-          clearError(nameField);
-        }
+        if (!nameField.value.trim()) showError(nameField, 'Please enter your name.');
+        else clearError(nameField);
       });
       nameField.addEventListener('input', function () { if (nameField.value.trim()) clearError(nameField); });
     }
@@ -186,89 +239,15 @@
     if (emailField) {
       emailField.addEventListener('blur', function () {
         var val = emailField.value.trim();
-        if (!val) {
-          showError(emailField, 'Please enter your email address.');
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-          showError(emailField, 'Please enter a valid email address.');
-        } else {
-          clearError(emailField);
-        }
+        if (!val) showError(emailField, 'Please enter your email address.');
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) showError(emailField, 'Please enter a valid email address.');
+        else clearError(emailField);
       });
       emailField.addEventListener('input', function () {
         var val = emailField.value.trim();
         if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) clearError(emailField);
       });
     }
-  }
-
-  /* ---- Service selection cards ---- */
-  function initServiceCards() {
-    var cards = document.querySelectorAll('.service-card');
-    var hidden = document.getElementById('service');
-    if (!cards.length || !hidden) return;
-    cards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        cards.forEach(function (c) { c.classList.remove('is-selected'); });
-        card.classList.add('is-selected');
-        hidden.value = card.getAttribute('data-value');
-      });
-    });
-  }
-
-  /* ---- Pillar number draw-in (on reveal) ---- */
-  function initPillarNums() {
-    if (reducedMotion) return;
-    var nums = document.querySelectorAll('.approach__pillar-num');
-    if (!nums.length) return;
-    var targets = ['01','02','03'];
-    nums.forEach(function (el, idx) {
-      el.setAttribute('data-target', targets[idx]);
-      el.textContent = '00';
-    });
-    var triggered = false;
-    var observer = new IntersectionObserver(function (entries) {
-      if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
-        triggered = true;
-        nums.forEach(function (el, idx) {
-          setTimeout(function () {
-            var final = parseInt(targets[idx], 10);
-            var current = 0;
-            var duration = 600;
-            var steps = 12;
-            var step = duration / steps;
-            el.classList.add('is-counting');
-            var interval = setInterval(function () {
-              current++;
-              el.textContent = (current < 10 ? '0' : '') + current;
-              if (current >= final) {
-                el.textContent = targets[idx];
-                el.classList.remove('is-counting');
-                clearInterval(interval);
-              }
-            }, step);
-          }, idx * 120);
-        });
-        observer.disconnect();
-      }
-    }, { threshold: 0.2 });
-    var pillars = document.querySelector('.approach__pillars');
-    if (pillars) observer.observe(pillars);
-  }
-
-  /* ---- Service row hover ---- */
-  function initSvcHover() {
-    if (reducedMotion) return;
-    document.querySelectorAll('.svc').forEach(function (svc) {
-      svc.addEventListener('mouseenter', function () {
-        svc.querySelector('.svc__num').style.transform = 'translateX(6px)';
-      });
-      svc.addEventListener('mouseleave', function () {
-        svc.querySelector('.svc__num').style.transform = '';
-      });
-    });
-    var style = document.createElement('style');
-    style.textContent = '.svc__num { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), color 0.3s; }';
-    document.head.appendChild(style);
   }
 
   /* ---- Reading progress bar ---- */
@@ -290,6 +269,8 @@
     }, { passive: true });
   }
 
+  /* ---- Service row hover: image scale is handled by CSS — no JS needed ---- */
+
   /* ---- Init ---- */
   function init() {
     initNav();
@@ -297,12 +278,11 @@
     initReveals();
     initParallax();
     initSpecStagger();
+    initFaq();
+    initServiceCards();
     initFormSuccess();
     initFormValidation();
-    initSvcHover();
     initReadingProgress();
-    initServiceCards();
-    initPillarNums();
   }
 
   if (document.readyState === 'loading') {
