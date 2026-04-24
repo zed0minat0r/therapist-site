@@ -478,7 +478,7 @@ h2 em, h1 em {
    APPROACH — dark forest, editorial giant ghost numbers
    =================================================== */
 .approach {
-  background: var(--forest-deep);
+  background: var(--forest-pale);
   padding: 100px 40px 100px;
   position: relative;
   overflow: hidden;
@@ -492,7 +492,7 @@ h2 em, h1 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: 18vw;
   font-weight: 600;
-  color: rgba(255,255,255,0.025);
+  color: rgba(0,0,0,0.03);
   letter-spacing: -0.04em;
   line-height: 1;
   pointer-events: none;
@@ -507,19 +507,19 @@ h2 em, h1 em {
   z-index: 1;
 }
 
-.approach__eyebrow { color: var(--gold-lt); margin-bottom: 24px; }
+.approach__eyebrow { color: var(--gold); margin-bottom: 24px; }
 
 .approach__headline {
   font-size: clamp(2.8rem, 5.5vw, 5rem);
   max-width: 640px;
   margin-bottom: 88px;
-  color: var(--white);
+  color: var(--ink);
   font-weight: 300;
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
 .approach__headline em {
-  color: var(--terra-lt);
+  color: var(--terra);
   font-style: italic;
 }
 
@@ -528,17 +528,17 @@ h2 em, h1 em {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
 .approach__pillar {
   padding: 52px 48px 52px 0;
-  border-right: 1px solid rgba(255,255,255,0.06);
+  border-right: 1px solid rgba(0,0,0,0.06);
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
 }
-.approach__pillar:hover { background: rgba(255,255,255,0.02); }
+.approach__pillar:hover { background: rgba(0,0,0,0.02); }
 .approach__pillar:last-child { border-right: none; padding-right: 0; }
 .approach__pillar:not(:first-child) { padding-left: 48px; }
 
@@ -550,7 +550,7 @@ h2 em, h1 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(7rem, 14vw, 13rem);
   font-weight: 600;
-  color: rgba(255,255,255,0.04);
+  color: rgba(0,0,0,0.04);
   line-height: 1;
   letter-spacing: -0.04em;
   pointer-events: none;
@@ -565,7 +565,7 @@ h2 em, h1 em {
   font-family: 'Cormorant Garamond', serif;
   font-size: 14px;
   font-weight: 400;
-  color: var(--gold-lt);
+  color: var(--gold);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 24px;
@@ -576,21 +576,21 @@ h2 em, h1 em {
   font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   font-weight: 400;
   margin-bottom: 18px;
-  color: var(--white);
+  color: var(--ink);
   font-family: 'Cormorant Garamond', serif;
   letter-spacing: -0.01em;
   line-height: 1.15;
 }
 .approach__pillar p {
   font-size: 14px;
-  color: rgba(255,255,255,0.62);
+  color: var(--ink-mid);
   line-height: 1.85;
   font-weight: 300;
 }
 
 /* Pull quote */
 .approach__quote-wrap {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
   padding-top: 52px;
   margin-top: 16px;
   max-width: 560px;
@@ -603,7 +603,7 @@ h2 em, h1 em {
   font-style: italic;
   font-size: clamp(1.25rem, 2.2vw, 1.6rem);
   font-weight: 300;
-  color: rgba(255,255,255,0.72);
+  color: var(--ink-mid);
   line-height: 1.55;
 }
 .approach__quote cite {
@@ -1578,8 +1578,8 @@ h2 em, h1 em {
   .approach { padding: 72px 20px 72px; }
   .approach::before { font-size: 32vw; }
   .approach__pillars { grid-template-columns: 1fr; }
-  .approach__pillar { padding: 36px 0; border-right: none; border-top: 1px solid rgba(255,255,255,0.08); }
-  .approach__pillar:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .approach__pillar { padding: 36px 0; border-right: none; border-top: 1px solid rgba(0,0,0,0.08); }
+  .approach__pillar:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
   .approach__quote-wrap { margin-left: 0; max-width: 100%; border-left-width: 2px; padding-left: 20px; }
 
   /* Services */
