@@ -1623,15 +1623,15 @@ h2 em, h1 em {
   .hero__botanical { display: none; }
   .hero__scroll-cue { right: 20px; bottom: 80px; }
 
-  /* Approach */
-  .approach { padding: 72px 20px 72px; }
+  /* Approach — absorbs 80px bleed from hero */
+  .approach { padding: 152px 20px 72px; }
   .approach__pillars { grid-template-columns: 1fr; }
   .approach__pillar { padding: 36px 0; border-right: none; border-top: 1px solid rgba(0,0,0,0.08); }
   .approach__pillar:last-child { border-bottom: 1px solid rgba(0,0,0,0.08); }
   .approach__quote-wrap { margin-left: 0; max-width: 100%; border-left-width: 2px; padding-left: 20px; }
 
   /* Services */
-  .services__intro { padding: 64px 20px 48px; }
+  .services__intro { padding: 144px 20px 48px; }
   .svc-row { grid-template-columns: 1fr; min-height: auto; }
   .svc-row--img-right { direction: ltr; }
   .svc-row--img-right .svc-row__photo { order: -1; }
@@ -1644,23 +1644,24 @@ h2 em, h1 em {
   .svc-row__desc { max-width: 100%; }
   .services__fee-note { padding: 28px 20px; }
 
-  /* Specialties */
-  .specialties { padding: 72px 20px 72px; }
+  /* Specialties — absorbs 80px bleed from services */
+  .specialties { padding: 152px 20px 72px; }
   .specialties__header { grid-template-columns: 1fr; gap: 20px 0; }
   .specialties__subhead { padding-top: 0; }
   .spec--lg { margin-right: 20px; }
   .spec--md { margin-right: 16px; }
 
   /* About */
-  .about__split { grid-template-columns: 1fr; padding: 0 20px; gap: 0; }
+  /* About split — 80px top absorbs specialties bleed */
+  .about__split { grid-template-columns: 1fr; padding: 80px 20px 0; gap: 0; }
   .about__photo-col { display: none; }
-  .about__bio-col { padding: 72px 0; text-align: center; }
+  .about__bio-col { padding: 16px 0 72px; text-align: center; }
   .about__tags { justify-content: center; }
   .about__faq-band { padding: 56px 20px; }
   .about__faq-a { max-width: 100%; }
 
-  /* Testimonials */
-  .trust-strip { padding: 56px 0 48px; }
+  /* Testimonials — absorbs 80px bleed from about */
+  .trust-strip { padding: 136px 0 48px; }
   .trust-strip__header { padding: 0 20px 36px; flex-direction: column; gap: 6px; align-items: flex-start; }
   .trust-strip__track { padding: 4px 20px 24px; }
   .trust-q {
@@ -1672,14 +1673,14 @@ h2 em, h1 em {
   .trust-strip__fade-right { width: 20px; }
   .trust-strip__permission { padding: 0 20px; }
 
-  /* CTA */
-  .cta-section { padding: 80px 20px; }
+  /* CTA — absorbs 80px bleed from testimonials */
+  .cta-section { padding: 160px 20px 80px; }
   .cta-section__inner { grid-template-columns: 1fr; gap: 40px 0; text-align: center; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
 
   /* Contact */
-  .contact__inner { grid-template-columns: 1fr; gap: 56px 0; padding: 72px 20px; }
+  .contact__inner { grid-template-columns: 1fr; gap: 56px 0; padding: 152px 20px 72px; }
   .contact__info { text-align: center; }
   .contact__details { align-items: center; }
   .contact__form-card { padding: 36px 24px; }
@@ -1994,6 +1995,138 @@ h2 em, h1 em {
     margin-right: 0 !important;
     width: 100% !important;
   }
+}
+
+/* ===================================================
+   GRADIENT BLEED TRANSITIONS
+   Standalone divs inserted between each section pair.
+   They overlap the adjoining sections via negative margins
+   so there's never a hard color line at section boundaries.
+   =================================================== */
+
+/*
+  Pattern: each .gb-[from]-[to] div is 80px tall,
+  overlaps 40px into the section above (margin-top:-40px)
+  and 40px into the section below (margin-bottom:-40px).
+  z-index keeps it above section backgrounds but below content.
+*/
+.gradient-bleed {
+  display: block;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  /* Overlap only INTO the incoming section (below).
+     The outgoing section has overflow:hidden so we can't
+     bleed upward into it — the gradient starts at section end
+     and the incoming section's top 80px of padding absorbs it. */
+  margin-top: 0;
+  margin-bottom: -80px;
+}
+
+/* 1. Hero (dark forest ~#1a2e17 to forest-pale #e8ede5 via approach bg) */
+.gb-hero-approach {
+  background: linear-gradient(to bottom, #1a2e17, #e8ede5);
+}
+
+/* 2. Approach (forest-pale #e8ede5) → Services (parchment #f7f2ea) */
+.gb-approach-services {
+  background: linear-gradient(to bottom, #e8ede5, #f7f2ea);
+}
+
+/* 3. Services (parchment #f7f2ea) → Specialties (ink #1a1a18) */
+.gb-services-specialties {
+  background: linear-gradient(to bottom, #f7f2ea, #1a1a18);
+}
+
+/* 4. Specialties (ink #1a1a18) → About (parchment #f7f2ea) */
+.gb-specialties-about {
+  background: linear-gradient(to bottom, #1a1a18, #f7f2ea);
+}
+
+/* 5. About FAQ band (forest-deep #1a2e17) → Testimonials (terra-pale #f2e6df) */
+.gb-about-testimonials {
+  background: linear-gradient(to bottom, #1a2e17, #f2e6df);
+}
+
+/* 6. Testimonials (terra-pale #f2e6df) → CTA (forest-deep #1a2e17) */
+.gb-testimonials-cta {
+  background: linear-gradient(to bottom, #f2e6df, #1a2e17);
+}
+
+/* 7. CTA (forest-deep #1a2e17) → Contact (ink #1a1a18) */
+.gb-cta-contact {
+  background: linear-gradient(to bottom, #1a2e17, #1a1a18);
+}
+
+/* Contact → Footer: same ink color — no bleed needed */
+
+/* ---- Incoming section adjustments ----
+   Each section that receives a gradient-bleed div above it
+   needs extra top padding to push content below the 80px bleed zone.
+   Inner wrappers get z-index:3 so they sit above the bleed (z-index:2).
+*/
+
+/* Approach receives Hero bleed */
+.approach {
+  padding-top: 180px; /* was 100px + 80px bleed absorption */
+}
+.approach__inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* Services receives Approach bleed */
+.services__intro {
+  padding-top: 168px; /* was 88px + 80px */
+}
+/* services has no single inner wrapper — ensure svc-rows are above */
+.svc-row {
+  position: relative;
+  z-index: 3;
+}
+
+/* Specialties receives Services bleed */
+.specialties {
+  padding-top: 180px; /* was 100px + 80px */
+}
+.specialties__inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* About receives Specialties bleed */
+.about__split {
+  padding-top: 80px; /* add 80px top padding to absorb bleed */
+}
+.about__bio-col {
+  padding-top: 96px; /* keep original within the split */
+}
+
+/* Trust-strip receives About bleed */
+.trust-strip {
+  padding-top: 152px; /* was 72px + 80px */
+}
+.trust-strip__header,
+.trust-strip__track-wrap,
+.trust-strip__permission {
+  position: relative;
+  z-index: 3;
+}
+
+/* CTA receives Testimonials bleed */
+.cta-section {
+  padding-top: 200px; /* was 120px + 80px */
+}
+.cta-section__inner {
+  position: relative;
+  z-index: 3;
+}
+
+/* Contact receives CTA bleed */
+.contact__inner {
+  padding-top: 176px; /* was 96px + 80px */
 }
 
 /* ===================================================
