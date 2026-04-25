@@ -105,15 +105,21 @@
       return;
     }
 
-    // Assign varied breathing durations and delays to each spec
+    // Assign pseudo-random breathing durations and delays
     var specs = Array.from(field.querySelectorAll('.spec'));
-    specs.forEach(function (el, idx) {
-      // Vary duration between 3s and 5s based on position
-      var duration = 3 + (idx % 5) * 0.5;
-      // Stagger delay 0-2s so they start at different times
-      var delay = (idx * 0.35) % 2;
-      el.style.setProperty('--bd', duration + 's');
-      el.style.setProperty('--bdelay', delay + 's');
+    // Use a seeded pseudo-random to feel organic but be deterministic
+    var seed = 7;
+    function rand() { seed = (seed * 16807 + 11) % 2147483647; return (seed % 1000) / 1000; }
+    specs.forEach(function (el) {
+      // Large words: 4-7s, Medium: 3.5-5.5s, Small: 2.5-4.5s
+      var isLg = el.classList.contains('spec--lg');
+      var isMd = el.classList.contains('spec--md');
+      var base = isLg ? 4 : (isMd ? 3.5 : 2.5);
+      var range = isLg ? 3 : 2;
+      var duration = base + rand() * range;
+      var delay = rand() * 4; // 0-4s random delay
+      el.style.setProperty('--bd', duration.toFixed(2) + 's');
+      el.style.setProperty('--bdelay', delay.toFixed(2) + 's');
     });
 
     var triggered = false;

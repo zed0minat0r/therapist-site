@@ -872,14 +872,36 @@ h2 em, h1 em {
   opacity: 1;
   transform: translateX(0) !important;
 }
-.spec.is-breathing {
-  animation: spec-breathe var(--bd, 3.5s) ease-in-out infinite;
+/* Large words: scale up + glow pulse, with rest pause */
+.spec--lg.is-breathing {
+  animation: breathe-lg var(--bd, 5s) ease-in-out infinite;
   animation-delay: var(--bdelay, 0s);
 }
-@keyframes spec-breathe {
-  0%, 100% { scale: 1; opacity: 0.88; }
-  50% { scale: 1.14; opacity: 1; }
+@keyframes breathe-lg {
+  0%, 65%, 100% { scale: 1; text-shadow: 0 0 0px rgba(255,255,255,0); }
+  30% { scale: 1.12; text-shadow: 0 0 24px rgba(255,255,255,0.15); }
 }
+
+/* Medium words: fade brighter/dimmer, subtle scale */
+.spec--md.is-breathing {
+  animation: breathe-md var(--bd, 4s) ease-in-out infinite;
+  animation-delay: var(--bdelay, 0s);
+}
+@keyframes breathe-md {
+  0%, 70%, 100% { opacity: 0.45; scale: 1; }
+  35% { opacity: 0.85; scale: 1.06; }
+}
+
+/* Small words: gentle vertical drift */
+.spec--sm.is-breathing {
+  animation: breathe-sm var(--bd, 3.5s) ease-in-out infinite;
+  animation-delay: var(--bdelay, 0s);
+}
+@keyframes breathe-sm {
+  0%, 60%, 100% { translate: 0 0; opacity: 0.25; }
+  30% { translate: 0 -3px; opacity: 0.55; }
+}
+
 .spec:hover {
   color: var(--white);
   text-shadow: 0 0 20px rgba(255,255,255,0.2);
@@ -2267,6 +2289,6 @@ textarea:focus-visible {
   .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
-  .spec.is-breathing { animation: none !important; }
+  .spec--lg.is-breathing, .spec--md.is-breathing, .spec--sm.is-breathing { animation: none !important; }
   .trust-strip__track { animation-play-state: paused !important; }
 }
