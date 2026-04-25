@@ -1761,7 +1761,7 @@ h2 em, h1 em {
 
   /* Testimonials — absorbs 80px bleed from about */
   .trust-strip { padding: 136px 0 48px; }
-  .trust-strip__header { padding: 0 20px 24px; gap: 6px; align-items: flex-start; text-align: left; }
+  .trust-strip__header { padding: 0 20px 24px; gap: 6px; align-items: center; text-align: center; }
   /* Hide header hint on mobile — shown adjacent to track instead */
   .trust-strip__header .trust-strip__hint { display: none; }
   .trust-strip__hint--mobile { display: block; }
@@ -1979,15 +1979,16 @@ h2 em, h1 em {
 
   /* ---- Testimonials ---- */
   .trust-strip__header {
-    text-align: left !important;
+    text-align: center !important;
+    align-items: center !important;
   }
   .trust-strip__eyebrow,
   .trust-strip__title {
-    text-align: left !important;
+    text-align: center !important;
   }
   .trust-q__text,
   .trust-q__cite {
-    text-align: left !important;
+    text-align: center !important;
   }
   .trust-strip__permission {
     text-align: center !important;
@@ -2083,8 +2084,6 @@ h2 em, h1 em {
   }
 
   /* ---- Generic catch-all for any labels / eyebrows ---- */
-  /* Note: trust-strip__eyebrow and trust-strip__title are intentionally left-aligned on mobile
-     to match the left-aligned card text and "Swipe to read" hint — excluded from this block. */
   .section-eyebrow,
   .about__faq-eyebrow,
   .cta-section__pre {
