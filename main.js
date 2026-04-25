@@ -190,23 +190,6 @@
     var form = document.querySelector('.contact__form');
     if (!form) return;
 
-    var style = document.createElement('style');
-    style.textContent = [
-      '.form-group input.is-invalid, .form-group textarea.is-invalid {',
-      '  border-color: #b84a3a;',
-      '  box-shadow: 0 0 0 3px rgba(184,74,58,0.1);',
-      '}',
-      '.form-error {',
-      '  font-size: 12px;',
-      '  color: #b84a3a;',
-      '  font-weight: 400;',
-      '  margin-top: 4px;',
-      '  display: none;',
-      '}',
-      '.form-error.is-visible { display: block; }'
-    ].join('\n');
-    document.head.appendChild(style);
-
     function showError(field, msg) {
       field.classList.add('is-invalid');
       var err = field.parentNode.querySelector('.form-error');
