@@ -877,8 +877,8 @@ h2 em, h1 em {
   animation-delay: var(--bdelay, 0s);
 }
 @keyframes spec-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.14); }
+  0%, 100% { scale: 1; opacity: 0.88; }
+  50% { scale: 1.14; opacity: 1; }
 }
 .spec:hover {
   color: var(--white);
