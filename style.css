@@ -498,7 +498,7 @@ h2 em, h1 em {
   max-width: 640px;
   margin-bottom: 88px;
   color: var(--ink);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.08;
 }
@@ -623,7 +623,7 @@ h2 em, h1 em {
 .services__headline {
   font-size: clamp(2.6rem, 5.5vw, 4.6rem);
   color: var(--ink);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.01em;
   margin-top: 18px;
   line-height: 1.05;
@@ -790,7 +790,7 @@ h2 em, h1 em {
 
 .specialties__headline {
   font-size: clamp(2.4rem, 5vw, 4.2rem);
-  font-weight: 300;
+  font-weight: 400;
   margin-top: 16px;
   color: var(--white);
   letter-spacing: -0.01em;
@@ -952,7 +952,7 @@ h2 em, h1 em {
 }
 .about__headline {
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 32px;
   margin-top: 18px;
   color: var(--ink);
@@ -1135,7 +1135,7 @@ h2 em, h1 em {
 .trust-strip__title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--ink);
   line-height: 1.1;
   margin-bottom: 48px;
@@ -1276,7 +1276,7 @@ h2 em, h1 em {
 .cta-section__headline {
   font-size: clamp(3.2rem, 7vw, 6.5rem);
   color: var(--white);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.02em;
 }
