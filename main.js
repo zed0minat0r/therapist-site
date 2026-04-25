@@ -105,14 +105,28 @@
       return;
     }
 
+    // Assign varied breathing durations and delays to each spec
+    var specs = Array.from(field.querySelectorAll('.spec'));
+    specs.forEach(function (el, idx) {
+      // Vary duration between 3s and 5s based on position
+      var duration = 3 + (idx % 5) * 0.5;
+      // Stagger delay 0-2s so they start at different times
+      var delay = (idx * 0.35) % 2;
+      el.style.setProperty('--bd', duration + 's');
+      el.style.setProperty('--bdelay', delay + 's');
+    });
+
     var triggered = false;
     var observer = new IntersectionObserver(function (entries) {
       if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
         triggered = true;
         allItems.forEach(function (el, idx) {
-          el.style.setProperty('--bi', idx);
           setTimeout(function () {
             el.classList.add('is-visible');
+            // Start breathing after reveal completes
+            if (el.classList.contains('spec')) {
+              setTimeout(function () { el.classList.add('is-breathing'); }, 600);
+            }
           }, idx * 38);
         });
         observer.disconnect();

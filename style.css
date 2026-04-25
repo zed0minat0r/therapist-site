@@ -871,12 +871,14 @@ h2 em, h1 em {
 .spec.is-visible {
   opacity: 1;
   transform: translateX(0) !important;
-  animation: spec-breathe calc(3s + var(--bi, 0) * 0.3s) ease-in-out infinite;
-  animation-delay: calc(var(--bi, 0) * 0.45s);
+}
+.spec.is-breathing {
+  animation: spec-breathe var(--bd, 3.5s) ease-in-out infinite;
+  animation-delay: var(--bdelay, 0s);
 }
 @keyframes spec-breathe {
-  0%, 100% { transform: scale(1) translateX(0); opacity: 0.85; }
-  50% { transform: scale(1.12) translateX(0); opacity: 1; }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
 }
 .spec:hover {
   color: var(--white);
@@ -2265,6 +2267,7 @@ textarea:focus-visible {
   .hero__botanical svg { animation: none; }
   .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
-  .spec, .spec-sep { opacity: 1; transform: none !important; animation: none !important; }
+  .spec, .spec-sep { opacity: 1; transform: none !important; }
+  .spec.is-breathing { animation: none !important; }
   .trust-strip__track { animation-play-state: paused !important; }
 }
