@@ -110,6 +110,7 @@
       if (!triggered && entries.some(function (e) { return e.isIntersecting; })) {
         triggered = true;
         allItems.forEach(function (el, idx) {
+          el.style.setProperty('--bi', idx);
           setTimeout(function () {
             el.classList.add('is-visible');
           }, idx * 38);

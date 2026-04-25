@@ -868,10 +868,20 @@ h2 em, h1 em {
 .spec-row:nth-child(odd) .spec-sep { transform: translateX(-40px); }
 .spec-row:nth-child(even) .spec,
 .spec-row:nth-child(even) .spec-sep { transform: translateX(40px); }
-.spec.is-visible { opacity: 1; transform: translateX(0) !important; }
+.spec.is-visible {
+  opacity: 1;
+  transform: translateX(0) !important;
+  animation: spec-breathe calc(3s + var(--bi, 0) * 0.3s) ease-in-out infinite;
+  animation-delay: calc(var(--bi, 0) * 0.45s);
+}
+@keyframes spec-breathe {
+  0%, 100% { transform: scale(1) translateX(0); opacity: 0.85; }
+  50% { transform: scale(1.12) translateX(0); opacity: 1; }
+}
 .spec:hover {
   color: var(--white);
   text-shadow: 0 0 20px rgba(255,255,255,0.2);
+  animation-play-state: paused;
 }
 .spec--lg {
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
@@ -2255,6 +2265,6 @@ textarea:focus-visible {
   .hero__botanical svg { animation: none; }
   .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
-  .spec, .spec-sep { opacity: 1; transform: none !important; }
+  .spec, .spec-sep { opacity: 1; transform: none !important; animation: none !important; }
   .trust-strip__track { animation-play-state: paused !important; }
 }
