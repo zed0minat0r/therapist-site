@@ -1650,7 +1650,7 @@ h2 em, h1 em {
   .hero__scroll-cue { right: 20px; bottom: 80px; }
 
   /* Approach — absorbs 80px bleed from hero */
-  .approach { padding: 152px 20px 72px; }
+  .approach { padding: 200px 20px 72px; }
   .approach__pillars { grid-template-columns: 1fr; }
   .approach__pillar { padding: 36px 20px !important; border-right: none !important; border-left: none !important; border-top: 3px solid transparent; }
   .approach__pillar:first-child { border-top-color: var(--terra); }
