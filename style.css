@@ -1004,7 +1004,7 @@ h2 em, h1 em {
 /* FAQ accordion band */
 .about__faq-band {
   background: var(--forest-deep);
-  padding: 72px 40px;
+  padding: 152px 40px 72px;
 }
 .about__faq-inner {
   max-width: 1280px;
@@ -1687,7 +1687,7 @@ h2 em, h1 em {
   .about__photo-col { display: none; }
   .about__bio-col { padding: 16px 0 72px; text-align: center; }
   .about__tags { justify-content: center; }
-  .about__faq-band { padding: 56px 20px; }
+  .about__faq-band { padding: 136px 20px 56px; }
   .about__faq-a { max-width: 100%; }
 
   /* Testimonials — absorbs 80px bleed from about */
@@ -2084,6 +2084,14 @@ h2 em, h1 em {
 }
 
 /* 5. About FAQ band (forest-deep #1a2e17) → Testimonials (terra-pale #f2e6df) */
+/* About parchment → FAQ dark band */
+.gb-about-faq {
+  background: linear-gradient(to bottom, #f7f2ea, #1e3220);
+  margin-bottom: -80px;
+  position: relative;
+  z-index: 1;
+}
+
 .gb-about-testimonials {
   background: linear-gradient(to bottom, #1a2e17, #f2e6df);
 }
