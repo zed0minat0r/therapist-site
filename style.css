@@ -888,8 +888,8 @@ h2 em, h1 em {
   animation-delay: var(--bdelay, 0s);
 }
 @keyframes breathe-md {
-  0%, 70%, 100% { opacity: 0.45; scale: 1; }
-  35% { opacity: 0.85; scale: 1.06; }
+  0%, 70%, 100% { scale: 1; }
+  35% { scale: 1.06; }
 }
 
 /* Small words: gentle vertical drift */
@@ -898,8 +898,8 @@ h2 em, h1 em {
   animation-delay: var(--bdelay, 0s);
 }
 @keyframes breathe-sm {
-  0%, 60%, 100% { translate: 0 0; opacity: 0.25; }
-  30% { translate: 0 -3px; opacity: 0.55; }
+  0%, 60%, 100% { translate: 0 0; }
+  30% { translate: 0 -3px; }
 }
 
 .spec:hover {
