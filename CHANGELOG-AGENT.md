@@ -162,3 +162,25 @@ axe-core 4.11.3 re-run post-deploy:
 - All cycle 2 fixes confirmed still holding (landmark-one-main, aria-allowed-role, region, form-label all passing)
 
 2026-04-26 17:15 accessibility — focus: hero stats semantic + specialties aria-hidden + tap targets, top issue: hero stats entirely hidden from screen readers (aria-hidden on meaningful content), fixed: 3
+
+## 2026-04-26 — QA (cycle 3)
+
+Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-CYCLE-3.md created.
+
+- All 4 viewports: zero console errors, zero horizontal overflow
+- Hero: visible all viewports, stats bar + role=list confirmed, no location tagline
+- Botanical SVG: intentionally hidden at ≤900px (CSS design decision, not a bug)
+- Approach: original Rogers quote ("curious paradox") confirmed all viewports; ghost numbers absent from DOM
+- Services: 3 rows, fee note copy exact ($150/50min/sliding scale/Simple Practice in FAQ), no location copy
+- Specialties: aria-hidden=true on constellation, visually-hidden list 17 items confirmed
+- About: PA PreK-12 subcred visible + uses .about__bio-subcred class (not inline)
+- FAQ accordion: all 4 items, button structure confirmed, aria-expanded toggles on click + Enter + Space, tap targets 70px
+- Rogers quote bridge: FULLY VERIFIED. Full text, cite in bounds, parchment bg, gradient bleeds present, z-index layering correct, centered at 375+414, no border artifacts
+- CTA: visible, 49px tap target, phone fallback correct
+- Contact: 5 correct chips (Individual/Group/Parenting Support/Supervision/Not sure yet), no Family/Couples, no Maps embed, no Psych Today live link, no parking note
+- Footer: correct tagline, no location info
+- Center-alignment (375+414): all key elements pass (offset <12px)
+- Tap targets (375px): all ≥44px — FAQ 70px, chips 44px, nav 44-48px, CTA btn 49px
+- NEW BUG logged: BUG-004 (LOW) — 4 small-print elements at 12px below 13px floor (footer legal, form footnotes, optional label) — deferred design decision
+
+2026-04-26 18:00 qa — 375/414/768/1440px regression sweep, 1 bug found (LOW)

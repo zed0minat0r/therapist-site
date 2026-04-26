@@ -32,6 +32,27 @@ breathing animations are fully intact.
 
 ---
 
+---
+
+## BUG-004 — Small-print text below 13px minimum (LOW) — 2026-04-25 (cycle 3 QA)
+
+QA Playwright sweep at 375px measured 4 elements rendering at 12px, below the 13px floor:
+
+| Element | Selector | Current | Min |
+|---|---|---|---|
+| Footer legal line | `.site-footer__bottom` | 12px | 13px |
+| Form response note | `.contact__form-note` | 12px | 13px |
+| Form privacy note | `.contact__privacy-note` | 12px | 13px |
+| Form optional label | `.form-optional` | 12px | 13px |
+
+All four are tertiary/small-print text (legal copyright, form footnotes, field label modifier). This is a design-intent question — these are intentionally set small to recede visually. However, they technically violate the 13px floor.
+
+**Recommended fix (if approved):** Set all four to `font-size: 13px`. No visual impact on primary content reading experience.
+
+**Status:** Deferred — requires design intent confirmation.
+
+---
+
 ## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
 Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on
