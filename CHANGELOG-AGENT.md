@@ -77,3 +77,5 @@
 - Top-3 cycle 2 priorities: (1) fix/hide broken Psych Today link, (2) resolve families/couples copy vs services gap, (3) queue real testimonial when Laura is ready.
 
 2026-04-26 11:30 nigel — focus axis: conversion-friction, top issue: broken #TODO-PSYCH-TODAY href live on contact page
+
+2026-04-26 10:44 coordinator — scheduled: razor, performance, accessibility, bugs-scaffold, focus: engineering-quality, forbidden: hero/about-bio/services-pricing/contact-form-picker/nav-brand/quote-bridge/gradient-bleeds/color-tokens
