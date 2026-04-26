@@ -90,3 +90,16 @@
 - Net delta: style.css 58219 → 57512 bytes (-707 bytes)
 
 2026-04-26 12:00 razor — orphans removed: .contact__parking, .contact__map, .contact__map iframe, .gb-testimonials-cta (4 selectors + media query dupes), inline style extracted to .about__bio-subcred, -707 bytes
+
+## 2026-04-26 — Performance (cycle 2 baseline)
+
+- Baseline: mobile P=71 BP=96 A=92 S=100 | desktop P=97 BP=96 A=92 S=100
+- Mobile LCP 5.4s (FAILING floor 90) — root cause: Google Fonts render-blocking (803ms) + oversized hero image (524 KiB, 438 KiB wasted on mobile)
+- Fix 1: Google Fonts switched from blocking `<link rel="stylesheet">` to `preload` + `onload` non-blocking pattern with `<noscript>` fallback — est 800ms LCP recovery
+- Fix 2: Hero image `srcset` added (800w/1200w/1600w) — mobile gets ~800px image instead of 1600px, est 300+ KiB savings
+- Fix 3: Service + About images `srcset` added (500w/900w), q reduced 85→75/80 within visual tolerance
+- Fix 4: Favicon inline SVG data URI added — eliminates 404 console error that was hitting Best Practices signal
+- Fix 5: main.js `defer` attribute added
+- Deferred: CSS minification (needs build step, 3 KiB low ROI), cache TTL (GitHub Pages controlled), forced reflow 78ms (acceptable)
+
+2026-04-26 13:00 performance — scores: P=71 BP=96 A=92 S=100, top issue: render-blocking Google Fonts + oversized hero (5.4s LCP), fixed: 5
