@@ -180,6 +180,13 @@ h2 em, h1 em {
   text-shadow: none;
 }
 .nav__brand-first { margin-right: 6px; }
+.nav__brand-llc {
+  font-size: 0.7em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  margin-left: 2px;
+}
 .nav__links {
   display: flex;
   align-items: center;
