@@ -2003,20 +2003,22 @@ h2 em, h1 em {
   z-index: 1;
 }
 
-/* Now transitions into the Rogers quote bridge (--forest #2e4a2a) instead of testimonials */
+/* FAQ band (forest-deep) → Rogers quote bridge (parchment) — restores dark-to-light breath */
 .gb-about-testimonials {
-  background: linear-gradient(to bottom, #1a2e17, #2e4a2a);
+  background: linear-gradient(to bottom, #1a2e17, #f7f2ea);
 }
 
 /* ===================================================
    ROGERS QUOTE BRIDGE — standalone transitional block
    Sits between About FAQ band and CTA section.
-   Uses approach__quote styling but with distinct
-   full-bleed forest background and centered layout.
+   Cream/parchment ground provides the visual "breath"
+   between the dark FAQ band above and dark CTA below —
+   restoring the dark-light-dark rhythm the site was
+   designed with (testimonials originally filled this beat).
    =================================================== */
 .quote-bridge {
-  background: var(--forest);
-  padding: 4rem 2rem;
+  background: var(--parchment);
+  padding: 5rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2030,22 +2032,21 @@ h2 em, h1 em {
   border-top: none;
   padding-top: 0;
   margin-top: 0;
-  /* On forest bg, swap border-left color to be visible */
   border-left-color: var(--terra);
 }
 
 .quote-bridge .approach__quote {
-  color: var(--forest-pale);
+  color: var(--forest-deep);
 }
 
 .quote-bridge .approach__quote cite {
-  color: var(--terra-lt);
+  color: var(--terra);
 }
 
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 3rem 20px;
+    padding: 4rem 20px;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2068,7 +2069,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 2.5rem 16px;
+    padding: 3rem 16px;
   }
 }
 
@@ -2077,9 +2078,9 @@ h2 em, h1 em {
   background: linear-gradient(to bottom, #f2e6df, #1a2e17);
 }
 
-/* 6b. Rogers quote bridge (forest #2e4a2a) → CTA (forest-deep #1a2e17) */
+/* 6b. Rogers quote bridge (parchment #f7f2ea) → CTA (forest-deep #1a2e17) — light-to-dark breath */
 .gb-quote-cta {
-  background: linear-gradient(to bottom, #2e4a2a, #1a2e17);
+  background: linear-gradient(to bottom, #f7f2ea, #1a2e17);
 }
 
 /* 7. CTA (forest-deep #1a2e17) → Contact (ink #1a1a18) */
