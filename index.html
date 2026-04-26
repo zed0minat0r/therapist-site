@@ -109,20 +109,23 @@
       </div>
     </div>
 
-    <div class="hero__stats" aria-hidden="true">
-      <div class="hero__stat">
-        <span class="hero__stat-n">17<sup>+</sup></span>
-        <span class="hero__stat-l">years</span>
+    <div class="hero__stats" aria-label="Practice at a glance" role="list">
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-n" aria-hidden="true">17<sup>+</sup></span>
+        <span class="hero__stat-l" aria-hidden="true">years</span>
+        <span class="visually-hidden">17 plus years of experience</span>
       </div>
-      <div class="hero__stat-div"></div>
-      <div class="hero__stat">
-        <span class="hero__stat-n">13&ndash;Adult</span>
-        <span class="hero__stat-l">ages served</span>
+      <div class="hero__stat-div" aria-hidden="true"></div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-n" aria-hidden="true">13&ndash;Adult</span>
+        <span class="hero__stat-l" aria-hidden="true">ages served</span>
+        <span class="visually-hidden">Ages 13 to adult served</span>
       </div>
-      <div class="hero__stat-div"></div>
-      <div class="hero__stat">
-        <span class="hero__stat-n">Mon&ndash;Fri</span>
-        <span class="hero__stat-l">7 am &ndash; 8 pm</span>
+      <div class="hero__stat-div" aria-hidden="true"></div>
+      <div class="hero__stat" role="listitem">
+        <span class="hero__stat-n" aria-hidden="true">Mon&ndash;Fri</span>
+        <span class="hero__stat-l" aria-hidden="true">7 am &ndash; 8 pm</span>
+        <span class="visually-hidden">Available Monday through Friday, 7 a.m. to 8 p.m.</span>
       </div>
     </div>
 
@@ -267,7 +270,28 @@
         <p class="specialties__subhead reveal">We work with a wide range of concerns. If you don&rsquo;t see yours, reach out &mdash; chances are we can help.</p>
       </div>
 
-      <div class="specialties__field">
+      <!-- Screen-reader list: constellation is aria-hidden; this list conveys the same content -->
+      <ul class="visually-hidden" aria-label="Areas of focus">
+        <li>Anxiety</li>
+        <li>Depression</li>
+        <li>Grief</li>
+        <li>ADHD</li>
+        <li>Family Conflict</li>
+        <li>Stress</li>
+        <li>Social Anxiety</li>
+        <li>Neurodiversity</li>
+        <li>Trauma</li>
+        <li>Behavioral Challenges</li>
+        <li>Self-Esteem</li>
+        <li>School Anxiety</li>
+        <li>Life Transitions</li>
+        <li>Mood Disorders</li>
+        <li>Emerging Adults</li>
+        <li>Academic Struggles</li>
+        <li>Relationship Issues</li>
+      </ul>
+
+      <div class="specialties__field" aria-hidden="true">
         <div class="spec-row">
           <span class="spec spec--lg">Anxiety</span>
           <span class="spec-sep">/</span>
