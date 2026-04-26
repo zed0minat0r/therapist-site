@@ -2150,8 +2150,12 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 14rem 2rem 8rem;     /* padding-top 224px clears the 200px FAQ→quote gradient overlap */
-  min-height: 92vh;              /* cinematic moment — full viewport-height presence */
+  /* The 14rem padding-top was sized to clear an upstream gradient bleed that
+     no longer exists (the gb-about-testimonials/gb-about-faq pair was removed
+     when the bridge moved above the FAQ band). Trimmed to 4rem so the bridge
+     opens promptly after the About bio instead of leaving a tall empty zone. */
+  padding: 4rem 2rem 6rem;
+  min-height: 78vh;              /* cinematic but not absurd; was 92vh */
   text-align: center;
   position: relative;
   display: flex;
@@ -2504,10 +2508,10 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    /* padding-top MUST exceed 200px (the gradient bleed's margin-bottom) so the
-       quote text starts below the gradient by geometry, not by z-index paint
-       order. 14rem = 224px gives 24px of clear breathing room. Don't reduce. */
-    padding: 14rem 20px 4rem;
+    /* (Old padding-top:14rem requirement was for an upstream gradient that no
+       longer exists — bridge now sits between About bio and FAQ band with no
+       gradient between bio and bridge. Tight padding restored.) */
+    padding: 3rem 20px 3.5rem;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2530,10 +2534,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    /* keep padding-top >= 14rem (224px) — see note in 900px block. Reducing this
-       below 200px puts the quote inside the gradient overlap zone and Safari
-       does not always honor the z-index fix that Chromium applies. */
-    padding: 14rem 16px 3rem;
+    padding: 2.5rem 16px 3rem;
   }
 }
 
