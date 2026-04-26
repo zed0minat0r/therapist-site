@@ -2251,6 +2251,24 @@ h2 em, h1 em {
   opacity: 0.34;
   filter: blur(0.6px);
 }
+/* Layered mountain range — 3 ridges create real depth from distant to near */
+.qb-layer--mountains-back {
+  height: 60%;
+  fill: #a8b59a;                /* sage — most distant, faded by atmosphere */
+  opacity: 0.45;
+  filter: blur(1px);
+}
+.qb-layer--mountains-mid {
+  height: 52%;
+  fill: var(--forest-light);    /* mid-distance, more saturated */
+  opacity: 0.55;
+  filter: blur(0.4px);
+}
+.qb-layer--mountains-front {
+  height: 38%;
+  fill: var(--forest);          /* nearest, fully saturated */
+  opacity: 0.7;
+}
 .qb-layer--midback {
   height: 42%;
   fill: var(--forest);
@@ -2262,18 +2280,17 @@ h2 em, h1 em {
   opacity: 0.85;
 }
 .qb-layer--near {
-  height: 22%;
-  fill: var(--forest-deep);
+  height: 9%;                              /* compact grass band, was 22% (way too tall — read as green wall) */
+  fill: none;                               /* was inheriting forest-deep onto Q paths and filling them */
   stroke: var(--forest-deep);
-  stroke-width: 2.4;
+  stroke-width: 2.2;
   stroke-linecap: round;
-  opacity: 0.95;
+  opacity: 0.85;
 }
 .qb-layer--near .qb-grass path {
-  /* Crisp grass strokes regardless of viewBox stretch — vector-effect keeps
-     stroke-width constant in CSS pixels rather than user units. */
+  fill: none;                               /* explicit — Q-paths must be stroke-only, not filled into polygons */
   vector-effect: non-scaling-stroke;
-  stroke-width: 3.5;
+  stroke-width: 2.2;
 }
 .qb-layer--near .qb-wildflowers circle {
   vector-effect: non-scaling-stroke;
