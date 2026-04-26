@@ -129,3 +129,4 @@ Deferred (brand decision required):
 - Hero stats bar: aria-hidden="true" removes "17+ years / Ages 13–Adult / Mon–Fri" from screen readers.
 
 2026-04-26 14:30 accessibility — focus: aria-allowed-role + missing landmark, top issue: dt[role=button] invalid + no <main> element, fixed: 6
+2026-04-26 15:30 nigel — focus axis: conversion-friction, top issue: hero/couples copy mismatch + broken Psych Today href still live in production
