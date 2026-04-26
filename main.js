@@ -169,12 +169,7 @@
       }
 
       dt.addEventListener('click', toggle);
-      dt.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle();
-        }
-      });
+      // Native <button> handles Enter/Space natively — no keydown handler needed.
     });
   }
 
@@ -217,6 +212,7 @@
       if (!err) {
         err = document.createElement('span');
         err.className = 'form-error';
+        err.setAttribute('role', 'alert');
         field.parentNode.appendChild(err);
       }
       err.textContent = msg;

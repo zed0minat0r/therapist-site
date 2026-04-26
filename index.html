@@ -25,6 +25,9 @@
 </head>
 <body>
 
+  <!-- Skip navigation (keyboard / screen reader) -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <!-- Reading progress -->
   <div class="reading-progress" aria-hidden="true"><div class="reading-progress__bar" id="readingBar"></div></div>
 
@@ -46,6 +49,8 @@
       </ul>
     </div>
   </nav>
+
+  <main id="main-content">
 
   <!-- ====================================================
        HERO — parallax photo, dramatic word-by-word entrance
@@ -357,32 +362,40 @@
         <p class="about__faq-eyebrow">Common questions</p>
         <dl class="about__faq">
           <div class="about__faq-item" data-faq>
-            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
-              <span>Do you accept insurance?</span>
-              <span class="about__faq-icon" aria-hidden="true"></span>
+            <dt>
+              <button class="about__faq-q" aria-expanded="false" aria-controls="faq-a-1">
+                <span>Do you accept insurance?</span>
+                <span class="about__faq-icon" aria-hidden="true"></span>
+              </button>
             </dt>
-            <dd class="about__faq-a">My practice is private pay &mdash; I&rsquo;m not contracted with insurance at this time. Individual sessions are $150, with sliding scale slots available. I use Simple Practice, which provides annotated and coded superbills you can submit to your insurance for out-of-network reimbursement at your discretion.</dd>
+            <dd class="about__faq-a" id="faq-a-1">My practice is private pay &mdash; I&rsquo;m not contracted with insurance at this time. Individual sessions are $150, with sliding scale slots available. I use Simple Practice, which provides annotated and coded superbills you can submit to your insurance for out-of-network reimbursement at your discretion.</dd>
           </div>
           <div class="about__faq-item" data-faq>
-            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
-              <span>Is telehealth available?</span>
-              <span class="about__faq-icon" aria-hidden="true"></span>
+            <dt>
+              <button class="about__faq-q" aria-expanded="false" aria-controls="faq-a-2">
+                <span>Is telehealth available?</span>
+                <span class="about__faq-icon" aria-hidden="true"></span>
+              </button>
             </dt>
-            <dd class="about__faq-a">Yes. We offer secure video sessions for clients across Pennsylvania. Many clients alternate between in-person and telehealth depending on their week.</dd>
+            <dd class="about__faq-a" id="faq-a-2">Yes. We offer secure video sessions for clients across Pennsylvania. Many clients alternate between in-person and telehealth depending on their week.</dd>
           </div>
           <div class="about__faq-item" data-faq>
-            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
-              <span>How long are sessions?</span>
-              <span class="about__faq-icon" aria-hidden="true"></span>
+            <dt>
+              <button class="about__faq-q" aria-expanded="false" aria-controls="faq-a-3">
+                <span>How long are sessions?</span>
+                <span class="about__faq-icon" aria-hidden="true"></span>
+              </button>
             </dt>
-            <dd class="about__faq-a">Standard sessions are 50 minutes, available virtual or in person. Groups are ongoing and times vary &mdash; please ask about current group schedules.</dd>
+            <dd class="about__faq-a" id="faq-a-3">Standard sessions are 50 minutes, available virtual or in person. Groups are ongoing and times vary &mdash; please ask about current group schedules.</dd>
           </div>
           <div class="about__faq-item" data-faq>
-            <dt class="about__faq-q" role="button" tabindex="0" aria-expanded="false">
-              <span>What happens in the first session?</span>
-              <span class="about__faq-icon" aria-hidden="true"></span>
+            <dt>
+              <button class="about__faq-q" aria-expanded="false" aria-controls="faq-a-4">
+                <span>What happens in the first session?</span>
+                <span class="about__faq-icon" aria-hidden="true"></span>
+              </button>
             </dt>
-            <dd class="about__faq-a">The first session is really just a conversation. We&rsquo;ll talk about what brought you here, what you&rsquo;re hoping for, and whether we feel like a good fit. There&rsquo;s no pressure, no diagnostic checklist &mdash; just two people getting to know each other. Most clients tell me they felt relieved it was easier than they expected.</dd>
+            <dd class="about__faq-a" id="faq-a-4">The first session is really just a conversation. We&rsquo;ll talk about what brought you here, what you&rsquo;re hoping for, and whether we feel like a good fit. There&rsquo;s no pressure, no diagnostic checklist &mdash; just two people getting to know each other. Most clients tell me they felt relieved it was easier than they expected.</dd>
           </div>
         </dl>
       </div>
@@ -465,7 +478,7 @@
             <input type="tel" id="phone" name="phone" autocomplete="tel" />
           </div>
           <div class="form-group">
-            <label>I&rsquo;m interested in</label>
+            <p class="form-group__visual-label" aria-hidden="true">I&rsquo;m interested in</p>
             <input type="hidden" id="service" name="service" value="" />
             <div class="service-cards" role="group" aria-label="Select a service">
               <button type="button" class="service-card" data-value="individual">Individual</button>
@@ -492,6 +505,8 @@
       </div>
     </div>
   </section>
+
+  </main><!-- /#main-content -->
 
   <!-- Footer -->
   <footer class="site-footer">

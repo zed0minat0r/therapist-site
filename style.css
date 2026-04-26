@@ -39,6 +39,30 @@ body {
   overflow-x: hidden;
 }
 
+/* ---- Skip-to-main link (keyboard / screen reader) ---- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  z-index: 9999;
+  background: var(--forest-deep);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  border: 2px solid var(--terra);
+  letter-spacing: 0.04em;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--terra);
+  outline-offset: 0;
+}
+
 /* ---- Reading progress bar ---- */
 .reading-progress {
   position: fixed;
@@ -1108,6 +1132,7 @@ h2 em, h1 em {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   padding: 24px 0;
   cursor: pointer;
   font-family: 'Cormorant Garamond', serif;
@@ -1119,6 +1144,10 @@ h2 em, h1 em {
   gap: 20px;
   min-height: 44px;
   transition: color 0.2s;
+  /* reset <button> default styles */
+  background: none;
+  border: none;
+  text-align: left;
 }
 .about__faq-q:hover { color: var(--gold-lt); }
 .about__faq-q span:first-child { flex: 1; }
@@ -1345,6 +1374,13 @@ h2 em, h1 em {
   gap: 7px;
 }
 .form-group label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.form-group__visual-label {
   font-size: 12px;
   font-weight: 500;
   color: var(--ink);
@@ -2212,7 +2248,7 @@ textarea:focus-visible {
   .hero__location, .hero__accepting, .hero__sub, .hero__actions, .hero__stats { animation: none; opacity: 1; transform: none; }
   .hero__bg-img { transform: none !important; }
   .hero__botanical svg { animation: none; }
-  .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
+  .btn--primary, .cta-section .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
   .spec--lg.is-breathing, .spec--md.is-breathing, .spec--sm.is-breathing { animation: none !important; }
