@@ -132,3 +132,17 @@ Deferred (brand decision required):
 2026-04-26 15:30 nigel — focus axis: conversion-friction, top issue: hero/couples copy mismatch + broken Psych Today href still live in production
 
 2026-04-25 16:30 coordinator — scheduled: performance, accessibility, qa, coordinator-imessage, focus: integrity-verification, forbidden: hero/about-bio/services-pricing/contact-form-picker/nav-brand/quote-bridge/gradient-bleeds/color-tokens/razor-orphans/breathing-animation/footer-colors. AUDIT.md corrected: cycle 2 audit cited two phantom faults (hero couples copy + live Psych Today href) already fixed in cycle 1 hotfix 493804e — appended correction section, top-3 priorities reset.
+
+## 2026-04-26 — Performance (cycle 3 re-run)
+
+Verification run — no code changes applied. 3 mobile runs + 2 desktop runs.
+
+- Mobile median: P=83 BP=100 A=97 S=100
+- Desktop median: P=97 BP=100 A=97 S=100
+- Mobile LCP: 3.7–3.8 s (down from 5.4 s pre-fix, -1.6–1.7 s)
+- Mobile FCP: 2.8–3.1 s (unchanged vs baseline)
+- Mobile TBT: 0 ms, CLS: 0.003
+
+Verdict: Cycle 2 fixes confirmed moderate improvement (+12 mobile Performance, -1.7s LCP). Mobile Performance still below 90 floor (83). Next highest-impact fix: style.css render-blocking (321ms wasted) — inline critical CSS or media=print onload trick. Secondary: preload hint for hero 800w image.
+
+2026-04-26 16:30 performance — scores: P=83 BP=100 A=97 S=100, top issue: style.css render-blocking (321ms, LCP 3.7s still below floor), fixed: 0 (verification only)
