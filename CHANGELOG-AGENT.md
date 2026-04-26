@@ -203,3 +203,5 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 2026-04-25 17:30 qa — 390/375/393/1440px silhouette-scene deep-dive: layers PASS (hills/trees/grass render, animations active), 3 bugs found (BUG-006 birds invisible in gradient zone, BUG-007 sun hidden in gradient zone, BUG-008 desktop border-left on quote wrap)
 
 2026-04-25 19:00 coordinator — scheduled: performance, builder (voice), pixel, nigel, focus: engineering-quality + voice-consistency, forbidden: silhouette-scene/quote-bridge/birds/sun/hills/trees/grass/footer-contrast/hero/about-bio/services-pricing/contact-form-picker/nav-brand/gradient-bleeds/color-tokens/ghost-numbers
+
+2026-04-25 20:00 qa — iPhone13/SE/Pixel5/Desktop1440 silhouette scene-v3b verify: clouds+wildflowers+distant-birds, 0 bugs found (read-only)

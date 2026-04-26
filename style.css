@@ -2162,6 +2162,35 @@ h2 em, h1 em {
   overflow: hidden;
 }
 
+/* Drifting clouds — soft radial wisps that float across the sky area above the hills.
+   Each cloud is a span with --y, --delay, --dur, --scale custom properties. */
+.qb-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.qb-cloud {
+  position: absolute;
+  top: var(--y);
+  left: -180px;
+  width: 220px;
+  height: 70px;
+  background:
+    radial-gradient(ellipse 60% 50% at 25% 60%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(ellipse 70% 60% at 55% 45%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 75%),
+    radial-gradient(ellipse 55% 50% at 78% 60%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(2px);
+  opacity: 0.7;
+  transform: translateX(0) scale(var(--scale, 1));
+  animation: cloud-drift var(--dur, 100s) linear var(--delay, 0s) infinite;
+  will-change: transform;
+}
+@keyframes cloud-drift {
+  0%   { transform: translateX(0)             scale(var(--scale, 1)); }
+  100% { transform: translateX(calc(100vw + 360px)) scale(var(--scale, 1)); }
+}
+
 /* Soft sun glow upper-right — sits just above the horizon (above hills, below quote).
    Positioned in the parchment zone so it isn't masked by the top gradient. */
 .qb-sun {
@@ -2215,6 +2244,18 @@ h2 em, h1 em {
   50%      { transform: rotate(0.6deg) translateY(-1px); }
 }
 
+/* Wildflowers — small terra blooms scattered along the grass line. The parent
+   .qb-layer--near sets fill:none/stroke:forest-deep for the grass blades, so we
+   explicitly override here with terra fill. */
+.qb-wildflowers circle {
+  fill: var(--terra);
+  stroke: none;
+  opacity: 0.55;
+}
+.qb-wildflowers circle:nth-child(2n)  { fill: var(--terra-lt); opacity: 0.5; }
+.qb-wildflowers circle:nth-child(3n)  { opacity: 0.42; }
+.qb-wildflowers circle:nth-child(5n)  { fill: var(--terra-lt); opacity: 0.6; }
+
 /* Grass blades wave individually with a longer cadence */
 .qb-grass path {
   transform-box: fill-box;
@@ -2231,9 +2272,15 @@ h2 em, h1 em {
 
 @media (prefers-reduced-motion: reduce) {
   .qb-trees,
-  .qb-grass path {
+  .qb-grass path,
+  .qb-cloud {
     animation: none !important;
     transform: none !important;
+  }
+  .qb-cloud {
+    /* hold static positions across the sky so users still see the layer composition */
+    transform: translateX(20vw) scale(var(--scale, 1)) !important;
+    opacity: 0.4;
   }
 }
 
@@ -2262,6 +2309,13 @@ h2 em, h1 em {
   width: 30px;
   height: 15px;
   opacity: 0.45;
+}
+/* Distant flock — much smaller, more transparent, slower. Reads as far away. */
+.quote-bridge__bird--distant {
+  width: 18px;
+  height: 9px;
+  opacity: 0.32;
+  filter: blur(0.4px);
 }
 @keyframes bird-drift {
   0%   { transform: translateX(0)             translateY(0); }

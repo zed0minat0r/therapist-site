@@ -461,6 +461,13 @@
       <!-- Soft sun glow, upper-right -->
       <div class="qb-sun"></div>
 
+      <!-- Drifting clouds — slow, soft, atmospheric -->
+      <div class="qb-clouds" aria-hidden="true">
+        <span class="qb-cloud" style="--y:18%;--delay:0s;--dur:90s;--scale:1;"></span>
+        <span class="qb-cloud" style="--y:28%;--delay:-32s;--dur:110s;--scale:0.78;"></span>
+        <span class="qb-cloud" style="--y:14%;--delay:-65s;--dur:100s;--scale:1.18;"></span>
+      </div>
+
       <!-- Distant horizon: rolling hills, faintest layer -->
       <svg class="qb-layer qb-layer--far" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <path d="M0 220 L0 150 Q120 110 240 130 T480 120 T720 132 T960 118 T1200 128 L1200 220 Z" />
@@ -484,7 +491,7 @@
         </g>
       </svg>
 
-      <!-- Foreground grass blades — taller, darker, anchored bottom -->
+      <!-- Foreground grass blades + scattered wildflowers — terra dots blooming through the grass -->
       <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <g class="qb-grass">
           <path d="M40 220 Q44 200 42 184" />
@@ -502,15 +509,31 @@
           <path d="M1080 220 Q1084 198 1080 182" />
           <path d="M1160 220 Q1156 198 1162 180" />
         </g>
+        <g class="qb-wildflowers">
+          <!-- Small terracotta blooms scattered along the grass line — opacity inherited per-flower -->
+          <circle cx="125" cy="190" r="3" />
+          <circle cx="305" cy="186" r="2.4" />
+          <circle cx="395" cy="192" r="2.8" />
+          <circle cx="565" cy="188" r="3.2" />
+          <circle cx="665" cy="192" r="2.4" />
+          <circle cx="775" cy="186" r="3" />
+          <circle cx="945" cy="190" r="2.8" />
+          <circle cx="1115" cy="188" r="3" />
+        </g>
       </svg>
 
-      <!-- Drifting flock of birds, in the parchment zone (avoiding the dark gradient at top) -->
+      <!-- Drifting flock of birds — primary flock in mid-parchment, secondary high flock for depth -->
       <div class="quote-bridge__flock">
+        <!-- Primary flock (larger, mid-parchment zone) -->
         <span class="quote-bridge__bird" style="--y:54%;--delay:0s;--dur:22s;"></span>
         <span class="quote-bridge__bird" style="--y:46%;--delay:-7s;--dur:26s;"></span>
         <span class="quote-bridge__bird" style="--y:62%;--delay:-13s;--dur:24s;"></span>
         <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:50%;--delay:-3s;--dur:28s;"></span>
         <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:68%;--delay:-9s;--dur:30s;"></span>
+        <!-- Distant high flock — placed clear of the 200px gradient overlap (>52% on mobile bridge ~437px) -->
+        <span class="quote-bridge__bird quote-bridge__bird--distant" style="--y:54%;--delay:-15s;--dur:42s;"></span>
+        <span class="quote-bridge__bird quote-bridge__bird--distant" style="--y:58%;--delay:-22s;--dur:44s;"></span>
+        <span class="quote-bridge__bird quote-bridge__bird--distant" style="--y:51%;--delay:-30s;--dur:40s;"></span>
       </div>
     </div>
 
