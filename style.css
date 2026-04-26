@@ -2251,36 +2251,73 @@ h2 em, h1 em {
   opacity: 0.34;
   filter: blur(0.6px);
 }
+
+/* ===================================================
+   SINGLE COHESIVE LANDSCAPE BACKDROP — replaces the
+   hand-coded mountain/tree layers. Uses CSS mask-image
+   on a CC0 OpenClipart silhouette by GDJ
+   (assets/landscape-scene.svg) so the background-color
+   shows through the silhouette shape, recoloring the
+   black-fill original to forest-deep.
+   =================================================== */
+.qb-landscape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: var(--forest-deep);
+  -webkit-mask-image: url('assets/landscape-scene.svg');
+  mask-image: url('assets/landscape-scene.svg');
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: bottom center;
+  mask-position: bottom center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  pointer-events: none;
+}
+/* Mirrored copy puts a tree cluster on the left (source SVG only has
+   trees on the right). Slightly smaller + faded so it reads as supporting
+   depth, not duplicate. */
+.qb-landscape--mirror {
+  transform: scaleX(-1);
+  opacity: 0.55;
+  height: 38%;
+}
+@media (max-width: 900px) {
+  .qb-landscape          { height: 36%; }
+  .qb-landscape--mirror  { height: 26%; opacity: 0.5; }
+}
+
 /* 4-LAYER MOUNTAIN SYSTEM per atmospheric-perspective playbook.
    Heights stack: back smallest (25%), front tallest (55%) — size differential
    is the primary depth cue. Colors fade from desaturated sage at back through
    forest mid-tones to saturated forest-deep at front. SVG feGaussianBlur
    filters (defined inline in HTML) add atmospheric haze on back 3 layers. */
 .qb-layer--mtn-back {
-  height: 28%;
+  height: 24%;
   fill: #b6c0b3;                /* hsl(110, 10%, 72%) — light desaturated sage, fog-distance */
 }
 .qb-layer--mtn-midback {
-  height: 36%;
+  height: 30%;
   fill: #80a574;                /* hsl(110, 25%, 58%) — medium sage */
 }
 .qb-layer--mtn-mid {
-  height: 42%;
+  height: 36%;
   fill: #4a7240;                /* hsl(110, 40%, 35%) — deeper green, defined */
 }
 .qb-layer--mtn-front {
-  height: 48%;
+  height: 40%;
   fill: var(--forest-deep);     /* near-black forest, sharpest, no blur */
 }
-/* Mobile: cap mountain heights so the front ridge doesn't rise into the quote text zone.
-   Quote sits at ~50% from bridge bottom (flex-centered); mountains are bottom-anchored,
-   so any mtn layer >40% will cross the quote line on small viewports. Color collision
-   between #1a2e17 mtn-front and #1a2e17 quote text would make text illegible. */
+/* Mobile: tighter caps. Front layer must stay below the flex-centered quote
+   AND not dominate the lower half as a solid wall. */
 @media (max-width: 900px) {
-  .qb-layer--mtn-back    { height: 22%; }
-  .qb-layer--mtn-midback { height: 28%; }
-  .qb-layer--mtn-mid     { height: 32%; }
-  .qb-layer--mtn-front   { height: 36%; }
+  .qb-layer--mtn-back    { height: 20%; }
+  .qb-layer--mtn-midback { height: 24%; }
+  .qb-layer--mtn-mid     { height: 28%; }
+  .qb-layer--mtn-front   { height: 32%; }
 }
 .qb-layer--midback {
   height: 42%;

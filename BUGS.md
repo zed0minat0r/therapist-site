@@ -285,6 +285,62 @@ BUG-010 (old stroke-based grass blades) was FIXED in scene-v6 by replacing 20 in
 
 ---
 
+---
+
+## BUG-014 — CRITICAL: .qb-landscape has zero CSS rules — landscape-scene.svg never renders — 2026-04-25 (scene-v8 QA)
+
+**Status:** Open — HIGH severity. The landscape SVG asset does not appear anywhere on any viewport.
+
+**Affected viewports:** All (375px, 390px, 393px, 1440px) — universal failure.
+
+**Root cause (computed evidence):**
+The two `.qb-landscape` divs exist in index.html (lines 475, 477) and the asset `assets/landscape-scene.svg` loads correctly (HTTP 200, 292456 bytes). However, `style.css` contains **zero `.qb-landscape` CSS rules** — no `mask-image`, no `background-color`, no `height`, no `position`, no `bottom`. The computed style on `.qb-landscape` at all viewports:
+
+- `maskImage`: `none` (never set)
+- `backgroundColor`: `rgba(0, 0, 0, 0)` (transparent — no forest-deep)
+- `backgroundImage`: `none`
+- `height`: `0px` / `heightPx: 0` (element is collapsed to zero height)
+- `position`: `static` (not absolute, so cannot be anchored to the bridge bottom)
+- `transform` on mirror: `none` (scaleX(-1) never applied)
+
+The old hand-coded SVG mountain/tree `qb-layer--*` CSS selectors remain in style.css (lines 2239–2295) but those elements no longer exist in the DOM (zero `.qb-layer` elements found at runtime: `oldQbLayerCount: 0`). The replacement implementation was **HTML-only** — the CSS block for `.qb-landscape` was never written.
+
+**Visual result:** No landscape silhouette appears anywhere in the bridge. The scene shows parchment background, gradient bleeds, sun glow, 3 clouds, and 6 birds — but the actual landscape feature (the central architectural element of this change) is completely absent. The bottom of the bridge is an empty parchment void with no horizon line.
+
+**What needs to be added to style.css:**
+```css
+.qb-landscape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;                        /* desktop */
+  background-color: var(--forest-deep);  /* #1a2e17 */
+  mask-image: url('assets/landscape-scene.svg');
+  -webkit-mask-image: url('assets/landscape-scene.svg');
+  mask-size: cover;
+  -webkit-mask-size: cover;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: bottom center;
+  -webkit-mask-position: bottom center;
+  pointer-events: none;
+}
+.qb-landscape--mirror {
+  transform: scaleX(-1);
+  opacity: 0.55;
+  height: 38%;
+}
+@media (max-width: 900px) {
+  .qb-landscape { height: 36%; }
+  .qb-landscape--mirror { height: 26%; }
+}
+```
+
+**Screenshots:** /tmp/scene-v8-iphone-se.png, /tmp/scene-v8-iphone-13.png, /tmp/scene-v8-pixel-5.png, /tmp/scene-v8-desktop-1440.png — all confirm zero landscape silhouette.
+
+---
+
 ## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
 Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on
