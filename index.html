@@ -431,14 +431,65 @@
 
   <!-- Rogers quote — transition between About FAQ band and CTA -->
   <div class="quote-bridge">
-    <!-- Decorative flock of birds drifting across — atmospheric, respects reduced-motion -->
-    <div class="quote-bridge__flock" aria-hidden="true">
-      <span class="quote-bridge__bird" style="--y:18%;--delay:0s;--dur:22s;"></span>
-      <span class="quote-bridge__bird" style="--y:8%;--delay:-7s;--dur:26s;"></span>
-      <span class="quote-bridge__bird" style="--y:28%;--delay:-13s;--dur:24s;"></span>
-      <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:14%;--delay:-3s;--dur:28s;"></span>
-      <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:34%;--delay:-9s;--dur:30s;"></span>
+    <!-- Living silhouette environment — sun, distant hills, swaying tree line, foreground grass, flock of birds. All decorative, aria-hidden, respects prefers-reduced-motion. -->
+    <div class="quote-bridge__scene" aria-hidden="true">
+
+      <!-- Soft sun glow, upper-right -->
+      <div class="qb-sun"></div>
+
+      <!-- Distant horizon: rolling hills, faintest layer -->
+      <svg class="qb-layer qb-layer--far" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 220 L0 150 Q120 110 240 130 T480 120 T720 132 T960 118 T1200 128 L1200 220 Z" />
+      </svg>
+
+      <!-- Mid trees: silhouette tree line with gentle sway -->
+      <svg class="qb-layer qb-layer--mid" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <g class="qb-trees">
+          <!-- Pine + rounded deciduous trees in a varied row -->
+          <path d="M60 220 L60 165 L52 178 L60 168 L48 182 L60 170 L70 184 L60 168 L72 178 L60 162 Z M55 165 h10 v8 h-10 z" />
+          <path d="M150 220 L150 175 Q132 170 132 158 Q126 144 142 142 Q146 130 160 132 Q174 130 178 142 Q194 144 188 158 Q188 170 170 175 L170 220 Z" />
+          <path d="M260 220 L260 168 L250 182 L260 170 L246 186 L260 172 L274 188 L260 170 L276 182 L260 162 Z M255 168 h10 v10 h-10 z" />
+          <path d="M360 220 L360 178 Q346 174 346 164 Q342 152 356 150 Q360 140 372 142 Q386 140 390 152 Q402 154 398 166 Q398 174 384 178 L384 220 Z" />
+          <path d="M470 220 L470 160 L458 178 L470 165 L454 184 L470 168 L486 184 L470 162 L490 176 L470 156 Z M465 160 h10 v9 h-10 z" />
+          <path d="M580 220 L580 172 Q566 168 566 158 Q562 146 576 144 Q580 134 592 136 Q606 134 610 146 Q622 148 618 160 Q618 168 604 172 L604 220 Z" />
+          <path d="M700 220 L700 168 L690 184 L700 170 L686 188 L700 172 L714 188 L700 170 L716 184 L700 160 Z M695 168 h10 v10 h-10 z" />
+          <path d="M810 220 L810 176 Q798 172 798 162 Q794 150 808 148 Q812 138 824 140 Q838 138 842 150 Q854 152 850 164 Q850 172 836 176 L836 220 Z" />
+          <path d="M930 220 L930 162 L920 178 L930 167 L916 184 L930 170 L944 184 L930 167 L948 178 L930 158 Z M925 162 h10 v9 h-10 z" />
+          <path d="M1050 220 L1050 175 Q1036 171 1036 161 Q1032 149 1046 147 Q1050 137 1062 139 Q1076 137 1080 149 Q1092 151 1088 163 Q1088 171 1074 175 L1074 220 Z" />
+          <path d="M1140 220 L1140 168 L1130 182 L1140 170 L1126 186 L1140 172 L1154 186 L1140 170 L1156 182 L1140 162 Z M1135 168 h10 v10 h-10 z" />
+        </g>
+      </svg>
+
+      <!-- Foreground grass blades — taller, darker, anchored bottom -->
+      <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <g class="qb-grass">
+          <path d="M40 220 Q44 200 42 184" />
+          <path d="M90 220 Q86 198 92 178" />
+          <path d="M180 220 Q184 198 180 180" />
+          <path d="M260 220 Q256 196 262 178" />
+          <path d="M340 220 Q344 200 340 184" />
+          <path d="M430 220 Q426 196 432 176" />
+          <path d="M520 220 Q524 200 520 182" />
+          <path d="M620 220 Q616 198 622 178" />
+          <path d="M720 220 Q724 196 720 180" />
+          <path d="M820 220 Q816 198 822 180" />
+          <path d="M910 220 Q914 200 910 184" />
+          <path d="M990 220 Q986 196 992 176" />
+          <path d="M1080 220 Q1084 198 1080 182" />
+          <path d="M1160 220 Q1156 198 1162 180" />
+        </g>
+      </svg>
+
+      <!-- Drifting flock of birds, in the parchment zone (avoiding the dark gradient at top) -->
+      <div class="quote-bridge__flock">
+        <span class="quote-bridge__bird" style="--y:54%;--delay:0s;--dur:22s;"></span>
+        <span class="quote-bridge__bird" style="--y:46%;--delay:-7s;--dur:26s;"></span>
+        <span class="quote-bridge__bird" style="--y:62%;--delay:-13s;--dur:24s;"></span>
+        <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:50%;--delay:-3s;--dur:28s;"></span>
+        <span class="quote-bridge__bird quote-bridge__bird--small" style="--y:68%;--delay:-9s;--dur:30s;"></span>
+      </div>
     </div>
+
     <div class="approach__quote-wrap reveal">
       <blockquote class="approach__quote">
         &ldquo;The good life is a process, not a state of being. It is a direction, not a destination.&rdquo;
