@@ -66,3 +66,14 @@
 - About bio credential (`PA PreK-12 Certified School Counselor`) uses inline `style="font-size:0.875em; opacity:0.8"` — candidate for a proper class (`.about__bio-subcred`)
 
 2026-04-26 09:00 pixel — post-surgery alignment: quote-bridge class, gradient fixes, mobile audit all sections
+
+## 2026-04-26 — Nigel (post-surgery audit)
+
+- Re-scored post customer-surgery cycle. Previous score (8.9) was on a site with 5 material factual errors; now all facts are correct.
+- Testimonials removed (correct and honest) — zero social proof remains on site; Rogers quote bridge does not substitute as trust signal.
+- Broken production link: `href="#TODO-PSYCH-TODAY"` on contact page Psychology Today detail row — trust-eroding fault at highest-stakes scroll position.
+- Content mismatch: hero sub + contact form reference "families and couples" therapy; Services section has no Family or Couples service row.
+- Orphaned CSS: `.gb-testimonials-cta` and `.trust-strip` selectors remain post-surgery.
+- Top-3 cycle 2 priorities: (1) fix/hide broken Psych Today link, (2) resolve families/couples copy vs services gap, (3) queue real testimonial when Laura is ready.
+
+2026-04-26 11:30 nigel — focus axis: conversion-friction, top issue: broken #TODO-PSYCH-TODAY href live on contact page

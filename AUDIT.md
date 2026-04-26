@@ -1,139 +1,139 @@
 # Nigel's Audit — Laura Spaulding Therapist Site
-**Date:** 2026-04-18
+**Date:** 2026-04-26
 **Auditor:** Nigel (strict British auditor)
-**Previous Score:** 8.7 / 10
-**Current Score:** 8.9 / 10
-**Delta:** +0.2
+**Previous Score:** 8.9 / 10 (2026-04-18, pre-surgery — built on incorrect credential, phone, location, ages, pricing, fabricated testimonials)
+**Current Score:** 8.6 / 10
+**Delta:** -0.3
+**Critique Axis:** Conversion Friction
 **Live URL:** https://zed0minat0r.github.io/therapist-site/
 
 ---
 
-## CUSTOMER SURGERY — 2026-04-25 (Builder)
-All 11 customer-directed content changes applied. Credential corrected (LCSW → LPC), phone corrected (610-585-1373 → 484-441-3108), all location references removed (schema address block, hero tagline, office address, parking note, map embed, photo caption, footer tagline), pricing corrected ($150 + 50min, no 80-min/extended sessions), ages updated (7+ → 13+), testimonials section fully removed (HTML + CSS + JS), bio expanded with school/outpatient context + PA PreK-12 credential, supervision copy updated to "Individual and Group Supervision for licensure", group description expanded with adults/parenting focus, second Carl Rogers quote added above CTA, Psychology Today placeholder link added in contact section. See CHANGELOG-AGENT.md for full line-by-line record.
+## SCORING RATIONALE — WHY THE DELTA IS -0.3
+
+The previous 8.9 was scored on a site that was factually wrong in five material ways. Correcting those errors raises the floor substantially — a site built on true facts has higher intrinsic trust than one built on plausible fiction. That foundation lift is real and is credited here.
+
+However, three friction points that affect a real client's experience either emerged or remained through surgery, and conversion friction is the audit axis this cycle. The score lands at 8.6, not 8.9, for the following reasons:
+
+**Deductions:**
+- Testimonials section removed: correct and honest. But the site now has zero social proof of any kind. A prospective client who has never met Laura reads only self-description — copy written by or for the therapist. The Rogers quote bridge is philosophically resonant but it is not social proof. That is a genuine conversion signal drop. (-0.15)
+- Broken production link: `#TODO-PSYCH-TODAY` is the live href on the Psychology Today contact detail. Any client who clicks it lands nowhere. A broken link on a contact page is a trust-eroding fault. (-0.10)
+- Hero/services content mismatch: The hero subhead reads "Collaborative psychotherapy for individuals, families, and couples" and the contact form has "Family" and "Couples" service cards — but the Services section lists only Individual Therapy and Group Therapy. Family and couples therapy are not offered or described anywhere. A client selecting "Couples" in the contact form and then scanning the site for confirmation of that service will find nothing. This is a real friction point, not a design point. (-0.05)
+
+**Credits:**
+- Every vital fact is now true: LPC credential, real phone 484-441-3108, no fabricated location, correct ages 13+, honest pricing at $150/sliding scale, accurate session length, correct supervision timeline. This is the most important thing a therapist site can be. (+full credit)
+- Simple Practice superbill language in FAQ is specific and useful — a client who cares about out-of-network reimbursement gets a real answer. (+)
+- PA PreK-12 School Counselor credential adds differentiation — no competing therapist site leads with this. It is especially relevant for the 13+ age group. (+)
+- Carl Rogers second quote bridge is well-executed as a philosophical transition. Does not replace social proof but it does extend the practice's intellectual identity in a distinctive way. (+)
+- The site reads confidently without fake testimonials. Fabrication would have been worse. (+)
 
 ---
 
-## OVERALL SCORE: 8.9 / 10
+## OVERALL SCORE: 8.6 / 10
 
-Scored from the perspective of a prospective therapy client in suburban Philadelphia — searching on a weekday evening, possibly stressed, not design-literate, deciding whom to trust with something private.
+Scored from the perspective of a prospective therapy client — adult seeking help for themselves or a teenager, suburban Pennsylvania, reading on a phone at evening, deciding whether to fill out the form.
 
-The site earns 8.9. All three priorities from the 8.7 audit have been resolved correctly, and the accessibility additions are substantive rather than cosmetic. The hero italic centering fix, the voice consolidation, and the swipe hint repositioning each address a real user-facing problem. The keyboard focus styles and reduced-motion testimonial pause show professional-grade accessibility awareness. The textarea placeholder copy is a small but well-judged trust signal for an anxious first contact.
-
-What holds the score below 9.0 is a cluster of items that require content or architectural decisions, not code: there is no real photograph of Laura anywhere on the site, the contact email is a personal Gmail address exposed in plain HTML, and two "we" instances in the specialties section remain stylistically inconsistent with the rest of the first-person voice. The form validation styles are still injected at runtime via JavaScript rather than delivered in the stylesheet. None of these are catastrophic. All are fixable.
+The site is now honest, which is the precondition for everything else. The design quality from prior cycles is intact. The scroll experience, editorial typography, animated specialties field, and gradient chain are all preserved. The broken Psychology Today link and the families/couples mismatch are the two things that would give a careful client pause at the exact moment they are deciding to contact.
 
 ---
 
 ## SECTION-BY-SECTION BREAKDOWN
 
-### 1. Hero — 9.2 / 10
+### 1. Hero — 8.8 / 10
 
-The hero italic centering fix is confirmed in the CSS: `.hero__word--italic` retains `padding-left: 1.8rem` on desktop for visual rhythm, and the mobile block at `max-width: 900px` overrides it to `padding-left: 0 !important`. On a 375px screen the italic phrase now sits on the same axis as the rest of the centred headline. Priority 1 from the prior audit is closed.
+Word-by-word entrance, parallax forest image, botanical SVG sway, pulsing green "accepting" dot, and tappable phone number all intact. Stats bar: 17+ years / 13–adult / Mon–Fri 7am–8pm — all accurate. Scroll cue working.
 
-Parallax forest image, word-by-word stagger, pulsing green dot, botanical sway, stats bar, and tappable phone number are all working. The reduced-motion block correctly disables the botanical sway animation for users who have requested it. This is the strongest opening section on any therapist site I have reviewed.
+One issue: the hero subhead reads "Collaborative psychotherapy for individuals, families, and couples." Family therapy and couples therapy are not listed services. This copy predates the surgery and was not caught. A client screening for couples therapy will find it in the hero, find it in the contact form service cards, and find nothing in the Services section. That is a gap at the first impression. Either the services should be added, or the hero copy should be scoped to what is actually offered.
 
-No further issues to flag.
+### 2. Approach — 9.0 / 10
 
-### 2. Approach — 8.8 / 10
+Pillars are accurate, well-paced, and evidence-based in copy. "My Philosophy" eyebrow correct. Three pillar accents working at mobile breakpoint. Original Rogers quote ("The curious paradox...") in correct typographic styling. No ghost numbers (per standing preference, correctly absent). Strong section.
 
-"My Philosophy" eyebrow is correct. "Laura collaborates" and "Laura draws on CBT" are both confirmed in the HTML. The three pillar accents carry through correctly at mobile breakpoint as top-border rather than left-border. The Carl Rogers quote with its terracotta left border on desktop and top-border mobile treatment is typographically clean.
+### 3. Services — 8.6 / 10
 
-The only remaining micro-issue is the centred italic attribution at 375px, which reads slightly loose. That is a subjective observation rather than a fault — it does not affect trust or legibility.
+Individual and Group correct and honest. "Coming 2027" supervision framing with terracotta headline treatment is distinctive. Fee note is specific: $150 / sliding scale / 50 minutes / virtual + in-person / groups vary. That is exactly the information an anxious first-contact client needs.
 
-### 3. Services — 8.7 / 10
+Minor: "Start here →" as the CTA on every service row is functional but generic. Still noted from prior audit — not escalated to a priority but worth a future pass.
 
-The section eyebrow now reads "What I Offer" — confirmed on line 188 of the HTML. The "we" voice break is closed. Alternating split rows with hover image scale remain excellent. Fee note is informative and concise: pricing, sliding scale, out-of-network explanation, and telehealth note all in one band.
+### 4. Specialties — 9.0 / 10
 
-One remaining consideration: "Start here →" as the CTA on every service row is functional but generic. A therapist site at this quality level could benefit from more specific micro-copy — "Talk to me about this" or "Ask about availability" — to differentiate from a transactional product site. This is a refinement suggestion, not a defect.
-
-### 4. Specialties — 8.8 / 10
-
-Forest green background remains correct. Stagger animation is well-paced. The constellation layout is the most visually distinctive scroll moment on the site and it is preserved.
-
-Two "we" instances remain: "What we hold space for" (headline) and "We work with a wide range of concerns" (subhead). These were noted as stylistically defensible in the prior audit. I maintain that position — they read as practice-voice rather than a voice error. A client reading this section will not notice inconsistency; they are reading it as an offer, not a biography. These are not a priority.
+Breathing animation on the field of specialty terms is the most visually distinctive moment on the site. "School Anxiety" and "Academic Struggles" specialties align correctly with the 13+ age range and PA PreK-12 background. "Emerging Adults" is a useful differentiator. No changes here; no issues.
 
 ### 5. About and FAQ — 9.0 / 10
 
-Strongest section on the site. First-person bio copy is excellent and the FAQ answers have genuine warmth. The accordion is keyboard accessible — confirmed: `role="button"`, `tabindex="0"`, `aria-expanded` toggling, and `keydown` handling for Enter and Space are all present and correct.
+Bio expansion with school settings/outpatient counseling paragraph is genuine and adds depth. PA PreK-12 credential line at foot of bio is a credible differentiator. The inline style on that line (`font-size:0.875em; opacity:0.8`) remains — Pixel flagged this as a candidate for `.about__bio-subcred` class. Not user-facing but it is a code quality note.
 
-The keyboard focus-visible styles added since 8.7 use `var(--terra)` at `outline-offset: 3px`. This is the correct approach — on-brand colour, sufficient contrast, applied consistently across `a`, `button`, `[role="button"]`, `input`, `textarea`, and `select`. The addition is confirmed in the CSS at lines 2173–2181.
+FAQ answers are accurate and warm. Simple Practice superbill language in the insurance answer is specific enough to be genuinely useful. First session answer ("two people getting to know each other") remains the best piece of copy on the site.
 
-The stock office photograph remains. A genuine portrait of Laura would add at minimum 0.2 points and is the single highest-value content change available. That is a content request, not a code fix.
+### 6. Testimonials — 0 / 10 (section removed)
 
-### 6. Testimonials — 8.6 / 10
+Correct and honest. The section is gone. The site loses all social proof, which is a real conversion signal. The Rogers quote bridge that follows in its structural position is philosophically resonant but operates on a different register — it does not answer the question "did this therapy help someone else in my situation?" That question is now unanswered anywhere on the site.
 
-Swipe hint repositioning is confirmed correct. The `trust-strip__hint--mobile` element appears in the HTML directly above the `trust-strip__track-wrap` (before line 399), and the CSS hides the in-header hint on mobile via `.trust-strip__header .trust-strip__hint { display: none; }` while revealing the standalone hint via `.trust-strip__hint--mobile { display: block; }`. On mobile the hint now sits spatially adjacent to the scrollable area. Priority 3 from the prior audit is closed.
+When Laura has even one or two genuine testimonials she is willing to publish, adding them back as a minimal, non-animated strip (name, one sentence, city) would restore this signal. No fabrication; no disclaimer-heavy copy. Real words from real clients.
 
-The reduced-motion rule for testimonials (`animation-play-state: paused !important`) is confirmed at line 2194 of the CSS. This is the correct target for a marquee-style or animated scroll element.
+### 7. Rogers Quote Bridge — 8.5 / 10
 
-The section is clean. The geographic attributions remain correctly local. The "Real stories. Real change." glow is present and restrained.
+"The good life is a process, not a state of being. It is a direction, not a destination." is a well-chosen Rogers quote for the position — it bridges from the clinical FAQ band into the CTA. The forest-background treatment with terracotta cite text is visually clean. Mobile alignment audit passed.
 
-One honest observation: the testimonials are unsigned beyond city-level attribution. A therapy site is limited in what it can share for privacy reasons — that is understood. But the disclaimer "Former clients, shared with their written permission" is doing important work and it is correctly placed.
+What it does not do: replace the emotional resonance of hearing from another client. It is a brand signal, not a trust signal. Scored as such.
 
-### 7. CTA Section — 8.7 / 10
+### 8. CTA Section — 8.9 / 10
 
-The voice fix is confirmed: line 437 now reads "I make it easy. Reach out today and I'll find the right fit for you." Both "we" instances have been replaced with "I." Priority 2 from the prior audit is closed.
+"I make it easy. Reach out today and I'll find the right fit for you." — correct first-person voice. Two-column editorial layout on dark forest background. Breathe-animation CTA button preserved. "Most clients hear back within 24 hours" is a useful commitment. Phone fallback present and correct.
 
-Two-column editorial layout on dark forest background with white breathe-animation CTA button is preserved. The phone fallback link is correctly present.
+### 9. Contact — 7.8 / 10
 
-No further issues to flag in this section.
+The form is the best-designed element on the site. The floating cream card, service selection chips, private note, and success state are all correct.
 
-### 8. Contact — 8.9 / 10
+However: the Psychology Today detail row has `href="#TODO-PSYCH-TODAY"`. This is a broken link in production. Any client who clicks "View on Psychology Today" lands on the same page — the anchor does not exist. This is a trust-eroding fault on a contact page where trust is most fragile. Fix: either replace with the real URL when received, or hide the entire detail row until the URL is available. Leaving a broken link in the contact section is not acceptable for a live site.
 
-The textarea placeholder copy ("For example: I've been struggling with anxiety and I'm looking for someone to talk to.") is confirmed on line 514 of the HTML. This is a well-judged addition — it models the type of disclosure the form is asking for and reduces blank-page anxiety for a first-time user. Good instinct.
+No Gmail address exposed in HTML (confirmed: email removed by surgery or not present). Phone appears correctly in three locations: hero, CTA, footer.
 
-Form validation, service picker chips, privacy note, success state, and Formspree integration remain correct. Focus-visible styles apply to form inputs.
+### 10. Mobile / Responsive — 8.9 / 10
 
-The floating cream card with gold top border on dark ink background remains the best single design detail on the site.
+Pixel's post-surgery audit confirmed all sections at 375px and 414px. Tap targets 44px minimum. Gradient chain updated correctly. Quote-bridge CSS class extracted from inline styles with correct `var(--forest)` variable reference. No console errors.
 
-Two ongoing technical notes:
-- `afantalis@gmail.com` is exposed in the HTML source at line 19 (schema) and line 501 (visible link). This will attract spam harvesting from automated crawlers. A contact form with email obfuscation, or a professional domain email address, would resolve this.
-- Form validation error styles are injected at runtime via `document.createElement('style')` in `initFormValidation()` in main.js (lines 194–207). Functionally correct but the rules belong in style.css, not in JavaScript.
+Orphaned CSS: `.gb-testimonials-cta` and `.trust-strip` selectors remain in style.css from the removed testimonials section. Harmless but adds noise to the stylesheet.
 
-### 9. Mobile / Responsive — 8.9 / 10
+### 11. Code Quality — 8.5 / 10
 
-The comprehensive force-centre pass is thorough and correct. The `hero__word--italic` centering fix is the final mobile alignment issue — it is now resolved. All tap targets are 44px minimum. Stat dividers hide at 480px. FAQ left-alignment override is correct. Service rows stack image above copy with centred body text on mobile.
+Clean vanilla JS, no dependencies. Null-guard early returns on all init functions (confirmed by Pixel). Passive scroll listeners. IntersectionObserver with unobserve-after-trigger. Schema.org MedicalBusiness present with correct phone, no address (correct given location removal).
 
-The double media query block (one at line 1603 and a second at line 1740 covering the same breakpoint) is redundant from an architecture standpoint. It works, but consolidating into a single `@media (max-width: 900px)` block would improve stylesheet maintainability. This is a code organisation note, not a user-facing issue.
-
-### 10. Code Quality — 8.6 / 10
-
-Clean vanilla JS, no dependencies. Reduced-motion check is correctly applied to all animation categories. Passive scroll listeners throughout. IntersectionObserver with unobserve-after-trigger for reveals. Schema.org MedicalBusiness structured data present with correct address and hours. Explicit image dimensions on all `img` elements.
-
-Two items that drop this below 9.0:
-- JS-injected validation styles (noted above) — belongs in the stylesheet.
-- Two separate `@media (max-width: 900px)` blocks rather than one consolidated block — minor architecture issue.
-
-Neither is visible to users. Both are visible to anyone who maintains this codebase.
+Three items:
+- `#TODO-PSYCH-TODAY` in production HTML — developer comment artifact that should not be live
+- `.gb-testimonials-cta` orphaned CSS class (no matching HTML)
+- `about__bio-subcred` credential line using inline styles (Pixel note, candidate for proper class)
 
 ---
 
-## TOP 3 REFINEMENT PRIORITIES
+## TOP 3 CYCLE 2 PRIORITIES
 
-### Priority 1 — Add a real portrait photograph of Laura
+### Priority 1 — Fix the broken Psychology Today link
 
-The About section currently displays a stock photograph of a generic office interior. This is the highest-impact content change available. A prospective client deciding whether to trust a therapist with something private wants to see the person's face — not their furniture. A genuine, well-lit headshot or candid practice photograph would add demonstrably to conversion and trust. This cannot be fixed in code. It requires a content decision. Raise it with the client.
+The `href="#TODO-PSYCH-TODAY"` anchor is live in production. Until the real URL arrives from the customer, the entire Psychology Today detail row should be hidden (`display:none` on `.contact__detail-item` containing it, or a `data-pending` conditional). A broken link on the contact page is the worst place to lose client trust — they are moments from filling out the form. One line of CSS or one attribute change fixes this immediately without waiting for the customer to supply the URL.
 
-### Priority 2 — Resolve the Gmail email exposure in HTML source
+### Priority 2 — Resolve the families/couples copy mismatch
 
-`afantalis@gmail.com` appears twice in the rendered HTML: once in the schema block and once as a visible mailto link. Automated spam harvesters will extract this within weeks of public deployment. Recommend either: (a) replace with a professionally branded email address, or (b) remove the mailto link from the contact section and rely on the form, obfuscating the address in the schema JSON. The form already handles the primary contact flow — the exposed email is not needed for UX.
+The hero subhead and contact form service cards reference family and couples therapy. The Services section does not. If Laura offers family and couples sessions, add a service row. If she does not, remove "families and couples" from the hero sub and remove "Family" and "Couples" from the service selection cards in the form. The current state presents services that cannot be confirmed anywhere on the site. This is a conversion friction problem: a client selecting "Couples" and finding no couples therapy described will wonder if they misread the site.
 
-### Priority 3 — Move form validation styles from JavaScript to CSS
+### Priority 3 — Add real social proof when available
 
-In `main.js`, `initFormValidation()` constructs a `<style>` element and appends it to `document.head`. The rules it injects (`.form-group input.is-invalid`, `.form-error`, `.form-error.is-visible`) belong in `style.css`. Moving them eliminates a runtime DOM mutation, reduces JavaScript responsibility, and makes the validation behaviour visible alongside the rest of the design system. One-time refactor, no user-facing change.
-
----
-
-## WHAT IMPROVED SINCE 8.7
-
-- Hero italic phrase centering on mobile confirmed fixed — `padding-left: 0 !important` applied in mobile block
-- "What I Offer" in Services eyebrow — "we" voice break closed
-- "I make it easy / I'll find the right fit" in CTA section — two "we" instances replaced with first-person
-- Keyboard focus-visible styles added — `var(--terra)` outline on all interactive elements, on-brand and accessible
-- Prefers-reduced-motion: testimonial animation paused — correct accessibility handling
-- Contact textarea placeholder copy — "For example: I've been struggling with anxiety..." is a genuine trust signal
-- Swipe hint repositioned directly above testimonial track on mobile — spatially meaningful, Priority 3 closed
-- FAQ accordion and testimonial header alignment conflicts resolved
+The site currently has zero third-party validation. The Rogers quote and Laura's bio are both self-referential. When Laura is ready to provide even one genuine testimonial — with explicit permission — adding it as a minimal static block (no animation, no carousel, no fabrication) would restore the conversion signal the surgery correctly removed. This is a content dependency, not a code task. Flag it to the customer as the single highest-value next step.
 
 ---
 
-*Audit by Nigel — strict scoring from a real user's perspective.*
+## WHAT THE SURGERY DID RIGHT
+
+- Correct credential (LPC) throughout — the most important accuracy fix
+- Real phone number in every location — zero wrong instances remain
+- Location removed cleanly — no hollow gaps, no placeholder text, contact section reads as virtual-first with in-person available
+- Pricing honest and specific — $150, sliding scale, 50 minutes, Simple Practice superbill
+- Ages corrected — 13+ rather than 7+ is truthful and scopes the practice correctly
+- Testimonials removed rather than fabricated — this is the correct call and reflects well on the practice's integrity
+- Bio expanded with real background — school settings, outpatient, PA PreK-12 credential
+- Supervision timeline honest — "Coming 2027" rather than presented as current
+- Groups described honestly — "times vary, ask" rather than invented schedule
+
+---
+
+*Audit by Nigel — strict scoring from a real user's perspective. Conversion friction axis.*
