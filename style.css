@@ -1127,7 +1127,7 @@ h2 em, h1 em {
 }
 
 .about__bio-col {
-  padding: 96px 0;
+  padding: 96px 0 32px;          /* trimmed bottom 96→32 — quote bridge sits directly below and adds its own breathing room via padding-top */
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1769,6 +1769,7 @@ h2 em, h1 em {
   /* About */
   /* About split — 80px top absorbs specialties bleed */
   .about__split { grid-template-columns: 1fr; padding: 80px 20px 0; gap: 0; }
+  .about__bio-col { padding: 16px 0 24px !important; text-align: center; }
   .about__photo-col { display: none; }
   .about__bio-col { padding: 16px 0 72px; text-align: center; }
   .about__tags { justify-content: center; }
@@ -2219,18 +2220,15 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  /* The 14rem padding-top was sized to clear an upstream gradient bleed that
-     no longer exists (the gb-about-testimonials/gb-about-faq pair was removed
-     when the bridge moved above the FAQ band). Trimmed to 4rem so the bridge
-     opens promptly after the About bio instead of leaving a tall empty zone. */
-  padding: 4rem 2rem 6rem;
-  min-height: 78vh;              /* cinematic but not absurd; was 92vh */
+  /* Tight padding — About bio just ended above with its own breathing room,
+     so the bridge opens immediately. */
+  padding: 1.5rem 2rem 5rem;
+  min-height: 70vh;
   text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* NO z-index — see prior note. Stacking context would trap inner z:5. */
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2577,10 +2575,7 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    /* (Old padding-top:14rem requirement was for an upstream gradient that no
-       longer exists — bridge now sits between About bio and FAQ band with no
-       gradient between bio and bridge. Tight padding restored.) */
-    padding: 3rem 20px 3.5rem;
+    padding: 1rem 20px 3rem;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2603,7 +2598,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 2.5rem 16px 3rem;
+    padding: 0.75rem 16px 2.5rem;
   }
 }
 
