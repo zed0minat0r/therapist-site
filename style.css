@@ -2562,10 +2562,10 @@ h2 em, h1 em {
   padding-top: 96px; /* keep original within the split */
 }
 
-/* CTA receives About bleed */
-.cta-section {
-  padding-top: 200px; /* was 120px + 80px */
-}
+/* (Stale CTA padding-top override removed — was overriding the canonical desktop
+   160px and mobile 240px values defined earlier. With the silhouette bridge moved
+   above the FAQ band, the gb-quote-cta gradient now bleeds into CTA and the
+   primary .cta-section rule's padding-top is the correct value to use.) */
 .cta-section__inner {
   position: relative;
   z-index: 3;
