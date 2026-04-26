@@ -2106,15 +2106,14 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 14rem 2rem 5rem;     /* padding-top 224px clears the 200px FAQ→quote gradient overlap */
+  padding: 14rem 2rem 8rem;     /* padding-top 224px clears the 200px FAQ→quote gradient overlap */
+  min-height: 92vh;              /* cinematic moment — full viewport-height presence */
   text-align: center;
   position: relative;
-  /* NO z-index here — z-index would create a stacking context that traps the
-     inner quote wrap's z:5 inside, so it could not lift above the gradient
-     bleed (z:2) sibling. Without z-index, the inner wrap's z:5 exists in the
-     body stacking context and properly paints OVER the gradient. The bridge's
-     parchment background still paints UNDER the gradient because static
-     backgrounds sit at z:0 and the gradient is z:2. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* NO z-index — see prior note. Stacking context would trap inner z:5. */
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2131,11 +2130,43 @@ h2 em, h1 em {
 
 .quote-bridge .approach__quote {
   color: var(--forest-deep);
-  /* Bridge quote is a featured editorial moment — bold italic so it stops the scroll. */
-  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  /* Cinematic editorial centerpiece — bigger, bolder italic, tighter rhythm. */
+  font-size: clamp(2.2rem, 6.2vw, 3.6rem);
   font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -0.005em;
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  text-shadow: 0 1px 2px rgba(26, 46, 23, 0.06);
+}
+
+/* Word-by-word fade-up reveal when the bridge enters view. JS adds .is-visible
+   to .approach__quote-wrap; CSS staggers each .quote-word via inline --wi index. */
+.quote-bridge .quote-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition: opacity 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) calc(var(--wi, 0) * 0.07s),
+              transform 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) calc(var(--wi, 0) * 0.07s);
+}
+.quote-bridge .approach__quote-wrap.is-visible .quote-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+.quote-bridge .approach__quote cite {
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: opacity 1s ease 1.6s, transform 1s ease 1.6s;
+}
+.quote-bridge .approach__quote-wrap.is-visible cite {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote-bridge .quote-word,
+  .quote-bridge .approach__quote cite {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 .quote-bridge .approach__quote cite {
@@ -2215,29 +2246,34 @@ h2 em, h1 em {
   display: block;
 }
 .qb-layer--far {
-  height: 38%;
+  height: 50%;
   fill: var(--forest-light);
-  opacity: 0.42;
+  opacity: 0.34;
+  filter: blur(0.6px);
+}
+.qb-layer--midback {
+  height: 42%;
+  fill: var(--forest);
+  opacity: 0.55;
 }
 .qb-layer--mid {
-  height: 30%;
-  fill: var(--forest);
-  opacity: 0.7;
+  height: 38%;
+  fill: var(--forest-deep);
+  opacity: 0.85;
 }
 .qb-layer--near {
-  height: 18%;
-  fill: none;
+  height: 22%;
+  fill: var(--forest-deep);
   stroke: var(--forest-deep);
   stroke-width: 2.4;
   stroke-linecap: round;
-  opacity: 0.7;
+  opacity: 0.95;
 }
 .qb-layer--near .qb-grass path {
-  /* preserveAspectRatio="none" stretches the viewBox non-uniformly; without
-     non-scaling-stroke the strokes become thin/uneven on narrow viewports.
-     vector-effect keeps the stroke width consistent in CSS pixels. */
+  /* Crisp grass strokes regardless of viewBox stretch — vector-effect keeps
+     stroke-width constant in CSS pixels rather than user units. */
   vector-effect: non-scaling-stroke;
-  stroke-width: 2.6;
+  stroke-width: 3.5;
 }
 .qb-layer--near .qb-wildflowers circle {
   vector-effect: non-scaling-stroke;

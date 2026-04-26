@@ -208,3 +208,4 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 
 2026-04-25 20:00 qa — iPhone13/SE/Pixel5/Desktop1440 silhouette scene-v3b verify: clouds+wildflowers+distant-birds, 0 bugs found (read-only)
 2026-04-25 21:00 qa — iPhone13/SE/Pixel5/Desktop1440 scene-v4b bird-sprite deep-dive: .qb-bird PASS all viewports, 2 bugs found (BUG-009 preserveAspectRatio invalid YEnd, BUG-010 grass blades render as symbol artifacts)
+2026-04-25 22:00 qa — iPhone13/SE/Pixel5/Desktop1440 scene-v5 verify: bridge 92vh PASS, font PASS, word-by-word stagger PASS, 4-tier trees PASS, BUG-008 FIXED, BUG-009 FIXED, 2 bugs carried (BUG-010 grass, BUG-011 cross-SVG symbol forward-ref)

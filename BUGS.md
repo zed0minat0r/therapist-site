@@ -146,7 +146,7 @@ Move sun to `top: 50%` or higher to bring it below the gradient boundary. Or rep
 
 ## BUG-008 — Desktop border-left leaks through on quote-bridge (LOW) — 2026-04-25
 
-**Status:** Open
+**Status:** FIXED in scene-v5 (2026-04-25). `.quote-bridge .approach__quote-wrap` now sets `border-left: none` and `padding-left: 0` unconditionally (not only in the mobile media query). Verified: `borderLeftWidth=0px borderLeftStyle=none` at 1440px.
 
 **Found:** QA silhouette-scene deep-dive, desktop 1440x900 screenshot
 
@@ -163,7 +163,7 @@ The desktop 1440px screenshot shows a 2px terracotta vertical rule left of the q
 
 ## BUG-009 — preserveAspectRatio invalid value on qb-layer--mid SVG (LOW) — 2026-04-25 (scene-v4b QA)
 
-**Status:** Open
+**Status:** FIXED in scene-v5 (2026-04-25). `.qb-layer--mid` now uses `xMidYMax meet` (valid). Zero console errors confirmed across all 4 viewports.
 
 **Found:** Playwright scene-v4b verification at Pixel 5 (Chromium) and Desktop 1440 (Chromium). WebKit (iPhone 13, iPhone SE) does not surface this error.
 
@@ -194,6 +194,46 @@ At desktop 1440px the grass blades are more visible but still thin and render wi
 1. Add `stroke-width` to grass paths set relative to the viewBox (e.g., `stroke-width="4"`) — currently no explicit stroke-width is set, browsers default to 1 user unit which at 393/1200 scale is < 1px effective.
 2. Reduce the viewBox width (e.g., `viewBox="0 0 400 80"`) and respace grass blade x-positions proportionally.
 3. Replace with `preserveAspectRatio="xMidYMax meet"` (drop `none`) so the grass scales proportionally and stays anchored to the bottom of the scene.
+
+---
+
+---
+
+## BUG-010 — Grass blades still render as thin symbol-like strokes at mobile (MEDIUM) — 2026-04-25 (scene-v5 QA)
+
+**Status:** Still open after scene-v5. `vector-effect: non-scaling-stroke` and `stroke-width: 2.6` are set in CSS, but the viewBox-space BBox widths of grass paths are 2–3.6 units in a 1200-unit space. At 390px wide the grass blade paths are approximately 1–1.5px wide after scaling despite the non-scaling stroke. The visual result at mobile is a row of thin vertical tick marks rather than natural grass blades. Desktop is marginally better (same pixel width strokes but proportionally denser-looking at 1440px). The `vector-effect: non-scaling-stroke` preserves the 2.6px stroke width in CSS pixels but the paths themselves are drawn too narrow in the 1200-unit coordinate system for the stroke to read as a blade at any width.
+
+**Confirmed still present:** scene-v5 iPhone 13 and Desktop screenshots. The foreground row shows vertical stroke marks (some parenthesis-like) not naturalistic grass. The wildflower circles are visible as small terracotta dots — those render acceptably.
+
+**Fix options remain as documented in original BUG-010.**
+
+---
+
+## BUG-011 — Midback SVG symbols defined after first use — cross-SVG ref works in Chromium, unverified in Safari (LOW) — 2026-04-25 (scene-v5 QA)
+
+**Status:** Open (Chromium PASS, Safari unverified)
+
+**Found:** scene-v5 QA, structural code review.
+
+**Root cause:**
+The 4 `<symbol>` definitions (`#qb-tree-pine`, `#qb-tree-oak`, `#qb-tree-bare`, `#qb-tree-birch`) live inside the `<defs>` block of `.qb-layer--mid` SVG (DOM line 503). The `.qb-layer--midback` SVG (DOM line 480) references all 4 symbols via `<use href="#qb-tree-...">` — but appears BEFORE the mid SVG in the DOM. This is a cross-SVG forward-reference to symbols.
+
+The SVG spec (SVG 2) says `<symbol>` elements are globally available within the document once parsed (not just within their containing SVG). Chromium implements this correctly: all 16 midback `<use>` elements have non-zero BBoxes and render visually. However, WebKit/Safari has historically had stricter same-SVG scoping for `<symbol>` references. If Safari requires the `<use href>` to resolve within the same SVG document fragment, midback trees will be invisible on Safari.
+
+**Evidence in Chromium:** All 16 `<use>` elements in `.qb-layer--midback` have non-zero rendered BBoxes (e.g., `{x:37, y:188, w:17, h:132}`). The midback treeline is visible in screenshots.
+
+**Risk:** High risk of Safari regression. The symbols are used in a different SVG than where they are defined, AND the using SVG appears before the defining SVG in DOM order.
+
+**Fix:** Move the `<defs>` block (with all 4 symbols) to a standalone hidden SVG at the top of `.quote-bridge__scene`, before both the midback and mid SVG layers. E.g.:
+```html
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="qb-tree-pine" ...> ... </symbol>
+    <!-- ... -->
+  </defs>
+</svg>
+```
+This guarantees cross-browser symbol resolution regardless of SVG spec interpretation.
 
 ---
 

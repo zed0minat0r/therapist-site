@@ -468,31 +468,57 @@
         <span class="qb-cloud" style="--y:14%;--delay:-65s;--dur:100s;--scale:1.18;"></span>
       </div>
 
-      <!-- Distant horizon: rolling hills, faintest layer -->
-      <svg class="qb-layer qb-layer--far" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path d="M0 220 L0 150 Q120 110 240 130 T480 120 T720 132 T960 118 T1200 128 L1200 220 Z" />
-      </svg>
-
-      <!-- Mid trees: hand-crafted silhouette tree line with gentle sway. Pine + deciduous + bare-branch variety, asymmetric placement, varied scales. -->
-      <svg class="qb-layer qb-layer--mid" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <!-- Symbol definitions hoisted to a hidden SVG so all later <use href> references
+           resolve cleanly in Safari (which historically required defs to appear before refs). -->
+      <svg class="qb-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
         <defs>
-          <!-- PINE: layered branch fir, ~70w x 200h -->
           <symbol id="qb-tree-pine" viewBox="0 0 70 200" overflow="visible">
             <path d="M35 200 L31 200 L31 170 L23 170 L35 145 L25 145 L35 118 L26 118 L35 92 L27 92 L35 67 L29 67 L35 42 L31 42 L35 12 L39 42 L35 42 L41 67 L35 67 L43 92 L35 92 L44 118 L35 118 L45 145 L35 145 L47 170 L39 170 L39 200 Z"/>
           </symbol>
-          <!-- DECIDUOUS ROUND: oak-style canopy with visible trunk and irregular blob crown, ~90w x 200h -->
           <symbol id="qb-tree-oak" viewBox="0 0 90 200" overflow="visible">
             <path d="M45 200 L40 200 L40 145 Q28 142 24 132 Q14 130 16 118 Q8 110 16 100 Q12 88 22 84 Q22 70 32 68 Q34 56 44 56 Q44 42 52 44 Q56 32 64 38 Q72 36 70 50 Q80 52 78 64 Q86 70 80 80 Q88 88 80 96 Q84 108 74 112 Q76 124 64 128 Q60 138 50 142 L50 200 Z"/>
           </symbol>
-          <!-- BARE BRANCHED: winter tree, twiggy fork structure, ~80w x 220h -->
           <symbol id="qb-tree-bare" viewBox="0 0 80 220" overflow="visible">
             <path d="M40 220 L37 220 L37 130 L24 102 L26 100 L37 122 L37 96 L20 70 L22 68 L37 90 L37 60 L26 40 L28 38 L37 56 L37 24 L33 14 L34 12 L37 18 L40 14 L41 16 L40 22 L40 50 L46 38 L48 40 L40 54 L40 78 L52 60 L54 62 L40 84 L40 110 L52 92 L54 94 L40 116 L40 138 L56 116 L58 118 L43 142 L43 220 Z M37 88 L30 80 L31 78 L37 84 Z M40 100 L48 90 L49 92 L40 102 Z" stroke-linecap="round" stroke-linejoin="round"/>
           </symbol>
-          <!-- BIRCH (slim deciduous): for variety, ~50w x 180h -->
           <symbol id="qb-tree-birch" viewBox="0 0 50 180" overflow="visible">
             <path d="M25 180 L23 180 L23 115 Q15 110 14 102 Q9 96 14 90 Q9 80 16 76 Q12 66 20 64 Q18 54 26 54 Q24 42 30 44 Q34 36 38 42 Q42 50 38 56 Q42 66 36 72 Q40 80 34 86 Q40 94 34 100 Q34 110 27 115 L27 180 Z"/>
           </symbol>
         </defs>
+      </svg>
+
+      <!-- Distant horizon: rolling hills with faint distant treeline silhouettes -->
+      <svg class="qb-layer qb-layer--far" viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0 320 L0 220 Q120 180 240 200 T480 190 T720 202 T960 188 T1200 198 L1200 320 Z" />
+        <!-- distant fuzzy treeline along the hill ridge -->
+        <path d="M0 222 L20 215 L30 220 L42 208 L55 218 L65 212 L80 220 L95 210 L110 218 L125 214 L140 220 L160 212 L175 218 L190 213 L210 220 L225 215 L240 220
+                 L260 218 L280 212 L300 220 L320 215 L335 220 L355 213 L370 218 L390 212 L410 220 L430 215 L450 220 L470 214 L490 220 L510 215 L530 218 L550 212 L570 220 L590 215 L610 218 L630 213 L650 220 L670 215 L690 220 L710 213 L730 218 L750 215 L770 220 L790 213 L810 218 L830 215 L850 220 L870 215 L890 218 L910 212 L930 220 L950 215 L970 218 L990 212 L1010 220 L1030 215 L1050 220 L1070 214 L1090 220 L1110 215 L1130 218 L1150 213 L1170 220 L1185 215 L1200 220 L1200 320 L0 320 Z" opacity="0.7"/>
+      </svg>
+
+      <!-- Mid-back layer: secondary treeline for atmospheric depth -->
+      <svg class="qb-layer qb-layer--midback" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+        <g class="qb-trees-back">
+          <use href="#qb-tree-pine"  x="20"   y="180" width="50" height="140"/>
+          <use href="#qb-tree-pine"  x="90"   y="170" width="58" height="150"/>
+          <use href="#qb-tree-oak"   x="170"  y="190" width="62" height="130"/>
+          <use href="#qb-tree-pine"  x="245"  y="175" width="54" height="145"/>
+          <use href="#qb-tree-birch" x="315"  y="195" width="38" height="125"/>
+          <use href="#qb-tree-pine"  x="370"  y="170" width="62" height="150"/>
+          <use href="#qb-tree-oak"   x="450"  y="185" width="68" height="135"/>
+          <use href="#qb-tree-pine"  x="540"  y="170" width="56" height="150"/>
+          <use href="#qb-tree-bare"  x="615"  y="180" width="58" height="140"/>
+          <use href="#qb-tree-pine"  x="695"  y="175" width="60" height="145"/>
+          <use href="#qb-tree-oak"   x="775"  y="190" width="65" height="130"/>
+          <use href="#qb-tree-pine"  x="860"  y="170" width="58" height="150"/>
+          <use href="#qb-tree-birch" x="940"  y="195" width="40" height="125"/>
+          <use href="#qb-tree-pine"  x="1000" y="175" width="56" height="145"/>
+          <use href="#qb-tree-oak"   x="1075" y="185" width="62" height="135"/>
+          <use href="#qb-tree-pine"  x="1150" y="180" width="48" height="140"/>
+        </g>
+      </svg>
+
+      <!-- Mid trees: detailed silhouette tree line with gentle sway. Symbol defs hoisted above for Safari. -->
+      <svg class="qb-layer qb-layer--mid" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
         <g class="qb-trees">
           <!-- Tree line: 11 trees, mixed species, varied scale and y-anchor for irregular skyline -->
           <use href="#qb-tree-pine"  x="40"   y="115" width="65" height="200"/>
@@ -512,11 +538,12 @@
         </g>
       </svg>
 
-      <!-- Foreground grass blades + scattered wildflowers — terra dots blooming through the grass -->
-      <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <!-- Foreground grass: filled blade silhouettes (not strokes) so they read crisp at any viewport -->
+      <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
         <g class="qb-grass">
-          <path d="M40 220 Q44 200 42 184" />
-          <path d="M90 220 Q86 198 92 178" />
+          <!-- Filled triangular blades, varied widths and heights for irregular tuft -->
+          <path d="M30 220 L37 178 L42 220 Z M48 220 L54 188 L60 220 Z M68 220 L74 170 L80 220 Z" />
+          <path d="M105 220 L112 195 L118 220 Z M125 220 L132 175 L139 220 Z M150 220 L156 200 L162 220 Z" />
           <path d="M180 220 Q184 198 180 180" />
           <path d="M260 220 Q256 196 262 178" />
           <path d="M340 220 Q344 200 340 184" />
@@ -555,9 +582,26 @@
       </div>
     </div>
 
-    <div class="approach__quote-wrap reveal">
+    <div class="approach__quote-wrap reveal" id="quoteBridgeWrap">
       <blockquote class="approach__quote">
-        &ldquo;The good life is a process, not a state of being. It is a direction, not a destination.&rdquo;
+        <span class="quote-word" style="--wi:0">&ldquo;The</span>
+        <span class="quote-word" style="--wi:1">good</span>
+        <span class="quote-word" style="--wi:2">life</span>
+        <span class="quote-word" style="--wi:3">is</span>
+        <span class="quote-word" style="--wi:4">a</span>
+        <span class="quote-word" style="--wi:5">process,</span>
+        <span class="quote-word" style="--wi:6">not</span>
+        <span class="quote-word" style="--wi:7">a</span>
+        <span class="quote-word" style="--wi:8">state</span>
+        <span class="quote-word" style="--wi:9">of</span>
+        <span class="quote-word" style="--wi:10">being.</span>
+        <span class="quote-word" style="--wi:11">It</span>
+        <span class="quote-word" style="--wi:12">is</span>
+        <span class="quote-word" style="--wi:13">a</span>
+        <span class="quote-word" style="--wi:14">direction,</span>
+        <span class="quote-word" style="--wi:15">not</span>
+        <span class="quote-word" style="--wi:16">a</span>
+        <span class="quote-word" style="--wi:17">destination.&rdquo;</span>
         <cite>&mdash; Carl Rogers</cite>
       </blockquote>
     </div>
