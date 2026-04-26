@@ -79,3 +79,14 @@
 2026-04-26 11:30 nigel — focus axis: conversion-friction, top issue: broken #TODO-PSYCH-TODAY href live on contact page
 
 2026-04-26 10:44 coordinator — scheduled: razor, performance, accessibility, bugs-scaffold, focus: engineering-quality, forbidden: hero/about-bio/services-pricing/contact-form-picker/nav-brand/quote-bridge/gradient-bleeds/color-tokens
+
+## 2026-04-26 — Razor (cycle 2)
+
+- Removed orphaned `.contact__parking` rule (9 lines, no HTML match post-surgery)
+- Removed orphaned `.contact__map` + `.contact__map iframe` rules (8 lines, no HTML match post-surgery)
+- Removed orphaned `.contact__parking` + `.contact__map` media query overrides (8 lines)
+- Removed orphaned `.gb-testimonials-cta` gradient-bleed rule (3 lines, testimonials section removed)
+- Extracted inline `style="font-size:0.875em; opacity:0.8;"` from PA PreK-12 credential `<p>` into proper `.about__bio-subcred` class in style.css; added to mobile center-align media query
+- Net delta: style.css 58219 → 57512 bytes (-707 bytes)
+
+2026-04-26 12:00 razor — orphans removed: .contact__parking, .contact__map, .contact__map iframe, .gb-testimonials-cta (4 selectors + media query dupes), inline style extracted to .about__bio-subcred, -707 bytes
