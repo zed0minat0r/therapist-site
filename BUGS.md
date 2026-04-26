@@ -23,12 +23,19 @@ axe-core 4.11.3 flagged 8 WCAG AA color-contrast violations in the footer. All a
 
 ---
 
-## A11y — Specialties section: spec-sm contrast on forest background
+## A11y — Specialties constellation aria-hidden — CLOSED 2026-04-25 (cycle 3)
 
-`.spec--sm` uses `color: rgba(255,255,255,0.25)` — approximately 1.9:1 against `--forest` (#2e4a2a). These are intentionally dim/decorative words in the breathing constellation, but they technically fail WCAG for any text. The design intent is that small words are deliberately harder to read (atmospheric). If this needs addressing, raise to `rgba(255,255,255,0.45)` (~3.5:1) or add `aria-hidden="true"` to the entire constellation field (it is decorative — the specialties section body text above it conveys the same info).
+Applied `aria-hidden="true"` to `.specialties__field` (the visual constellation) to suppress
+decorative/atmospheric text from screen readers. Added visually-hidden `<ul>` with all 17 specialty
+items before the field so screen readers get clean sequential list. Visual rendering and
+breathing animations are fully intact.
 
 ---
 
-## A11y — Hero stats bar: aria-hidden removes info from screen readers
+## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
-`.hero__stats` has `aria-hidden="true"`. The stats (17+ years, Ages 13–Adult, Mon–Fri 7am–8pm) are meaningful. Consider removing `aria-hidden` and providing proper semantic structure, or ensure the info is duplicated in the contact/about sections (it partially is).
+Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on
+each stat, with visually-hidden descriptive strings ("17 plus years of experience", "Ages 13 to
+adult served", "Available Monday through Friday, 7 a.m. to 8 p.m."). Visual spans remain
+`aria-hidden` so screen readers skip the raw mixed number/symbol strings and read the clean
+prose instead.

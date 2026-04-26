@@ -146,3 +146,19 @@ Verification run — no code changes applied. 3 mobile runs + 2 desktop runs.
 Verdict: Cycle 2 fixes confirmed moderate improvement (+12 mobile Performance, -1.7s LCP). Mobile Performance still below 90 floor (83). Next highest-impact fix: style.css render-blocking (321ms wasted) — inline critical CSS or media=print onload trick. Secondary: preload hint for hero 800w image.
 
 2026-04-26 16:30 performance — scores: P=83 BP=100 A=97 S=100, top issue: style.css render-blocking (321ms, LCP 3.7s still below floor), fixed: 0 (verification only)
+
+## 2026-04-26 — Accessibility (cycle 3)
+
+Deferred items from cycle 2 closed:
+
+- Hero stats aria-hidden: removed `aria-hidden="true"` from `.hero__stats`; added `role="list/listitem"` and visually-hidden prose descriptions for each stat ("17 plus years of experience", "Ages 13 to adult served", "Available Monday through Friday, 7 a.m. to 8 p.m."). Visual spans remain `aria-hidden` to skip raw number/symbol strings. Visual rendering unchanged.
+- Specialties constellation: applied `aria-hidden="true"` to `.specialties__field`; inserted visually-hidden `<ul aria-label="Areas of focus">` with all 17 specialty items before the field. Breathing animation and atmospheric depth intact. Resolves spec--sm rgba(255,255,255,0.25) ~1.9:1 contrast concern without touching brand colors or visual treatment.
+- Nav tap targets: added `min-height:44px; display:inline-flex; align-items:center` to `.nav__links a` — closes the only remaining gap in the tap-target sweep (desktop nav links had no explicit min-height).
+- Added `.visually-hidden` utility class (clip-pattern) to style.css.
+
+axe-core 4.11.3 re-run post-deploy:
+- 8 violations detected — all footer color-contrast (deferred brand-decision, unchanged from cycle 2)
+- Zero new violations introduced
+- All cycle 2 fixes confirmed still holding (landmark-one-main, aria-allowed-role, region, form-label all passing)
+
+2026-04-26 17:15 accessibility — focus: hero stats semantic + specialties aria-hidden + tap targets, top issue: hero stats entirely hidden from screen readers (aria-hidden on meaningful content), fixed: 3
