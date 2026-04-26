@@ -2251,23 +2251,41 @@ h2 em, h1 em {
   opacity: 0.34;
   filter: blur(0.6px);
 }
-/* Layered mountain range — 3 ridges create real depth from distant to near */
-.qb-layer--mountains-back {
-  height: 60%;
-  fill: #a8b59a;                /* sage — most distant, faded by atmosphere */
-  opacity: 0.45;
-  filter: blur(1px);
+/* 4-LAYER MOUNTAIN SYSTEM per atmospheric-perspective playbook.
+   Heights stack: back smallest (25%), front tallest (55%) — size differential
+   is the primary depth cue. Colors fade from desaturated sage at back through
+   forest mid-tones to saturated forest-deep at front. SVG feGaussianBlur
+   filters (defined inline in HTML) add atmospheric haze on back 3 layers. */
+.qb-layer--mtn-back {
+  height: 28%;
+  fill: #b6c0b3;                /* hsl(110, 10%, 72%) — light desaturated sage, fog-distance */
 }
-.qb-layer--mountains-mid {
-  height: 52%;
-  fill: var(--forest-light);    /* mid-distance, more saturated */
+.qb-layer--mtn-midback {
+  height: 36%;
+  fill: #80a574;                /* hsl(110, 25%, 58%) — medium sage */
+}
+.qb-layer--mtn-mid {
+  height: 42%;
+  fill: #4a7240;                /* hsl(110, 40%, 35%) — deeper green, defined */
+}
+.qb-layer--mtn-front {
+  height: 48%;
+  fill: var(--forest-deep);     /* near-black forest, sharpest, no blur */
+}
+/* Mobile: cap mountain heights so the front ridge doesn't rise into the quote text zone.
+   Quote sits at ~50% from bridge bottom (flex-centered); mountains are bottom-anchored,
+   so any mtn layer >40% will cross the quote line on small viewports. Color collision
+   between #1a2e17 mtn-front and #1a2e17 quote text would make text illegible. */
+@media (max-width: 900px) {
+  .qb-layer--mtn-back    { height: 22%; }
+  .qb-layer--mtn-midback { height: 28%; }
+  .qb-layer--mtn-mid     { height: 32%; }
+  .qb-layer--mtn-front   { height: 36%; }
+}
+.qb-layer--midback {
+  height: 42%;
+  fill: var(--forest);
   opacity: 0.55;
-  filter: blur(0.4px);
-}
-.qb-layer--mountains-front {
-  height: 38%;
-  fill: var(--forest);          /* nearest, fully saturated */
-  opacity: 0.7;
 }
 .qb-layer--midback {
   height: 42%;
@@ -2280,20 +2298,16 @@ h2 em, h1 em {
   opacity: 0.85;
 }
 .qb-layer--near {
-  height: 9%;                              /* compact grass band, was 22% (way too tall — read as green wall) */
-  fill: none;                               /* was inheriting forest-deep onto Q paths and filling them */
-  stroke: var(--forest-deep);
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  opacity: 0.85;
+  height: 12%;                              /* foreground grass band */
+  opacity: 1;
 }
-.qb-layer--near .qb-grass path {
-  fill: none;                               /* explicit — Q-paths must be stroke-only, not filled into polygons */
-  vector-effect: non-scaling-stroke;
-  stroke-width: 2.2;
+.qb-layer--near .qb-grass-path {
+  fill: var(--forest-deep);                 /* solid silhouette grass shape — reads via wavy top edge */
+  stroke: none;
 }
 .qb-layer--near .qb-wildflowers circle {
-  vector-effect: non-scaling-stroke;
+  fill: var(--terra);
+  stroke: none;
 }
 
 /* Mid-tree gentle sway — group rotates slightly around its bottom edge */
@@ -2319,23 +2333,11 @@ h2 em, h1 em {
 .qb-wildflowers circle:nth-child(3n)  { opacity: 0.42; }
 .qb-wildflowers circle:nth-child(5n)  { fill: var(--terra-lt); opacity: 0.6; }
 
-/* Grass blades wave individually with a longer cadence */
-.qb-grass path {
-  transform-box: fill-box;
-  transform-origin: 50% 100%;
-  animation: grass-wave 7s ease-in-out infinite;
-}
-.qb-grass path:nth-child(2n)  { animation-delay: -1.5s; animation-duration: 8s; }
-.qb-grass path:nth-child(3n)  { animation-delay: -3s;   animation-duration: 6.5s; }
-.qb-grass path:nth-child(4n)  { animation-delay: -2s;   animation-duration: 7.5s; }
-@keyframes grass-wave {
-  0%, 100% { transform: rotate(-2deg); }
-  50%      { transform: rotate(2deg); }
-}
+/* (Old per-blade grass-wave keyframes removed — current grass is a single
+   filled silhouette path, not individual blades. Razor cleanup.) */
 
 @media (prefers-reduced-motion: reduce) {
   .qb-trees,
-  .qb-grass path,
   .qb-cloud {
     animation: none !important;
     transform: none !important;

@@ -237,6 +237,54 @@ This guarantees cross-browser symbol resolution regardless of SVG spec interpret
 
 ---
 
+## BUG-012 — Quote text overlaps dark mtn-front at mobile: zero contrast at overlap zone (HIGH) — 2026-04-25 (scene-v6 QA)
+
+**Status:** Open
+
+**Found:** scene-v6 QA. Visible in all 3 mobile screenshots (iPhone 13, iPhone SE, Pixel 5).
+
+**Root cause:**
+The mtn-front layer height is 56% of the bridge (434px on iPhone 13, 344px on iPhone SE). The bridge has padding-top: 14rem (224px) which positions the quote text starting at ~383px from the viewport top. The mtn-front SVG's visual top (the peak tips) reaches approximately 44% from the bridge top, which at mobile maps to overlapping the lower half of the quote body and the cite attribution. The quote text color is `var(--forest-deep)` = `#1a2e17`. The mtn-front fill is also `#1a2e17`. This produces near-zero contrast wherever the dark mountains are behind the dark text — words like "not a destination" and the "— CARL ROGERS" cite are rendered over a dark mountain silhouette.
+
+**Evidence:**
+- iPhone 13 (390px): quote body words "not a destination" and "CARL ROGERS" cite appear over mtn-front peak zone. The text is the same color as the mountain fill.
+- iPhone SE (375px): more severe — "direction, not" and "destination" lines partially overlap mountain peaks. Cite "CARL ROGERS" is fully in the mountain overlap zone.
+- Pixel 5 (393px): same pattern as iPhone 13.
+- Desktop 1440px: mountains are proportionally lower in the frame and quote text clears the peaks visually. Desktop is acceptable.
+
+**Computed:**
+- mtnFront fill resolved: `#1a2e17` (correct forest-deep, per spec)
+- Quote text color: `var(--forest-deep)` = `#1a2e17`
+- text-shadow: `0 1px 2px rgba(26,46,23,0.06)` — same dark color, effectively invisible contrast aid on dark bg
+- z-index is correct (quote z:5 over scene z:1); this is a color/composition issue not z-order
+
+**Fix options:**
+1. Change quote text color to parchment/white for mobile when it enters the mountain overlap zone — but this fights the design intent of dark text on parchment background.
+2. Reduce mtn-front height on mobile (e.g., max 40% at ≤900px) so peaks don't reach the quote text area.
+3. Add a semi-opaque backdrop or text-shadow with parchment color to the quote text to create contrast against dark mountains.
+4. Increase `padding-bottom` on quote-wrap so bridge height grows and quote sits entirely above the 56% mountain band.
+
+---
+
+## BUG-013 — Grass filled path renders correctly at mobile but reveals orphaned .qb-grass path animation CSS (LOW) — 2026-04-25 (scene-v6 QA)
+
+**Status:** Open (cosmetic / dead code)
+
+**Found:** scene-v6 QA code review.
+
+**Root cause:**
+BUG-010 (old stroke-based grass blades) was FIXED in scene-v6 by replacing 20 individual `<path>` elements with a single filled closed `qb-grass-path`. However, CSS rules `.qb-grass path`, `.qb-grass path:nth-child(2n)`, etc. (style.css lines 2327-2338) and the `prefers-reduced-motion` block at line 2342 (`.qb-grass path`) reference the class `.qb-grass` which no longer exists in the DOM. These are now orphaned selectors.
+
+**Evidence:**
+- `grep "qb-grass" index.html` — no `.qb-grass` group exists; only `.qb-grass-path` on the single consolidated path.
+- CSS still has `.qb-grass path { animation: grass-wave }` and 4 `nth-child` delay variants.
+
+**Impact:** Low — zero visual effect on users. Dead CSS adds ~12 lines / ~400 bytes to style.css. No runtime errors.
+
+**Fix:** Remove `.qb-grass path` and all its `nth-child` variants from style.css. Keep `.qb-grass-path` (the filled path) and `.qb-wildflowers` rules.
+
+---
+
 ## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
 Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on
