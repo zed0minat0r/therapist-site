@@ -161,6 +161,42 @@ The desktop 1440px screenshot shows a 2px terracotta vertical rule left of the q
 
 ---
 
+## BUG-009 — preserveAspectRatio invalid value on qb-layer--mid SVG (LOW) — 2026-04-25 (scene-v4b QA)
+
+**Status:** Open
+
+**Found:** Playwright scene-v4b verification at Pixel 5 (Chromium) and Desktop 1440 (Chromium). WebKit (iPhone 13, iPhone SE) does not surface this error.
+
+**Console error (Chromium only):**
+`Error: <svg> attribute preserveAspectRatio: Unrecognized enumerated value, "xMidYEnd meet".`
+
+**Root cause:**
+`qb-layer--mid` SVG in index.html line 477 uses `preserveAspectRatio="xMidYEnd meet"`. The SVG spec does not include `YEnd` as a valid alignment keyword — valid Y values are `YMin`, `YMid`, and `YMax`. `xMidYEnd` is unrecognized. Chrome surfaces this as a console error; WebKit silently ignores it.
+
+**Impact:** The tree silhouette SVG still renders (browsers fall back to default `xMidYMid meet`) but the intended behavior — anchoring the treeline to the bottom of the viewport slice — may not work as designed. The treeline may float mid-SVG rather than sitting at the bottom edge where it meets the grass layer. Visual effect appears credible in screenshots but alignment precision is lost.
+
+**Fix:** Change `preserveAspectRatio="xMidYEnd meet"` to `preserveAspectRatio="xMidYMax meet"` (YMax = bottom alignment, which is the valid equivalent of the intended "anchor to bottom" behavior).
+
+---
+
+## BUG-010 — Foreground grass/wildflowers rendered as parenthesis-dash symbols at all viewports (MEDIUM) — 2026-04-25 (scene-v4b QA)
+
+**Status:** Open
+
+**Found:** Desktop 1440 and mobile screenshots. Visible in all 4 viewport screenshots.
+
+**Root cause:**
+The `qb-layer--near` SVG (`preserveAspectRatio="none"`) is scaling the `viewBox="0 0 1200 220"` to fill the full width. At 393px and 390px wide, the 14 grass blade `<path>` elements (drawn as thin `Q` curves in a 1200-unit coordinate system) compress to near-zero width and render as illegible marks. The curves' narrow aspect ratio — roughly 4px wide paths in a 1200-unit space — collapse to single-pixel strokes that look like typographic symbols ( ), -, ) rather than grass blades.
+
+At desktop 1440px the grass blades are more visible but still thin and render with an odd uniform repeat pattern that reads more like a decorative border than naturalistic grass.
+
+**Fix options:**
+1. Add `stroke-width` to grass paths set relative to the viewBox (e.g., `stroke-width="4"`) — currently no explicit stroke-width is set, browsers default to 1 user unit which at 393/1200 scale is < 1px effective.
+2. Reduce the viewBox width (e.g., `viewBox="0 0 400 80"`) and respace grass blade x-positions proportionally.
+3. Replace with `preserveAspectRatio="xMidYMax meet"` (drop `none`) so the grass scales proportionally and stays anchored to the bottom of the scene.
+
+---
+
 ## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
 Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on
