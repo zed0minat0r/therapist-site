@@ -103,3 +103,29 @@
 - Deferred: CSS minification (needs build step, 3 KiB low ROI), cache TTL (GitHub Pages controlled), forced reflow 78ms (acceptable)
 
 2026-04-26 13:00 performance — scores: P=71 BP=96 A=92 S=100, top issue: render-blocking Google Fonts + oversized hero (5.4s LCP), fixed: 5
+
+## 2026-04-26 — Accessibility (cycle 2)
+
+axe-core 4.11.3 results (39 issues total, 5 violation types):
+- CRITICAL/SERIOUS: aria-allowed-role (4 occurrences) — dt[role="button"] invalid
+- SERIOUS: color-contrast (8 occurrences) — footer low-opacity white text on dark background
+- MODERATE: landmark-one-main (1) — no <main> landmark
+- MODERATE: definition-list (1) — axe flags div-wrapped dt/dd (valid HTML5, see note)
+- MODERATE: region (25) — content outside landmark regions (resolved by <main>)
+
+Fixes applied:
+- Added <main id="main-content"> wrapping all page content (resolves landmark-one-main + all 25 region violations)
+- Added visually-hidden skip-to-main link for keyboard bypass of fixed nav
+- FAQ accordion: converted dt[role="button"] to dt > button (resolves aria-allowed-role × 4); added aria-controls linking each button to its answer panel id
+- Removed superfluous JS keydown handler (native button handles Enter/Space)
+- Added role="alert" to dynamically-created form-error spans for screen reader announcements
+- Fixed orphaned <label> (no for=) on service picker — converted to <p aria-hidden> since group has aria-label
+- Added .form-group__visual-label CSS class
+- Added cta-breathe-white to prefers-reduced-motion block (missing; was only covering cta-breathe variant)
+
+Deferred (brand decision required):
+- Footer color-contrast: 8 elements use rgba white at 25–45% opacity on #1a1a18. Est. contrast 1.9–4.3:1, failing 4.5:1 AA. See BUGS.md for recommended opacity values.
+- Specialties spec--sm: rgba(255,255,255,0.25) on forest = ~1.9:1. Decorative intent — consider aria-hidden on constellation or raise to 0.45 opacity.
+- Hero stats bar: aria-hidden="true" removes "17+ years / Ages 13–Adult / Mon–Fri" from screen readers.
+
+2026-04-26 14:30 accessibility — focus: aria-allowed-role + missing landmark, top issue: dt[role=button] invalid + no <main> element, fixed: 6
