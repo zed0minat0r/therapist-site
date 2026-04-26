@@ -2130,10 +2130,9 @@ h2 em, h1 em {
 
 .quote-bridge .approach__quote {
   color: var(--forest-deep);
-  /* Bridge quote is a featured editorial moment — must read larger and more
-     present than the inline approach__quote it inherits from. */
+  /* Bridge quote is a featured editorial moment — bold italic so it stops the scroll. */
   font-size: clamp(1.75rem, 5vw, 2.6rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.4;
   letter-spacing: -0.005em;
 }
@@ -2143,6 +2142,52 @@ h2 em, h1 em {
   font-size: 0.875rem;          /* 14px, up from inherited 12px */
   letter-spacing: 0.18em;        /* tighter tracking ratio at the larger size */
   margin-top: 28px;              /* extra breathing room from the larger quote */
+}
+
+/* ===================================================
+   Drifting flock — atmospheric birds across the quote
+   bridge. Each bird is an absolute-positioned span
+   with an inline SVG background; --y positions the
+   bird vertically (% of bridge height); --dur and
+   --delay control timing. Stays behind the quote text.
+   =================================================== */
+.quote-bridge__flock {
+  position: absolute;
+  inset: 0;
+  z-index: 1;                   /* behind quote-wrap (z:5), in front of bg */
+  pointer-events: none;
+  overflow: hidden;             /* clip birds at left/right of the panel */
+}
+.quote-bridge__bird {
+  position: absolute;
+  top: var(--y);
+  left: -80px;
+  width: 44px;
+  height: 22px;
+  background: no-repeat center / contain;
+  /* darker stroke (forest-deep) + thicker line so the birds register against
+     both the parchment ground and the upper gradient transition zone */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 22' fill='none' stroke='%231a2e17' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 14 q7 -10 19 0 q7 -10 19 0' /%3E%3C/svg%3E");
+  opacity: 0.62;
+  animation: bird-drift var(--dur, 24s) linear var(--delay, 0s) infinite;
+  will-change: transform;
+}
+.quote-bridge__bird--small {
+  width: 30px;
+  height: 15px;
+  opacity: 0.45;
+}
+@keyframes bird-drift {
+  0%   { transform: translateX(0)             translateY(0); }
+  50%  { transform: translateX(calc(50vw + 30px)) translateY(-10px); }
+  100% { transform: translateX(calc(100vw + 80px)) translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .quote-bridge__bird {
+    animation: none !important;
+    transform: translateX(20vw);
+    opacity: 0.4;
+  }
 }
 
 /* Mobile: tighten vertical rhythm */
