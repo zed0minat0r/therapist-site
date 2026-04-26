@@ -2130,10 +2130,19 @@ h2 em, h1 em {
 
 .quote-bridge .approach__quote {
   color: var(--forest-deep);
+  /* Bridge quote is a featured editorial moment — must read larger and more
+     present than the inline approach__quote it inherits from. */
+  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
 }
 
 .quote-bridge .approach__quote cite {
   color: var(--terra);
+  font-size: 0.875rem;          /* 14px, up from inherited 12px */
+  letter-spacing: 0.18em;        /* tighter tracking ratio at the larger size */
+  margin-top: 28px;              /* extra breathing room from the larger quote */
 }
 
 /* Mobile: tighten vertical rhythm */
