@@ -1219,18 +1219,19 @@ h2 em, h1 em {
 .about__faq-a.is-open { display: block; }
 
 /* ===================================================
-   CTA — full-bleed forest dark, huge editorial type
+   CTA — bright parchment ground with terra warmth.
+   Inverted from the original dark-mode treatment per
+   customer feedback: "needs to be brighter and vibrant."
    =================================================== */
 .cta-section {
   position: relative;
-  background: var(--forest-deep);
-  padding: 220px 40px 120px;     /* extra padding-top absorbs the 200px gb-quote-cta bleed */
+  background: var(--parchment);
+  padding: 160px 40px 120px;     /* reduced padding-top — gb-quote-cta gradient bleed now flows silhouette into bright */
   overflow: hidden;
 }
 .cta-section__inner {
   position: relative;
-  z-index: 4;                    /* lift content above gradient-bleed (z:2) so CTA text isn't painted over */
-  z-index: 1;
+  z-index: 4;
   max-width: 800px;
   margin: 0 auto;
   display: flex;
@@ -1241,17 +1242,16 @@ h2 em, h1 em {
 }
 .cta-section__pre {
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--gold-lt);
+  color: var(--terra);
   margin-bottom: 24px;
-  opacity: 0.7;
   text-align: center;
 }
 .cta-section__headline {
   font-size: clamp(3.2rem, 7vw, 6.5rem);
-  color: var(--white);
+  color: var(--forest-deep);
   font-weight: 400;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -1259,7 +1259,7 @@ h2 em, h1 em {
 }
 .cta-section__headline em {
   font-style: italic;
-  color: var(--terra-lt);
+  color: var(--terra);
 }
 .cta-section__action {
   display: flex;
@@ -1269,49 +1269,51 @@ h2 em, h1 em {
   text-align: center;
 }
 .cta-section__body {
-  font-size: 15px;
-  color: rgba(255,255,255,0.78);
+  font-size: 16px;
+  color: var(--ink-mid);
   line-height: 1.8;
-  font-weight: 300;
+  font-weight: 400;
   text-align: center;
+  max-width: 540px;
 }
 .cta-section .btn--primary {
-  background: var(--white);
-  color: var(--forest-deep);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
-  animation: cta-breathe-white 3.5s ease-in-out infinite;
+  background: var(--terra);
+  color: var(--white);
+  box-shadow: 0 4px 30px rgba(184, 101, 74, 0.28);
+  animation: cta-breathe-terra 3.5s ease-in-out infinite;
 }
 .cta-section .btn--primary:hover {
-  background: var(--parchment);
+  background: var(--terra-lt);
   transform: translateY(-2px);
 }
-@keyframes cta-breathe-white {
-  0%, 100% { box-shadow: 0 4px 30px rgba(0,0,0,0.2); }
-  50% { box-shadow: 0 6px 44px rgba(0,0,0,0.3); }
+@keyframes cta-breathe-terra {
+  0%, 100% { box-shadow: 0 4px 30px rgba(184, 101, 74, 0.28); }
+  50%      { box-shadow: 0 6px 44px rgba(184, 101, 74, 0.42); }
 }
 .cta-section__phone-alt {
-  font-size: 13px;
-  color: rgba(255,255,255,0.58);
-  font-weight: 300;
+  font-size: 14px;
+  color: var(--ink-mid);
+  font-weight: 400;
   margin-top: -8px;
 }
 .cta-section__phone-link {
-  color: rgba(255,255,255,0.65);
+  color: var(--forest-deep);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--terra);
   padding-bottom: 1px;
   transition: color 0.2s, border-color 0.2s;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
 }
-.cta-section__phone-link:hover { color: var(--white); border-color: rgba(255,255,255,0.6); }
+.cta-section__phone-link:hover { color: var(--terra); border-color: var(--terra-lt); }
 
 /* ===================================================
    CONTACT — dark bg, cream floating card with gold border
    =================================================== */
 .contact {
-  background: var(--ink);
+  background: var(--parchment-dk);   /* slightly darker cream for visual separation from CTA */
   padding: 0;
   overflow: hidden;
 }
@@ -1325,18 +1327,18 @@ h2 em, h1 em {
   padding: 96px 40px;
 }
 
-/* Contact info side */
-.contact__eyebrow { color: var(--gold-lt); }
+/* Contact info side — bright variant on parchment-dk */
+.contact__eyebrow { color: var(--terra); font-weight: 600; }
 .contact__headline {
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
   margin-bottom: 52px;
-  font-weight: 300;
+  font-weight: 400;
   margin-top: 18px;
   letter-spacing: -0.01em;
   line-height: 1.05;
-  color: var(--white);
+  color: var(--forest-deep);
 }
-.contact__headline em { color: var(--terra-lt); }
+.contact__headline em { color: var(--terra); font-style: italic; }
 .contact__details {
   display: flex;
   flex-direction: column;
@@ -1347,29 +1349,29 @@ h2 em, h1 em {
 .contact__detail-label {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold-lt);
+  color: var(--terra);
 }
 .contact__detail-val {
   font-size: 15px;
-  color: rgba(255,255,255,0.78);
+  color: var(--ink-mid);
   line-height: 1.65;
-  font-weight: 300;
+  font-weight: 400;
 }
 .contact__link {
-  color: rgba(255,255,255,0.75);
+  color: var(--forest-deep);
   text-decoration: none;
   font-size: 15px;
-  font-weight: 300;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--terra);
   transition: color 0.2s, border-color 0.2s;
   display: inline-flex;
   align-items: center;
   min-height: 44px;
 }
-.contact__link:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
+.contact__link:hover { color: var(--terra); border-color: var(--terra-lt); }
 /* Form: floating cream card, gold border */
 .contact__form-card {
   background: var(--parchment);
@@ -2493,28 +2495,27 @@ h2 em, h1 em {
   }
 }
 
-/* 6b. Rogers quote bridge (parchment #f7f2ea) → CTA (forest-deep #1a2e17) — mirror of the
-   FAQ→quote bleed with the same perceptual stops in reverse so the eye reads it as the
-   matching "going dark again" beat. */
+/* 6b. Rogers quote silhouette (forest-deep #1a2e17 at bottom) → CTA (parchment #f7f2ea).
+   The silhouette ends at forest-deep; CTA is now bright parchment. Smooth fade from
+   the dark forest mass up into the warm cream ground for a natural sunrise-feel. */
 .gb-quote-cta {
-  height: 200px;
-  margin-bottom: -200px;
+  height: 160px;
+  margin-bottom: -160px;
   background: linear-gradient(
     to bottom,
-    #f7f2ea 0%,
-    #dcd9c9 12%,
-    #b2bea1 25%,
-    #7d9468 40%,
-    #486a3f 58%,
-    #2e4a2a 75%,
-    #213a1d 88%,
-    #1a2e17 100%
+    #1a2e17 0%,
+    #2e4a2a 18%,
+    #486a3f 35%,
+    #7d9468 52%,
+    #b2bea1 70%,
+    #dcd9c9 86%,
+    #f7f2ea 100%
   );
 }
 
-/* 7. CTA (forest-deep #1a2e17) → Contact (ink #1a1a18) */
+/* 7. CTA (parchment) → Contact (parchment-dk) — subtle warm-cream fade */
 .gb-cta-contact {
-  background: linear-gradient(to bottom, #1a2e17, #1a1a18);
+  background: linear-gradient(to bottom, #f7f2ea, #ece5d7);
 }
 
 /* Contact → Footer: same ink color — no bleed needed */
