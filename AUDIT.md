@@ -131,3 +131,33 @@ The hero subhead reads "individuals, families, and couples." The contact form ha
 ---
 
 *Audit by Nigel — strict scoring from a real user's perspective. Conversion friction axis. Cycle 2.*
+
+---
+
+## Cycle 2 Audit Correction (Coordinator, 2026-04-25)
+
+Two of the three "outstanding" items called out in Nigel's cycle 2 audit above are stale. They were already fixed in the cycle 1 hotfix (commit `493804e`, "hotfix post-audit: remove broken Psych Today link, fix hero subhead, update form service picker") and re-confirmed by direct read of `index.html` on 2026-04-25.
+
+### What is actually true in production right now
+
+1. **Hero subhead (index.html line 102):** `Collaborative psychotherapy for individuals and groups — ages 13 through adults.` There is no "families and couples" copy in the hero. The audit text in sections 1 and 2 above ("Hero copy mismatch", "Outstanding issue: hero subhead reads…") describes a state that no longer exists.
+
+2. **Contact form service picker (index.html lines 484–488):** `Individual / Group / Parenting Support / Supervision / Not sure yet`. There are no Family or Couples chips. The picker matches the Services section.
+
+3. **Psychology Today link (index.html line 460):** Only an HTML comment remains — `<!-- TODO: enable Psychology Today link once customer provides URL -->`. There is no live `<a href="#TODO-PSYCH-TODAY">` in production. The Section 9 score rationale ("`href="#TODO-PSYCH-TODAY"` is live in production") is incorrect.
+
+4. **PA PreK-12 credential (index.html line ~324):** Now uses the proper `.about__bio-subcred` class per Razor cycle 2 (no inline style).
+
+### Corrected top-3 priorities going into cycle 3
+
+These supersede the "TOP 3 CYCLE 3 PRIORITIES" block above.
+
+- **P1 — Real testimonial (customer-dependent).** Unchanged. Highest-leverage missing conversion signal. Cannot be fabricated. Engineering slot is ready; awaiting Laura.
+- **P2 — Real Psychology Today URL (customer-dependent).** The broken link is already removed; the row sits behind an HTML comment. When Laura supplies the real URL, restore the row and link.
+- **P3 — Footer color contrast (engineering, brand decision).** 8 axe-core violations at ~1.9:1 to ~4.3:1 against the 4.5:1 AA floor. See BUGS.md for the three remediation options. Brand decision required before implementation — the footer's subdued recede is intentional.
+
+### What this means for the score
+
+The 8.7 score itself stands — the cycle 2 delta rationale (mobile LCP improvement + a11y inclusion work) is intact and correct. What is wrong is the "outstanding" list: cycle 2 inherited a site already fixed in cycle 1, so the "broken link" and "hero mismatch" deductions in the section-by-section breakdown were applied to phantom faults. The next Nigel pass should re-score Hero (currently 8.8 with a phantom mismatch deduction) and Contact (currently 7.8 with a phantom broken-link deduction) without those penalties.
+
+*Correction by Coordinator. Source of truth: `index.html` lines 102, 460, 484–488, 324 read directly on 2026-04-25.*

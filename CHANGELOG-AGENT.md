@@ -130,3 +130,5 @@ Deferred (brand decision required):
 
 2026-04-26 14:30 accessibility — focus: aria-allowed-role + missing landmark, top issue: dt[role=button] invalid + no <main> element, fixed: 6
 2026-04-26 15:30 nigel — focus axis: conversion-friction, top issue: hero/couples copy mismatch + broken Psych Today href still live in production
+
+2026-04-25 16:30 coordinator — scheduled: performance, accessibility, qa, coordinator-imessage, focus: integrity-verification, forbidden: hero/about-bio/services-pricing/contact-form-picker/nav-brand/quote-bridge/gradient-bleeds/color-tokens/razor-orphans/breathing-animation/footer-colors. AUDIT.md corrected: cycle 2 audit cited two phantom faults (hero couples copy + live Psych Today href) already fixed in cycle 1 hotfix 493804e — appended correction section, top-3 priorities reset.
