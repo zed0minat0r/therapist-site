@@ -1,5 +1,17 @@
 # CHANGELOG-AGENT
 
+## 2026-04-26 — Performance (cycle 4 — render-block fix)
+
+- Converted `<link rel="stylesheet" href="style.css">` to non-blocking preload + noscript fallback (Option A)
+- Inlined minimal critical CSS (~300 bytes) in `<head>` to prevent FOUC: CSS vars, body bg, hero bg, nav position
+- Added `<link rel="preload" as="image">` with imagesrcset/imagesizes for LCP hero image
+- FCP: 3.1s → 1.6s (-1.5s). LCP: 3.7-3.9s (unchanged; Unsplash CDN bottleneck)
+- Mobile scores 5 runs: 82/89/87/88/87 (median ~87-88). Best Practices=100, A=97, SEO=100
+- 90 floor not reached; remaining gap is LCP from third-party Unsplash image
+- .qb-* selectors not touched. No visual regression. silhouette scene confirmed intact.
+
+2026-04-25 19:00 performance — scores: P=87 BP=100 A=97 S=100, top issue: LCP 3.7-3.9s (Unsplash CDN hero image), fixed: 2 (render-blocking CSS defer + hero image preload)
+
 ## 2026-04-25 — Builder (customer surgery cycle)
 
 - Credential swap: LCSW → LPC, "Licensed Clinical Social Worker" → "Licensed Professional Counselor — Psychotherapy and Clinical Supervision" (index.html bio, page title, meta description)
