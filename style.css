@@ -2081,10 +2081,8 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 14rem 2rem 5rem;     /* padding-top 224px absorbs the 200px FAQ→quote gradient overlap */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 14rem 2rem 5rem;     /* padding-top 224px clears the 200px FAQ→quote gradient overlap */
+  text-align: center;            /* horizontal centering — flex was vertically centering the quote INTO the gradient */
   position: relative;
   z-index: 1;                    /* below gradient-bleed z:2 so the bleed paints OVER the parchment in overlap zone (text gets z:4 inside) */
 }
