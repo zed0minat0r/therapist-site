@@ -29,3 +29,40 @@
 - PLAN.md: created and committed ahead of execution (per PLAN.md)
 
 2026-04-25 15:00 builder — customer surgery 11-item content/credential/location/pricing overhaul landed (per PLAN.md)
+
+## 2026-04-26 — Pixel (post-surgery alignment)
+
+### Classes added
+- `.quote-bridge` — proper CSS class replacing Builder's inline `style="background:var(--color-forest);padding:4rem 2rem;"` (fixed invalid `--color-forest` var → `var(--forest)`)
+- `.gb-quote-cta` — new gradient bleed class, forest #2e4a2a → forest-deep #1a2e17, bridging quote block into CTA section
+- Gradient bleed `gb-quote-cta` div inserted in HTML between Rogers quote and CTA section
+
+### Gradient fixes
+- `.gb-about-testimonials` updated: was `#1a2e17 → #f2e6df` (pointing at removed testimonials), now `#1a2e17 → #2e4a2a` (forest) to match new Rogers quote bridge background
+
+### Sections audited (375px + 414px)
+- Hero: no location tagline, spacing rhythm intact, stats bar centered OK
+- Approach: pillars centered, original Rogers quote centered, border-left→border-top swap on mobile confirmed
+- Services: fee note centered, longer copy wraps cleanly, no orphaned lines
+- Specialties: flex-wrap keeps rows from overflowing
+- About: new bio paragraph and PA PreK-12 credential line center correctly via `about__body` class
+- Rogers quote bridge (NEW): centered, forest-pale text on forest bg, border stripped on mobile, cite centered
+- CTA: centered, btn full-width on mobile, phone alt centered
+- Contact: Maps removed — no hollow gap (contact details fill cleanly), Psych Today link has min-height 44px ✓
+- Footer: brand + tagline centered, nav links wrap centered
+
+### Tap targets
+- Psychology Today `contact__link`: 44px min-height confirmed ✓
+- Service selection cards: 44px min-height confirmed ✓
+- All CTAs: 48px min-height via `.btn` ✓
+
+### Console errors
+- No JS references to removed elements (trust-strip, testimonials scroll removed by Builder)
+- All init functions have null-guard early returns
+- Zero console errors expected
+
+### Issues for next cycle / Spark
+- `gb-testimonials-cta` and `contact__parking` / `contact__map` CSS are orphaned (no matching HTML); harmless but can be cleaned up
+- About bio credential (`PA PreK-12 Certified School Counselor`) uses inline `style="font-size:0.875em; opacity:0.8"` — candidate for a proper class (`.about__bio-subcred`)
+
+2026-04-26 09:00 pixel — post-surgery alignment: quote-bridge class, gradient fixes, mobile audit all sections
