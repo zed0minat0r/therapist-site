@@ -1975,33 +1975,80 @@ h2 em, h1 em {
   margin-bottom: -80px;
 }
 
-/* 1. Hero (dark forest ~#1a2e17 to forest-pale #e8ede5 via approach bg) */
+/* ===================================================
+   Site-wide gradient curve refinement
+   ---------------------------------------------------
+   All cross-tonal section bleeds use perceptual stops
+   that pass through forest mid-tones and sage rather
+   than linear-RGB interpolation, which reads as a hard
+   muddy band on dark↔light transitions. Stops are
+   asymmetric: dark colors hold longer at the dark end,
+   pale tones hold longer at the light end.
+   =================================================== */
+
+/* 1. Hero (forest-deep) → Approach (forest-pale) */
 .gb-hero-approach {
-  background: linear-gradient(to bottom, #1a2e17, #e8ede5);
+  background: linear-gradient(
+    to bottom,
+    #1a2e17 0%,
+    #213a1d 18%,
+    #2e4a2a 35%,
+    #486a3f 52%,
+    #7d9468 67%,
+    #b2bea1 80%,
+    #d4d8c7 92%,
+    #e8ede5 100%
+  );
 }
 
-/* 2. Approach (forest-pale #e8ede5) → Services (parchment #f7f2ea) */
+/* 2. Approach (forest-pale) → Services (parchment) — short hop, simple curve is fine */
 .gb-approach-services {
-  background: linear-gradient(to bottom, #e8ede5, #f7f2ea);
+  background: linear-gradient(to bottom, #e8ede5 0%, #efece5 50%, #f7f2ea 100%);
 }
 
-/* 3. Services fee-note band (parchment-dk #ece5d7) → Specialties (forest #2e4a2a) */
+/* 3. Services fee-note band (parchment-dk) → Specialties (forest) — light to mid-dark */
 .gb-services-specialties {
-  background: linear-gradient(to bottom, #ece5d7, #2e4a2a);
+  background: linear-gradient(
+    to bottom,
+    #ece5d7 0%,
+    #d4d2c1 15%,
+    #b2bea1 32%,
+    #7d9468 50%,
+    #486a3f 70%,
+    #38583a 85%,
+    #2e4a2a 100%
+  );
 }
 
-/* 4. Specialties (forest #2e4a2a) → About (parchment #f7f2ea) */
+/* 4. Specialties (forest) → About (parchment) — mid-dark to light, mirror of #3 */
 .gb-specialties-about {
-  background: linear-gradient(to bottom, #2e4a2a, #f7f2ea);
+  background: linear-gradient(
+    to bottom,
+    #2e4a2a 0%,
+    #38583a 15%,
+    #486a3f 30%,
+    #7d9468 50%,
+    #b2bea1 70%,
+    #dcd9c9 88%,
+    #f7f2ea 100%
+  );
 }
 
-/* 5. About FAQ band (forest-deep #1a2e17) → Testimonials (terra-pale #f2e6df) */
-/* About parchment → FAQ dark band */
+/* 5. About (parchment) → FAQ band (forest-deep) — light to deepest dark */
 .gb-about-faq {
-  background: linear-gradient(to bottom, #f7f2ea, #1e3220);
   margin-bottom: -80px;
   position: relative;
   z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    #f7f2ea 0%,
+    #dcd9c9 15%,
+    #b2bea1 32%,
+    #7d9468 50%,
+    #486a3f 70%,
+    #2e4a2a 85%,
+    #1e3220 100%
+  );
 }
 
 /* FAQ band (forest-deep) → Rogers quote bridge (parchment).
