@@ -520,33 +520,38 @@
       <!-- Mid trees: detailed silhouette tree line with gentle sway. Symbol defs hoisted above for Safari. -->
       <svg class="qb-layer qb-layer--mid" viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
         <g class="qb-trees">
-          <!-- Tree line: 11 trees, mixed species, varied scale and y-anchor for irregular skyline -->
-          <use href="#qb-tree-pine"  x="40"   y="115" width="65" height="200"/>
-          <use href="#qb-tree-oak"   x="115"  y="135" width="80" height="180"/>
+          <!-- Tree line: 14 trees, mixed species. Every tree's y + height MUST equal 320 (viewBox bottom) so feet land on the ground line. -->
+          <use href="#qb-tree-pine"  x="40"   y="120" width="65" height="200"/>
+          <use href="#qb-tree-oak"   x="115"  y="140" width="80" height="180"/>
           <use href="#qb-tree-pine"  x="200"  y="100" width="78" height="220"/>
           <use href="#qb-tree-birch" x="290"  y="155" width="48" height="165"/>
           <use href="#qb-tree-bare"  x="345"  y="90"  width="76" height="230"/>
-          <use href="#qb-tree-pine"  x="430"  y="120" width="60" height="195"/>
+          <use href="#qb-tree-pine"  x="430"  y="125" width="60" height="195"/>
           <use href="#qb-tree-oak"   x="510"  y="125" width="92" height="195"/>
           <use href="#qb-tree-pine"  x="615"  y="105" width="72" height="215"/>
           <use href="#qb-tree-bare"  x="705"  y="115" width="68" height="205"/>
           <use href="#qb-tree-birch" x="790"  y="150" width="44" height="170"/>
           <use href="#qb-tree-oak"   x="845"  y="130" width="86" height="190"/>
-          <use href="#qb-tree-pine"  x="945"  y="115" width="68" height="200"/>
+          <use href="#qb-tree-pine"  x="945"  y="120" width="68" height="200"/>
           <use href="#qb-tree-bare"  x="1025" y="100" width="74" height="220"/>
           <use href="#qb-tree-pine"  x="1110" y="125" width="58" height="195"/>
         </g>
       </svg>
 
-      <!-- Foreground grass: filled blade silhouettes (not strokes) so they read crisp at any viewport -->
-      <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax meet" aria-hidden="true" focusable="false">
+      <!-- Foreground grass: stroke blades (vector-effect keeps stroke crisp at any viewport stretch) -->
+      <svg class="qb-layer qb-layer--near" viewBox="0 0 1200 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <g class="qb-grass">
-          <!-- Filled triangular blades, varied widths and heights for irregular tuft -->
-          <path d="M30 220 L37 178 L42 220 Z M48 220 L54 188 L60 220 Z M68 220 L74 170 L80 220 Z" />
-          <path d="M105 220 L112 195 L118 220 Z M125 220 L132 175 L139 220 Z M150 220 L156 200 L162 220 Z" />
+          <path d="M40 220 Q44 200 42 184" />
+          <path d="M65 220 Q62 198 68 180" />
+          <path d="M90 220 Q86 198 92 178" />
+          <path d="M120 220 Q124 200 120 188" />
+          <path d="M150 220 Q146 198 152 184" />
           <path d="M180 220 Q184 198 180 180" />
+          <path d="M215 220 Q210 196 218 178" />
           <path d="M260 220 Q256 196 262 178" />
+          <path d="M300 220 Q304 200 300 188" />
           <path d="M340 220 Q344 200 340 184" />
+          <path d="M380 220 Q376 196 384 178" />
           <path d="M430 220 Q426 196 432 176" />
           <path d="M520 220 Q524 200 520 182" />
           <path d="M620 220 Q616 198 622 178" />
