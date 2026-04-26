@@ -1,5 +1,7 @@
 # CHANGELOG-AGENT
 
+2026-04-25 14:15 scout — research angle: silhouette scene assets (tree SVGs + bird animation patterns), 7 FreeSVG CC0 trees + 1 bird sprite + 3 reference designs added to SCOUT.md
+
 ## 2026-04-26 — Performance (cycle 4 — render-block fix)
 
 - Converted `<link rel="stylesheet" href="style.css">` to non-blocking preload + noscript fallback (Option A)
