@@ -93,6 +93,74 @@ All four are tertiary/small-print text (legal copyright, form footnotes, field l
 
 ---
 
+---
+
+## BUG-006 — Birds invisible: all 5 fly inside the dark gradient zone (MEDIUM) — 2026-04-25
+
+**Status:** Open
+
+**Found:** QA silhouette-scene deep-dive across iPhone 13 / iPhone SE / Pixel 5 / Desktop 1440
+
+**Root cause:**
+`.quote-bridge__flock` uses `inset: 0` (fills the entire bridge). Bird `--y` CSS vars place them at 6%, 10%, 14%, 24%, 30% from the top of the flock container. The bridge is ~437–468px tall. Those percentages resolve to 28–140px from the bridge top.
+
+The `gb-about-testimonials` gradient bleed has `height: 200px` and `margin-bottom: -200px`, meaning its dark forest→parchment gradient visually overlaps the first 200px of the bridge. The gradient starts nearly opaque at the top and fades to parchment by ~200px.
+
+All 5 birds (including 2 small ones) fly at y positions 28–140px — entirely within the dark gradient zone. The bird SVG uses `stroke: #1a2e17` (dark forest-deep, same hue as the gradient). Against the dark gradient background the birds are effectively invisible.
+
+**Desktop geometry (1440x900 Chromium):**
+| Bird | `--y` | y in bridge | Gradient covers | Visible? |
+|---|---|---|---|---|
+| Bird 0 | 14% | 66px | 0–200px | No |
+| Bird 1 | 6% | 28px | 0–200px | No |
+| Bird 2 | 24% | 112px | 0–200px | No |
+| Bird 3 (sm) | 10% | 47px | 0–200px | No |
+| Bird 4 (sm) | 30% | 140px | 0–200px | No |
+
+**Fix options:**
+1. Shift `--y` values down into the parchment zone: 50%–80% range puts birds at 219–372px from bridge top, clearly below the gradient, visible against parchment. Recommend: 52%, 58%, 65%, 72%, 78%.
+2. Change flock positioning to `top: 200px` instead of `inset: 0` so the 0% origin is already below the gradient.
+3. Change bird `background-image` stroke to a lighter color (e.g., `--forest-light`) so they register against the dark gradient background.
+
+Option 1 (shift `--y`) is simplest and preserves the "birds drifting above the horizon" narrative.
+
+---
+
+## BUG-007 — Sun glow hidden inside dark gradient zone (LOW) — 2026-04-25
+
+**Status:** Open
+
+**Found:** QA silhouette-scene deep-dive
+
+**Root cause:**
+`.qb-sun` is positioned at `top: 28%` of `.quote-bridge__scene` (which has `inset: 0` on the bridge). At bridge height ~437–468px, 28% = ~122–131px from the bridge top. The `gb-about-testimonials` gradient covers 0–200px from the bridge top with a dark forest color.
+
+The sun glow is a `radial-gradient` centered at 122–131px from the bridge top, which is well inside the dark gradient zone. Its warm orange glow (`rgba(255,215,170,0.35)`) is completely masked by the overlapping dark forest gradient.
+
+**Desktop geometry:** sunTop=131px, sunBottom=351px, gradient covers 0–200px, so the sun's center and top half are hidden. Only the bottom ~150px of the 220px sun would nominally extend below the gradient, but that outer edge is already at near-zero opacity in the radial gradient.
+
+**Fix:**
+Move sun to `top: 50%` or higher to bring it below the gradient boundary. Or reposition to the parchment zone: `top: 55%` places center at ~242px from bridge top, fully below the 200px gradient. Alternatively, reframe sun as lower/horizon-positioned by using `bottom: 35%` instead of `top: 28%`.
+
+---
+
+## BUG-008 — Desktop border-left leaks through on quote-bridge (LOW) — 2026-04-25
+
+**Status:** Open
+
+**Found:** QA silhouette-scene deep-dive, desktop 1440x900 screenshot
+
+**Root cause:**
+`.approach__quote-wrap` base style sets `border-left: 2px solid var(--terra)` and `padding-left: 32px`. The `.quote-bridge .approach__quote-wrap` override sets `border-left-color: var(--terra)` (preserving the color) but never sets `border-left-width: 0` or `border-left: none`. The mobile override (`@media max-width: 900px`) correctly sets `border-left: none !important`, but on desktop (1440px) the border-left renders.
+
+The desktop 1440px screenshot shows a 2px terracotta vertical rule left of the quote text. This is a design decision: the approach section uses this left-border as a pull-quote accent. The question is whether it's intentional on the bridge quote at desktop. On mobile (where the quote is centered full-width), it's correctly removed.
+
+**Fix (if unintended):** Add `border-left: none` to `.quote-bridge .approach__quote-wrap` (or change existing `border-left-color` override to `border-left: none`).
+
+**Note:** This may be intentional editorial styling. Flag for design review.
+
+---
+
 ## A11y — Hero stats bar semantic structure — CLOSED 2026-04-25 (cycle 3)
 
 Removed `aria-hidden="true"` from `.hero__stats`. Added `role="list"` + `role="listitem"` on

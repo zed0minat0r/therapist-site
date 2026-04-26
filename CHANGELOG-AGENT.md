@@ -188,3 +188,4 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 
 2026-04-25 qa — iPhone13/SE/Pixel5 quote-bridge geometry verify: padding-top 224px confirmed, clearances 25.8/24.5/24.9px, all 3 PASS
 2026-04-25 qa — 390/375/393px Rogers quote bridge font bump verify: 28px/400wt/39.2px line-height confirmed all 3 devices, 52px clearance above gradient, centered 16px gutters, 0 bugs found
+2026-04-25 17:30 qa — 390/375/393/1440px silhouette-scene deep-dive: layers PASS (hills/trees/grass render, animations active), 3 bugs found (BUG-006 birds invisible in gradient zone, BUG-007 sun hidden in gradient zone, BUG-008 desktop border-left on quote wrap)
