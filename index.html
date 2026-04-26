@@ -10,6 +10,15 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <!-- Preload LCP hero image: mobile gets 800w, desktop gets 1200w -->
+  <link rel="preload" as="image"
+    href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=75&auto=format&fm=webp&fit=crop"
+    imagesrcset="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=75&auto=format&fm=webp&fit=crop 800w,
+                 https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80&auto=format&fm=webp&fit=crop 1200w,
+                 https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80&auto=format&fm=webp&fit=crop 1600w"
+    imagesizes="100vw"
+    fetchpriority="high" />
+
   <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="style.css" /></noscript>
 
