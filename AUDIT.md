@@ -8,6 +8,11 @@
 
 ---
 
+## CUSTOMER SURGERY — 2026-04-25 (Builder)
+All 11 customer-directed content changes applied. Credential corrected (LCSW → LPC), phone corrected (610-585-1373 → 484-441-3108), all location references removed (schema address block, hero tagline, office address, parking note, map embed, photo caption, footer tagline), pricing corrected ($150 + 50min, no 80-min/extended sessions), ages updated (7+ → 13+), testimonials section fully removed (HTML + CSS + JS), bio expanded with school/outpatient context + PA PreK-12 credential, supervision copy updated to "Individual and Group Supervision for licensure", group description expanded with adults/parenting focus, second Carl Rogers quote added above CTA, Psychology Today placeholder link added in contact section. See CHANGELOG-AGENT.md for full line-by-line record.
+
+---
+
 ## OVERALL SCORE: 8.9 / 10
 
 Scored from the perspective of a prospective therapy client in suburban Philadelphia — searching on a weekday evening, possibly stressed, not design-literate, deciding whom to trust with something private.

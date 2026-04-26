@@ -1163,159 +1163,6 @@ h2 em, h1 em {
 .about__faq-a.is-open { display: block; }
 
 /* ===================================================
-   TRUST STRIP — horizontal scroll testimonials
-   =================================================== */
-.trust-strip {
-  background: var(--terra-pale);
-  padding: 72px 0 60px;
-  position: relative;
-  overflow: hidden;
-}
-.trust-strip::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  background-size: 200px;
-  pointer-events: none;
-}
-
-.trust-strip__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 40px 48px;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.trust-strip__eyebrow {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 12px;
-  text-align: center;
-}
-.trust-strip__title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 400;
-  color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 24px;
-  text-align: center;
-  text-shadow: 0 0 40px rgba(184, 101, 74, 0.15);
-  animation: title-glow 4s ease-in-out infinite;
-}
-.trust-strip__title em {
-  font-style: italic;
-  color: var(--terra);
-  text-shadow: 0 0 30px rgba(184, 101, 74, 0.25), 0 0 60px rgba(184, 101, 74, 0.1);
-}
-@keyframes title-glow {
-  0%, 100% { text-shadow: 0 0 40px rgba(184, 101, 74, 0.15); }
-  50% { text-shadow: 0 0 50px rgba(184, 101, 74, 0.3), 0 0 80px rgba(184, 101, 74, 0.1); }
-}
-
-.trust-strip__hint {
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(184,101,74,0.55);
-  letter-spacing: 0.08em;
-  text-align: center;
-}
-/* Mobile-only hint above track — hidden on desktop */
-.trust-strip__hint--mobile {
-  display: none;
-  padding: 0 20px 12px;
-  margin: 0;
-}
-
-/* Track wrapper — clips the scroll area and holds edge fades */
-.trust-strip__track-wrap {
-  position: relative;
-}
-
-/* Horizontal scroll track */
-.trust-strip__track {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 4px 40px 32px;
-  cursor: grab;
-}
-.trust-strip__track::-webkit-scrollbar { display: none; }
-.trust-strip__track:active { cursor: grabbing; }
-
-/* Edge fade overlays */
-.trust-strip__fade-left,
-.trust-strip__fade-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  pointer-events: none;
-  z-index: 2;
-}
-.trust-strip__fade-left {
-  left: 0;
-  background: linear-gradient(to right, var(--terra-pale), transparent);
-}
-.trust-strip__fade-right {
-  right: 0;
-  background: linear-gradient(to left, var(--terra-pale), transparent);
-}
-
-/* Individual quote card */
-.trust-q {
-  flex: 0 0 clamp(300px, 42vw, 540px);
-  scroll-snap-align: start;
-  padding: 44px 48px;
-  border-left: 1px solid rgba(184,101,74,0.18);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  user-select: none;
-}
-.trust-q:first-child { border-left: none; }
-
-.trust-q__text {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 300;
-  color: var(--ink);
-  line-height: 1.5;
-}
-
-.trust-q__cite {
-  font-family: 'DM Sans', sans-serif;
-  font-style: normal;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--terra);
-}
-
-.trust-strip__permission {
-  font-size: 12px;
-  color: var(--ink-muted);
-  text-align: center;
-  padding: 0 40px;
-  margin-top: 8px;
-  font-style: italic;
-}
-
-/* ===================================================
    CTA — full-bleed forest dark, huge editorial type
    =================================================== */
 .cta-section {
@@ -1781,23 +1628,7 @@ h2 em, h1 em {
   .about__faq-band { padding: 136px 20px 56px; }
   .about__faq-a { max-width: 100%; }
 
-  /* Testimonials — absorbs 80px bleed from about */
-  .trust-strip { padding: 136px 0 48px; }
-  .trust-strip__header { padding: 0 20px 24px; gap: 6px; align-items: center; text-align: center; }
-  /* Hide header hint on mobile — shown adjacent to track instead */
-  .trust-strip__header .trust-strip__hint { display: none; }
-  .trust-strip__hint--mobile { display: block; }
-  .trust-strip__track { padding: 4px 20px 24px; }
-  .trust-q {
-    flex: 0 0 88vw;
-    padding: 32px 24px;
-    scroll-snap-align: center;
-  }
-  .trust-strip__fade-left { width: 20px; }
-  .trust-strip__fade-right { width: 20px; }
-  .trust-strip__permission { padding: 0 20px; }
-
-  /* CTA — absorbs 80px bleed from testimonials */
+  /* CTA */
   .cta-section { padding: 160px 20px 80px; }
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
@@ -1997,23 +1828,6 @@ h2 em, h1 em {
   .about__faq-a {
     text-align: left !important;
     max-width: 100% !important;
-  }
-
-  /* ---- Testimonials ---- */
-  .trust-strip__header {
-    text-align: center !important;
-    align-items: center !important;
-  }
-  .trust-strip__eyebrow,
-  .trust-strip__title {
-    text-align: center !important;
-  }
-  .trust-q__text,
-  .trust-q__cite {
-    text-align: center !important;
-  }
-  .trust-strip__permission {
-    text-align: center !important;
   }
 
   /* ---- CTA ---- */
@@ -2240,18 +2054,7 @@ h2 em, h1 em {
   padding-top: 96px; /* keep original within the split */
 }
 
-/* Trust-strip receives About bleed */
-.trust-strip {
-  padding-top: 152px; /* was 72px + 80px */
-}
-.trust-strip__header,
-.trust-strip__track-wrap,
-.trust-strip__permission {
-  position: relative;
-  z-index: 3;
-}
-
-/* CTA receives Testimonials bleed */
+/* CTA receives About bleed */
 .cta-section {
   padding-top: 200px; /* was 120px + 80px */
 }
@@ -2290,5 +2093,4 @@ textarea:focus-visible {
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
   .spec--lg.is-breathing, .spec--md.is-breathing, .spec--sm.is-breathing { animation: none !important; }
-  .trust-strip__track { animation-play-state: paused !important; }
 }
