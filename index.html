@@ -10,7 +10,22 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="style.css" /></noscript>
+
+  <!-- Critical above-fold CSS: prevents FOUC before style.css activates -->
+  <style>
+    :root{--forest:#2e4a2a;--forest-deep:#1a2e17;--parchment:#f7f2ea;--ink:#1a1a18;--white:#ffffff}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--parchment);overflow-x:hidden}
+    .hero{position:relative;height:100vh;background:var(--forest-deep);overflow:hidden}
+    @supports(height:100svh){.hero{height:100svh}}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:22px 0}
+    .nav__inner{max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+    .skip-link{position:absolute;top:-100%;left:8px}
+    .reading-progress{position:fixed;top:0;left:0;width:100%;height:2px;z-index:2000}
+  </style>
 
   <script type="application/ld+json">
   {
