@@ -1175,11 +1175,12 @@ h2 em, h1 em {
 .cta-section {
   position: relative;
   background: var(--forest-deep);
-  padding: 120px 40px;
+  padding: 220px 40px 120px;     /* extra padding-top absorbs the 200px gb-quote-cta bleed */
   overflow: hidden;
 }
 .cta-section__inner {
   position: relative;
+  z-index: 4;                    /* lift content above gradient-bleed (z:2) so CTA text isn't painted over */
   z-index: 1;
   max-width: 800px;
   margin: 0 auto;
@@ -1635,8 +1636,8 @@ h2 em, h1 em {
   .about__faq-band { padding: 136px 20px 56px; }
   .about__faq-a { max-width: 100%; }
 
-  /* CTA */
-  .cta-section { padding: 160px 20px 80px; }
+  /* CTA — extra padding-top absorbs the 200px gb-quote-cta bleed at mobile */
+  .cta-section { padding: 240px 20px 80px; }
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
@@ -2004,21 +2005,21 @@ h2 em, h1 em {
 }
 
 /* FAQ band (forest-deep) → Rogers quote bridge (parchment).
-   Steepest color jump on the page; the bleed gets extra height (160px)
-   AND multi-stop intermediate colors so the dark holds longer at the FAQ
-   side and eases through forest-mid → forest-light → cream. The quote
-   bridge has its z-index lowered to 1 so this gradient paints OVER its
-   parchment background in the overlap zone (otherwise z:3 covered it). */
+   Steepest color jump on the page. 200px height + perceptual color stops
+   that pass through naturally desaturating sage tones rather than jumping
+   straight from saturated forest-light to neutral cream. */
 .gb-about-testimonials {
-  height: 160px;
-  margin-bottom: -160px;
+  height: 200px;
+  margin-bottom: -200px;
   background: linear-gradient(
     to bottom,
     #1a2e17 0%,
-    #1a2e17 25%,
-    #2e4a2a 50%,
-    #5a7e53 70%,
-    #c8c8b6 85%,
+    #213a1d 18%,
+    #2e4a2a 35%,
+    #486a3f 52%,
+    #7d9468 67%,
+    #b2bea1 80%,
+    #dcd9c9 92%,
     #f7f2ea 100%
   );
 }
@@ -2033,12 +2034,12 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 11rem 2rem 5rem;     /* extra padding-top (176px) absorbs the 160px gradient overlap cleanly */
+  padding: 14rem 2rem 5rem;     /* padding-top 224px absorbs the 200px FAQ→quote gradient overlap */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 1;                    /* below gradient-bleed z:2 so the bleed paints OVER the parchment in overlap zone */
+  z-index: 1;                    /* below gradient-bleed z:2 so the bleed paints OVER the parchment in overlap zone (text gets z:4 inside) */
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2048,6 +2049,8 @@ h2 em, h1 em {
   padding-top: 0;
   margin-top: 0;
   border-left-color: var(--terra);
+  position: relative;
+  z-index: 4;                 /* lift TEXT above the gradient bleed (z:2) — the quote-bridge background sits below at z:1 so the gradient still paints over the parchment */
 }
 
 .quote-bridge .approach__quote {
@@ -2061,7 +2064,7 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 9rem 20px 4rem;
+    padding: 12rem 20px 4rem;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2084,7 +2087,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 8rem 16px 3rem;
+    padding: 11rem 16px 3rem;
   }
 }
 
@@ -2093,9 +2096,23 @@ h2 em, h1 em {
   background: linear-gradient(to bottom, #f2e6df, #1a2e17);
 }
 
-/* 6b. Rogers quote bridge (parchment #f7f2ea) → CTA (forest-deep #1a2e17) — light-to-dark breath */
+/* 6b. Rogers quote bridge (parchment #f7f2ea) → CTA (forest-deep #1a2e17) — mirror of the
+   FAQ→quote bleed with the same perceptual stops in reverse so the eye reads it as the
+   matching "going dark again" beat. */
 .gb-quote-cta {
-  background: linear-gradient(to bottom, #f7f2ea, #1a2e17);
+  height: 200px;
+  margin-bottom: -200px;
+  background: linear-gradient(
+    to bottom,
+    #f7f2ea 0%,
+    #dcd9c9 12%,
+    #b2bea1 25%,
+    #7d9468 40%,
+    #486a3f 58%,
+    #2e4a2a 75%,
+    #213a1d 88%,
+    #1a2e17 100%
+  );
 }
 
 /* 7. CTA (forest-deep #1a2e17) → Contact (ink #1a1a18) */
