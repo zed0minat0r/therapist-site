@@ -187,10 +187,15 @@ h2 em, h1 em {
 }
 .nav.is-scrolled {
   background: rgba(247,242,234,0.97);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(46,74,42,0.1);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(16px) saturate(120%);
+  box-shadow: 0 1px 0 rgba(46,74,42,0.08), 0 6px 24px rgba(26,46,23,0.06);
   padding: 14px 0;
 }
+.nav { transition: background 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                   box-shadow 0.5s ease,
+                   padding 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+                   backdrop-filter 0.5s ease; }
 .nav__inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -231,45 +236,99 @@ h2 em, h1 em {
   list-style: none;
 }
 .nav__links a {
+  position: relative;
   font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.9);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.3s ease, letter-spacing 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   text-shadow: 0 1px 6px rgba(0,0,0,0.3);
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  padding: 0 2px;
 }
-.nav__links a:hover { color: var(--white); }
+/* Animated underline draws from left on hover and stays under the active section */
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s;
+  opacity: 0.9;
+}
+.nav__links a:hover { color: var(--white); letter-spacing: 0.11em; }
+.nav__links a:hover::after { transform: scaleX(1); }
+.nav__links a.is-active::after { transform: scaleX(1); transform-origin: left center; }
 .nav.is-scrolled .nav__links a { color: var(--ink-mid); text-shadow: none; }
 .nav.is-scrolled .nav__links a:hover { color: var(--forest); }
+.nav.is-scrolled .nav__links a.is-active { color: var(--forest); }
 .nav__cta {
+  position: relative;
   background: rgba(255,255,255,0.12) !important;
   color: var(--white) !important;
   padding: 10px 22px;
   border-radius: 2px;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   font-size: 12px !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase;
   min-height: 44px;
   display: inline-flex !important;
   align-items: center;
+  gap: 0;
   border: 1px solid rgba(255,255,255,0.3) !important;
   backdrop-filter: blur(6px);
-  transition: background 0.25s, border-color 0.25s !important;
+  transition: background 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              border-color 0.35s,
+              transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+              box-shadow 0.35s !important;
   text-shadow: none !important;
+  overflow: hidden;
 }
-.nav__cta:hover { background: rgba(255,255,255,0.22) !important; border-color: rgba(255,255,255,0.55) !important; }
+/* Arrow slides in from the left on hover, label lifts subtly. The arrow lives
+   in a pseudo-element so the markup doesn't change. */
+.nav__cta::after {
+  content: '\2192';                   /* → */
+  display: inline-block;
+  width: 0;
+  margin-left: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+              margin-left 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+              opacity 0.3s ease 0.05s,
+              transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  font-size: 14px;
+  font-weight: 500;
+}
+.nav__cta:hover {
+  background: rgba(255,255,255,0.24) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+  transform: translateY(-1px);
+}
+.nav__cta:hover::after {
+  width: 14px;
+  margin-left: 8px;
+  opacity: 1;
+  transform: translateX(0);
+}
 .nav.is-scrolled .nav__cta {
   background: var(--forest) !important;
   color: var(--white) !important;
   border-color: transparent !important;
   box-shadow: var(--glow-forest);
 }
-.nav.is-scrolled .nav__cta:hover { background: var(--forest-mid) !important; }
+.nav.is-scrolled .nav__cta:hover {
+  background: var(--forest-mid) !important;
+  box-shadow: 0 6px 28px rgba(46,74,42,0.5);
+}
 .nav__toggle {
   display: none;
   flex-direction: column;
@@ -285,12 +344,22 @@ h2 em, h1 em {
 }
 .nav__toggle span {
   width: 22px;
-  height: 1px;
+  height: 1.5px;
   background: var(--white);
   display: block;
-  transition: all 0.3s;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+              opacity 0.25s ease,
+              background 0.3s;
+  transform-origin: center;
 }
 .nav.is-scrolled .nav__toggle span { background: var(--ink); }
+/* Hamburger morphs to an X when the mobile nav is open */
+.nav__toggle.is-open span:nth-child(1) {
+  transform: translateY(4.25px) rotate(45deg);
+}
+.nav__toggle.is-open span:nth-child(2) {
+  transform: translateY(-4.25px) rotate(-45deg);
+}
 
 /* ===================================================
    HERO — parallax photo, word-by-word entrance

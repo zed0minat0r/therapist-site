@@ -4,7 +4,7 @@
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Nav scroll ---- */
+  /* ---- Nav scroll + active-section indicator ---- */
   function initNav() {
     var nav = document.getElementById('nav');
     if (!nav) return;
@@ -16,6 +16,46 @@
         nav.classList.toggle('is-scrolled', scrolled);
       }
     }, { passive: true });
+
+    /* Active section indicator: as the user scrolls, highlight the nav link
+       whose target section is currently in view. Uses IntersectionObserver
+       so we don't recalc on every scroll tick. */
+    var navLinks = nav.querySelectorAll('.nav__links a[href^="#"]');
+    if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+    var linkBySection = {};
+    var sections = [];
+    navLinks.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var section = id ? document.getElementById(id) : null;
+      if (section) {
+        linkBySection[id] = a;
+        sections.push(section);
+      }
+    });
+    if (!sections.length) return;
+
+    function setActive(id) {
+      navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+      var match = linkBySection[id];
+      if (match) match.classList.add('is-active');
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      /* Pick the most-visible intersecting section */
+      var best = null;
+      entries.forEach(function (e) {
+        if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) {
+          best = e;
+        }
+      });
+      if (best && best.target.id) setActive(best.target.id);
+    }, {
+      rootMargin: '-30% 0px -55% 0px',
+      threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+    });
+
+    sections.forEach(function (s) { observer.observe(s); });
   }
 
   /* ---- Mobile menu ---- */
