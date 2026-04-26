@@ -2107,9 +2107,14 @@ h2 em, h1 em {
 .quote-bridge {
   background: var(--parchment);
   padding: 14rem 2rem 5rem;     /* padding-top 224px clears the 200px FAQ→quote gradient overlap */
-  text-align: center;            /* horizontal centering — flex was vertically centering the quote INTO the gradient */
+  text-align: center;
   position: relative;
-  z-index: 1;                    /* below gradient-bleed z:2 so the bleed paints OVER the parchment in overlap zone (text gets z:4 inside) */
+  /* NO z-index here — z-index would create a stacking context that traps the
+     inner quote wrap's z:5 inside, so it could not lift above the gradient
+     bleed (z:2) sibling. Without z-index, the inner wrap's z:5 exists in the
+     body stacking context and properly paints OVER the gradient. The bridge's
+     parchment background still paints UNDER the gradient because static
+     backgrounds sit at z:0 and the gradient is z:2. */
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2120,7 +2125,7 @@ h2 em, h1 em {
   margin-top: 0;
   border-left-color: var(--terra);
   position: relative;
-  z-index: 4;                 /* lift TEXT above the gradient bleed (z:2) — the quote-bridge background sits below at z:1 so the gradient still paints over the parchment */
+  z-index: 5;                 /* lift TEXT above the gradient bleed (z:2) at body context (works because .quote-bridge has no z-index, so this isn't trapped in a child stacking context) */
 }
 
 .quote-bridge .approach__quote {
@@ -2134,7 +2139,10 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 12rem 20px 4rem;
+    /* padding-top MUST exceed 200px (the gradient bleed's margin-bottom) so the
+       quote text starts below the gradient by geometry, not by z-index paint
+       order. 14rem = 224px gives 24px of clear breathing room. Don't reduce. */
+    padding: 14rem 20px 4rem;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2157,7 +2165,10 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 11rem 16px 3rem;
+    /* keep padding-top >= 14rem (224px) — see note in 900px block. Reducing this
+       below 200px puts the quote inside the gradient overlap zone and Safari
+       does not always honor the z-index fix that Chromium applies. */
+    padding: 14rem 16px 3rem;
   }
 }
 

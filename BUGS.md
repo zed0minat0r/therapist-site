@@ -1,5 +1,45 @@
 # BUGS / Deferred Issues
 
+## BUG-005 — Carl Rogers quote: z-index fix PASSES in headless Chrome, VISUAL CONFIRMS CLEAN — 2026-04-25 (QA cycle 4)
+
+**Status:** INVESTIGATED. Headless Chrome PASSES. Root cause of user's iPhone Safari experience is unresolved — the fix works in Chromium emulation but the rendering gap on real Safari hardware persists.
+
+**Playwright findings across 3 device emulations (local server http://localhost:8765):**
+
+All three devices show an identical geometry problem in the DOM:
+
+| Device | Gradient bottom (viewport-rel) | Blockquote top (viewport-rel) | Overlap |
+|---|---|---|---|
+| iPhone 13 (390x844, 3x) | 199.7px | 175.7px | **+24px overlap** |
+| iPhone SE (375x667, 2x) | 200.3px | 176.3px | **+24px overlap** |
+| Pixel 5 (393x851, 2.75x) | 199.9px | 175.9px | **+24px overlap** |
+
+The `.gb-about-testimonials` gradient (200px tall, `margin-bottom: -200px`) bleeds 24px into the space above the blockquote. Geometrically the gradient DOES overlap the blockquote box.
+
+**Why headless Chrome shows it as PASS (visually clean):**
+The screenshots at all 3 devices show the full quote text visible and readable. The z-index layering IS working in Chromium: `.quote-bridge .approach__quote-wrap` is `z-index: 5`, `.gb-about-testimonials` is `z-index: 2`, and `.quote-bridge` has `z-index: auto` (no stacking context trap). Chromium correctly paints the quote wrap above the gradient. The quote text starts at ~176px viewport-y, the gradient's bottom pixel is at ~200px, but because the quote wrap has higher z-index the text WINS the paint order and is clearly readable.
+
+**Visual result in screenshots:**
+- Gradient fades from dark forest green → parchment over its 200px height
+- By px 176 (where the quote text starts), the gradient has faded to near-parchment (~#dcd9c9 per the CSS stops at 92%)
+- The quote text (dark forest color on parchment) is fully legible — the "bleed" into the text box is invisible because the gradient is nearly the same color as the parchment background by that point
+- "— CARL ROGERS" attribution: fully visible at all 3 viewports
+- FULL QUOTE TEXT confirmed: "The good life is a process, not a state of being. It is a direction, not a destination."
+
+**Stacking context audit:**
+- `.quote-bridge`: z-index=auto, position=relative, transform=none, filter=none, will-change=auto, opacity=1, isolation=auto — NO stacking context created
+- `<main>`: z-index=auto, position=static, transform=none, filter=none — NO stacking context
+- Ancestor chain of `.quote-bridge`: ZERO stacking contexts found in entire parent chain
+
+**Verdict in Chromium emulation: PASS.** Full quote visible, attribution visible, no gradient paint-over, stacking context chain clean.
+
+**Open question for real iPhone Safari:**
+The 24px geometric overlap is real — Chromium handles it with z-index. Safari's compositing may differ. The fix (removing z-index from `.quote-bridge`) is correct per CSS spec; Safari *should* honor it. The remaining risk is a Safari-specific compositing quirk where `position: relative` without z-index on the parent may be treated differently. If the bug persists on device, the nuclear option is to increase `.quote-bridge` `padding-top` from `11rem/12rem/14rem` to absorb the full 200px gradient without relying on z-index stacking at all — making it geometry-only, not paint-order-dependent.
+
+**Screenshots saved:** `/tmp/quote-clip-iphone13.png`, `/tmp/quote-clip-iphonese.png`, `/tmp/quote-clip-pixel5.png`
+
+---
+
 ## A11y — Color Contrast (requires brand decision) — 2026-04-25
 
 axe-core 4.11.3 flagged 8 WCAG AA color-contrast violations in the footer. All are low-opacity white text on `--ink` (#1a1a18). Fixing these requires increasing opacity values, which will visually change the footer's subdued / receding aesthetic.
