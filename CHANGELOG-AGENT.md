@@ -184,3 +184,6 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - NEW BUG logged: BUG-004 (LOW) — 4 small-print elements at 12px below 13px floor (footer legal, form footnotes, optional label) — deferred design decision
 
 2026-04-26 18:00 qa — 375/414/768/1440px regression sweep, 1 bug found (LOW)
+2026-04-25 qa — iPhone13/SE/Pixel5 quote-bridge deep-dive: z-index fix PASSES Chromium, 24px geometric overlap confirmed but visually clean in screenshots, Safari gap unresolved (BUG-005)
+
+2026-04-25 qa — iPhone13/SE/Pixel5 quote-bridge geometry verify: padding-top 224px confirmed, clearances 25.8/24.5/24.9px, all 3 PASS
