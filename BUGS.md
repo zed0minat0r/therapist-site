@@ -289,7 +289,7 @@ BUG-010 (old stroke-based grass blades) was FIXED in scene-v6 by replacing 20 in
 
 ## BUG-014 — CRITICAL: .qb-landscape has zero CSS rules — landscape-scene.svg never renders — 2026-04-25 (scene-v8 QA)
 
-**Status:** Open — HIGH severity. The landscape SVG asset does not appear anywhere on any viewport.
+**Status:** FIXED — Closed 2026-04-25 (scene-v11 QA). CSS rules added post-scene-v8. Landscape renders correctly at all viewports: mobile 390px height=279px, desktop 1440px height=414px. Trees/mirror visible in screenshots. No longer open.
 
 **Affected viewports:** All (375px, 390px, 393px, 1440px) — universal failure.
 
@@ -338,6 +338,33 @@ The old hand-coded SVG mountain/tree `qb-layer--*` CSS selectors remain in style
 ```
 
 **Screenshots:** /tmp/scene-v8-iphone-se.png, /tmp/scene-v8-iphone-13.png, /tmp/scene-v8-pixel-5.png, /tmp/scene-v8-desktop-1440.png — all confirm zero landscape silhouette.
+
+---
+
+---
+
+## BUG-015 — CTA padding-top cascade conflict: global rule (200px) overrides both desktop (160px) and mobile (240px) intent — 2026-04-25 (scene-v11 QA)
+
+**Status:** Open — LOW/COSMETIC severity.
+
+**Found:** Scene-v11 QA. Computed `padding-top` on `.cta-section` is 200px at both 390px and 1440px viewports.
+
+**Root cause:**
+Two conflicting rules exist in style.css:
+
+1. Line 1226: `.cta-section { padding: 160px 40px 120px; }` (desktop intent — absorbs 160px gb-quote-cta bleed)
+2. Line 1674 (inside max-width:900px media query): `.cta-section { padding: 240px 20px 80px; }` (mobile intent — old 200px bleed + buffer)
+3. Line 2566: `.cta-section { padding-top: 200px; }` (global, no media query — labeled "CTA receives About bleed" from pre-silhouette era)
+
+Rule at line 2566 appears AFTER both other rules in source order and has identical specificity. It overrides both:
+- Desktop: 160px → 200px (40px excess top padding)
+- Mobile: 240px → 200px (mobile media query is earlier in source, so 200px from line 2566 wins)
+
+The comment at line 2566 ("CTA receives About bleed") is stale. The about section no longer feeds directly into CTA — the flow is now About → `gb-quote-cta` (160px) → CTA. The global rule should be removed and the line-1226 value (160px desktop) and line-1674 value (240px mobile, though now also stale since gb-quote-cta is 160px not 200px) should own the padding.
+
+**Visual impact:** On desktop, 40px extra top padding above CTA content. Content is still above the fold and readable. Not a hard layout break but inconsistent with design intent. On mobile, 200px is actually a reasonable buffer for a 160px bleed but undercuts the explicit mobile override.
+
+**Fix:** Remove the `.cta-section { padding-top: 200px; }` rule at line 2566. Update mobile override at line 1674 to 200px (160px bleed + 40px buffer) or confirm 240px is still desired. Update stale comment.
 
 ---
 

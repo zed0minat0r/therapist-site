@@ -211,3 +211,5 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 2026-04-25 22:00 qa — iPhone13/SE/Pixel5/Desktop1440 scene-v5 verify: bridge 92vh PASS, font PASS, word-by-word stagger PASS, 4-tier trees PASS, BUG-008 FIXED, BUG-009 FIXED, 2 bugs carried (BUG-010 grass, BUG-011 cross-SVG symbol forward-ref)
 2026-04-25 23:00 qa — iPhone13/SE/Pixel5/Desktop1440 scene-v6 mountain+grass rebuild verify: computed specs PASS all viewports, BUG-010 FIXED (grass reads as silhouette field), 2 bugs found (BUG-012 HIGH: quote text zero-contrast over dark mtn-front at mobile, BUG-013 LOW: orphaned .qb-grass CSS)
 2026-04-25 23:45 qa — 375/390/393/1440px scene-v8 landscape-scene.svg verify: 1 CRITICAL bug found (BUG-014: .qb-landscape has zero CSS rules — mask-image never applied, element 0px height, SVG never renders on any viewport)
+
+2026-04-25 qa — iPhone13(390px)+Desktop(1440px) scene-v11 flow verify: DOM order PASS, gb-about-faq/gb-about-testimonials removed PASS, gb-quote-cta positioned PASS, FAQ accordion PASS, 0 console errors, 1 bug found (BUG-015 LOW: cta-section padding-top cascade conflict), BUG-014 closed
