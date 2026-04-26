@@ -2003,9 +2003,24 @@ h2 em, h1 em {
   z-index: 1;
 }
 
-/* FAQ band (forest-deep) → Rogers quote bridge (parchment) — restores dark-to-light breath */
+/* FAQ band (forest-deep) → Rogers quote bridge (parchment).
+   Steepest color jump on the page; the bleed gets extra height (160px)
+   AND multi-stop intermediate colors so the dark holds longer at the FAQ
+   side and eases through forest-mid → forest-light → cream. The quote
+   bridge has its z-index lowered to 1 so this gradient paints OVER its
+   parchment background in the overlap zone (otherwise z:3 covered it). */
 .gb-about-testimonials {
-  background: linear-gradient(to bottom, #1a2e17, #f7f2ea);
+  height: 160px;
+  margin-bottom: -160px;
+  background: linear-gradient(
+    to bottom,
+    #1a2e17 0%,
+    #1a2e17 25%,
+    #2e4a2a 50%,
+    #5a7e53 70%,
+    #c8c8b6 85%,
+    #f7f2ea 100%
+  );
 }
 
 /* ===================================================
@@ -2018,12 +2033,12 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 5rem 2rem;
+  padding: 11rem 2rem 5rem;     /* extra padding-top (176px) absorbs the 160px gradient overlap cleanly */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 3;
+  z-index: 1;                    /* below gradient-bleed z:2 so the bleed paints OVER the parchment in overlap zone */
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2046,7 +2061,7 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 4rem 20px;
+    padding: 9rem 20px 4rem;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2069,7 +2084,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 3rem 16px;
+    padding: 8rem 16px 3rem;
   }
 }
 
