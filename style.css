@@ -1127,7 +1127,7 @@ h2 em, h1 em {
 }
 
 .about__bio-col {
-  padding: 0 0 96px;             /* top padding handled entirely by .about__split absorbing the 80px gradient bleed */
+  padding: 0 0 32px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1769,9 +1769,8 @@ h2 em, h1 em {
   /* About */
   /* About split — 80px top absorbs specialties bleed */
   .about__split { grid-template-columns: 1fr; padding: 64px 20px 0; gap: 0; }
-  .about__bio-col { padding: 0 0 64px !important; text-align: center; }
+  .about__bio-col { padding: 0 0 24px !important; text-align: center; }
   .about__photo-col { display: none; }
-  .about__bio-col { padding: 16px 0 72px; text-align: center; }
   .about__tags { justify-content: center; }
   .about__faq-band { padding: 136px 20px 56px; }
   .about__faq-a { max-width: 100%; }
@@ -2220,13 +2219,15 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 96px 2rem 96px;
-  min-height: 78vh;
+  /* Block layout: quote sits NEAR THE TOP of the bridge (small padding-top),
+     silhouette renders absolutely at the bottom. No flex-center — that was
+     pushing the quote into the vertical middle of a tall bridge and creating
+     visible empty parchment above and below. min-height keeps enough room
+     for the silhouette without pushing the quote text out of position. */
+  padding: 32px 2rem 96px;
+  min-height: 52vh;
   text-align: center;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .quote-bridge .approach__quote-wrap {
@@ -2573,8 +2574,9 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 64px 20px 64px;
+    padding: 24px 20px 64px;
     text-align: center !important;
+    min-height: 42vh;
   }
   .quote-bridge .approach__quote {
     text-align: center !important;
@@ -2596,7 +2598,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 56px 16px 56px;
+    padding: 20px 16px 56px;
   }
 }
 
