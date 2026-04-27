@@ -2535,8 +2535,11 @@ h2 em, h1 em {
   will-change: background-position, transform;
 }
 @keyframes fly-cycle {
-  0%   { background-position: 0 center; }
-  100% { background-position: -560px center; }   /* shift by 10 element-widths to step through 10 cells */
+  /* Percentage-based — robust to bird element size. With background-size: 1000%
+     the sprite is 10× container width; 0% to 100% positioning steps through
+     all 10 cells regardless of whether the bird is 44px, 24px, or anything else. */
+  0%   { background-position: 0% center; }
+  100% { background-position: 100% center; }
 }
 @keyframes bird-glide {
   0%   { transform: translateX(-12vw)                       scale(0.55); }
@@ -2566,7 +2569,7 @@ h2 em, h1 em {
 @media (prefers-reduced-motion: reduce) {
   .qb-bird {
     animation: none !important;
-    background-position: -224px center !important;   /* hold one wing-mid frame */
+    background-position: 40% center !important;   /* hold a wing-mid frame */
     transform: translateX(35vw) scale(0.7) !important;
   }
 }
