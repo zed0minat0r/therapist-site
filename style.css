@@ -2220,10 +2220,8 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  /* Symmetric padding so the gap between About bio and the quote text matches
-     the gap between Specialties and About (96 top + 96 bottom on each adjacent
-     section, ~192px total — same rhythm site-wide). */
   padding: 96px 2rem 96px;
+  min-height: 78vh;
   text-align: center;
   position: relative;
   display: flex;
@@ -2401,8 +2399,8 @@ h2 em, h1 em {
   height: 38%;
 }
 @media (max-width: 900px) {
-  .qb-landscape          { height: 36%; }
-  .qb-landscape--mirror  { height: 26%; opacity: 0.5; }
+  .qb-landscape          { height: 28%; }
+  .qb-landscape--mirror  { height: 22%; opacity: 0.5; }
 }
 
 /* 4-LAYER MOUNTAIN SYSTEM per atmospheric-perspective playbook.
