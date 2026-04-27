@@ -1127,7 +1127,7 @@ h2 em, h1 em {
 }
 
 .about__bio-col {
-  padding: 96px 0 32px;          /* trimmed bottom 96→32 — quote bridge sits directly below and adds its own breathing room via padding-top */
+  padding: 96px 0 96px;          /* symmetric — matches the .specialties 100/100 rhythm above so all section transitions read with the same breathing room */
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -1768,8 +1768,8 @@ h2 em, h1 em {
 
   /* About */
   /* About split — 80px top absorbs specialties bleed */
-  .about__split { grid-template-columns: 1fr; padding: 80px 20px 0; gap: 0; }
-  .about__bio-col { padding: 16px 0 24px !important; text-align: center; }
+  .about__split { grid-template-columns: 1fr; padding: 64px 20px 0; gap: 0; }
+  .about__bio-col { padding: 16px 0 64px !important; text-align: center; }
   .about__photo-col { display: none; }
   .about__bio-col { padding: 16px 0 72px; text-align: center; }
   .about__tags { justify-content: center; }
@@ -2220,10 +2220,10 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  /* Tight padding — About bio just ended above with its own breathing room,
-     so the bridge opens immediately. */
-  padding: 1.5rem 2rem 5rem;
-  min-height: 70vh;
+  /* Symmetric padding so the gap between About bio and the quote text matches
+     the gap between Specialties and About (96 top + 96 bottom on each adjacent
+     section, ~192px total — same rhythm site-wide). */
+  padding: 96px 2rem 96px;
   text-align: center;
   position: relative;
   display: flex;
@@ -2575,7 +2575,7 @@ h2 em, h1 em {
 /* Mobile: tighten vertical rhythm */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 1rem 20px 3rem;
+    padding: 64px 20px 64px;
     text-align: center !important;
   }
   .quote-bridge .approach__quote {
@@ -2598,7 +2598,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 0.75rem 16px 2.5rem;
+    padding: 56px 16px 56px;
   }
 }
 
