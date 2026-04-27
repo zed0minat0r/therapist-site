@@ -2400,8 +2400,8 @@ h2 em, h1 em {
   height: 38%;
 }
 @media (max-width: 900px) {
-  .qb-landscape          { height: 28%; }
-  .qb-landscape--mirror  { height: 22%; opacity: 0.5; }
+  .qb-landscape          { height: 38%; }
+  .qb-landscape--mirror  { height: 28%; opacity: 0.5; }
 }
 
 /* 4-LAYER MOUNTAIN SYSTEM per atmospheric-perspective playbook.
@@ -2522,8 +2522,8 @@ h2 em, h1 em {
   position: absolute;
   top: var(--y);
   left: 0;
-  width: 56px;
-  height: 80px;
+  width: 44px;
+  height: 62px;
   background-image: url('assets/bird-cells.svg');
   background-size: 1000% auto;       /* 10 cells × element width = full sprite width */
   background-repeat: no-repeat;
@@ -2557,8 +2557,8 @@ h2 em, h1 em {
 
 /* Distant flock — smaller, more transparent, blurred, slower. Reads as far away. */
 .qb-bird--distant {
-  width: 32px;
-  height: 46px;
+  width: 24px;
+  height: 34px;
   opacity: 0.55;
   filter: blur(0.5px);
 }
@@ -2576,7 +2576,7 @@ h2 em, h1 em {
   .quote-bridge {
     padding: 24px 20px 64px;
     text-align: center !important;
-    min-height: 42vh;
+    min-height: 48vh;
   }
   .quote-bridge .approach__quote {
     text-align: center !important;
