@@ -2140,11 +2140,15 @@ h2 em, h1 em {
 }
 
 /* 2. Approach (forest-pale) → Services (parchment) — short hop, simple curve is fine.
-   Hosts the animated vine divider that grows across as the user scrolls in. */
+   Hosts the animated vine divider that grows across as the user scrolls in.
+   Bumped to 100px so the SVG viewBox 1440x100 has vertical breathing room
+   for the woven 3-stem composition + branches/tendrils that extend above
+   and below the main flow. */
 .gb-approach-services {
   background: linear-gradient(to bottom, #e8ede5 0%, #efece5 50%, #f7f2ea 100%);
   position: relative;
   overflow: visible;
+  height: 100px;
 }
 
 .vine-divider {
@@ -2157,7 +2161,7 @@ h2 em, h1 em {
   overflow: visible;
 }
 
-/* Stroke-width hierarchy: stem 2.2, branches 1.0, tendrils 0.7 */
+/* Stroke-width hierarchy: stems 2.2/1.7/1.4 (front/mid/back), branches 1.0, tendrils 0.7 */
 .vine-stem,
 .vine-branch,
 .vine-tendril {
@@ -2168,32 +2172,65 @@ h2 em, h1 em {
   stroke-dashoffset: 100;
   opacity: 0;
 }
-.vine-stem    { stroke: url(#vine-stem-grad);   stroke-width: 2.2; }
-.vine-branch  { stroke: url(#vine-branch-grad); stroke-width: 1.0; }
-.vine-tendril { stroke: #5a7a52;                stroke-width: 0.7; }
+.vine-stem--front { stroke: url(#vine-stem-grad);   stroke-width: 2.2; }
+.vine-stem--mid   { stroke: url(#vine-stem-grad-2); stroke-width: 1.7; }
+.vine-stem--back  { stroke: url(#vine-back-grad);   stroke-width: 1.4; filter: blur(0.6px); }
+.vine-branch      { stroke: url(#vine-branch-grad); stroke-width: 1.0; }
+.vine-tendril     { stroke: #486a3f;                stroke-width: 0.8; }
 
-/* Sequential grow: stem -> branches -> tendrils, easing favors organic deceleration */
-.gb-approach-services.is-visible .vine-stem {
+/* Sequential grow: back stem first (deepest), then mid, then front, then branches,
+   then tendrils. Each layer crossfades into the next for woven feel. */
+.gb-approach-services.is-visible .vine-stem--back {
   animation: vine-fade 0.45s ease-out 0s forwards,
-             vine-grow 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s forwards;
+             vine-grow 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s forwards;
 }
-.gb-approach-services.is-visible .vine-branch--1,
+.gb-approach-services.is-visible .vine-stem--mid {
+  animation: vine-fade 0.45s ease-out 0.4s forwards,
+             vine-grow 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+}
+.gb-approach-services.is-visible .vine-stem--front {
+  animation: vine-fade 0.45s ease-out 0.8s forwards,
+             vine-grow 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+}
+.gb-approach-services.is-visible .vine-branch--1 {
+  animation: vine-fade 0.4s ease-out 1.6s forwards,
+             vine-grow 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.6s forwards;
+}
 .gb-approach-services.is-visible .vine-branch--2 {
-  animation: vine-fade 0.4s ease-out 1.3s forwards,
-             vine-grow 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.3s forwards;
+  animation: vine-fade 0.4s ease-out 1.75s forwards,
+             vine-grow 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.75s forwards;
 }
 .gb-approach-services.is-visible .vine-branch--3 {
-  animation: vine-fade 0.4s ease-out 1.5s forwards,
-             vine-grow 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s forwards;
+  animation: vine-fade 0.4s ease-out 1.9s forwards,
+             vine-grow 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.9s forwards;
 }
-.gb-approach-services.is-visible .vine-tendril--1,
+.gb-approach-services.is-visible .vine-branch--4 {
+  animation: vine-fade 0.4s ease-out 2.05s forwards,
+             vine-grow 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.05s forwards;
+}
+.gb-approach-services.is-visible .vine-branch--5 {
+  animation: vine-fade 0.4s ease-out 2.2s forwards,
+             vine-grow 1.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.2s forwards;
+}
+.gb-approach-services.is-visible .vine-tendril--1 {
+  animation: vine-fade 0.35s ease-out 2.7s forwards,
+             vine-grow 1.0s ease-out 2.7s forwards;
+}
 .gb-approach-services.is-visible .vine-tendril--2 {
-  animation: vine-fade 0.35s ease-out 2.4s forwards,
-             vine-grow 0.9s ease-out 2.4s forwards;
+  animation: vine-fade 0.35s ease-out 2.85s forwards,
+             vine-grow 1.0s ease-out 2.85s forwards;
 }
 .gb-approach-services.is-visible .vine-tendril--3 {
-  animation: vine-fade 0.35s ease-out 2.6s forwards,
-             vine-grow 0.9s ease-out 2.6s forwards;
+  animation: vine-fade 0.35s ease-out 3.0s forwards,
+             vine-grow 1.0s ease-out 3.0s forwards;
+}
+.gb-approach-services.is-visible .vine-tendril--4 {
+  animation: vine-fade 0.35s ease-out 3.15s forwards,
+             vine-grow 1.0s ease-out 3.15s forwards;
+}
+.gb-approach-services.is-visible .vine-tendril--5 {
+  animation: vine-fade 0.35s ease-out 3.3s forwards,
+             vine-grow 1.0s ease-out 3.3s forwards;
 }
 
 @keyframes vine-fade {
@@ -2207,14 +2244,21 @@ h2 em, h1 em {
    their attachment point rather than popping from center. Two variants:
    default (sage) and small (lighter sage) for visual variety. */
 .vine-leaves .leaf {
-  fill: #5a7a52;
+  fill: url(#leaf-grad);
   opacity: 0;
   transform: scale(0) rotate(-25deg);
   transform-origin: 0 0;
   transform-box: fill-box;
+  stroke: rgba(46, 74, 42, 0.35);
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
 }
 .vine-leaves .leaf--small {
-  fill: #6e8862;
+  fill: url(#leaf-grad-light);
+}
+.vine-leaves .leaf--lance {
+  /* lanceolate variant — narrower, longer */
+  opacity: 0;
 }
 
 .gb-approach-services.is-visible .leaf {
@@ -2793,9 +2837,12 @@ h2 em, h1 em {
   z-index: 3;
 }
 
-/* About receives Specialties bleed */
+/* About receives Specialties bleed.
+   80px absorbs the gradient bleed, additional padding gives the eyebrow
+   breathing room above "About the Practice" so it doesn't sit flush against
+   the previous section. */
 .about__split {
-  padding-top: 80px; /* absorbs the 80px gb-specialties-about bleed */
+  padding-top: clamp(120px, 14vw, 180px);
 }
 /* (Removed duplicate .about__bio-col padding-top:96 override — bio-col now sits
    flush with about__split's 80px absorption. The 80px absorption == the visible
