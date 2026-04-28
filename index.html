@@ -23,7 +23,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=vines-polish" />
+  <link rel="stylesheet" href="style.css?v=editorial-rule" />
 
   <script type="application/ld+json">
   {
@@ -195,43 +195,13 @@
     </div>
   </section>
 
-  <!-- Gradient bleed: Approach → Services. Five real Victorian botanical
-       sprigs (CC0 from Wikimedia / FreeSVG, 1879 ornamental vine) used as
-       mask-image on sage-green divs. Connected by a subtle hand-drawn
-       horizontal stem line. The sprigs ARE real ink-drawn botanical
-       illustrations -- not algorithmic curves -- so the result reads as
-       a botanical band rather than line art. -->
+  <!-- Gradient bleed: Approach → Services. Editorial divider — a centered
+       thin sage hairline that fades at the edges, broken by a small
+       diamond ornament in the middle. Clean, refined, no botanical motifs. -->
   <div class="gradient-bleed gb-approach-services reveal" aria-hidden="true">
-    <svg class="vine-connector" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="vine-conn-grad" x1="0%" x2="100%" y1="0%" y2="0%">
-          <stop offset="0%"   stop-color="#2e4a2a" stop-opacity="0.85" />
-          <stop offset="50%"  stop-color="#486a3f" stop-opacity="0.7" />
-          <stop offset="100%" stop-color="#84a07a" stop-opacity="0.45" />
-        </linearGradient>
-      </defs>
-      <!-- Connector segments — each runs between adjacent sprig positions,
-           starting/stopping just before each sprig so the line appears to
-           pass behind the foliage rather than punching through it. Sprig
-           x-positions on desktop: 8/28/50/70/89% = 115/403/720/1008/1282. -->
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M -20 50 C 40 42 75 56 95 50" />
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M 145 48 C 220 60 320 38 380 50" />
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M 425 50 C 520 36 620 60 700 50" />
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M 745 50 C 830 62 920 38 988 50" />
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M 1030 50 C 1120 36 1210 58 1262 50" />
-      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M 1305 50 C 1380 60 1430 44 1480 50" />
-    </svg>
-    <div class="vine-sprig vine-sprig--1"></div>
-    <div class="vine-sprig vine-sprig--2"></div>
-    <div class="vine-sprig vine-sprig--3"></div>
-    <div class="vine-sprig vine-sprig--4"></div>
-    <div class="vine-sprig vine-sprig--5"></div>
+    <span class="divider-rule divider-rule--left"  aria-hidden="true"></span>
+    <span class="divider-mark"                     aria-hidden="true"></span>
+    <span class="divider-rule divider-rule--right" aria-hidden="true"></span>
   </div>
 
   <!-- ====================================================

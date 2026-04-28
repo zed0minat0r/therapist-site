@@ -2139,202 +2139,74 @@ h2 em, h1 em {
   );
 }
 
-/* 2. Approach (forest-pale) → Services (parchment) — short hop, simple curve is fine.
-   Hosts the animated vine divider that grows across as the user scrolls in.
-   Bumped to 100px so the SVG viewBox 1440x100 has vertical breathing room
-   for the woven 3-stem composition + branches/tendrils that extend above
-   and below the main flow. */
+/* 2. Approach (forest-pale) → Services (parchment).
+   Hosts a centered hairline-rule divider with a small diamond mark. */
 .gb-approach-services {
   background: linear-gradient(to bottom, #e8ede5 0%, #efece5 50%, #f7f2ea 100%);
   position: relative;
   overflow: visible;
-  height: 100px;
+  height: 80px;
 }
 
-.vine-connector {
+/* Editorial divider — centered hairline rule with a small diamond mark.
+   Hairlines fade at the outer edges (linear-gradient transparency) so the
+   rule looks weighted toward the center mark rather than running edge to
+   edge. The mark is a 6px rotated square (sage gold-tinted) breaking the
+   line. Whole composition fades up when the divider scrolls into view. */
+.divider-rule,
+.divider-mark {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
+  top: 50%;
   pointer-events: none;
-  overflow: visible;
-  z-index: 1;
-}
-
-.vine-conn {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
   opacity: 0;
 }
-.vine-conn--main { stroke: url(#vine-conn-grad); stroke-width: 1.4; }
+.divider-rule {
+  width: calc(50% - 36px); /* leaves 72px gap centered for the mark */
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to var(--rule-dir, right),
+    rgba(72, 106, 63, 0) 0%,
+    rgba(72, 106, 63, 0.55) 35%,
+    rgba(72, 106, 63, 0.7) 100%
+  );
+}
+.divider-rule--left  { left: 0;  --rule-dir: right; }
+.divider-rule--right { right: 0; --rule-dir: left;  }
 
-/* Connector segments draw left-to-right with cascading delays so the line
-   appears to thread between the sprigs in sequence */
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(1) {
-  animation: vine-fade 0.4s ease-out 0s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s forwards;
-}
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(2) {
-  animation: vine-fade 0.4s ease-out 0.45s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.45s forwards;
-}
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(3) {
-  animation: vine-fade 0.4s ease-out 0.9s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s forwards;
-}
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(4) {
-  animation: vine-fade 0.4s ease-out 1.35s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.35s forwards;
-}
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(5) {
-  animation: vine-fade 0.4s ease-out 1.8s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.8s forwards;
-}
-.gb-approach-services.is-visible .vine-conn--main:nth-of-type(6) {
-  animation: vine-fade 0.4s ease-out 2.25s forwards,
-             vine-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.25s forwards;
+.divider-mark {
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #486a3f;
+  box-shadow:
+    0 0 0 1px rgba(245, 240, 230, 1),
+    0 0 0 5px rgba(72, 106, 63, 0.18);
 }
 
-@keyframes vine-fade {
+.gb-approach-services.is-visible .divider-rule--left {
+  animation: divider-fade 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards;
+}
+.gb-approach-services.is-visible .divider-rule--right {
+  animation: divider-fade 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards;
+}
+.gb-approach-services.is-visible .divider-mark {
+  animation: divider-mark-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
+}
+
+@keyframes divider-fade {
   to { opacity: 1; }
 }
-@keyframes vine-fade-low {
-  to { opacity: 0.6; }
-}
-@keyframes vine-grow {
-  to { stroke-dashoffset: 0; }
-}
-
-/* Real botanical sprig — Victorian ornamental-vine-leaves engraving from 1879
-   (Public Domain / CC0 via Wikimedia + FreeSVG). Used as mask-image on a
-   sage-green block so the silhouette becomes a tinted botanical illustration
-   instead of black. Each sprig is positioned along the connector vine. */
-.vine-sprig {
-  position: absolute;
-  width: 78px;
-  height: 100px;
-  background-color: #486a3f;
-  -webkit-mask-image: url('assets/vine-1879.svg');
-  mask-image: url('assets/vine-1879.svg');
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  transform: scale(0.6) translateY(8px);
-  transform-origin: 50% 100%;
-  filter: drop-shadow(0 1px 1px rgba(46, 74, 42, 0.18));
-}
-
-/* Five sprigs distributed across the divider. Sprigs alternate above/below
-   the connector line so each appears rooted to it. Up-sprigs anchor at
-   their bottom (transform-origin: 50% 100%) and sit so their base touches
-   the connector's y=50 mark; down-sprigs anchor at their top. The actual
-   y-offset accounts for the 100px divider + sprig height so the base
-   meets the connector cleanly. */
-.vine-sprig--1 { left: 8%;  top: -42%; transform-origin: 50% 100%; }
-.vine-sprig--2 { left: 28%; top: 50%;  transform-origin: 50% 0%; }
-.vine-sprig--3 { left: 50%; top: -48%; transform-origin: 50% 100%; }
-.vine-sprig--4 { left: 70%; top: 50%;  transform-origin: 50% 0%; }
-.vine-sprig--5 { left: 89%; top: -42%; transform-origin: 50% 100%; }
-
-.gb-approach-services.is-visible .vine-sprig--1 {
-  animation: sprig-grow 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) 1.6s forwards;
-}
-.gb-approach-services.is-visible .vine-sprig--2 {
-  animation: sprig-grow-flip 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) 1.85s forwards;
-}
-.gb-approach-services.is-visible .vine-sprig--3 {
-  animation: sprig-grow 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) 2.1s forwards;
-}
-.gb-approach-services.is-visible .vine-sprig--4 {
-  animation: sprig-grow-flip 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) 2.35s forwards;
-}
-.gb-approach-services.is-visible .vine-sprig--5 {
-  animation: sprig-grow 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) 2.6s forwards;
-}
-
-@keyframes sprig-grow {
-  0%   { opacity: 0;    transform: scale(0.55) translateY(8px) rotate(-6deg); }
-  60%  { opacity: 0.95; transform: scale(1.02) translateY(0)   rotate(2deg); }
-  100% { opacity: 0.92; transform: scale(1)    translateY(0)   rotate(0deg); }
-}
-@keyframes sprig-grow-flip {
-  0%   { opacity: 0;    transform: scale(0.55) scaleX(-1) translateY(-8px) rotate(6deg); }
-  60%  { opacity: 0.95; transform: scale(1.02) scaleX(-1) translateY(0)    rotate(-2deg); }
-  100% { opacity: 0.92; transform: scale(1)    scaleX(-1) translateY(0)    rotate(0deg); }
-}
-
-/* Subtle wind sway on the sprigs after they all settle (~3.5s in) */
-.gb-approach-services.is-visible .vine-sprig {
-  /* base animation handles entrance; sway is a separate transform on a
-     wrapper-via-pseudo trick — instead, layer sway via sprig-sway loop */
-}
-.gb-approach-services.is-visible .vine-sprig--1,
-.gb-approach-services.is-visible .vine-sprig--3,
-.gb-approach-services.is-visible .vine-sprig--5 {
-  animation: sprig-grow 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) var(--sprig-delay, 1.6s) forwards,
-             sprig-sway 6.5s ease-in-out 4s infinite;
-}
-.gb-approach-services.is-visible .vine-sprig--2,
-.gb-approach-services.is-visible .vine-sprig--4 {
-  animation: sprig-grow-flip 1.3s cubic-bezier(0.34, 1.32, 0.64, 1) var(--sprig-delay, 1.85s) forwards,
-             sprig-sway-flip 6.5s ease-in-out 4s infinite;
-}
-.vine-sprig--1 { --sprig-delay: 1.6s; }
-.vine-sprig--2 { --sprig-delay: 1.85s; }
-.vine-sprig--3 { --sprig-delay: 2.1s; }
-.vine-sprig--4 { --sprig-delay: 2.35s; }
-.vine-sprig--5 { --sprig-delay: 2.6s; }
-
-@keyframes sprig-sway {
-  0%, 100% { transform: scale(1) rotate(-1.2deg); }
-  50%      { transform: scale(1) rotate(1.2deg); }
-}
-@keyframes sprig-sway-flip {
-  0%, 100% { transform: scale(1) scaleX(-1) rotate(1.2deg); }
-  50%      { transform: scale(1) scaleX(-1) rotate(-1.2deg); }
-}
-
-@media (max-width: 720px) {
-  .vine-sprig {
-    width: 50px;
-    height: 64px;
-  }
-  /* Drop the 5th, redistribute the remaining 4 evenly */
-  .vine-sprig--1 { left: 6%;  top: -34%; }
-  .vine-sprig--2 { left: 32%; top: 42%; }
-  .vine-sprig--3 { left: 58%; top: -38%; }
-  .vine-sprig--4 { left: 84%; top: 42%; }
-  .vine-sprig--5 { display: none; }
-}
-@media (max-width: 420px) {
-  /* iPhone SE: tighten further so 4 sprigs don't crowd */
-  .vine-sprig {
-    width: 44px;
-    height: 56px;
-  }
-  .vine-sprig--1 { left: 4%; }
-  .vine-sprig--2 { left: 32%; }
-  .vine-sprig--3 { left: 60%; }
-  .vine-sprig--4 { left: 88%; }
+@keyframes divider-mark-pop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) rotate(45deg) scale(0); }
+  60%  { opacity: 1; transform: translate(-50%, -50%) rotate(45deg) scale(1.15); }
+  100% { opacity: 1; transform: translate(-50%, -50%) rotate(45deg) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vine-conn, .vine-sprig {
-    animation: none !important;
-  }
-  .vine-conn { stroke-dashoffset: 0 !important; opacity: 0.85 !important; }
-  .vine-sprig { opacity: 0.92 !important; transform: scale(1) !important; }
-  .vine-sprig--2, .vine-sprig--4 { transform: scale(1) scaleX(-1) !important; }
+  .divider-rule, .divider-mark { animation: none !important; opacity: 1 !important; }
+  .divider-mark { transform: translate(-50%, -50%) rotate(45deg) !important; }
 }
 
 /* 3. Services fee-note band (parchment-dk) → Specialties (forest) — light to mid-dark */
