@@ -23,7 +23,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=vines-real" />
+  <link rel="stylesheet" href="style.css?v=vines-polish" />
 
   <script type="application/ld+json">
   {
@@ -210,10 +210,22 @@
           <stop offset="100%" stop-color="#84a07a" stop-opacity="0.45" />
         </linearGradient>
       </defs>
+      <!-- Connector segments — each runs between adjacent sprig positions,
+           starting/stopping just before each sprig so the line appears to
+           pass behind the foliage rather than punching through it. Sprig
+           x-positions on desktop: 8/28/50/70/89% = 115/403/720/1008/1282. -->
       <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M -20 50 C 200 38 360 62 540 48 C 720 34 900 60 1080 46 C 1260 32 1380 56 1480 44" />
-      <path class="vine-conn vine-conn--accent" pathLength="100" vector-effect="non-scaling-stroke"
-            d="M -20 56 C 220 70 380 44 580 58 C 780 72 960 46 1140 60 C 1320 74 1420 50 1480 60" />
+            d="M -20 50 C 40 42 75 56 95 50" />
+      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 145 48 C 220 60 320 38 380 50" />
+      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 425 50 C 520 36 620 60 700 50" />
+      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 745 50 C 830 62 920 38 988 50" />
+      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 1030 50 C 1120 36 1210 58 1262 50" />
+      <path class="vine-conn vine-conn--main" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 1305 50 C 1380 60 1430 44 1480 50" />
     </svg>
     <div class="vine-sprig vine-sprig--1"></div>
     <div class="vine-sprig vine-sprig--2"></div>
