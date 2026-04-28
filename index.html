@@ -23,7 +23,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=birds-trim" />
+  <link rel="stylesheet" href="style.css?v=vines-v2" />
 
   <script type="application/ld+json">
   {
@@ -195,28 +195,72 @@
     </div>
   </section>
 
-  <!-- Gradient bleed: Approach → Services. Animated vines stretch across
-       the divider as the user scrolls into view. -->
+  <!-- Gradient bleed: Approach → Services. Botanical vine illustration grows
+       across the divider as the user scrolls in: main stem first, then
+       branches, then tendril curls, then teardrop leaves unfurl from their
+       stem-base attachments. Wind sway loops gently after the grow finishes. -->
   <div class="gradient-bleed gb-approach-services reveal" aria-hidden="true">
     <svg class="vine-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-      <path class="vine vine--1" d="M -20 26 C 200 14 380 32 580 22 S 940 8 1140 24 S 1340 38 1460 28" />
-      <path class="vine vine--2" d="M -20 50 C 240 64 460 38 680 52 S 1020 60 1220 46 S 1380 34 1460 52" />
-      <path class="vine vine--3" d="M -20 66 C 180 72 400 60 620 70 S 980 56 1200 68 S 1340 76 1460 64" />
-      <g class="leaves">
-        <g transform="translate(150 22) rotate(-22)" style="--leaf-delay:1.45s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(330 26) rotate(18)"  style="--leaf-delay:1.55s"><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(520 18) rotate(-28)" style="--leaf-delay:1.65s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(720 14) rotate(15)"  style="--leaf-delay:1.8s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(900 22) rotate(-20)" style="--leaf-delay:1.9s" ><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(1080 28) rotate(25)" style="--leaf-delay:2s"   ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(1260 22) rotate(-18)" style="--leaf-delay:2.1s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(220 56) rotate(-25)" style="--leaf-delay:1.65s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(420 50) rotate(20)"  style="--leaf-delay:1.8s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(620 60) rotate(-22)" style="--leaf-delay:1.9s" ><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(820 50) rotate(15)"  style="--leaf-delay:2s"   ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(1020 64) rotate(-25)" style="--leaf-delay:2.1s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
-        <g transform="translate(1200 56) rotate(22)" style="--leaf-delay:2.2s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
-        <g transform="translate(1380 50) rotate(-18)" style="--leaf-delay:2.3s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+      <defs>
+        <linearGradient id="vine-stem-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+          <stop offset="0%"  stop-color="#3a5a35" stop-opacity="0.95" />
+          <stop offset="100%" stop-color="#7a9270" stop-opacity="0.55" />
+        </linearGradient>
+        <linearGradient id="vine-branch-grad" x1="0%" x2="50%" y1="100%" y2="0%">
+          <stop offset="0%"  stop-color="#3a5a35" stop-opacity="0.85" />
+          <stop offset="100%" stop-color="#84a07a" stop-opacity="0.5" />
+        </linearGradient>
+      </defs>
+
+      <!-- Main stem -->
+      <path class="vine-stem" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M -20 42 C 240 22 460 60 700 38 S 1140 28 1340 50 S 1480 32 1480 32" />
+
+      <!-- Branches diverging from stem at ~28%, ~65%, ~82% -->
+      <path class="vine-branch vine-branch--1" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 400 40 C 410 22 425 12 445 4" />
+      <path class="vine-branch vine-branch--2" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 940 32 C 935 18 922 10 905 6" />
+      <path class="vine-branch vine-branch--3" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 1180 38 C 1190 56 1200 68 1210 78" />
+
+      <!-- Tendril curls at branch tips (logarithmic-spiral approximation) -->
+      <path class="vine-tendril vine-tendril--1" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 445 4 C 455 -4 463 -2 462 5 C 461 11 455 13 451 11" />
+      <path class="vine-tendril vine-tendril--2" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 905 6 C 895 -2 887 0 888 7 C 889 13 895 15 899 13" />
+      <path class="vine-tendril vine-tendril--3" pathLength="100" vector-effect="non-scaling-stroke"
+            d="M 1210 78 C 1220 86 1228 84 1227 77 C 1226 71 1220 69 1216 71" />
+
+      <!-- Teardrop leaves; transform-origin at stem base = (0,0) of each path -->
+      <g class="vine-leaves">
+        <g transform="translate(120 36) rotate(-35)" style="--leaf-delay:1.55s">
+          <path class="leaf" d="M 0 0 C -6 -4 -9 -11 0 -18 C 9 -11 6 -4 0 0 Z" />
+        </g>
+        <g transform="translate(260 28) rotate(40)" style="--leaf-delay:1.7s">
+          <path class="leaf leaf--small" d="M 0 0 C -5 -3 -7 -9 0 -14 C 7 -9 5 -3 0 0 Z" />
+        </g>
+        <g transform="translate(560 50) rotate(-50)" style="--leaf-delay:2s">
+          <path class="leaf" d="M 0 0 C -6 -4 -9 -11 0 -18 C 9 -11 6 -4 0 0 Z" />
+        </g>
+        <g transform="translate(820 32) rotate(45)" style="--leaf-delay:2.15s">
+          <path class="leaf leaf--small" d="M 0 0 C -5 -3 -7 -9 0 -14 C 7 -9 5 -3 0 0 Z" />
+        </g>
+        <g transform="translate(1080 44) rotate(-40)" style="--leaf-delay:2.3s">
+          <path class="leaf" d="M 0 0 C -6 -4 -9 -11 0 -18 C 9 -11 6 -4 0 0 Z" />
+        </g>
+        <g transform="translate(1320 40) rotate(35)" style="--leaf-delay:2.45s">
+          <path class="leaf leaf--small" d="M 0 0 C -5 -3 -7 -9 0 -14 C 7 -9 5 -3 0 0 Z" />
+        </g>
+        <g transform="translate(420 28) rotate(-65)" style="--leaf-delay:2.55s">
+          <path class="leaf leaf--small" d="M 0 0 C -4 -2 -6 -7 0 -12 C 6 -7 4 -2 0 0 Z" />
+        </g>
+        <g transform="translate(925 18) rotate(60)" style="--leaf-delay:2.65s">
+          <path class="leaf leaf--small" d="M 0 0 C -4 -2 -6 -7 0 -12 C 6 -7 4 -2 0 0 Z" />
+        </g>
+        <g transform="translate(1195 60) rotate(140)" style="--leaf-delay:2.75s">
+          <path class="leaf leaf--small" d="M 0 0 C -4 -2 -6 -7 0 -12 C 6 -7 4 -2 0 0 Z" />
+        </g>
       </g>
     </svg>
   </div>
