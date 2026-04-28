@@ -2461,11 +2461,22 @@ h2 em, h1 em {
 }
 /* Mirrored copy puts a tree cluster on the left (source SVG only has
    trees on the right). Slightly smaller + faded so it reads as supporting
-   depth, not duplicate. */
+   depth, not duplicate. The mirror's top edge — where the silhouette
+   crops abruptly — gets a feathered fade so the trees don't look cut off. */
 .qb-landscape--mirror {
   transform: scaleX(-1);
   opacity: 0.55;
   height: 38%;
+  -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
+  mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-size: cover, 100% 100%;
+  mask-size: cover, 100% 100%;
+  -webkit-mask-position: bottom center, top left;
+  mask-position: bottom center, top left;
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat;
 }
 @media (max-width: 900px) {
   .qb-landscape          { height: 38%; }
