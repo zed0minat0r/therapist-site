@@ -2449,8 +2449,8 @@ h2 em, h1 em {
   width: 100%;
   height: 50%;
   background-color: var(--forest-deep);
-  -webkit-mask-image: url('assets/landscape-scene.svg');
-  mask-image: url('assets/landscape-scene.svg');
+  -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out');
+  mask-image: url('assets/landscape-scene.svg?v=birds-out');
   -webkit-mask-size: cover;
   mask-size: cover;
   -webkit-mask-position: bottom center;
