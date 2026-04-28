@@ -577,3 +577,119 @@ Items already in prior addendums (portrait photo, video, superbill jargon, first
 ---
 
 *Addendum 3 compiled 2026-04-18 by Scout. Sources: goodmancreatives.com/therapist-website-design-contact-forms/, theartofb.ca/2025/11/03/copy-design-the-conversion-formula/, alwaysopen.design/therapy-practices-cro-wins/, aditus.io/patterns/accordion/, a11y-collective.com/blog/accessible-accordion/, 216digital.com/accessible-accordion-vs-disclosure-dev-best-practices/, smashingmagazine.com/2026/02/building-empathy-centred-ux-framework-mental-health-apps/, uxcam.com/blog/mobile-ux/, therapeiawebdesign.com/blog/wcag-2-1-compliance/, mentalhealthitsolutions.com/blog/ada-compliant-therapist-website/, pilotdigital.com/blog/what-wcag-2-1aa-means-for-healthcare-organizations-in-2026/, rachelannreid.com/blogarchive/therapists-guide-website-conversions, crazyegg.com/blog/trust-signals/, kopplamarketing.com/blog/convert-website-visitors-into-therapy-clients.*
+
+---
+
+---
+
+# SCOUT REPORT — ADDENDUM 4: Vine Divider Visual Upgrade
+**Scout:** Competitive intelligence agent
+**Date:** 2026-04-28
+**Subject:** How to make the 80px botanical vine divider look drastically better
+**Current state:** Three plain parallel SVG paths, uniform stroke, 14 ellipse leaves popping in via scale transform
+**Research angle:** Botanical vine SVG animation — path anatomy, leaf shapes, layering, animation patterns
+
+---
+
+## REFERENCE SITES
+
+**1. CodePen — "Growing vines with SVG" (jbruce)**
+https://codepen.io/jbruce/pen/KBemdG
+Uses GSAP TimelineLite with staggered `animation-delay` per leaf element. Key move: leaf elements have individual `transform-origin` at their stem attachment point, so they rotate/scale from the base, not the center. Each leaf has a slightly different delay and rotation. The vine stem draws with stroke-dashoffset; leaves trigger only after the stem path reaches their position.
+Implementation hint: replicate the stagger-by-index pattern in pure CSS using `--i` custom properties and `calc(var(--i) * 0.15s)` delay. No GSAP required.
+
+**2. CodePen — "Vine grow - 5 Stage" (AviC)**
+https://codepen.io/AviC/pen/VXxqBw
+Vine paths are broken into 5 separate `<path>` elements (main stem, branch left, branch right, two tendrils). Each path gets its own `stroke-dashoffset` animation with sequential delay. This is the right structural model: one main vine + 2-3 branches + 2 tendril curls, each as a separate path element. The key visual win is that branch paths are thinner stroke-width than the main stem (1.5px branches vs 3px trunk), creating organic hierarchy.
+Implementation hint: make branch paths `stroke-width="1"` and main stem `stroke-width="2.5"`. Use `stroke-linecap="round"` on all paths to soften endpoints.
+
+**3. CodePen — "SVG Plant Animation With GSAP" (sarder)**
+https://codepen.io/sarder/pen/BMGzvm
+Post-grow sway: after stroke-dashoffset animation completes, the entire vine group gets a subtle `rotateZ` between -2deg and +2.5deg on an 8-second infinite loop, `transform-origin` set to the center-bottom of the vine group. This is the wind-sway technique.
+Implementation hint: CSS `@keyframes sway { 0%,100% { transform: rotate(-1.5deg) } 50% { transform: rotate(2deg) } }` on the vine `<g>` element with `animation: sway 7s ease-in-out infinite; animation-delay: 2.5s` (so sway starts after the grow finishes).
+
+**4. CSS Motion Path — MDN / css-irl.info**
+https://css-irl.info/fun-with-css-motion-path/
+https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path
+The `offset-path` + `offset-distance` pattern lets leaf elements travel along the vine path itself — they appear to grow outward from the stem rather than popping in from a fixed position. Each leaf `<g>` gets `offset-path: path('...')` matching the vine's `d` attribute, then `offset-distance` animates from 0% to ~30% (placing it at the correct stem position). Combined with `opacity: 0 → 1` and `scale(0) → scale(1)`, this produces a "sprouting" feel rather than an abrupt pop.
+Implementation hint: set `offset-rotate: 0deg` to prevent leaf from rotating to face the path direction.
+
+**5. Stefan Judis — pathLength normalization**
+https://www.stefanjudis.com/today-i-learned/pathlength-makes-makes-svg-path-animations-easier-to-manage/
+Set `pathLength="100"` on every vine path. This normalizes all stroke-dasharray/dashoffset to a 0-100 range regardless of actual pixel length. Sequencing branches becomes `animation-delay: calc(var(--stem-duration) * 0.6)` — 60% into the stem draw, branches start. Tendrils start at 85%.
+Implementation hint: every `<path>` gets `pathLength="100"`. CSS: `stroke-dasharray: 100; stroke-dashoffset: 100;` then animate dashoffset to 0.
+
+**6. Vanseo Design — SVG gradient stroke**
+https://vanseodesign.com/web-design/svg-linear-gradients/
+A `linearGradient` applied to stroke (not fill) makes the vine look illustrated rather than computed. Use `gradientUnits="userSpaceOnUse"` so the gradient maps to the SVG coordinate space, then set x1/y1 at the left edge and x2/y2 at the right edge of the vine band. First stop: full-opacity sage at 0%; last stop: 60%-opacity sage at 100%. The result is a vine that appears heavier at its root end and feathers out at the tendril tips — exactly how botanical illustrations are inked.
+Implementation hint: define one gradient per vine path if they run different directions; or use a single horizontal gradient if all paths run left-to-right.
+
+---
+
+## SVG PATH SNIPPETS
+
+### Tendril curl (logarithmic spiral using 3 cubic beziers)
+```
+M 0 0
+C 4 -8, 12 -8, 12 0
+C 12 6, 6 10, 2 8
+C -1 6, -1 2, 2 2
+```
+Scale this to fit the 80px divider height (roughly 20px wide x 16px tall). Place at each vine tip. Stroke-only, no fill, stroke-width 0.8, stroke-linecap round.
+
+### Teardrop leaf (one round end, one pointed tip)
+```
+M 0 0
+C -6 -4, -10 -12, 0 -20
+C 10 -12, 6 -4, 0 0
+Z
+```
+Width ~20px, height ~20px. `transform-origin: 0 0` (stem attachment point). Rotate per leaf position along vine. Fill: sage green at 0.7 opacity. Stroke: sage at full opacity, width 0.5.
+
+### Lanceolate leaf (long narrow willow-style)
+```
+M 0 0
+C -3 -6, -4 -18, 0 -30
+C 4 -18, 3 -6, 0 0
+Z
+```
+Width ~8px, height ~30px. Better for the narrow divider band — sits without visually overloading the 80px height.
+
+---
+
+## ANIMATION TIMING — RECOMMENDED
+
+- Stem draw: `2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)` — eases in fast, slows at tip (organic growth deceleration)
+- Branch draw: starts at `animation-delay: 1.3s`, duration `1.4s`, same easing
+- Tendril draw: starts at `animation-delay: 2.3s`, duration `0.9s ease-out`
+- Leaf appear (offset-path or scale-from-zero): starts staggered from `1.5s` to `2.8s` across all leaves, each `0.4s ease-out`
+- Wind sway loop: begins at `animation-delay: 3.5s` (after all grow is done), duration `7s ease-in-out infinite`, rotates between -1.5deg and +2deg
+
+---
+
+## STRUCTURAL RECOMMENDATION
+
+**Replace** the three parallel uniform curves with one complex vine composed of:
+- 1 main stem path (S-curve from left edge to right, with natural undulation, not a straight horizontal)
+- 2 branch paths (shorter, thinner, diverging upward and downward from the stem at ~30% and ~65% along the stem)
+- 2 tendril curls (the spiral paths above) at the branch tips
+- 6-8 teardrop or lanceolate leaves distributed along the stem and branches, each with its own `transform-origin` at the base
+
+This collapses from "three lines with dots" to "one living plant." The visual complexity comes from hierarchy (trunk > branch > tendril), not from repetition.
+
+---
+
+## TOP 3 MOVES — RANKED BY VISUAL IMPACT
+
+**1. Hierarchy of stroke widths: trunk/branch/tendril**
+Single biggest perceptual upgrade. Main stem at 2.5px, branches at 1px, tendrils at 0.7px. Add `stroke-linecap="round"` and `stroke-linejoin="round"` everywhere. This alone transforms the vine from a UI element into an illustration. No leaf redesign required.
+
+**2. Gradient stroke: darker at root, feathered at tip**
+Apply a horizontal `linearGradient` with sage at 100% opacity (left) transitioning to sage at 50% opacity (right). Looks exactly like a botanical ink illustration. 10 lines of SVG in `<defs>`. Combine with the stroke-width hierarchy for maximum effect.
+
+**3. Replace ellipse leaves with teardrop or lanceolate shapes + stem-base transform-origin**
+Ellipses read as UI decorations. Teardrops with pointed tips read as real leaves. The transform-origin fix (rotating from the attachment point rather than the center) makes the appear animation look like they're unfurling from the stem rather than growing from nowhere.
+
+---
+
+*Addendum 4 compiled 2026-04-28 by Scout. Sources: codepen.io/jbruce/pen/KBemdG, codepen.io/AviC/pen/VXxqBw, codepen.io/sarder/pen/BMGzvm, css-irl.info/fun-with-css-motion-path/, developer.mozilla.org/en-US/docs/Web/CSS/offset-path, stefanjudis.com/today-i-learned/pathlength-makes-makes-svg-path-animations-easier-to-manage/, vanseodesign.com/web-design/svg-linear-gradients/, gsap.com/docs/v3/Plugins/DrawSVGPlugin/.*

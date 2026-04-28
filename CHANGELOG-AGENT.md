@@ -1,5 +1,6 @@
 # CHANGELOG-AGENT
 
+2026-04-28 scout — research angle: botanical vine SVG animation (path anatomy, leaf shapes, gradient stroke, wind sway, tendril curls), 6 references added to SCOUT-REPORT.md Addendum 4
 2026-04-25 14:15 scout — research angle: silhouette scene assets (tree SVGs + bird animation patterns), 7 FreeSVG CC0 trees + 1 bird sprite + 3 reference designs added to SCOUT.md
 
 ## 2026-04-26 — Performance (cycle 4 — render-block fix)
