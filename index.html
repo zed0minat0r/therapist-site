@@ -195,8 +195,31 @@
     </div>
   </section>
 
-  <!-- Gradient bleed: Approach → Services -->
-  <div class="gradient-bleed gb-approach-services" aria-hidden="true"></div>
+  <!-- Gradient bleed: Approach → Services. Animated vines stretch across
+       the divider as the user scrolls into view. -->
+  <div class="gradient-bleed gb-approach-services reveal" aria-hidden="true">
+    <svg class="vine-divider" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path class="vine vine--1" d="M -20 26 C 200 14 380 32 580 22 S 940 8 1140 24 S 1340 38 1460 28" />
+      <path class="vine vine--2" d="M -20 50 C 240 64 460 38 680 52 S 1020 60 1220 46 S 1380 34 1460 52" />
+      <path class="vine vine--3" d="M -20 66 C 180 72 400 60 620 70 S 980 56 1200 68 S 1340 76 1460 64" />
+      <g class="leaves">
+        <g transform="translate(150 22) rotate(-22)" style="--leaf-delay:1.45s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(330 26) rotate(18)"  style="--leaf-delay:1.55s"><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(520 18) rotate(-28)" style="--leaf-delay:1.65s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(720 14) rotate(15)"  style="--leaf-delay:1.8s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(900 22) rotate(-20)" style="--leaf-delay:1.9s" ><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(1080 28) rotate(25)" style="--leaf-delay:2s"   ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(1260 22) rotate(-18)" style="--leaf-delay:2.1s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(220 56) rotate(-25)" style="--leaf-delay:1.65s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(420 50) rotate(20)"  style="--leaf-delay:1.8s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(620 60) rotate(-22)" style="--leaf-delay:1.9s" ><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(820 50) rotate(15)"  style="--leaf-delay:2s"   ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(1020 64) rotate(-25)" style="--leaf-delay:2.1s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+        <g transform="translate(1200 56) rotate(22)" style="--leaf-delay:2.2s" ><ellipse class="leaf" cx="0" cy="0" rx="6" ry="2.5" /></g>
+        <g transform="translate(1380 50) rotate(-18)" style="--leaf-delay:2.3s"><ellipse class="leaf" cx="0" cy="0" rx="7" ry="3" /></g>
+      </g>
+    </svg>
+  </div>
 
   <!-- ====================================================
        SERVICES — alternating split-screen rows
