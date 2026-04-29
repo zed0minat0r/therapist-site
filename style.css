@@ -1832,11 +1832,14 @@ h2 em, h1 em {
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
 
-  /* Contact */
-  .contact__inner { grid-template-columns: 1fr; gap: 56px 0; padding: 152px 20px 72px; }
+  /* Contact — tightened mobile spacing. Was 152px top + 56px gap which left
+     a huge band of empty parchment between the response-time block and the
+     form. Now 96px top padding (still absorbs gradient bleed cleanly) and
+     28px gap between the info column and the form card. */
+  .contact__inner { grid-template-columns: 1fr; gap: 28px 0; padding: 96px 20px 56px; }
   .contact__info { text-align: center; }
-  .contact__details { align-items: center; }
-  .contact__form-card { padding: 36px 24px; }
+  .contact__details { align-items: center; gap: 24px; margin-bottom: 12px; }
+  .contact__form-card { padding: 32px 22px; }
 
   /* Footer */
   .site-footer { padding: 40px 20px 28px; }
