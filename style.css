@@ -844,36 +844,65 @@ h2 em, h1 em {
   line-height: 1.05;
   margin-bottom: 20px;
 }
+/* COMING 2027 — research-backed kinetic display.
+   Font: Bebas Neue — condensed bold all-caps, the canonical
+   "event / launch / impact" display face (Spotify, Stripe-launch,
+   Apple-event style). Replaces Cormorant Garamond per customer.
+   Effects: shimmer text-fill + pulsing halo + a small letter-by-letter
+   scale-in entrance + an underline that draws itself in. */
 .svc-row__title--coming {
-  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+  font-size: clamp(4rem, 9vw, 7.5rem);
   color: var(--terra);
-  font-weight: 500;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
+  letter-spacing: 0.08em;
+  line-height: 0.92;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
   position: relative;
-  /* Pulsing terra-cotta glow halo + linear-gradient text fill that sweeps
-     across the letters with shimmer. Reads as "this is coming, get
-     excited." */
+  display: inline-block;
+  /* Shimmer text-fill: warm-light gradient sweeps across the letters */
   background: linear-gradient(
     100deg,
     var(--terra) 0%,
-    var(--terra-lt) 30%,
-    #f3a577 50%,
-    var(--terra-lt) 70%,
+    var(--terra-lt) 25%,
+    #f7b893 50%,
+    var(--terra-lt) 75%,
     var(--terra) 100%
   );
-  background-size: 200% 100%;
+  background-size: 220% 100%;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
           color: transparent;
   text-shadow: none;
-  filter: drop-shadow(0 0 18px rgba(207, 139, 103, 0.45))
-          drop-shadow(0 0 36px rgba(207, 139, 103, 0.22));
+  filter: drop-shadow(0 0 22px rgba(207, 139, 103, 0.55))
+          drop-shadow(0 0 44px rgba(207, 139, 103, 0.28));
   animation:
-    coming-shimmer 4.2s cubic-bezier(0.4, 0, 0.6, 1) infinite,
-    coming-pulse 2.8s ease-in-out infinite;
+    coming-shimmer 3.6s linear infinite,
+    coming-pulse 2.6s ease-in-out infinite;
+}
+/* Underline rule that draws in on hover/scroll-reveal */
+.svc-row__title--coming::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--terra) 18%,
+    var(--terra-lt) 50%,
+    var(--terra) 82%,
+    transparent 100%
+  );
+  transform: scaleX(0.4);
+  transform-origin: center;
+  opacity: 0.7;
+  animation: coming-underline 2.6s ease-in-out infinite;
 }
 @keyframes coming-shimmer {
   0%   { background-position: 100% 50%; }
@@ -881,13 +910,17 @@ h2 em, h1 em {
 }
 @keyframes coming-pulse {
   0%, 100% {
-    filter: drop-shadow(0 0 18px rgba(207, 139, 103, 0.45))
-            drop-shadow(0 0 36px rgba(207, 139, 103, 0.22));
+    filter: drop-shadow(0 0 22px rgba(207, 139, 103, 0.55))
+            drop-shadow(0 0 44px rgba(207, 139, 103, 0.28));
   }
   50% {
-    filter: drop-shadow(0 0 28px rgba(207, 139, 103, 0.65))
-            drop-shadow(0 0 56px rgba(207, 139, 103, 0.35));
+    filter: drop-shadow(0 0 36px rgba(207, 139, 103, 0.78))
+            drop-shadow(0 0 72px rgba(207, 139, 103, 0.42));
   }
+}
+@keyframes coming-underline {
+  0%, 100% { transform: scaleX(0.45); opacity: 0.6; }
+  50%      { transform: scaleX(1); opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .svc-row__title--coming {
@@ -895,9 +928,9 @@ h2 em, h1 em {
     background: none;
     color: var(--terra);
     -webkit-text-fill-color: var(--terra);
-    filter: none;
-    text-shadow: 0 0 24px rgba(207, 139, 103, 0.3);
+    filter: drop-shadow(0 0 24px rgba(207, 139, 103, 0.3));
   }
+  .svc-row__title--coming::after { animation: none; transform: scaleX(0.7); }
 }
 .svc-row__subtitle {
   font-family: 'Cormorant Garamond', serif;
@@ -1413,7 +1446,7 @@ h2 em, h1 em {
   /* Padding-top sized to fully absorb the 200px gb-quote-cta gradient bleed
      above. The photo backdrop sits below this padding, so the gradient
      never touches the photo or the text. */
-  padding: 240px 40px 120px;
+  padding: 240px 40px 64px; /* tightened bottom: 120 → 64 — close the gap to Contact */
   overflow: hidden;
 }
 /* Customer's sun-rays-clouds photo as a real atmospheric backdrop — but
@@ -1562,7 +1595,7 @@ h2 em, h1 em {
   grid-template-columns: 1fr 1.1fr;
   gap: 0 80px;
   align-items: start;
-  padding: 96px 40px;
+  padding: 56px 40px 96px; /* tightened top: 96 → 56 to close the gap to CTA */
 }
 
 /* Contact info side — bright variant on parchment-dk */
@@ -1909,7 +1942,7 @@ h2 em, h1 em {
   .about__faq-a { max-width: 100%; }
 
   /* CTA — extra padding-top absorbs the 200px gb-quote-cta bleed at mobile */
-  .cta-section { padding: 220px 20px 80px; }
+  .cta-section { padding: 220px 20px 48px; } /* mobile: tighten bottom too */
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
@@ -1918,7 +1951,7 @@ h2 em, h1 em {
      a huge band of empty parchment between the response-time block and the
      form. Now 96px top padding (still absorbs gradient bleed cleanly) and
      28px gap between the info column and the form card. */
-  .contact__inner { grid-template-columns: 1fr; gap: 28px 0; padding: 96px 20px 56px; }
+  .contact__inner { grid-template-columns: 1fr; gap: 28px 0; padding: 48px 20px 56px; } /* mobile: tighten top */
   .contact__info { text-align: center; }
   .contact__details { align-items: center; gap: 24px; margin-bottom: 12px; }
   .contact__form-card { padding: 32px 22px; }
