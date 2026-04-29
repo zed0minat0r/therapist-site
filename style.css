@@ -1365,14 +1365,52 @@ h2 em, h1 em {
   position: relative;
   background: var(--parchment);
   /* Padding-top sized to fully absorb the 200px gb-quote-cta gradient bleed
-     above (so the green doesn't bleed into the headline), plus a 40px
-     breathing buffer between gradient end and content. */
+     above. The photo backdrop sits below this padding, so the gradient
+     never touches the photo or the text. */
   padding: 240px 40px 120px;
   overflow: hidden;
 }
-/* Sun-rays-clouds backdrop removed — the customer-photo overlay was
-   competing with the forest gradient bleed and the terra CTA, making the
-   palette feel busy. Clean parchment ground reads better. */
+/* Customer's sun-rays-clouds photo as a real atmospheric backdrop — but
+   integrated so it doesn't fight the gradient or the terra CTA:
+   1. Photo only occupies the BOTTOM portion of the section (clip-path)
+      so the green gradient bleed terminates in clean parchment above
+      the photo's start, no overlap, no clash.
+   2. Sepia + lower saturation tints the sky toward the parchment palette
+      so it reads as a continuation of the warm cream ground rather than
+      a separate cool element.
+   3. Top of the photo fades to transparent (mask-image) so the parchment
+      blends into the photo gradually — the headline area sits in a
+      photo-soft zone, not on a hard photo edge. */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  /* Inset top matches the gradient absorption padding — photo starts
+     BELOW the gradient bleed zone. */
+  inset: 200px 0 0 0;
+  background-image: url('assets/photos/sunrays-clouds.jpg');
+  background-size: cover;
+  background-position: center 40%;
+  opacity: 0.55;
+  filter: sepia(0.32) saturate(0.85) hue-rotate(-8deg);
+  /* Mask: top 30% fades from 0 → full so photo softly emerges from
+     parchment at the headline level. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.35) 18%,
+    rgba(0,0,0,0.85) 36%,
+    #000 55%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0,0,0,0.35) 18%,
+    rgba(0,0,0,0.85) 36%,
+    #000 55%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
 .cta-section__inner {
   position: relative;
   z-index: 4;
