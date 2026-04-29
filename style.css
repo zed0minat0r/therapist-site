@@ -1334,6 +1334,21 @@ h2 em, h1 em {
   padding: 160px 40px 120px;     /* reduced padding-top — gb-quote-cta gradient bleed now flows silhouette into bright */
   overflow: hidden;
 }
+/* Subtle customer-photo backdrop — sun-rays-through-clouds from Laura's
+   own photography. Lit but not loud: blends into parchment via low
+   opacity + sepia tint. Sits behind text via inner z-index:4. */
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/photos/sunrays-clouds.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0.32;
+  filter: sepia(0.18) saturate(0.9);
+  z-index: 1;
+  pointer-events: none;
+}
 .cta-section__inner {
   position: relative;
   z-index: 4;

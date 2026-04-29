@@ -10,20 +10,14 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" /></noscript>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-  <!-- Preload LCP hero image: mobile gets 800w, desktop gets 1200w -->
-  <link rel="preload" as="image"
-    href="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=75&auto=format&fm=webp&fit=crop"
-    imagesrcset="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=75&auto=format&fm=webp&fit=crop 800w,
-                 https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80&auto=format&fm=webp&fit=crop 1200w,
-                 https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80&auto=format&fm=webp&fit=crop 1600w"
-    imagesizes="100vw"
-    fetchpriority="high" />
+  <!-- Preload LCP hero image (customer-provided mountain-lake panorama) -->
+  <link rel="preload" as="image" href="assets/photos/mountain-lake.jpg" fetchpriority="high" />
 
   <!-- style.css loaded synchronously to eliminate the FOUC flash + text-shift the
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=customer-feedback-1" />
+  <link rel="stylesheet" href="style.css?v=customer-feedback-2" />
 
   <script type="application/ld+json">
   {
@@ -227,11 +221,9 @@
 
     <article class="svc-row svc-row--img-left reveal-left">
       <div class="svc-row__photo">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&auto=format&fm=webp&fit=crop"
-             srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&q=75&auto=format&fm=webp&fit=crop 500w,
-                     https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80&auto=format&fm=webp&fit=crop 900w"
+        <img src="assets/photos/stones-creek.jpg"
              sizes="(max-width: 768px) calc(100vw - 48px), 50vw"
-             alt="Professional clinical supervision and mentoring session" loading="lazy" width="900" height="600" />
+             alt="Stones in a creek — grounded, foundational, real-world" loading="lazy" width="1600" height="1200" />
       </div>
       <div class="svc-row__body">
         <span class="svc-row__num">03</span>
@@ -344,11 +336,9 @@
       <!-- Photo side -->
       <div class="about__photo-col">
         <div class="about__photo-wrap reveal-left">
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80&auto=format&fm=webp&fit=crop"
-               srcset="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=500&q=75&auto=format&fm=webp&fit=crop 500w,
-                       https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=900&q=80&auto=format&fm=webp&fit=crop 900w"
+          <img src="assets/photos/orange-roses.jpg"
                sizes="(max-width: 768px) calc(100vw - 48px), 40vw"
-               alt="Warm, light-filled therapy office" class="about__photo-img" width="900" height="1200" loading="lazy" />
+               alt="Warm orange roses against a white fence — a glimpse of Laura&rsquo;s garden" class="about__photo-img" width="1600" height="1200" loading="lazy" />
           <div class="about__photo-caption">Laura Spaulding, LPC &mdash; Psychotherapy &amp; Supervision</div>
         </div>
       </div>
