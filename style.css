@@ -1446,7 +1446,7 @@ h2 em, h1 em {
   /* Padding-top sized to fully absorb the 200px gb-quote-cta gradient bleed
      above. The photo backdrop sits below this padding, so the gradient
      never touches the photo or the text. */
-  padding: 240px 40px 64px; /* tightened bottom: 120 → 64 — close the gap to Contact */
+  padding: 240px 40px 16px; /* tightened bottom further: gap to Contact almost closed */
   overflow: hidden;
 }
 /* Customer's sun-rays-clouds photo as a real atmospheric backdrop — but
@@ -1595,7 +1595,7 @@ h2 em, h1 em {
   grid-template-columns: 1fr 1.1fr;
   gap: 0 80px;
   align-items: start;
-  padding: 56px 40px 96px; /* tightened top: 96 → 56 to close the gap to CTA */
+  padding: 20px 40px 96px; /* tightened top further: gap to CTA almost closed */
 }
 
 /* Contact info side — bright variant on parchment-dk */
@@ -1942,7 +1942,7 @@ h2 em, h1 em {
   .about__faq-a { max-width: 100%; }
 
   /* CTA — extra padding-top absorbs the 200px gb-quote-cta bleed at mobile */
-  .cta-section { padding: 220px 20px 48px; } /* mobile: tighten bottom too */
+  .cta-section { padding: 220px 20px 12px; } /* mobile: bottom tightened further */
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
@@ -1951,7 +1951,7 @@ h2 em, h1 em {
      a huge band of empty parchment between the response-time block and the
      form. Now 96px top padding (still absorbs gradient bleed cleanly) and
      28px gap between the info column and the form card. */
-  .contact__inner { grid-template-columns: 1fr; gap: 28px 0; padding: 48px 20px 56px; } /* mobile: tighten top */
+  .contact__inner { grid-template-columns: 1fr; gap: 28px 0; padding: 16px 20px 56px; } /* mobile: top tightened further */
   .contact__info { text-align: center; }
   .contact__details { align-items: center; gap: 24px; margin-bottom: 12px; }
   .contact__form-card { padding: 32px 22px; }
@@ -2895,8 +2895,12 @@ h2 em, h1 em {
 
 /* 7. CTA (parchment) → Contact (parchment-dk) — subtle warm-cream fade.
    Smoothed with more stops so the parchment → parchment-dk transition
-   reads as a continuous tone shift, not a banded gradient. */
+   reads as a continuous tone shift, not a banded gradient.
+   Shortened 140 → 80px so the transition doesn't add visual gap
+   between the two sections. */
 .gb-cta-contact {
+  height: 80px;
+  margin-bottom: -80px;
   background: linear-gradient(
     to bottom,
     #f7f2ea 0%,
