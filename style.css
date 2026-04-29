@@ -223,10 +223,10 @@ h2 em, h1 em {
 }
 .nav__brand-first { margin-right: 6px; }
 .nav__brand-llc {
-  font-size: 0.7em;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  opacity: 0.85;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 1;
   margin-left: 2px;
 }
 .nav__links {
