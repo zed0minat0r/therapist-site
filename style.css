@@ -2149,16 +2149,16 @@ h2 em, h1 em {
 .gradient-bleed {
   display: block;
   width: 100%;
-  height: 80px;
+  height: 140px; /* taller bleed = smoother gradient transitions */
   position: relative;
   z-index: 2;
   pointer-events: none;
   /* Overlap only INTO the incoming section (below).
      The outgoing section has overflow:hidden so we can't
      bleed upward into it — the gradient starts at section end
-     and the incoming section's top 80px of padding absorbs it. */
+     and the incoming section's top padding absorbs it. */
   margin-top: 0;
-  margin-bottom: -80px;
+  margin-bottom: -140px;
 }
 
 /* ===================================================
@@ -2172,18 +2172,22 @@ h2 em, h1 em {
    pale tones hold longer at the light end.
    =================================================== */
 
-/* 1. Hero (forest-deep) → Approach (forest-pale) */
+/* 1. Hero (forest-deep) → Approach (forest-pale).
+   Brightened + smoother — lifted mid-tones, added stops, holds longer
+   in the brighter sage range so the transition reads as "opening up." */
 .gb-hero-approach {
   background: linear-gradient(
     to bottom,
     #1a2e17 0%,
-    #213a1d 18%,
-    #2e4a2a 35%,
-    #486a3f 52%,
-    #7d9468 67%,
-    #b2bea1 80%,
-    #d4d8c7 92%,
-    #e8ede5 100%
+    #25401f 10%,
+    #38583a 22%,
+    #5a7e53 36%,
+    #8aa779 50%,
+    #b2c7a3 62%,
+    #cdd9c2 73%,
+    #dde2d1 82%,
+    #e8ede5 92%,
+    #eef1ea 100%
   );
 }
 
@@ -2257,16 +2261,20 @@ h2 em, h1 em {
   .divider-mark { transform: translate(-50%, -50%) rotate(45deg) !important; }
 }
 
-/* 3. Services fee-note band (parchment-dk) → Specialties (forest) — light to mid-dark */
+/* 3. Services fee-note band (parchment-dk) → Specialties (forest) — light to mid-dark.
+   Brightened + smoother: more stops, sage-greens hold longer in the middle
+   so the transition glides instead of plunging. */
 .gb-services-specialties {
   background: linear-gradient(
     to bottom,
-    #ece5d7 0%,
-    #d4d2c1 15%,
-    #b2bea1 32%,
-    #7d9468 50%,
-    #486a3f 70%,
-    #38583a 85%,
+    #f5efe2 0%,
+    #ece5d7 12%,
+    #d4d2c1 24%,
+    #b8c4a8 36%,
+    #93a878 48%,
+    #6b8a55 62%,
+    #4f713f 76%,
+    #3d6138 88%,
     #2e4a2a 100%
   );
 }
@@ -2276,48 +2284,53 @@ h2 em, h1 em {
   background: linear-gradient(
     to bottom,
     #2e4a2a 0%,
-    #38583a 15%,
-    #486a3f 30%,
-    #7d9468 50%,
-    #b2bea1 70%,
-    #dcd9c9 88%,
+    #3d6138 12%,
+    #4f713f 24%,
+    #6b8a55 38%,
+    #93a878 52%,
+    #b8c4a8 66%,
+    #d4d2c1 78%,
+    #ece5d7 90%,
     #f7f2ea 100%
   );
 }
 
 /* 5. About (parchment) → FAQ band (forest-deep) — light to deepest dark */
 .gb-about-faq {
-  margin-bottom: -80px;
+  margin-bottom: -140px;
   position: relative;
   z-index: 1;
   background: linear-gradient(
     to bottom,
     #f7f2ea 0%,
-    #dcd9c9 15%,
-    #b2bea1 32%,
-    #7d9468 50%,
-    #486a3f 70%,
-    #2e4a2a 85%,
+    #ece5d7 12%,
+    #d4d2c1 24%,
+    #b8c4a8 36%,
+    #93a878 48%,
+    #6b8a55 62%,
+    #4f713f 76%,
+    #2e4a2a 90%,
     #1e3220 100%
   );
 }
 
 /* FAQ band (forest-deep) → Rogers quote bridge (parchment).
-   Steepest color jump on the page. 200px height + perceptual color stops
-   that pass through naturally desaturating sage tones rather than jumping
-   straight from saturated forest-light to neutral cream. */
+   Steepest color jump on the page. Bumped to 240px + perceptual sage-green
+   midtones that lift faster so the transition reads brighter and smoother. */
 .gb-about-testimonials {
-  height: 200px;
-  margin-bottom: -200px;
+  height: 240px;
+  margin-bottom: -240px;
   background: linear-gradient(
     to bottom,
     #1a2e17 0%,
-    #213a1d 18%,
-    #2e4a2a 35%,
-    #486a3f 52%,
-    #7d9468 67%,
-    #b2bea1 80%,
-    #dcd9c9 92%,
+    #25401f 10%,
+    #38583a 22%,
+    #4f713f 34%,
+    #6b8a55 46%,
+    #93a878 58%,
+    #b8c4a8 70%,
+    #d4d2c1 82%,
+    #ece5d7 92%,
     #f7f2ea 100%
   );
 }
@@ -2742,23 +2755,26 @@ h2 em, h1 em {
    The silhouette ends at forest-deep; CTA is now bright parchment. Smooth fade from
    the dark forest mass up into the warm cream ground for a natural sunrise-feel. */
 .gb-quote-cta {
-  height: 160px;
-  margin-bottom: -160px;
+  height: 200px;
+  margin-bottom: -200px;
   background: linear-gradient(
     to bottom,
     #1a2e17 0%,
-    #2e4a2a 18%,
-    #486a3f 35%,
-    #7d9468 52%,
-    #b2bea1 70%,
-    #dcd9c9 86%,
+    #25401f 10%,
+    #38583a 22%,
+    #4f713f 34%,
+    #6b8a55 46%,
+    #93a878 58%,
+    #b8c4a8 70%,
+    #d4d2c1 82%,
+    #ece5d7 92%,
     #f7f2ea 100%
   );
 }
 
 /* 7. CTA (parchment) → Contact (parchment-dk) — subtle warm-cream fade */
 .gb-cta-contact {
-  background: linear-gradient(to bottom, #f7f2ea, #ece5d7);
+  background: linear-gradient(to bottom, #f7f2ea 0%, #f3edde 50%, #ece5d7 100%);
 }
 
 /* Contact → Footer: same ink color — no bleed needed */
@@ -2771,7 +2787,7 @@ h2 em, h1 em {
 
 /* Approach receives Hero bleed */
 .approach {
-  padding-top: 180px; /* was 100px + 80px bleed absorption */
+  padding-top: 240px; /* 100px content gap + 140px bleed absorption */
 }
 .approach__inner {
   position: relative;
@@ -2780,7 +2796,7 @@ h2 em, h1 em {
 
 /* Services receives Approach bleed */
 .services__intro {
-  padding-top: 168px; /* was 88px + 80px */
+  padding-top: 228px; /* 88px content gap + 140px bleed absorption */
 }
 /* services has no single inner wrapper — ensure svc-rows are above */
 .svc-row {
@@ -2790,7 +2806,7 @@ h2 em, h1 em {
 
 /* Specialties receives Services bleed */
 .specialties {
-  padding-top: 180px; /* was 100px + 80px */
+  padding-top: 240px; /* 100px content gap + 140px bleed absorption */
 }
 .specialties__inner {
   position: relative;
@@ -2798,11 +2814,10 @@ h2 em, h1 em {
 }
 
 /* About receives Specialties bleed.
-   80px absorbs the gradient bleed, additional padding gives the eyebrow
-   breathing room above "About the Practice" so it doesn't sit flush against
-   the previous section. */
+   140px absorbs the taller gradient bleed, additional padding gives the
+   eyebrow breathing room above "About the Practice." */
 .about__split {
-  padding-top: clamp(120px, 14vw, 180px);
+  padding-top: clamp(180px, 18vw, 240px);
 }
 /* (Removed duplicate .about__bio-col padding-top:96 override — bio-col now sits
    flush with about__split's 80px absorption. The 80px absorption == the visible
@@ -2819,7 +2834,7 @@ h2 em, h1 em {
 
 /* Contact receives CTA bleed */
 .contact__inner {
-  padding-top: 176px; /* was 96px + 80px */
+  padding-top: 236px; /* 96px content gap + 140px bleed absorption */
 }
 
 /* ===================================================
