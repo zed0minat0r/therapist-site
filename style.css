@@ -387,13 +387,14 @@ h2 em, h1 em {
 .hero__bg-overlay {
   position: absolute;
   inset: 0;
-  /* Brightened — was 0.92/0.8/0.42 darkening the hero photo too aggressively;
-     dropped to 0.55/0.40/0.18 so the mountain-lake photography reads through. */
+  /* Bright photo. Minimal global tint — text legibility comes from the
+     stacked text-shadow halos on each text element, not from darkening
+     the photo itself. */
   background: linear-gradient(
-    105deg,
-    rgba(20, 34, 18, 0.55) 0%,
-    rgba(28, 46, 26, 0.40) 45%,
-    rgba(46, 74, 42, 0.18) 100%
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.10) 50%,
+    rgba(0, 0, 0, 0.05) 100%
   );
 }
 .hero__grain {
@@ -435,22 +436,6 @@ h2 em, h1 em {
   width: 100%;
   align-self: center;
 }
-/* Localized text scrim — protects headline legibility on the left without
-   darkening the rest of the photo. Radial-ish gradient anchored to the
-   upper-left where the text actually sits. */
-.hero__content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 75% 90% at 18% 45%,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.28) 35%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  z-index: -1;
-  pointer-events: none;
-}
 
 .hero__location {
   font-size: 12px;
@@ -467,8 +452,13 @@ h2 em, h1 em {
   gap: 7px;
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+  color: rgba(255,255,255,1);
+  /* Stacked halo — tight outline + soft drop creates legibility on
+     any background without darkening the photo. */
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.85),
+    0 1px 2px rgba(0, 0, 0, 0.7),
+    0 2px 8px rgba(0, 0, 0, 0.55);
   margin-bottom: 28px;
   animation: hero-fade-up 1s cubic-bezier(0.22,1,0.36,1) 0.32s both;
 }
@@ -494,11 +484,17 @@ h2 em, h1 em {
 /* Word-by-word headline */
 .hero__headline {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: clamp(3.8rem, 8.5vw, 7.5rem);
   line-height: 0.95;
   color: var(--white);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55), 0 1px 4px rgba(0, 0, 0, 0.35);
+  /* Stacked halo — 4 layers from tight outline to deep glow. Lets the
+     photo stay bright while the headline carries its own contrast. */
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    0 4px 18px rgba(0, 0, 0, 0.5),
+    0 2px 32px rgba(0, 0, 0, 0.35);
   max-width: 760px;
   margin-bottom: 36px;
   letter-spacing: -0.02em;
@@ -513,22 +509,31 @@ h2 em, h1 em {
 .hero__word--italic {
   font-style: italic;
   color: var(--terra-lt);
-  font-weight: 400;
+  font-weight: 500;
   padding-left: 1.8rem;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65), 0 1px 4px rgba(0, 0, 0, 0.45);
+  /* Stronger halo for the terra-cotta tone — it loses contrast against
+     bright sky faster than white does. */
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.85),
+    0 2px 8px rgba(0, 0, 0, 0.7),
+    0 4px 22px rgba(0, 0, 0, 0.55),
+    0 2px 36px rgba(0, 0, 0, 0.4);
 }
 @keyframes word-in {
   to { opacity: 1; transform: translateY(0) skewY(0deg); }
 }
 
 .hero__sub {
-  font-size: 15px;
-  color: rgba(255,255,255,0.95);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  color: rgba(255,255,255,1);
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.85),
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 2px 12px rgba(0, 0, 0, 0.55);
   max-width: 400px;
   margin-bottom: 44px;
   line-height: 1.75;
-  font-weight: 400;
+  font-weight: 500;
   animation: hero-fade-up 1s cubic-bezier(0.22,1,0.36,1) 1.05s both;
 }
 .hero__actions {
@@ -540,9 +545,12 @@ h2 em, h1 em {
 }
 .hero__phone {
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(255,255,255,1);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  text-shadow:
+    0 0 1px rgba(0, 0, 0, 0.85),
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 2px 10px rgba(0, 0, 0, 0.55);
   text-decoration: none;
   letter-spacing: 0.08em;
   transition: color 0.2s;
