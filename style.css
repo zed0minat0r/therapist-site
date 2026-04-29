@@ -1364,7 +1364,10 @@ h2 em, h1 em {
 .cta-section {
   position: relative;
   background: var(--parchment);
-  padding: 160px 40px 120px;     /* reduced padding-top — gb-quote-cta gradient bleed now flows silhouette into bright */
+  /* Tightened padding-top — the gradient bleed already lands inside this
+     section visually; we don't need 160px of extra empty parchment before
+     the headline. */
+  padding: 100px 40px 120px;
   overflow: hidden;
 }
 /* Subtle customer-photo backdrop — sun-rays-through-clouds from Laura's
@@ -1824,7 +1827,7 @@ h2 em, h1 em {
   .about__faq-a { max-width: 100%; }
 
   /* CTA — extra padding-top absorbs the 200px gb-quote-cta bleed at mobile */
-  .cta-section { padding: 240px 20px 80px; }
+  .cta-section { padding: 140px 20px 80px; }
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
