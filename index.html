@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=cta-contact-tighter" />
+  <link rel="stylesheet" href="style.css?v=about-spice" />
 
   <script type="application/ld+json">
   {
@@ -351,8 +351,27 @@
         <p class="about__bio-name reveal">Laura Spaulding, LPC</p>
         <p class="about__bio-cred reveal">Licensed Professional Counselor &mdash; Psychotherapy and Clinical Supervision</p>
         <p class="about__body reveal">I built my practice on a simple belief: that good therapy is not a transaction &mdash; it is a relationship. The people who walk through my door deserve a space that feels honest, unhurried, and genuinely safe.</p>
+
+        <!-- Pull-quote callout — extracts the core sentence, displays it as
+             an editorial blockquote with a terra glow accent. -->
+        <blockquote class="about__pullquote reveal" aria-hidden="true">
+          <span class="about__pullquote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="about__pullquote-text">Good therapy is not a transaction&mdash;<em>it is a relationship.</em></p>
+        </blockquote>
+
         <p class="about__body reveal">I keep my practice small by design because caseload size affects care quality. I collaborate closely with your other providers &mdash; psychiatrists, pediatricians, school counselors &mdash; because the best outcomes happen when everyone is aligned.</p>
         <p class="about__body reveal">My experience spans school settings and outpatient counseling. That background shapes how I think about the whole person &mdash; not just the presenting problem, but the systems and relationships around them.</p>
+
+        <!-- "How sessions feel" — 4 commitments restated from existing
+             body copy, now as a visible promise grid. Rephrased existing
+             content, not fabricated. -->
+        <ul class="about__promises reveal">
+          <li><span class="about__promise-num">01</span><span class="about__promise-text">Unhurried sessions. No clock-watching.</span></li>
+          <li><span class="about__promise-num">02</span><span class="about__promise-text">Confidential, by design.</span></li>
+          <li><span class="about__promise-num">03</span><span class="about__promise-text">Collaborative with your other providers.</span></li>
+          <li><span class="about__promise-num">04</span><span class="about__promise-text">A small caseload, so care stays the priority.</span></li>
+        </ul>
+
         <ul class="about__tags reveal">
           <li>CBT</li>
           <li>DBT</li>
