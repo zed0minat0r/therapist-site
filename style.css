@@ -387,11 +387,13 @@ h2 em, h1 em {
 .hero__bg-overlay {
   position: absolute;
   inset: 0;
+  /* Brightened — was 0.92/0.8/0.42 darkening the hero photo too aggressively;
+     dropped to 0.55/0.40/0.18 so the mountain-lake photography reads through. */
   background: linear-gradient(
     105deg,
-    rgba(20, 34, 18, 0.92) 0%,
-    rgba(28, 46, 26, 0.8) 45%,
-    rgba(46, 74, 42, 0.42) 100%
+    rgba(20, 34, 18, 0.55) 0%,
+    rgba(28, 46, 26, 0.40) 45%,
+    rgba(46, 74, 42, 0.18) 100%
   );
 }
 .hero__grain {
@@ -399,7 +401,7 @@ h2 em, h1 em {
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   background-size: 160px;
-  opacity: 0.55;
+  opacity: 0.32;
   mix-blend-mode: overlay;
 }
 
