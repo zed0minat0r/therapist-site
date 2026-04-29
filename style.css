@@ -1364,27 +1364,15 @@ h2 em, h1 em {
 .cta-section {
   position: relative;
   background: var(--parchment);
-  /* Tightened padding-top — the gradient bleed already lands inside this
-     section visually; we don't need 160px of extra empty parchment before
-     the headline. */
-  padding: 100px 40px 120px;
+  /* Padding-top sized to fully absorb the 200px gb-quote-cta gradient bleed
+     above (so the green doesn't bleed into the headline), plus a 40px
+     breathing buffer between gradient end and content. */
+  padding: 240px 40px 120px;
   overflow: hidden;
 }
-/* Subtle customer-photo backdrop — sun-rays-through-clouds from Laura's
-   own photography. Lit but not loud: blends into parchment via low
-   opacity + sepia tint. Sits behind text via inner z-index:4. */
-.cta-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('assets/photos/sunrays-clouds.jpg');
-  background-size: cover;
-  background-position: center 30%;
-  opacity: 0.32;
-  filter: sepia(0.18) saturate(0.9);
-  z-index: 1;
-  pointer-events: none;
-}
+/* Sun-rays-clouds backdrop removed — the customer-photo overlay was
+   competing with the forest gradient bleed and the terra CTA, making the
+   palette feel busy. Clean parchment ground reads better. */
 .cta-section__inner {
   position: relative;
   z-index: 4;
@@ -1827,7 +1815,7 @@ h2 em, h1 em {
   .about__faq-a { max-width: 100%; }
 
   /* CTA — extra padding-top absorbs the 200px gb-quote-cta bleed at mobile */
-  .cta-section { padding: 140px 20px 80px; }
+  .cta-section { padding: 220px 20px 80px; }
   .cta-section__inner { gap: 40px 0; text-align: center; max-width: 100%; }
   .cta-section__action { align-items: center; }
   .cta-section__headline { font-size: clamp(2.8rem, 11vw, 4rem); }
