@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=cta-gap-shrink" />
+  <link rel="stylesheet" href="style.css?v=form-ready" />
 
   <script type="application/ld+json">
   {
@@ -516,8 +516,24 @@
       </div>
 
       <div class="contact__form-card reveal">
-        <form class="contact__form" action="https://formspree.io/f/xpznqkdl" method="POST">
-          <input type="hidden" name="_next" value="https://zed0minat0r.github.io/therapist-site/?submitted=1" />
+        <!--
+          ============================================================
+          CONTACT FORM — ONE STEP TO ACTIVATE
+          ============================================================
+          1. Go to https://formspree.io and create a free account using
+             the email address that should receive consultation inquiries.
+          2. Click "+ New Form", paste in the same email, and copy the
+             form's endpoint (it looks like: https://formspree.io/f/abc123xy).
+          3. Replace YOUR_FORMSPREE_ID below with that endpoint's ID
+             (the part after /f/ — e.g. abc123xy).
+          That's it. Free tier sends up to 50 submissions/month at no cost.
+          ============================================================
+        -->
+        <form class="contact__form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <input type="hidden" name="_next" value="?submitted=1" />
+          <input type="hidden" name="_subject" value="New consultation inquiry — Laura Spaulding LLC" />
+          <!-- honeypot for spam bots; real users never see or fill it -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;" />
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required autocomplete="name" />
