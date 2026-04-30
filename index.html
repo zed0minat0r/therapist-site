@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=supervision-photo" />
+  <link rel="stylesheet" href="style.css?v=supervision-photo-2" />
 
   <script type="application/ld+json">
   {
@@ -223,7 +223,8 @@
       <div class="svc-row__photo">
         <img src="assets/photos/supervision-group.jpg"
              sizes="(max-width: 768px) calc(100vw - 48px), 50vw"
-             alt="A small group seated in conversation in a warm, light-filled room — peer consultation and supervision" loading="lazy" width="1800" height="1792" />
+             alt="A small group seated in conversation in a warm, light-filled room — peer consultation and supervision" loading="lazy" width="1800" height="1792"
+             style="object-position: 50% 32%;" />
       </div>
       <div class="svc-row__body">
         <span class="svc-row__num">03</span>
