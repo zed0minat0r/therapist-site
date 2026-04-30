@@ -3092,9 +3092,9 @@ h2 em, h1 em {
   z-index: 3;
 }
 
-/* Contact receives CTA bleed */
+/* Contact receives CTA bleed (80px tall, -80px margin overlap) */
 .contact__inner {
-  padding-top: 236px; /* 96px content gap + 140px bleed absorption */
+  padding-top: 96px; /* 80px bleed absorption + 16px breathing */
 }
 
 /* ===================================================
