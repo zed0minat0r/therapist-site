@@ -980,33 +980,6 @@ h2 em, h1 em {
 }
 .svc-row__cta:hover { color: var(--terra); border-color: var(--terra); }
 
-.services__fee-note {
-  padding: 36px 40px;
-  text-align: center;
-  font-size: 13px;
-  color: var(--ink-muted);
-  font-weight: 300;
-  font-style: italic;
-  border-top: 1px solid var(--parchment-xdk);
-  background: var(--parchment-dk);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: center;
-}
-.services__fee-ins {
-  color: var(--ink-mid);
-  font-style: normal;
-  font-weight: 400;
-}
-.services__fee-tel {
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--forest);
-  font-style: normal;
-  font-weight: 500;
-}
-
 /* ===================================================
    SPECIALTIES — dark ink bg, lit type constellation
    =================================================== */
@@ -1549,10 +1522,52 @@ h2 em, h1 em {
     transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s;
 }
 .about__faq-a.is-open {
-  max-height: 600px;
+  max-height: 800px;
   opacity: 1;
   padding: 0 0 32px;
   transform: translateY(0);
+}
+
+/* FAQ answer text wrapper — used when a dd has both prose + structured fees */
+.about__faq-text {
+  margin: 0 0 14px;
+}
+.about__faq-fees {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.about__faq-fees-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold-lt);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.about__faq-fees-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.about__faq-fees-list li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.55;
+}
+.about__faq-fees-list li strong {
+  font-weight: 500;
+  color: rgba(255,255,255,0.95);
+}
+.about__faq-fees-note {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.62);
+  font-style: italic;
 }
 @media (prefers-reduced-motion: reduce) {
   .about__faq-a {
@@ -2049,7 +2064,6 @@ h2 em, h1 em {
   .svc-row__body .svc-row__cta { margin: 0 auto; }
   .svc-row--img-right .svc-row__body { background: var(--forest-pale); }
   .svc-row__desc { max-width: 100%; }
-  .services__fee-note { padding: 28px 20px; }
 
   /* Specialties — absorbs 80px bleed from services */
   .specialties { padding: 152px 20px 16px; }
