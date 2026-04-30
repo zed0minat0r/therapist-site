@@ -731,15 +731,15 @@ h2 em, h1 em {
   font-weight: 300;
 }
 
-/* Pull quote */
+/* Pull quote — centered so it doesn't leave the left half empty */
 .approach__quote-wrap {
   border-top: 1px solid rgba(0,0,0,0.08);
   padding-top: 52px;
-  margin-top: 16px;
-  max-width: 560px;
-  margin-left: auto;
+  margin: 56px auto 0;
+  max-width: 720px;
   padding-left: 32px;
   border-left: 2px solid var(--terra);
+  text-align: left;
 }
 .approach__quote {
   font-family: 'Cormorant Garamond', serif;
