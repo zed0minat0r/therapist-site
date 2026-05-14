@@ -1114,26 +1114,26 @@ h2 em, h1 em {
 }
 .spec--lg {
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.95);
   letter-spacing: -0.01em;
   margin-right: 44px;
 }
 .spec--lg:hover { color: var(--white); text-shadow: 0 0 30px rgba(255,255,255,0.15); }
 .spec--md {
   font-size: clamp(1.3rem, 2.8vw, 2rem);
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.85);
   margin-right: 30px;
   font-style: italic;
 }
 .spec--sm {
   font-size: clamp(0.95rem, 1.8vw, 1.3rem);
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.75);
   margin-right: 20px;
   letter-spacing: 0.02em;
 }
-.spec--sm:hover { color: rgba(255,255,255,0.65); }
+.spec--sm:hover { color: var(--white); }
 .spec-sep {
-  color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.35);
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
   font-weight: 300;
