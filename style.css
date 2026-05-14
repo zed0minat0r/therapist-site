@@ -1957,8 +1957,14 @@ h2 em, h1 em {
     z-index: 1001;
     position: relative;
   }
-  .nav__toggle.is-open span:first-child { transform: rotate(45deg) translate(5px, 5px); }
-  .nav__toggle.is-open span:last-child { transform: rotate(-45deg) translate(5px, -5px); }
+  /* Keep mobile toggle/brand/links readable when the fullscreen menu is open,
+     even after the page has scrolled (which would otherwise paint dark
+     scrolled-state colors on top of the dark-green overlay). */
+  .nav.is-menu-open.is-scrolled { background: transparent; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .nav.is-menu-open .nav__brand { color: var(--white); text-shadow: 0 1px 2px rgba(0,0,0,0.7), 0 2px 14px rgba(0,0,0,0.55); }
+  .nav.is-menu-open .nav__toggle span { background: var(--white); }
+  .nav.is-menu-open .nav__links a { color: rgba(255,255,255,0.85); text-shadow: none; }
+  .nav.is-menu-open .nav__links a.is-active { color: var(--white); }
 
   /* Hero */
   .hero__content { padding: 120px 20px 36px; text-align: center; align-items: center; display: flex; flex-direction: column; }

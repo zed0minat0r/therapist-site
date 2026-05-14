@@ -60,13 +60,15 @@
 
   /* ---- Mobile menu ---- */
   function initMobileMenu() {
+    var nav = document.getElementById('nav');
     var toggle = document.querySelector('.nav__toggle');
     var links = document.querySelector('.nav__links');
-    if (!toggle || !links) return;
+    if (!nav || !toggle || !links) return;
 
     toggle.addEventListener('click', function () {
       var open = links.classList.toggle('is-open');
       toggle.classList.toggle('is-open', open);
+      nav.classList.toggle('is-menu-open', open);
       toggle.setAttribute('aria-expanded', open);
       document.body.style.overflow = open ? 'hidden' : '';
     });
@@ -75,6 +77,7 @@
       a.addEventListener('click', function () {
         links.classList.remove('is-open');
         toggle.classList.remove('is-open');
+        nav.classList.remove('is-menu-open');
         toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
