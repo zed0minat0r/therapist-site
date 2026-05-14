@@ -866,28 +866,8 @@ h2 em, h1 em {
   padding-bottom: 8px;
   position: relative;
   display: inline-block;
-  /* Shimmer text-fill: warm-light gradient sweeps across the letters */
-  background: linear-gradient(
-    100deg,
-    var(--terra) 0%,
-    var(--terra-lt) 25%,
-    #f7b893 50%,
-    var(--terra-lt) 75%,
-    var(--terra) 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-          color: transparent;
-  text-shadow: none;
-  filter: drop-shadow(0 0 22px rgba(207, 139, 103, 0.55))
-          drop-shadow(0 0 44px rgba(207, 139, 103, 0.28));
-  animation:
-    coming-shimmer 3.6s linear infinite,
-    coming-pulse 2.6s ease-in-out infinite;
+  filter: drop-shadow(0 0 22px rgba(207, 139, 103, 0.4));
 }
-/* Underline rule that draws in on hover/scroll-reveal */
 .svc-row__title--coming::after {
   content: '';
   position: absolute;
@@ -903,38 +883,7 @@ h2 em, h1 em {
     var(--terra) 82%,
     transparent 100%
   );
-  transform: scaleX(0.4);
-  transform-origin: center;
-  opacity: 0.7;
-  animation: coming-underline 2.6s ease-in-out infinite;
-}
-@keyframes coming-shimmer {
-  0%   { background-position: 100% 50%; }
-  100% { background-position: -100% 50%; }
-}
-@keyframes coming-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 22px rgba(207, 139, 103, 0.55))
-            drop-shadow(0 0 44px rgba(207, 139, 103, 0.28));
-  }
-  50% {
-    filter: drop-shadow(0 0 36px rgba(207, 139, 103, 0.78))
-            drop-shadow(0 0 72px rgba(207, 139, 103, 0.42));
-  }
-}
-@keyframes coming-underline {
-  0%, 100% { transform: scaleX(0.45); opacity: 0.6; }
-  50%      { transform: scaleX(1); opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .svc-row__title--coming {
-    animation: none;
-    background: none;
-    color: var(--terra);
-    -webkit-text-fill-color: var(--terra);
-    filter: drop-shadow(0 0 24px rgba(207, 139, 103, 0.3));
-  }
-  .svc-row__title--coming::after { animation: none; transform: scaleX(0.7); }
+  opacity: 0.85;
 }
 .svc-row__subtitle {
   font-family: 'Cormorant Garamond', serif;
