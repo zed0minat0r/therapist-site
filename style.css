@@ -1232,27 +1232,6 @@ h2 em, h1 em {
 }
 .about__headline em {
   color: var(--terra);
-  position: relative;
-  display: inline-block;
-}
-/* Animated underline that draws in below "Real experience." when the
-   headline scrolls into view. */
-.about__headline em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--terra) 0%, var(--terra-lt) 50%, var(--terra) 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
-  border-radius: 2px;
-  box-shadow: 0 0 12px rgba(207, 139, 103, 0.5);
-}
-.about__headline.is-visible em::after {
-  transform: scaleX(1);
 }
 
 /* PULL-QUOTE CALLOUT — editorial blockquote with terra accent + glow */
@@ -1349,13 +1328,11 @@ h2 em, h1 em {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about__headline em::after,
   .about__photo-img {
     transition: none !important;
     transform: none !important;
     animation: none !important;
   }
-  .about__headline em::after { transform: scaleX(1); }
 }
 .about__bio-name {
   font-family: 'Cormorant Garamond', serif;
