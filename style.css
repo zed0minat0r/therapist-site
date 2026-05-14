@@ -2080,7 +2080,11 @@ h2 em, h1 em {
   /* About split — 80px top absorbs specialties bleed */
   .about__split { grid-template-columns: 1fr; padding: 64px 20px 0; gap: 0; }
   .about__bio-col { padding: 0 0 24px !important; text-align: center; }
-  .about__photo-col { display: none; }
+  .about__photo-col { display: block; margin-bottom: 32px; }
+  .about__photo-wrap { position: static; top: auto; margin: 0 auto; max-width: 360px; }
+  .about__photo-wrap::before { inset: 8px -8px -8px 8px; }
+  .about__photo-img { height: auto; aspect-ratio: 2 / 3; }
+  .about__photo-caption { text-align: center; }
   .about__tags { justify-content: center; }
   .about__faq-band { padding: 136px 20px 56px; }
   .about__faq-a { max-width: 100%; }
