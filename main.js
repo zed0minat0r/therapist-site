@@ -83,24 +83,37 @@
 
   /* ---- Scroll reveals — handles reveal, reveal-left, reveal-right ---- */
   function initReveals() {
-    var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    if (!els.length) return;
+    var fadeEls = document.querySelectorAll('.reveal');
+    var slideEls = document.querySelectorAll('.reveal-left, .reveal-right');
+    if (!fadeEls.length && !slideEls.length) return;
 
     if (reducedMotion) {
-      els.forEach(function (el) { el.classList.add('is-visible'); });
+      fadeEls.forEach(function (el) { el.classList.add('is-visible'); });
+      slideEls.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
 
-    var observer = new IntersectionObserver(function (entries) {
+    var fadeObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          fadeObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0, rootMargin: '0px 0px 35% 0px' });
+    fadeEls.forEach(function (el) { fadeObserver.observe(el); });
 
-    els.forEach(function (el) { observer.observe(el); });
+    /* Slide-in rows trigger when actually entering the viewport (no pre-trigger),
+       so users see the 1.1s slide motion instead of it finishing off-screen. */
+    var slideObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          slideObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    slideEls.forEach(function (el) { slideObserver.observe(el); });
   }
 
   /* ---- Hero image parallax ---- */
