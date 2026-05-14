@@ -2591,8 +2591,8 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 48px 2rem 96px;
-  min-height: 620px;
+  padding: 56px 2rem 96px;
+  min-height: 760px;
   text-align: center;
   position: relative;
 }
@@ -2611,12 +2611,12 @@ h2 em, h1 em {
 
 .quote-bridge .approach__quote {
   color: var(--forest-deep);
-  /* Cinematic editorial centerpiece — bigger, bolder italic, tighter rhythm. */
-  font-size: clamp(2.2rem, 6.2vw, 3.6rem);
-  font-weight: 700;
-  line-height: 1.32;
-  letter-spacing: -0.012em;
-  text-shadow: 0 1px 2px rgba(26, 46, 23, 0.06);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 /* Word-by-word fade-up reveal when the bridge enters view. JS adds .is-visible
@@ -2746,7 +2746,7 @@ h2 em, h1 em {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 38%;
+  height: 66%;
   background-color: var(--forest-deep);
   -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out');
   mask-image: url('assets/landscape-scene.svg?v=birds-out');
@@ -2764,8 +2764,8 @@ h2 em, h1 em {
    crops abruptly — gets a feathered fade so the trees don't look cut off. */
 .qb-landscape--mirror {
   transform: scaleX(-1);
-  opacity: 0.55;
-  height: 26%;
+  opacity: 0.7;
+  height: 50%;
   -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
   mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
   -webkit-mask-composite: source-in;
