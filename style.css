@@ -3025,10 +3025,10 @@ h2 em, h1 em {
    Inner wrappers get z-index:3 so they sit above the bleed (z-index:2).
 */
 
-/* Approach receives Hero bleed */
-.approach {
-  padding-top: 240px; /* 100px content gap + 140px bleed absorption */
-}
+/* Approach used to receive a bleed from above (originally Hero, then
+   briefly the bio→approach mini-bleed). Both have been removed per
+   Laura — base padding 100px 40px 100px is the right amount of
+   section breathing on its own. Inner z-index kept for legacy safety. */
 .approach__inner {
   position: relative;
   z-index: 3;
