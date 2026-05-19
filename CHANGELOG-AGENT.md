@@ -214,3 +214,11 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 2026-04-25 23:45 qa — 375/390/393/1440px scene-v8 landscape-scene.svg verify: 1 CRITICAL bug found (BUG-014: .qb-landscape has zero CSS rules — mask-image never applied, element 0px height, SVG never renders on any viewport)
 
 2026-04-25 qa — iPhone13(390px)+Desktop(1440px) scene-v11 flow verify: DOM order PASS, gb-about-faq/gb-about-testimonials removed PASS, gb-quote-cta positioned PASS, FAQ accordion PASS, 0 console errors, 1 bug found (BUG-015 LOW: cta-section padding-top cascade conflict), BUG-014 closed
+2026-04-28 pixel — editorial divider (gb-approach-services) 5-point verify: 375/390/414/1440 all PASS — vertical alignment 0px spread, 29-30px clearance each side, 0 overflow, diamond centered, animation completes clean
+
+2026-05-19 — privacy notice + about cleanup
+- Added /notice-of-privacy-practices.html: full HIPAA Notice from Laura's docx, formatted into 7 sections with proper heading hierarchy. Single-column readable layout on parchment, Cormorant Garamond title + DM Sans body. Sets meta robots=noindex. Independent legal-page nav (brand + ← Home).
+- index.html footer: added small "Notice of Privacy Practices" link in .site-footer__bottom (new .site-footer__legal container — small, low-contrast, underlined per Laura's brief "small and non obvious").
+- index.html About: removed the standalone .about__tags listing (CBT/DBT/Trauma-Informed/Family Systems/Counselor Educator) — duplicate of the Approach pillar #2 narrative mention. Per Laura's email.
+- style.css cache-buster bumped: ?v=hero-condense → ?v=privacy-notice (used by both pages).
+- Playwright verified on 1440×900 + 390×844: link visible, navigation works, privacy page renders, About section flows cleanly after the tags removal, 0 console errors.

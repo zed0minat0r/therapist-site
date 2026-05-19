@@ -1884,6 +1884,7 @@ h2 em, h1 em {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   font-size: 12px;
   color: rgba(255,255,255,0.25);
 }
@@ -1897,6 +1898,27 @@ h2 em, h1 em {
   padding: 0 4px;
 }
 .site-footer__bottom a:hover { color: rgba(255,255,255,0.7); }
+/* Legal disclosures: small, low-contrast, unobtrusive — per Laura's brief
+   ("links should be small and non obvious"). */
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.site-footer__legal a {
+  font-size: 11px;
+  color: rgba(255,255,255,0.32);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.18);
+  text-underline-offset: 3px;
+  letter-spacing: 0.02em;
+  min-height: 44px;
+  padding: 0 2px;
+}
+.site-footer__legal a:hover {
+  color: rgba(255,255,255,0.6);
+  text-decoration-color: rgba(255,255,255,0.45);
+}
 
 /* ===================================================
    MOBILE — 375px
@@ -3046,4 +3068,127 @@ textarea:focus-visible {
   .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
   .spec, .spec-sep { opacity: 1; transform: none !important; }
   .spec--lg.is-breathing, .spec--md.is-breathing, .spec--sm.is-breathing { animation: none !important; }
+}
+
+/* ========================================================
+   LEGAL PAGES — Notice of Privacy Practices, No Surprises
+   Act, Good Faith Estimate. Single-column readable layout
+   on top of the existing parchment + Cormorant/DM Sans.
+   ======================================================== */
+.legal-page { background: var(--parchment); }
+.legal-page .nav { background: rgba(247,242,234,0.96); border-bottom: 1px solid rgba(26,26,24,0.06); }
+/* The home-page nav__brand is white-on-photo with a strong shadow;
+   on parchment legal pages we want dark forest with no shadow. */
+.legal-page .nav__brand { color: var(--forest); text-shadow: none; }
+.nav--legal .nav__inner { justify-content: space-between; }
+.nav__return-link {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 8px 12px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.nav__return-link:hover { color: var(--forest); }
+
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 120px 24px 80px;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+}
+.legal__header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(26,26,24,0.12); }
+.legal__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 16px;
+}
+.legal__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--forest-deep);
+  margin-bottom: 16px;
+}
+.legal__effective {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.legal__lede {
+  background: var(--parchment-dk);
+  border-left: 3px solid var(--forest);
+  padding: 20px 24px;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: var(--ink-mid);
+  margin-bottom: 40px;
+  border-radius: 2px;
+}
+.legal__lede strong { color: var(--ink); font-weight: 500; }
+.legal section { margin-bottom: 40px; }
+.legal__section {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--forest-deep);
+  margin: 32px 0 16px;
+  letter-spacing: -0.005em;
+}
+.legal__sub {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--forest);
+  margin: 24px 0 8px;
+  letter-spacing: 0.01em;
+}
+.legal p { margin-bottom: 16px; color: var(--ink-mid); }
+.legal__list { margin: 12px 0 20px 24px; }
+.legal__list li { margin-bottom: 8px; color: var(--ink-mid); }
+.legal__list--lettered { list-style: lower-alpha; }
+.legal__list--numbered { list-style: decimal; }
+.legal__footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(26,26,24,0.12);
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+.legal__contact {
+  font-style: normal;
+  margin: 12px 0 24px;
+  color: var(--ink-mid);
+  line-height: 1.8;
+}
+.legal__contact a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.legal__contact a:hover { color: var(--forest-mid); }
+.legal__return a {
+  color: var(--forest);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.legal__return a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .legal { padding: 100px 20px 60px; font-size: 15px; }
+  .legal__lede { padding: 16px 18px; font-size: 14px; }
+  .legal__section { font-size: 20px; }
+  .site-footer__bottom { flex-wrap: wrap; gap: 12px 24px; }
+  .site-footer__legal { order: 3; flex-basis: 100%; }
 }
