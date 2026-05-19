@@ -3050,11 +3050,13 @@ h2 em, h1 em {
   z-index: 3;
 }
 
-/* About receives Specialties bleed.
-   140px absorbs the taller gradient bleed, additional padding gives the
-   eyebrow breathing room above "About the Practice." */
+/* About-bio now sits directly under the hero with no gradient transition
+   (the green .gb-hero-approach was removed per Laura's ask). The old
+   clamp(180,18vw,240) was calibrated to absorb a 140px bleed plus
+   breathing — without the bleed, that whole thing is dead space. Pure
+   section-breathing padding instead. */
 .about__split {
-  padding-top: clamp(180px, 18vw, 240px);
+  padding-top: clamp(80px, 8vw, 120px);
 }
 /* (Removed duplicate .about__bio-col padding-top:96 override — bio-col now sits
    flush with about__split's 80px absorption. The 80px absorption == the visible

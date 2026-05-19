@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=quote-padding" />
+  <link rel="stylesheet" href="style.css?v=drop-hero-bleed" />
 
   <script type="application/ld+json">
   {
@@ -114,8 +114,9 @@
     </div>
   </section>
 
-  <!-- Gradient bleed: Hero → About bio (forest-deep → parchment) -->
-  <div class="gradient-bleed gb-hero-approach" aria-hidden="true"></div>
+  <!-- Hero → About bio: no green gradient transition per Laura's ask
+       (was .gb-hero-approach). The hero ends with its bottom-fade overlay
+       and the bio sits on parchment directly below. -->
 
   <!-- ====================================================
        ABOUT BIO — moved above the fold per Laura's ask: show
