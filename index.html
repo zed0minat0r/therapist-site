@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=drop-bio-approach-bleed" />
+  <link rel="stylesheet" href="style.css?v=bio-title-rework" />
 
   <script type="application/ld+json">
   {
@@ -131,16 +131,15 @@
           <img src="assets/photos/laura-portrait.jpg?v=2"
                sizes="(max-width: 768px) calc(100vw - 48px), 40vw"
                alt="Laura Spaulding, LPC — seated portrait" class="about__photo-img" width="1200" height="1800" loading="lazy" />
-          <div class="about__photo-caption">Laura Spaulding, LPC &mdash; Psychotherapy &amp; Supervision</div>
+          <div class="about__photo-caption">Psychotherapy &amp; Clinical Supervision</div>
         </div>
       </div>
-      <!-- Bio side -->
+      <!-- Bio side. Title block restructured per Laura: the section now
+           sits above the fold as the practitioner intro, so lead with WHO
+           (name + credential), not a generic tagline. -->
       <div class="about__bio-col">
-        <p class="section-eyebrow reveal">About the Practice</p>
-        <h2 class="about__headline reveal">
-          One therapist.<br /><em>Real experience.</em><br />Deep care.
-        </h2>
-        <p class="about__bio-name reveal">Laura Spaulding, LPC</p>
+        <p class="section-eyebrow reveal">Meet your therapist</p>
+        <h2 class="about__headline reveal">Laura Spaulding, LPC</h2>
         <p class="about__bio-cred reveal">Licensed Professional Counselor &mdash; Psychotherapy and Clinical Supervision</p>
         <p class="about__body reveal">I built my practice on a simple belief: that good therapy is not a transaction &mdash; it is a relationship. The people who walk through my door deserve a space that feels honest, unhurried, and genuinely safe.</p>
 
