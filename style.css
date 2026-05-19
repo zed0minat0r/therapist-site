@@ -2565,7 +2565,12 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  padding: 120px 2rem 96px;
+  /* Receives gb-specialties-about bleed (140px). Top padding matches the
+     other bleed-receiving sections (Approach/Specialties/About all = 240px)
+     so the visible breathing gap above the quote is consistent across
+     section transitions. Previously 120px — was tuned for the pre-bio-move
+     world where .about__split absorbed the bleed before the quote-bridge. */
+  padding: 240px 2rem 96px;
   min-height: 760px;
   text-align: center;
   position: relative;
@@ -2935,10 +2940,14 @@ h2 em, h1 em {
   }
 }
 
-/* Mobile: tighten vertical rhythm */
+/* Mobile: keep enough top padding to absorb the gb-specialties-about
+   bleed (140px) AND match the other mobile bleed-receivers — Specialties +
+   Approach use 240px on mobile too. The "tighten vertical rhythm" comment
+   below predates the bio-move, when about__split sat between this section
+   and the bleed and provided the absorption itself. */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 24px 20px 64px;
+    padding: 220px 20px 64px;
     text-align: center !important;
     min-height: 48vh;
   }
@@ -2962,7 +2971,7 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 20px 16px 56px;
+    padding: 200px 16px 56px;
   }
 }
 
