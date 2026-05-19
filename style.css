@@ -2565,13 +2565,13 @@ h2 em, h1 em {
    =================================================== */
 .quote-bridge {
   background: var(--parchment);
-  /* Receives gb-specialties-about bleed (140px). Top padding matches the
-     other bleed-receiving sections (Approach/Specialties/About all = 240px)
-     so the visible breathing gap above the quote is consistent across
-     section transitions. Previously 120px — was tuned for the pre-bio-move
-     world where .about__split absorbed the bleed before the quote-bridge. */
-  padding: 240px 2rem 96px;
-  min-height: 760px;
+  /* Receives gb-specialties-about bleed (140px) at the top. Top padding
+     matches the other bleed-receiving sections (Approach/Specialties/About
+     all = 240px). Bottom padding + taller min-height open up the scene so
+     the quote text and the silhouette landscape both breathe — per Laura's
+     "give the entire thing more space" feedback. */
+  padding: 280px 2rem 160px;
+  min-height: 1000px;
   text-align: center;
   position: relative;
 }
@@ -2725,7 +2725,9 @@ h2 em, h1 em {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 66%;
+  /* Was 66% — shorter so there's more open sky between the quote text
+     and the tree silhouette. */
+  height: 48%;
   background-color: var(--forest-deep);
   -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out');
   mask-image: url('assets/landscape-scene.svg?v=birds-out');
@@ -2744,7 +2746,7 @@ h2 em, h1 em {
 .qb-landscape--mirror {
   transform: scaleX(-1);
   opacity: 0.7;
-  height: 50%;
+  height: 36%;
   -webkit-mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
   mask-image: url('assets/landscape-scene.svg?v=birds-out'), linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.45) 18%, #000 38%);
   -webkit-mask-composite: source-in;
@@ -2947,9 +2949,9 @@ h2 em, h1 em {
    and the bleed and provided the absorption itself. */
 @media (max-width: 900px) {
   .quote-bridge {
-    padding: 220px 20px 64px;
+    padding: 260px 20px 120px;
     text-align: center !important;
-    min-height: 48vh;
+    min-height: 70vh;
   }
   .quote-bridge .approach__quote {
     text-align: center !important;
@@ -2971,7 +2973,8 @@ h2 em, h1 em {
 
 @media (max-width: 480px) {
   .quote-bridge {
-    padding: 200px 16px 56px;
+    padding: 240px 16px 100px;
+    min-height: 78vh;
   }
 }
 
