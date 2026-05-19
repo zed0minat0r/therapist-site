@@ -222,3 +222,11 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - index.html About: removed the standalone .about__tags listing (CBT/DBT/Trauma-Informed/Family Systems/Counselor Educator) — duplicate of the Approach pillar #2 narrative mention. Per Laura's email.
 - style.css cache-buster bumped: ?v=hero-condense → ?v=privacy-notice (used by both pages).
 - Playwright verified on 1440×900 + 390×844: link visible, navigation works, privacy page renders, About section flows cleanly after the tags removal, 0 console errors.
+
+2026-05-19 — bio moved above the fold
+- Hoisted the .about__split (Laura's photo + biography) out of <section.about> and placed it directly after the hero, keeping the #about anchor so nav anchors continue to work.
+- Wrapped the orphaned quote-bridge + .about__faq-band in a new <section class="reflection"> at the old location (no #about id — the anchor moved with the bio).
+- Added .gb-bio-approach gradient bleed: parchment → forest-pale (subtle, 80px) — the bio section ends parchment and the Approach section begins on forest-pale, so the bleed only needs to smooth the slight beige→sage shift, not span the full dark-to-light range.
+- .about gains padding: 160px 0 120px to absorb the gradient bleeds on both sides and breathe under the nav.
+- style.css cache-buster: privacy-notice → bio-above-fold.
+- Playwright verified: order is hero → about → approach → services → specialties → reflection (quote+FAQ) → cta → contact; 0 console errors on desktop+mobile.

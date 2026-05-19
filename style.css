@@ -1096,7 +1096,13 @@ h2 em, h1 em {
 /* ===================================================
    ABOUT — dramatic split: full-height photo + bio, then FAQ band
    =================================================== */
-.about { background: var(--parchment); overflow: hidden; }
+.about { background: var(--parchment); overflow: hidden; padding: 160px 0 120px; }
+
+/* Reflection section — wraps the Carl Rogers quote bridge + FAQ band
+   (added when the bio was hoisted above the fold; previously these sat
+   inside the .about wrapper). No own background — both children paint
+   their own parchment / forest-deep. */
+.reflection { overflow: hidden; }
 
 /* Two-column: photo takes full column height */
 .about__split {
@@ -2475,6 +2481,22 @@ h2 em, h1 em {
     #3d6138 88%,
     #2e4a2a 100%
   );
+}
+
+/* 3b. Bio (parchment) → Approach (forest-pale). Both endpoints are close
+   warm-light tones; the bleed just smooths the slight beige→sage shift
+   that would otherwise read as a hairline at the section seam. */
+.gb-bio-approach {
+  background: linear-gradient(
+    to bottom,
+    #f7f2ea 0%,
+    #f1ede1 30%,
+    #ece8d8 55%,
+    #e6e8d6 78%,
+    #e8ede5 100%
+  );
+  height: 80px;
+  margin-bottom: -80px;
 }
 
 /* 4. Specialties (forest) → About (parchment) — mid-dark to light, mirror of #3 */
