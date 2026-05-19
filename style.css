@@ -1096,7 +1096,7 @@ h2 em, h1 em {
 /* ===================================================
    ABOUT — dramatic split: full-height photo + bio, then FAQ band
    =================================================== */
-.about { background: var(--parchment); overflow: hidden; padding: 160px 0 120px; }
+.about { background: var(--parchment); overflow: hidden; }
 
 /* Reflection section — wraps the Carl Rogers quote bridge + FAQ band
    (added when the bio was hoisted above the fold; previously these sat
