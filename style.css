@@ -611,7 +611,9 @@ h2 em, h1 em {
    =================================================== */
 .approach {
   background: var(--forest-pale);
-  padding: 100px 40px 100px;
+  /* Tighter top padding now that bio sits directly above with no gradient
+     transition — 100px above "My Philosophy" felt like dead space. */
+  padding: 56px 40px 100px;
   position: relative;
   overflow: hidden;
 }
@@ -833,26 +835,24 @@ h2 em, h1 em {
    without shouting. Per Laura: "animated and smaller, but not that
    dramatic." */
 .svc-row__title--coming {
-  /* Cormorant Garamond size: matches the base .svc-row__title rule.
-     The class still owns its own color + small-caps treatment. */
   font-family: 'DM Sans', sans-serif;
-  font-size: clamp(0.78rem, 1vw, 0.9rem);
+  font-size: clamp(1.25rem, 1.7vw, 1.55rem);
   color: var(--terra);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  line-height: 1.2;
-  margin-bottom: 8px;
+  letter-spacing: 0.18em;
+  line-height: 1.15;
+  margin-bottom: 10px;
   padding-bottom: 0;
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 .svc-row__title--coming::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   background: var(--terra);
   box-shadow: 0 0 0 0 rgba(207, 139, 103, 0.6);
@@ -865,7 +865,7 @@ h2 em, h1 em {
   }
   50% {
     transform: scale(1.08);
-    box-shadow: 0 0 0 6px rgba(207, 139, 103, 0);
+    box-shadow: 0 0 0 8px rgba(207, 139, 103, 0);
   }
 }
 @media (prefers-reduced-motion: reduce) {
