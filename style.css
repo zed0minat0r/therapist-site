@@ -1873,7 +1873,7 @@ h2 em, h1 em {
 }
 .site-footer__tagline {
   font-size: 12px;
-  color: rgba(255,255,255,0.38);
+  color: rgba(255,255,255,0.7);
   letter-spacing: 0.1em;
   font-weight: 300;
 }
@@ -1884,7 +1884,7 @@ h2 em, h1 em {
 }
 .site-footer__nav a {
   font-size: 12px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.78);
   text-decoration: none;
   letter-spacing: 0.06em;
   transition: color 0.2s;
@@ -1892,17 +1892,17 @@ h2 em, h1 em {
   display: inline-flex;
   align-items: center;
 }
-.site-footer__nav a:hover { color: rgba(255,255,255,0.8); }
+.site-footer__nav a:hover { color: var(--white); }
 .site-footer__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   font-size: 12px;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.62);
 }
 .site-footer__bottom a {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.78);
   text-decoration: none;
   transition: color 0.2s;
   display: inline-flex;
@@ -1910,9 +1910,11 @@ h2 em, h1 em {
   min-height: 44px;
   padding: 0 4px;
 }
-.site-footer__bottom a:hover { color: rgba(255,255,255,0.7); }
-/* Legal disclosures: small, low-contrast, unobtrusive — per Laura's brief
-   ("links should be small and non obvious"). */
+.site-footer__bottom a:hover { color: var(--white); }
+/* Legal disclosures: kept smaller than nav per Laura's "small and non
+   obvious" brief, but pulled out of the near-invisible 0.32 opacity so
+   they actually read at idle. Underline preserved so they still register
+   as links without needing hover. */
 .site-footer__legal {
   display: flex;
   flex-wrap: wrap;
@@ -1920,17 +1922,17 @@ h2 em, h1 em {
 }
 .site-footer__legal a {
   font-size: 11px;
-  color: rgba(255,255,255,0.32);
+  color: rgba(255,255,255,0.62);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.18);
+  text-decoration-color: rgba(255,255,255,0.4);
   text-underline-offset: 3px;
   letter-spacing: 0.02em;
   min-height: 44px;
   padding: 0 2px;
 }
 .site-footer__legal a:hover {
-  color: rgba(255,255,255,0.6);
-  text-decoration-color: rgba(255,255,255,0.45);
+  color: var(--white);
+  text-decoration-color: rgba(255,255,255,0.75);
 }
 
 /* ===================================================
