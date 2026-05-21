@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=office-address-map-directions" />
+  <link rel="stylesheet" href="style.css?v=map-above-directions-button" />
 
   <script type="application/ld+json">
   {
@@ -582,9 +582,10 @@
       </div>
     </div>
 
-    <!-- Office location: address + embedded map + directions button.
-         The directions button uses Google's universal Maps URL, which
-         iOS and Android both route to the user's native maps app. -->
+    <!-- Office location: heading + address, then a prominent embedded
+         map, then the Get Directions button. The directions button uses
+         Google's universal Maps URL, which iOS and Android both route
+         to the user's native maps app. -->
     <div class="contact__location reveal">
       <div class="contact__location-text">
         <p class="section-eyebrow contact__location-eyebrow">Visit</p>
@@ -593,14 +594,6 @@
           202-A North Monroe St<br />
           Media, PA 19063
         </address>
-        <a class="btn contact__directions"
-           href="https://www.google.com/maps/dir/?api=1&amp;destination=202-A+North+Monroe+St%2C+Media%2C+PA+19063"
-           target="_blank" rel="noopener noreferrer">
-          Get directions
-          <svg class="contact__directions-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-          </svg>
-        </a>
       </div>
       <div class="contact__map">
         <iframe
@@ -610,6 +603,14 @@
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen></iframe>
       </div>
+      <a class="btn contact__directions"
+         href="https://www.google.com/maps/dir/?api=1&amp;destination=202-A+North+Monroe+St%2C+Media%2C+PA+19063"
+         target="_blank" rel="noopener noreferrer">
+        Get directions
+        <svg class="contact__directions-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+        </svg>
+      </a>
     </div>
   </section>
 

@@ -1851,42 +1851,58 @@ h2 em, h1 em {
 }
 
 /* Office location — full-width band below the contact grid.
-   Address + CTA on the left, embedded Google Map on the right;
-   stacks under 760px. */
+   Stack: heading + address, then the embedded map (prominent),
+   then the Get Directions button. */
 .contact__location {
-  max-width: 1280px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 40px 96px;
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
-  gap: 56px;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 32px;
 }
 .contact__location-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 14px;
+  align-items: center;
+  gap: 10px;
 }
 .contact__location-eyebrow { color: var(--terra); font-weight: 600; }
 .contact__location-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-size: clamp(2rem, 2.8vw, 2.8rem);
   line-height: 1.05;
   color: var(--forest-deep);
   font-weight: 400;
   letter-spacing: -0.005em;
-  margin-bottom: 4px;
 }
 .contact__location-address {
   font-style: normal;
   font-size: 17px;
   line-height: 1.6;
   color: var(--ink-mid);
-  margin-bottom: 18px;
+}
+.contact__map {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 520px;
+  border: 1px solid var(--parchment-xdk);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+}
+.contact__map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
 }
 .contact__directions {
-  align-self: flex-start;
   gap: 10px;
   background: var(--forest-deep);
   color: var(--white);
@@ -1902,33 +1918,13 @@ h2 em, h1 em {
 .contact__directions-icon {
   transition: transform 0.28s ease;
 }
-.contact__map {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--parchment-xdk);
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.12);
-}
-.contact__map iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
 
 @media (max-width: 760px) {
   .contact__location {
-    grid-template-columns: 1fr;
-    gap: 28px;
     padding: 0 20px 64px;
-    text-align: center;
+    gap: 24px;
   }
-  .contact__location-text { align-items: center; }
-  .contact__directions { align-self: center; }
-  .contact__map { aspect-ratio: 3 / 4; max-height: 480px; }
+  .contact__map { aspect-ratio: 4 / 5; max-height: 460px; }
 }
 
 /* ===================================================
