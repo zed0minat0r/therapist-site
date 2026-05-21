@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=footer-contrast-and-trim-prek" />
+  <link rel="stylesheet" href="style.css?v=office-address-map-directions" />
 
   <script type="application/ld+json">
   {
@@ -511,6 +511,13 @@
             <p class="contact__detail-val">New inquiries answered within one business day. Weekends are reserved for rest &mdash; messages sent Saturday or Sunday will get a thoughtful reply first thing Monday.</p>
           </div>
           <div class="contact__detail-item">
+            <p class="contact__detail-label">Office</p>
+            <address class="contact__detail-val contact__address">
+              202-A North Monroe St<br />
+              Media, PA 19063
+            </address>
+          </div>
+          <div class="contact__detail-item">
             <!-- TODO: enable Psychology Today link once customer provides URL -->
           </div>
         </div>
@@ -572,6 +579,36 @@
           <h3>Message sent</h3>
           <p>Thank you for reaching out. You&rsquo;ll hear back within one business day.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Office location: address + embedded map + directions button.
+         The directions button uses Google's universal Maps URL, which
+         iOS and Android both route to the user's native maps app. -->
+    <div class="contact__location reveal">
+      <div class="contact__location-text">
+        <p class="section-eyebrow contact__location-eyebrow">Visit</p>
+        <h3 class="contact__location-heading">The Office</h3>
+        <address class="contact__location-address">
+          202-A North Monroe St<br />
+          Media, PA 19063
+        </address>
+        <a class="btn contact__directions"
+           href="https://www.google.com/maps/dir/?api=1&amp;destination=202-A+North+Monroe+St%2C+Media%2C+PA+19063"
+           target="_blank" rel="noopener noreferrer">
+          Get directions
+          <svg class="contact__directions-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+          </svg>
+        </a>
+      </div>
+      <div class="contact__map">
+        <iframe
+          src="https://maps.google.com/maps?q=202-A+North+Monroe+St%2C+Media%2C+PA+19063&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          title="Map showing Laura Spaulding, LLC office at 202-A North Monroe St, Media, PA 19063"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
       </div>
     </div>
   </section>
