@@ -1,163 +1,182 @@
 # Nigel's Audit — Laura Spaulding Therapist Site
-**Date:** 2026-04-26 (Cycle 2 re-score)
-**Auditor:** Nigel (strict British auditor)
-**Previous Score:** 8.6 / 10 (cycle 1, 2026-04-26, post-surgery — conversion friction axis)
-**Current Score:** 8.7 / 10
-**Delta:** +0.1
-**Critique Axis:** Conversion Friction (re-score after cycle 2 engineering)
-**Live URL:** https://zed0minat0r.github.io/therapist-site/
+**Date:** 2026-05-20
+**Auditor:** Nigel (strict visual auditor)
+**Focus Axis:** Typography
+**Viewports tested:** Desktop 1440×900 · iPhone 13 (390×664) · iPhone SE 3rd gen (375×667)
+**Pages tested:** index.html · notice-of-privacy-practices.html · no-surprises-act.html
 
 ---
 
-## CYCLE 2 DELTA RATIONALE — WHY +0.1
+## Section-by-Section Findings
 
-Cycle 2 landed three bodies of work: performance, accessibility, and CSS cleanup. Scored from a real prospective therapy client's perspective, the question is: did any of this change what a cellular user experiences in 90 seconds?
+### 1. Hero
+**Desktop** — Strong. Mountain-lake photograph fills the viewport cleanly. Headline "You don't have to figure it out alone" at 120px Cormorant Garamond with multi-layer text shadow reads crisply against the landscape. Italic green accent line on "to figure it" lands well. CTA button and "Currently accepting new clients" badge both visible above the fold. Nav parchment bar is clean; GET STARTED button in forest-deep has good weight.
 
-**What moved (+0.1):**
-- Mobile LCP was 5.4s. That is past the bounce threshold for a significant share of cellular users — the hero image had not finished loading before a meaningful fraction of anxious first-contact visitors quit. The font-loading fix (preconnect + preload + onload swap), hero image srcset (800w/1200w/1600w, was 1600px-only), and main.js defer combine to produce an estimated LCP improvement of 800ms–1700ms on mobile. Even the conservative end brings LCP below 4.5s, which is the threshold where cellular users begin forming an impression rather than bouncing blind. That is a genuine conversion-friction improvement — the earliest possible exit point (blank page) is materially reduced.
-- Accessibility fixes for keyboard and screen-reader users are real inclusion work. They do not affect the sighted 90-second scan that anchors this rubric, but they represent genuine usability improvement for a subset of prospective clients who are not served by a visually-scored audit.
+**iPhone 13 / SE** — Renders at 51.2px, appropriate scale. Button stacks to full width (correct). Badge sits below. Photo crops slightly high — the mountain peaks and lake are visible, sky dominates, grass foreground gets cropped. No blocking issues.
 
-**What did not move:**
-- Testimonials: still zero. The single largest missing conversion signal remains absent (user-blocked; no fabrication).
-- Psychology Today link: still `#TODO-PSYCH-TODAY` in production (user-blocked; no real URL supplied).
-- Hero copy mismatch: "families and couples" in hero subhead and form service cards but no couples or family therapy in the Services section — still present, still a client-visible friction point (engineering task, not user-blocked).
-- Photography: no real photo of Laura. Stock/placeholder image remains.
-
-**Score ceiling logic:** Without real testimonial and real Psych Today URL, this site cannot exceed 9.0. At 8.7 there is room for the two user-dependent items to lift it further when they arrive.
+🟡 MEDIUM — Hero photo crop on mobile (390×730 display): the mountain sits centred but the lake reflection — which creates the sense of calm — is pushed into the lower third and partially cut. A `object-position: center 55%` tweak would expose more lake.
 
 ---
 
-## OVERALL SCORE: 8.7 / 10
+### 2. About / Bio
+**Desktop** — Photo-left, text-right split at 560×640px portrait. "MEET YOUR THERAPIST" eyebrow in terra-cotta caps. "Laura Spaulding, LPC" in large Cormorant. Credential line in small olive caps. Pull-quote card ("Good therapy is not a transaction — it is a relationship") in a cream inset box with left terra border — elegant. Bio copy at 15px / 28.5px line-height reads comfortably. "PSYCHOTHERAPY & CLINICAL SUPERVISION" caption under photo in small caps.
 
-Scored from the perspective of a prospective therapy client — adult seeking help for themselves or a teenager, suburban Pennsylvania, reading on a phone at evening, deciding whether to fill out the form.
+**iPhone 13** — Portrait stacks above text correctly, 350×525px. Bio text flows with generous line-height. Pull-quote renders inline between narrative paragraphs — readable.
 
-The site is honest, well-designed, technically sound, and now loads its hero meaningfully faster on cellular. The broken Psychology Today link and the families/couples mismatch remain the two things that would give a careful client pause at the exact moment they are deciding to contact.
+No blocking issues.
 
----
+🟡 MEDIUM — The pull-quote font at 16px italic Cormorant on mobile is slightly undersized against the surrounding 15px DM Sans body — the typographic hierarchy between quote and body almost disappears at 390px. Sizing up to ~18-19px would restore the visual hierarchy the pull-quote deserves.
 
-## SECTION-BY-SECTION BREAKDOWN
-
-### 1. Hero — 8.8 / 10
-
-Word-by-word entrance, parallax forest image, botanical SVG sway, pulsing green "accepting" dot, and tappable phone number all intact. Stats bar: 17+ years / 13–adult / Mon–Fri 7am–8pm — all accurate. Scroll cue working.
-
-Hero image now served with srcset (800w/1200w/1600w) — a mobile user no longer downloads a 1600px image. Font loading non-blocking. These are invisible improvements that reduce blank-screen time.
-
-Outstanding issue: hero subhead reads "Collaborative psychotherapy for individuals, families, and couples." Family therapy and couples therapy are not listed services. A client screening for couples therapy will find it in the hero, find it in the contact form service cards, and find nothing in the Services section. Either the services need adding, or the hero copy and form cards need scoping to what is actually offered.
-
-### 2. Approach — 9.0 / 10
-
-Pillars accurate, well-paced, evidence-based copy. "My Philosophy" eyebrow correct. Three pillar accents working at mobile breakpoint. Original Rogers quote in correct typographic styling. No ghost numbers (standing preference, correctly absent). Strong section, no changes cycle 2.
-
-### 3. Services — 8.6 / 10
-
-Individual and Group correct and honest. "Coming 2027" supervision framing with terracotta headline treatment is distinctive. Fee note specific: $150 / sliding scale / 50 minutes / virtual + in-person / groups vary.
-
-Minor: "Start here →" on every service row is functional but generic — low-priority future pass.
-
-### 4. Specialties — 9.0 / 10
-
-Breathing animation on the specialty terms field remains the most visually distinctive moment on the site. "School Anxiety" and "Academic Struggles" align correctly with 13+ age range and PA PreK-12 background. "Emerging Adults" is a useful differentiator. No changes cycle 2, no issues.
-
-### 5. About and FAQ — 9.0 / 10
-
-Bio expansion with school settings/outpatient paragraph is genuine and adds depth. PA PreK-12 credential line at foot of bio is a credible differentiator — now extracted from inline styles into proper `.about__bio-subcred` class (Razor cycle 2). FAQ answers accurate and warm. Simple Practice superbill language specific and genuinely useful. First session answer ("two people getting to know each other") remains the best piece of copy on the site.
-
-Accessibility: FAQ accordion now uses `dt > button` with `aria-controls` rather than invalid `dt[role="button"]` — correct markup, functionally equivalent for sighted users.
-
-### 6. Testimonials — 0 / 10 (section removed)
-
-Correct and honest. The site continues to have zero social proof. The Rogers quote bridge that follows operates on a different register — philosophical resonance, not trust validation. When Laura has genuine testimonials she is willing to publish, adding them as a minimal, non-animated strip (name, one sentence, city) would restore this signal.
-
-### 7. Rogers Quote Bridge — 8.5 / 10
-
-"The good life is a process, not a state of being. It is a direction, not a destination." Well-chosen for the structural position. Forest-background treatment with terracotta cite text is visually clean. Mobile alignment passing. It is a brand signal, not a trust signal.
-
-### 8. CTA Section — 8.9 / 10
-
-"I make it easy. Reach out today and I'll find the right fit for you." — correct first-person voice. Two-column editorial layout on dark forest background. Breathe-animation CTA button preserved. "Most clients hear back within 24 hours" is a useful commitment. Phone fallback present and correct.
-
-`cta-breathe-white` now included in prefers-reduced-motion block (cycle 2 accessibility fix — correct).
-
-### 9. Contact — 7.8 / 10
-
-Form design remains strong: floating cream card, service selection chips, private note, success state.
-
-Outstanding: `href="#TODO-PSYCH-TODAY"` is live in production. A client who clicks "View on Psychology Today" lands on the same page. This is a trust-eroding fault on the contact page where trust is most fragile. Until the real URL is supplied, the entire Psychology Today detail row should be hidden rather than linked to nothing. This is an engineering task with a one-line CSS fix; it does not require waiting on the user.
-
-Score: unchanged from cycle 1. The broken link remains.
-
-### 10. Mobile / Responsive — 9.0 / 10
-
-Bump from 8.9: hero srcset and font-loading improvements reduce blank-screen time on cellular. Pixel's post-surgery alignment audit passed. Tap targets 44px minimum. Skip-to-main link added for keyboard users (visually hidden). No console errors.
-
-### 11. Code Quality — 9.0 / 10
-
-Bump from 8.5: Razor cycle 2 removed 4 orphaned CSS selectors (.gb-testimonials-cta, .contact__parking, .contact__map, .contact__map iframe). The inline `style="font-size:0.875em; opacity:0.8"` on the bio credential line is now a proper `.about__bio-subcred` class. Accessibility markup valid. Non-blocking font loading correctly implemented. `defer` on main.js. srcset on hero and service/about images. Favicon SVG data URI eliminates the 404.
-
-One remaining item: `#TODO-PSYCH-TODAY` in production HTML is a developer comment artifact in a live href — this is still present and should be removed by replacing the row with a hidden state.
+🔵 LOW — Laura's portrait has `?v=` (empty version string) in its src URL — could cause caching inconsistencies in Safari. Should be a real version token.
 
 ---
 
-## TOP 3 CYCLE 3 PRIORITIES
+### 3. Approach
+**Desktop** — "Therapy should feel like a conversation, not a diagnosis." at ~95px with italic rust accent lands as a strong centred statement. Three pillar cards in a horizontal row with left green border-lines and gold "01/02/03" numerals in small caps. Clean, readable, good whitespace. Editorial diamond divider below is a nice touch.
 
-### Priority 1 — Real testimonial (user-dependent)
+**iPhone SE (375px)** — The Approach headline wraps to 5 lines at this width ("Therapy should feel / like / a conversation, / not a diagnosis."). The word "feel" orphans on its own line. The result looks visually fragmented — the 4–5 line break pattern makes the headline lose its punch.
 
-When Laura supplies even one genuine testimonial with explicit client permission, adding it as a minimal static block — name, one sentence, city, no animation, no fabrication — restores the single most valuable missing conversion signal. This is the highest-leverage item on the site and it cannot be fabricated. The cycle 3 engineering team should have the HTML/CSS slot ready to receive it; the content awaits the customer.
+🟠 HIGH — Approach headline wraps to 5 lines on iPhone SE (375px). "feel" orphans on line 3, breaking the rhetorical rhythm. The headline is the most important typographic moment in the section; the orphan deflates it. Recommend reducing font-size slightly at ≤400px or adding a `<br>` to force a better 3-line break.
 
-### Priority 2 — Real Psychology Today URL (user-dependent)
+**iPhone 13** — Pillars stack vertically. No left border visible on stacked mobile layout (they appear to use horizontal dividers instead — acceptable). Pillar numbers and headings are clear.
 
-The `href="#TODO-PSYCH-TODAY"` in the contact section should be remedied immediately: either hide the row entirely via `display:none` on the containing detail item until the URL arrives, or replace the broken anchor with plain text. A client who clicks a link on the contact page and goes nowhere has just lost trust at the worst possible moment. The hide-until-real approach requires one line of CSS and no customer input.
-
-### Priority 3 — Hero copy and form card mismatch (engineering task, not user-blocked)
-
-The hero subhead reads "individuals, families, and couples." The contact form has "Family" and "Couples" service cards. The Services section lists only Individual Therapy and Group Therapy. No client-visible content confirms that family or couples therapy is offered. If Laura does not offer these services, remove "families and couples" from the hero subhead and remove the "Family" and "Couples" chips from the contact form service selection. This is an engineering task — no customer decision required.
+🔵 LOW — The terra-cotta/rust horizontal divider above pillar "01" on iPhone SE has more visual weight than the olive/gold divider on desktop, creating a slight brand inconsistency in the divider colour between viewports (desktop shows green accent bars, mobile shows a rust rule).
 
 ---
 
-## WHAT THE CYCLE 2 ENGINEERING WORK DID RIGHT
+### 4. Services
+**Desktop** — Three alternating rows (photo left + text right / text left + photo right). Row 1: Individual Therapy with Unsplash conversation photo (720×510). Row 2: Group Therapy with Unsplash backs-of-people photo (720×537). Row 3: "COMING 2027" Clinical Supervision with a local photo. Section header "Therapy for every chapter of life" in large Cormorant with italic rust accent.
 
-- Non-blocking Google Fonts: preconnect + preload + onload swap — estimated 800–1700ms LCP improvement on cellular
-- Hero image srcset (800w/1200w/1600w): mobile users no longer download a 1600px image
-- Service and about images srcset (500w/900w) with quality 85→75/80: meaningful reduction on slow connections
-- Favicon SVG data URI: eliminates 404 that was penalising Best Practices score
-- `defer` on main.js: correct — blocks nothing
-- FAQ `dt > button` with `aria-controls`: valid ARIA markup replacing invalid `dt[role="button"]`
-- `<main id="main-content">` landmark + skip link: basic keyboard accessibility restored
-- `role="alert"` on form-error spans: screen reader announcement on validation failure
-- `.about__bio-subcred` class: inline styles properly externalised
-- Orphaned CSS removed: stylesheet cleaner
+**Mobile** — All rows stack photo-above-text. Service tag pills ("TEENS & ADULTS") render cleanly. "Start here →" links present.
+
+🟠 HIGH — The two Unsplash photos (Individual and Group) are Unsplash stock, while the Supervision row uses Laura's own photo. The tonal/colour mismatch between the warm personal photography and the cool/corporate Unsplash shots is visible side by side. From a real client's perspective: the site feels slightly assembled from parts rather than a cohesive visual world. This is the biggest remaining photography gap. (Score cap applies until real photos replace Unsplash.)
+
+🟠 HIGH — On iPhone 13/SE, the Unsplash group therapy photo (photo-1529156069898) has a natural width of 342px being displayed at 390px — it's upscaling 14% and renders slightly soft/blurry at 2x pixel density on modern phones. The individual session photo has the same issue. Recommend adding `&w=900` to the Unsplash URL query to pull a larger source image.
+
+🔵 LOW — The "COMING 2027" badge on the Supervision row uses a different pill style (terracotta border text) vs the solid tag pills on other rows. The inconsistency reads slightly unfinished.
 
 ---
 
-*Audit by Nigel — strict scoring from a real user's perspective. Conversion friction axis. Cycle 2.*
+### 5. Specialties
+**Desktop** — Dark forest-green background. "What I hold space for." headline with italic rust accent. Focus tag typography is strong — mixed sizes (Anxiety large, Depression italic, Grief small; ADHD small, Family Conflict large, Trauma small) creates a kinetic typographic composition. Works well.
+
+**iPhone 13** — Renders cleanly. Tags scale well. No issues.
+
+🔵 LOW — The body text below the heading ("I work with a wide range of concerns. If you don't see yours, reach out — chances are I can help.") is 15px light text on forest-green at moderate opacity. On iPhone SE the contrast is adequate but towards the minimum threshold — worth verifying WCAG AA compliance.
 
 ---
 
-## Cycle 2 Audit Correction (Coordinator, 2026-04-25)
+### 6. Reflection (Quote Bridge + FAQ)
+**Desktop** — Silhouette scene is beautiful: layered tree line, sun glow, bird flock, parchment sky. Rogers quote animates word-by-word. FAQ band below in forest-deep with white text. Section works well visually.
 
-Two of the three "outstanding" items called out in Nigel's cycle 2 audit above are stale. They were already fixed in the cycle 1 hotfix (commit `493804e`, "hotfix post-audit: remove broken Psych Today link, fix hero subhead, update form service picker") and re-confirmed by direct read of `index.html` on 2026-04-25.
+**iPhone 13** — The quote bridge has 260px top padding on mobile. When scrolling into the section, a visitor sees approximately half a screen of blank parchment before any content appears. The scene itself (SVG at 196px height) and quote text are present but the entry experience is dead air.
 
-### What is actually true in production right now
+🟠 HIGH — ~260px top padding on the quote bridge creates a noticeable blank parchment dead zone when the section first scrolls into view on mobile. The landscape scene sits below this padding — so the first impression of the section is empty cream rather than the dramatic silhouette the design intends. Reduce top padding to ~120–140px on mobile to lead with the scene immediately.
 
-1. **Hero subhead (index.html line 102):** `Collaborative psychotherapy for individuals and groups — ages 13 through adults.` There is no "families and couples" copy in the hero. The audit text in sections 1 and 2 above ("Hero copy mismatch", "Outstanding issue: hero subhead reads…") describes a state that no longer exists.
+🟡 MEDIUM — Rogers quote text on mobile renders in a single visual "line" during the word-by-word reveal animation — because each `.quote-word` is `display: inline-block` and they wrap correctly, but at font-size ~20.8px the animation stagger makes the words appear to stream across the screen before wrapping. The effect reads like truncation mid-stream even though the final wrapped state is correct. Worth testing whether a shorter animation stagger (reduce from 0.07s per word to 0.04s) would reduce this perception.
 
-2. **Contact form service picker (index.html lines 484–488):** `Individual / Group / Parenting Support / Supervision / Not sure yet`. There are no Family or Couples chips. The picker matches the Services section.
+**FAQ band** — Four questions, clean readable typography at 18.4px on forest-deep. The "+" icon expand targets are generously sized. No issues.
 
-3. **Psychology Today link (index.html line 460):** Only an HTML comment remains — `<!-- TODO: enable Psychology Today link once customer provides URL -->`. There is no live `<a href="#TODO-PSYCH-TODAY">` in production. The Section 9 score rationale ("`href="#TODO-PSYCH-TODAY"` is live in production") is incorrect.
+---
 
-4. **PA PreK-12 credential (index.html line ~324):** Now uses the proper `.about__bio-subcred` class per Razor cycle 2 (no inline style).
+### 7. CTA Band
+**Desktop** — Sky photograph background, "Taking the first step is the hardest part." in Cormorant at ~72px with italic rust accent. CTA button and "Or call now: 484-441-3108" link below. The phone number appears to be Laura's real number (confirmed in HTML source). Reads as the strongest emotional close on the page.
 
-### Corrected top-3 priorities going into cycle 3
+**iPhone 13** — Scales cleanly. Button fills width appropriately.
 
-These supersede the "TOP 3 CYCLE 3 PRIORITIES" block above.
+No blocking issues.
 
-- **P1 — Real testimonial (customer-dependent).** Unchanged. Highest-leverage missing conversion signal. Cannot be fabricated. Engineering slot is ready; awaiting Laura.
-- **P2 — Real Psychology Today URL (customer-dependent).** The broken link is already removed; the row sits behind an HTML comment. When Laura supplies the real URL, restore the row and link.
-- **P3 — Footer color contrast (engineering, brand decision).** 8 axe-core violations at ~1.9:1 to ~4.3:1 against the 4.5:1 AA floor. See BUGS.md for the three remediation options. Brand decision required before implementation — the footer's subdued recede is intentional.
+---
 
-### What this means for the score
+### 8. Contact
+**Desktop** — Two-column layout: info column left (phone, response time, office address), form right. Address correctly shows 202-A North Monroe St / Media, PA 19063. Form has field labels, interest selector pills (Individual / Group / Parenting Support / Supervision / Not sure yet), optional message area.
 
-The 8.7 score itself stands — the cycle 2 delta rationale (mobile LCP improvement + a11y inclusion work) is intact and correct. What is wrong is the "outstanding" list: cycle 2 inherited a site already fixed in cycle 1, so the "broken link" and "hero mismatch" deductions in the section-by-section breakdown were applied to phantom faults. The next Nigel pass should re-score Hero (currently 8.8 with a phantom mismatch deduction) and Contact (currently 7.8 with a phantom broken-link deduction) without those penalties.
+🔴 BLOCKING — The form action is `https://formspree.io/f/YOUR_FORMSPREE_ID` — a live placeholder. Submitting the form will silently fail or return an error. From a real client's perspective this is a complete conversion failure: they type their name, click "Book a Free 15-Minute Consultation," and nothing happens. This needs a real Formspree endpoint before any live traffic arrives.
 
-*Correction by Coordinator. Source of truth: `index.html` lines 102, 460, 484–488, 324 read directly on 2026-04-25.*
+**Google Map block** — "The Office" heading, address, embedded Google Map, and GET DIRECTIONS button all render correctly. Map tiles lazy-load (blank grey on first scroll-into-view, then tiles appear) — acceptable standard browser behaviour. Pin placed correctly on Media, PA.
+
+**iPhone 13** — Contact section stacks to single column. Info details centred (phone, response time, address). Form below. Map below form. GET DIRECTIONS button at full width. All renders correctly.
+
+🟡 MEDIUM — The phone number in the contact column ("484-441-3108") is plain text — not a `tel:` anchor. On desktop this is fine but on mobile a prospect should be able to tap it to call. The phone in the CTA section and footer correctly use `tel:` links; the contact column version is missing the tap-to-call affordance.
+
+---
+
+### 9. Footer
+**Desktop** — Dark charcoal background. "Laura Spaulding, LLC" and "Psychotherapy and Clinical Supervision" left, nav links right. Bottom bar: copyright, legal links (Notice of Privacy Practices | No Surprises Act), phone number right. Text contrast is readable (white/light on near-black).
+
+**iPhone SE (375px)** — Footer nav links wrap: the five items (Approach · Services · Specialties · About · Contact) split across two rows with "Contact" orphaned alone on its own line. Visually this reads as incomplete — the lonely "Contact" at bottom looks like a layout error.
+
+🟡 MEDIUM — Footer nav wraps to a broken layout on iPhone SE: "Contact" orphans on its own row beneath the other four links. A simple fix: allow the nav to wrap to 2 clean rows (2+3 or 3+2) rather than the current 4+1 break, or reduce font-size slightly so all five fit on one row.
+
+**iPhone 13** — Footer renders correctly with legal links visible at the very bottom (Notice of Privacy Practices | No Surprises Act). Takes a full scroll past the map to see them but they are present.
+
+---
+
+### 10. Legal Pages (Privacy Notice + No Surprises Act)
+Both pages render cleanly on desktop and iPhone 13. Heading hierarchy is correct. Nav shows "Laura Spaulding, LLC" brand left and "← Home" link right — works correctly. Content is readable at 15px DM Sans on parchment background. Legal callout boxes (grey inset) are well differentiated from body text.
+
+🔵 LOW — The "← Home" return link on both legal pages functions as plain brand-name text on desktop — it's not clearly styled as a back-navigation element to a first-time visitor. Adding a visible left-arrow with slightly more weight would improve discoverability. (Works functionally; purely a polish note.)
+
+---
+
+## Typography Axis — Specific Findings
+
+The focus axis this cycle is typography. Summary of type-specific observations across all viewports:
+
+1. **Headline scale coherence** — The Cormorant Garamond display headlines (Hero 120px → Approach ~95px → CTA ~72px) descend sensibly on desktop. On mobile the clamp values bring all three closer together in size, slightly flattening the typographic hierarchy.
+
+2. **Body copy** — 15px DM Sans / 28.5px line-height is generous and legible across all viewports. No issues.
+
+3. **Approach headline orphan** — The biggest pure typography bug: iPhone SE 5-line wrap with "feel" isolated. Damages the line's rhetorical punch.
+
+4. **Pull-quote undersizing on mobile** — At 16px italic Cormorant on mobile, the bio pull-quote doesn't rise above the surrounding body text. The quote is the emotional centrepiece of the bio section; it needs size advantage.
+
+5. **Quote bridge font at runtime** — The Rogers quote at `clamp(1.3rem, 2.4vw, 1.75rem)` = 20.8px on mobile is proportionally correct. The word-by-word animation reads as streaming truncation mid-reveal, though the final state is correct.
+
+6. **Italic accent consistency** — The rust/terracotta italic accent (Cormorant italic) is used consistently throughout: hero, approach, services, specialties, cta, contact. Brand-coherent. Works well.
+
+7. **Mixed sans weights** — DM Sans is used at 500 (nav), 400 (body), 300 (captions). The variation is appropriate and doesn't feel inconsistent.
+
+---
+
+## Scores by Section
+
+| Section | Score |
+|---|---|
+| Hero | 8.0 |
+| About / Bio | 7.5 |
+| Approach | 7.0 |
+| Services | 6.5 |
+| Specialties | 8.0 |
+| Reflection | 7.0 |
+| CTA Band | 8.5 |
+| Contact | 5.0 (form placeholder is live blocking issue) |
+| Footer | 7.0 |
+| Legal Pages | 8.0 |
+
+---
+
+## Overall Score: 6.7 / 10
+
+**Rationale:** The site is visually coherent and considerably above average for a solo therapy practice. The brand palette (parchment · forest-deep · terra-cotta · gold) is distinctive and consistent. The silhouette scene, word-by-word quote reveal, and editorial dividers give it a memorable scroll experience. However, from a real prospective client's perspective — someone who found this via a referral and is deciding whether to reach out:
+
+- The contact form is dead (Formspree placeholder) — the single most important conversion action on the site silently fails.
+- Two of three service photos are Unsplash stock; the visual world feels partially assembled.
+- Approach headline orphans on iPhone SE.
+- The 260px blank zone entering the reflection section on mobile is a scroll-experience dead zone.
+
+These four issues collectively drag the score. The cap on photography/reviews/address is partially lifted (real address is live) but real photography remains Unsplash-dependent for two of three service rows.
+
+---
+
+## Top 5 Priorities for Next Cycle
+
+1. 🔴 **Fix the Formspree endpoint.** Replace `YOUR_FORMSPREE_ID` with Laura's real endpoint. Nothing else matters more — this is a live broken conversion.
+
+2. 🟠 **Fix the 260px mobile padding on the quote bridge.** Reduce to ~120px so the silhouette scene is the first thing users see when they scroll in, not a blank parchment wall.
+
+3. 🟠 **Approach headline orphan on iPhone SE.** The 5-line wrap with "feel" alone on line 3 kills the rhetorical punch of the section's key statement. Add a responsive `<wbr>` or adjust the mobile font-size slightly.
+
+4. 🟠 **Unsplash service photos.** Both Individual and Group Therapy rows use upscaled stock (342px natural → 390px display). They're visually inconsistent with Laura's warm personal photography. Interim fix: swap the Unsplash URLs to `?w=900` for sharper rendering. Permanent fix: real photography.
+
+5. 🟡 **Pull-quote sizing on mobile.** The "Good therapy is not a transaction" pull-quote in the bio loses typographic hierarchy at mobile sizes. Bump to ~18-19px italic Cormorant on mobile so it reads as a distinct voice, not body text.

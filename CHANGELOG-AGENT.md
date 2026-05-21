@@ -230,3 +230,4 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - .about gains padding: 160px 0 120px to absorb the gradient bleeds on both sides and breathe under the nav.
 - style.css cache-buster: privacy-notice → bio-above-fold.
 - Playwright verified: order is hero → about → approach → services → specialties → reflection (quote+FAQ) → cta → contact; 0 console errors on desktop+mobile.
+2026-05-20 12:20 nigel — focus axis: typography, top issue: Formspree placeholder action is live on contact form — all submissions silently fail
