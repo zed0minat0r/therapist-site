@@ -17,7 +17,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=golive-audit-form-zoom-tap-targets" />
+  <link rel="stylesheet" href="style.css?v=golive-replace-watermarked-photo" />
 
   <script type="application/ld+json">
   {
@@ -254,9 +254,11 @@
 
     <article class="svc-row svc-row--img-left reveal-left">
       <div class="svc-row__photo">
-        <img src="assets/photos/supervision-circle.jpg"
+        <img src="https://images.unsplash.com/photo-1681949287382-052ea3954a51?w=900&q=80&auto=format&fm=webp&fit=crop"
+             srcset="https://images.unsplash.com/photo-1681949287382-052ea3954a51?w=500&q=75&auto=format&fm=webp&fit=crop 500w,
+                     https://images.unsplash.com/photo-1681949287382-052ea3954a51?w=900&q=80&auto=format&fm=webp&fit=crop 900w"
              sizes="(max-width: 768px) calc(100vw - 48px), 50vw"
-             alt="A circle of people seated together in conversation — clinical supervision and peer consultation" loading="lazy" width="1000" height="667" />
+             alt="A small group meeting together for collaboration and peer consultation in a warm, naturally-lit office" loading="lazy" width="900" height="600" />
       </div>
       <div class="svc-row__body">
         <span class="svc-row__num">03</span>
