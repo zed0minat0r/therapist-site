@@ -1754,7 +1754,9 @@ h2 em, h1 em {
   border-radius: 2px;
   background: var(--white);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  /* 16px is the iOS Safari/Chrome zoom threshold — anything smaller triggers
+     auto-zoom-in on focus and doesn't zoom back out. */
+  font-size: 16px;
   color: var(--ink);
   transition: border-color 0.2s, box-shadow 0.2s;
   min-height: 44px;
@@ -1969,9 +1971,14 @@ h2 em, h1 em {
   text-decoration: none;
   letter-spacing: 0.06em;
   transition: color 0.2s;
+  /* 44×44 tap target per Apple HIG — short words like "About" need
+     horizontal padding to hit the 44px minimum width, not just height. */
   min-height: 44px;
+  min-width: 44px;
+  padding: 0 6px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 }
 .site-footer__nav a:hover { color: var(--white); }
 .site-footer__bottom {
