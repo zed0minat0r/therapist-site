@@ -212,6 +212,7 @@ h2 em, h1 em {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  gap: 0.28em;
   letter-spacing: 0.05em;
   color: var(--white);
   text-shadow:
@@ -223,13 +224,11 @@ h2 em, h1 em {
   color: var(--forest);
   text-shadow: none;
 }
-.nav__brand-first { margin-right: 6px; }
 .nav__brand-llc {
   font-size: 1em;
   font-weight: 600;
   letter-spacing: 0.06em;
   opacity: 1;
-  margin-left: 2px;
 }
 .nav__links {
   display: flex;
