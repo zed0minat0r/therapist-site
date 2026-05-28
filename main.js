@@ -250,10 +250,14 @@
     var success = document.getElementById('formSuccess');
     if (form && success) {
       form.style.display = 'none';
-      success.style.display = 'block';
+      success.classList.add('is-visible');
+      // Bring the bubble into view so the user sees it appear
+      setTimeout(function () {
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 80);
     }
     if (window.history.replaceState) {
-      window.history.replaceState(null, '', window.location.pathname);
+      window.history.replaceState(null, '', window.location.pathname + '#contact');
     }
   }
 
