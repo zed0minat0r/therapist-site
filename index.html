@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Laura Spaulding, LPC | Psychotherapy and Clinical Supervision</title>
   <meta name="description" content="Experienced psychotherapy and clinical supervision practice serving individuals and groups, ages 13–adult. Virtual and in-person. Call 484-441-3108." />
+  <link rel="canonical" href="https://lauraspauldingllc.com/" />
+
+  <!-- Open Graph — link previews on Facebook, LinkedIn, iMessage, Slack -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Laura Spaulding LLC" />
+  <meta property="og:title" content="Laura Spaulding, LPC — Psychotherapy and Clinical Supervision" />
+  <meta property="og:description" content="Collaborative psychotherapy for individuals and groups, ages 13 through adults. Virtual and in-person in Media, PA. Currently accepting new clients." />
+  <meta property="og:url" content="https://lauraspauldingllc.com/" />
+  <meta property="og:image" content="https://lauraspauldingllc.com/assets/photos/mountain-lake.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Open mountain landscape over a still lake" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Laura Spaulding, LPC — Psychotherapy and Clinical Supervision" />
+  <meta name="twitter:description" content="Collaborative psychotherapy for individuals and groups, ages 13 through adults. Virtual and in-person in Media, PA." />
+  <meta name="twitter:image" content="https://lauraspauldingllc.com/assets/photos/mountain-lake.jpg" />
+  <meta name="twitter:image:alt" content="Open mountain landscape over a still lake" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -25,9 +45,80 @@
     "@type": "MedicalBusiness",
     "name": "Laura Spaulding LLC — Psychotherapy",
     "telephone": "484-441-3108",
-    "url": "https://zed0minat0r.github.io/therapist-site/"
+    "url": "https://lauraspauldingllc.com/"
   }
   </script>
+
+  <!-- LocalBusiness — Google local-pack signal w/ office address -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://lauraspauldingllc.com/#localbusiness",
+    "name": "Laura Spaulding LLC",
+    "image": "https://lauraspauldingllc.com/assets/photos/mountain-lake.jpg",
+    "url": "https://lauraspauldingllc.com/",
+    "telephone": "+1-484-441-3108",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "202-A North Monroe St",
+      "addressLocality": "Media",
+      "addressRegion": "PA",
+      "postalCode": "19063",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Pennsylvania"
+    }
+  }
+  </script>
+
+  <!-- Person — surfaces Laura herself in Google's Knowledge Graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Laura Spaulding",
+    "jobTitle": "Licensed Professional Counselor (LPC)",
+    "worksFor": {
+      "@type": "LocalBusiness",
+      "@id": "https://lauraspauldingllc.com/#localbusiness"
+    },
+    "url": "https://lauraspauldingllc.com/"
+  }
+  </script>
+
+  <!-- Services offered -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Individual Psychotherapy",
+      "provider": { "@id": "https://lauraspauldingllc.com/#localbusiness" },
+      "areaServed": "Pennsylvania"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Group Psychotherapy",
+      "provider": { "@id": "https://lauraspauldingllc.com/#localbusiness" },
+      "areaServed": "Pennsylvania"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Clinical Supervision",
+      "provider": { "@id": "https://lauraspauldingllc.com/#localbusiness" },
+      "areaServed": "Pennsylvania"
+    }
+  ]
+  </script>
+
+  <!-- Vercel Web Analytics — owner enables in vercel.com project settings -->
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -91,6 +182,8 @@
     </div>
 
     <div class="hero__content">
+      <p class="hero__location">Laura Spaulding LLC</p>
+      <p class="hero__sub">Collaborative psychotherapy for individuals and groups &mdash; ages 13 through adults.</p>
       <h1 class="hero__headline">
         <span class="hero__word" style="--wi:0">You</span>
         <span class="hero__word" style="--wi:1">don&rsquo;t</span>
@@ -101,7 +194,6 @@
         <span class="hero__word" style="--wi:4">out</span>
         <span class="hero__word" style="--wi:5">alone.</span>
       </h1>
-      <p class="hero__sub">Collaborative psychotherapy for individuals and groups &mdash; ages 13 through adults.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Book a Free 15-Minute Consultation</a>
       </div>
