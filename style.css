@@ -438,15 +438,6 @@ h2 em, h1 em {
   align-self: center;
 }
 
-.hero__location {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 14px;
-  animation: hero-fade-up 1s cubic-bezier(0.22,1,0.36,1) 0.2s both;
-}
 .hero__accepting {
   display: inline-flex;
   align-items: center;
@@ -2224,7 +2215,6 @@ h2 em, h1 em {
     flex-direction: column !important;
     align-items: center !important;
   }
-  .hero__location,
   .hero__accepting {
     text-align: center !important;
   }
@@ -3251,7 +3241,7 @@ textarea:focus-visible {
    =================================================== */
 @media (prefers-reduced-motion: reduce) {
   .hero__word { animation: none; opacity: 1; transform: none; }
-  .hero__location, .hero__accepting, .hero__sub, .hero__actions, .hero__stats { animation: none; opacity: 1; transform: none; }
+  .hero__accepting, .hero__sub, .hero__actions, .hero__stats { animation: none; opacity: 1; transform: none; }
   .hero__bg-img { transform: none !important; }
   .hero__botanical svg { animation: none; }
   .btn--primary, .cta-section .btn--primary, .hero__accepting-dot, .hero__scroll-line { animation: none; }
