@@ -37,7 +37,7 @@
        async pattern was causing (cycle 4 perf trade-off was visible to users on
        initial load). The inline critical CSS that previously bridged the async
        gap is no longer needed. -->
-  <link rel="stylesheet" href="style.css?v=drop-hero-location" />
+  <link rel="stylesheet" href="style.css?v=office-carousel-matte" />
 
   <script type="application/ld+json">
   {
@@ -673,6 +673,42 @@
           Media, PA 19063
         </address>
       </div>
+
+      <!-- Office photo carousel — auto-rotates every 5s, swipeable by hand,
+           pauses on hover/touch. Framed to match the map card below (parchment
+           border + soft shadow) so the whole "Office" block reads as one unit. -->
+      <div class="office-carousel reveal" data-office-carousel aria-roledescription="carousel" aria-label="Photographs of the office">
+        <div class="office-carousel__frame">
+        <div class="office-carousel__viewport">
+          <ul class="office-carousel__track">
+            <li class="office-carousel__slide">
+              <img src="assets/photos/office-lounge.jpg"
+                   alt="The office lounge — soft seating, warm lamplight, and calming artwork"
+                   width="750" height="1000" loading="lazy" />
+              <span class="office-carousel__cap">The Lounge</span>
+            </li>
+            <li class="office-carousel__slide">
+              <img src="assets/photos/office-therapy-room.jpg"
+                   alt="A bright therapy room with a comfortable sofa and large sunlit windows"
+                   width="1200" height="900" loading="lazy" />
+              <span class="office-carousel__cap">Therapy Room</span>
+            </li>
+            <li class="office-carousel__slide">
+              <img src="assets/photos/office-exterior.jpg"
+                   alt="Exterior of the office building at 202-A North Monroe Street, Media, PA"
+                   width="1100" height="825" loading="lazy" />
+              <span class="office-carousel__cap">202-A North Monroe St</span>
+            </li>
+          </ul>
+        </div>
+        </div><!-- /.office-carousel__frame -->
+        <div class="office-carousel__dots" role="tablist" aria-label="Choose a photo to view">
+          <button class="office-carousel__dot is-active" type="button" role="tab" aria-selected="true" aria-label="Show photo 1: the lounge"></button>
+          <button class="office-carousel__dot" type="button" role="tab" aria-selected="false" aria-label="Show photo 2: the therapy room"></button>
+          <button class="office-carousel__dot" type="button" role="tab" aria-selected="false" aria-label="Show photo 3: the building exterior"></button>
+        </div>
+      </div>
+
       <div class="contact__map">
         <iframe
           src="https://maps.google.com/maps?q=202-A+North+Monroe+St%2C+Media%2C+PA+19063&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
@@ -721,6 +757,6 @@
     </div>
   </footer>
 
-  <script src="main.js?v=nav-fix" defer></script>
+  <script src="main.js?v=office-carousel" defer></script>
 </body>
 </html>

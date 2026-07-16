@@ -331,6 +331,68 @@
 
   /* ---- Service row hover: image scale is handled by CSS — no JS needed ---- */
 
+  /* ---- Office photo carousel — auto-rotate every 5s, swipe, pause on interact ---- */
+  function initOfficeCarousel() {
+    var root = document.querySelector('[data-office-carousel]');
+    if (!root) return;
+    var viewport = root.querySelector('.office-carousel__viewport');
+    var slides = root.querySelectorAll('.office-carousel__slide');
+    var dots = root.querySelectorAll('.office-carousel__dot');
+    if (!viewport || slides.length < 2) return;
+
+    var INTERVAL = 5000;
+    var current = 0;
+    var timer = null;
+
+    function setDots() {
+      dots.forEach(function (d, idx) {
+        var on = idx === current;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+    function goTo(i, smooth) {
+      current = (i + slides.length) % slides.length;
+      viewport.scrollTo({
+        left: viewport.clientWidth * current,
+        behavior: smooth === false ? 'auto' : 'smooth'
+      });
+      setDots();
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      if (reducedMotion) return;
+      stop();
+      timer = setInterval(function () { goTo(current + 1); }, INTERVAL);
+    }
+
+    dots.forEach(function (d, idx) {
+      d.addEventListener('click', function () { goTo(idx); start(); });
+    });
+
+    /* Keep the active dot in sync when the user swipes/scrolls by hand */
+    var scrollDebounce;
+    viewport.addEventListener('scroll', function () {
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(function () {
+        var i = Math.round(viewport.scrollLeft / viewport.clientWidth);
+        if (i !== current) { current = i; setDots(); }
+      }, 90);
+    }, { passive: true });
+
+    /* Pause while hovering (desktop) or touching (mobile), then resume */
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('touchstart', stop, { passive: true });
+    root.addEventListener('touchend', function () { setTimeout(start, 4000); }, { passive: true });
+
+    /* Recompute the offset if the viewport width changes */
+    window.addEventListener('resize', function () { goTo(current, false); }, { passive: true });
+
+    setDots();
+    start();
+  }
+
   /* ---- Init ---- */
   function init() {
     initNav();
@@ -343,6 +405,7 @@
     initFormSuccess();
     initFormValidation();
     initReadingProgress();
+    initOfficeCarousel();
   }
 
   if (document.readyState === 'loading') {
