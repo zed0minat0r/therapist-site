@@ -238,3 +238,8 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - style.css: .office-carousel__img--exterior { object-position: left 55% } — mobile's 3:4 portrait crop now anchors to the 202A wing so her door + number survive the side-crop. Cache-buster: office-carousel-matte → exterior-202a.
 - "Lounge" caption kept as-is per Laura ("reads like waiting area but sounds better").
 - Original uncropped photo preserved outside the repo (session scratchpad office-exterior-original.jpg).
+
+2026-07-17 — exterior photo v2: full framing back, signs retouched out
+- Matt: the 760x530 recrop felt "too zoomed in." Restored the ORIGINAL full 1100x825 composition and instead digitally removed both sign boards (left 202A plaques + right dentistry plaque) by cloning adjacent brick — verified seamless at web scale; lantern + railing untouched. Both door numbers still clearly visible.
+- index.html: ?v=202a → ?v=202b, width/height attrs back to 1100x825. object-position:left 55% kept so mobile still anchors to the 202A wing.
+- Note for later: when Laura's business gets added to the building signage, swap back to an unretouched photo (original preserved in the July 17 session scratchpad).
