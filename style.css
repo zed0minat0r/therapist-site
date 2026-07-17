@@ -2016,6 +2016,9 @@ h2 em, h1 em {
   display: block;
   filter: sepia(6%) brightness(0.97) contrast(1.03);
 }
+/* Exterior shot: bias the crop toward the 202A entrance (left of frame) so
+   Laura's door + number stay visible when the portrait viewport crops the sides */
+.office-carousel__img--exterior { object-position: left 55%; }
 .office-carousel__cap {
   position: absolute;
   left: 0; right: 0; bottom: 0;

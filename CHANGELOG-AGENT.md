@@ -231,3 +231,10 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - style.css cache-buster: privacy-notice → bio-above-fold.
 - Playwright verified: order is hero → about → approach → services → specialties → reflection (quote+FAQ) → cta → contact; 0 console errors on desktop+mobile.
 2026-05-20 12:20 nigel — focus axis: typography, top issue: Formspree placeholder action is live on contact form — all submissions silently fail
+
+2026-07-17 — exterior photo recrop per Laura's text
+- assets/photos/office-exterior.jpg recropped 1100×825 → 760×530 (window x105-865, y150-680): both entrance-sign boards now out of frame (business not listed on signage yet, per Laura), while BOTH door numbers — "202 A" (her entrance) and "202" — stay clearly visible.
+- index.html: exterior img gains ?v=202a cache-buster, corrected width/height attrs (760×530), alt text notes 202A is the entrance; new class office-carousel__img--exterior.
+- style.css: .office-carousel__img--exterior { object-position: left 55% } — mobile's 3:4 portrait crop now anchors to the 202A wing so her door + number survive the side-crop. Cache-buster: office-carousel-matte → exterior-202a.
+- "Lounge" caption kept as-is per Laura ("reads like waiting area but sounds better").
+- Original uncropped photo preserved outside the repo (session scratchpad office-exterior-original.jpg).
