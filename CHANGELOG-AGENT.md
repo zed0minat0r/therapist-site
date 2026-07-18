@@ -243,3 +243,8 @@ Playwright regression sweep across 375/414/768/1440px viewports. Read-only. QA-C
 - Matt: the 760x530 recrop felt "too zoomed in." Restored the ORIGINAL full 1100x825 composition and instead digitally removed both sign boards (left 202A plaques + right dentistry plaque) by cloning adjacent brick — verified seamless at web scale; lantern + railing untouched. Both door numbers still clearly visible.
 - index.html: ?v=202a → ?v=202b, width/height attrs back to 1100x825. object-position:left 55% kept so mobile still anchors to the 202A wing.
 - Note for later: when Laura's business gets added to the building signage, swap back to an unretouched photo (original preserved in the July 17 session scratchpad).
+
+2026-07-18 — exterior photo v3: simple left crop (per Matt)
+- Matt spotted misaligned brick rows in the retouch — replaced with his suggested approach: plain crop of the ORIGINAL, trimming only the left 100px (1100x825 → 1000x825). The 202A-door sign plaques are out of frame, "202 A" number clearly visible, composition stays wide (no zoomed-in feel).
+- NOTE: the small dentistry plaque beside the 202 entrance (right side) remains in frame — Matt's instruction was to crop out "the sign" by 202A; flagged to him in case Laura wants the right plaque gone too (that requires the tighter crop rejected earlier).
+- index.html: ?v=202b → ?v=202c, width/height 1000x825.
